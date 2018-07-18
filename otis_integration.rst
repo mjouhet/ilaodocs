@@ -19,3 +19,4 @@ For partner organizations
   
    otis_integration_intake_settings
    otis_integration_triage_rules
+   otis_integration_legal_server_integration
