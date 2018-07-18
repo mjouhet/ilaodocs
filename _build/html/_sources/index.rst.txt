@@ -15,7 +15,7 @@ Welcome to ILAO's website documentation!
    for_legal_professionals
    managing_content
    managing_people
-
+   managing_organizations
 
 Indices and tables
 ==================

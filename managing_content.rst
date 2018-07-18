@@ -7,6 +7,8 @@
    
    legal_content_admin
    adrm_content_admin 
+   toolboxes_admin
+   portal_admin
    events_content_admin
    job_postings_content_admin
    volunteer_postings_content_admin

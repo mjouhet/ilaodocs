@@ -3,7 +3,7 @@ Legal content administration
 =============================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    lc_general
    lc_paragraph_types
