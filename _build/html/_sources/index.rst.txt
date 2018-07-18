@@ -16,6 +16,8 @@ Welcome to ILAO's website documentation!
    site_faqs
    ilao_blog
    about_us
+   comments_ratings
+   contact_us
    managing_content
    managing_people
    managing_organizations
