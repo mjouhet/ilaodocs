@@ -9,6 +9,10 @@ Welcome to ILAO's website documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   
+   get_legal_help
+   legal_information
+   for_legal_professionals
 
 
 

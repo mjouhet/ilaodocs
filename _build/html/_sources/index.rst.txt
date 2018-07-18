@@ -3,12 +3,16 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to ILAO's documentation!
+Welcome to ILAO's website documentation!
 ================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   
+   get_legal_help
+   legal_information
+   for_legal_professionals
 
 
 
