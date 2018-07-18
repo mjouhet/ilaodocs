@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to ILAO's website documentation!
-================================
+========================================
 
 .. toctree::
    :maxdepth: 2
@@ -13,7 +13,8 @@ Welcome to ILAO's website documentation!
    get_legal_help
    legal_information
    for_legal_professionals
-
+   managing_content
+   managing_people
 
 
 Indices and tables
