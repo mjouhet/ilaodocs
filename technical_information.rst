@@ -9,4 +9,5 @@ Technical Information
    tech_taxonomies
    tech_cron
    tech_rules
-
+   tech_sms
+   tech_mailchimp
