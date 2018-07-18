@@ -1,3 +1,3 @@
 ==============================
-Managing Your Organization
+Joining IllinoisLegalAid.org
 ==============================
