@@ -22,6 +22,8 @@ Welcome to ILAO's website documentation!
    managing_content
    managing_people
    managing_organizations
+   tech_mailchimp
+   tech_google_groups
    technical_information
    seo
    translation_management
