@@ -13,6 +13,7 @@ Welcome to ILAO's website documentation!
    get_legal_help
    legal_information
    for_legal_professionals
+   site_search
    site_faqs
    ilao_blog
    about_us
@@ -22,6 +23,8 @@ Welcome to ILAO's website documentation!
    managing_people
    managing_organizations
    technical_information
+   seo
+   translation_management
 
 Indices and tables
 ==================

@@ -1,5 +1,5 @@
 ============================
-Technical Information
+Other Site Administration
 ============================
 
 .. toctree::
@@ -7,7 +7,10 @@ Technical Information
    
    tech_styles
    tech_taxonomies
+   tech_menus
+   tech_blocks
    tech_cron
    tech_rules
    tech_sms
    tech_mailchimp
+   tech_context
