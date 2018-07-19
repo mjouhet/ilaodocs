@@ -15,8 +15,8 @@ Welcome to ILAO's website documentation!
    for_legal_professionals
    site_search
    site_faqs
-   ilao_blog
    about_us
+   ilao_blog
    comments_ratings
    contact_us
    managing_content
@@ -27,10 +27,5 @@ Welcome to ILAO's website documentation!
    technical_information
    seo
    translation_management
+   tech_styles
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

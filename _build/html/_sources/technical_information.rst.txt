@@ -5,7 +5,6 @@ Other Site Administration
 .. toctree::
    :maxdepth: 3
    
-   tech_styles
    tech_taxonomies
    tech_menus
    tech_blocks
