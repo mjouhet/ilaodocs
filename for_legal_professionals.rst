@@ -2,12 +2,13 @@
 For Legal Professionals
 ========================
 
-Calendar
---------------
-The calendar ...
+.. toctree::
+   :maxdepth: 3
 
-Job postings
--------------
-Job postings ...
-
+   flp_calendar
+   flp_job_postings
+   flp_volunteer_opportunities
+   flp_internships
+   flp_discussion_boards
+   flp_practice_resources
 

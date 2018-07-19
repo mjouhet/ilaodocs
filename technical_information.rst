@@ -14,3 +14,5 @@ Other Site Administration
    tech_sms
    tech_mailchimp
    tech_context
+   tech_breadcrumbs
+   tech_feeds

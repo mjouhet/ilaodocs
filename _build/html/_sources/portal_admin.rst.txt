@@ -14,3 +14,8 @@ Portal components
 
   portal_admin_grid
   portal_admin_timeline
+  portal_admin_summary
+  portal_admin_webform
+  portal_admin_structured_content
+  portal_admin_sidebar
+  portal_admin_split_column
