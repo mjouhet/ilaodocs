@@ -5,6 +5,7 @@
 
 Welcome to ILAO's website documentation!
 ========================================
+.. image:: /assets/popular-today.png
 
 .. toctree::
    :maxdepth: 2
