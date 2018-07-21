@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Content Format Taxonomy &mdash; ILAO 2.17.0 documentation</title>
+  <title>Internal Staff Role Taxonomy &mdash; ILAO 2.17.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Menu Management" href="tech_menus.html" />
-    <link rel="prev" title="Legal Issue Taxonomy" href="tax_legal_issues.html" /> 
+    <link rel="next" title="&lt;no title&gt;" href="tax_support_request_types.html" />
+    <link rel="prev" title="Region Taxonomy" href="tax_region.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -101,8 +101,13 @@
 <li class="toctree-l1"><a class="reference internal" href="tech_google_groups.html">Discussion Boards &amp; Google Groups</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="technical_information.html">Other Site Administration</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="tech_taxonomies.html">Taxonomies</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="tax_legal_issues.html">Legal Issue Taxonomy</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Content Format Taxonomy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tech_taxonomies.html#content-related">Content-related</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tech_taxonomies.html#get-legal-help-related">Get Legal Help Related</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="tech_taxonomies.html#other-taxonomies">Other Taxonomies</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="tax_region.html">Region Taxonomy</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Internal Staff Role Taxonomy</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tech_menus.html">Menu Management</a></li>
@@ -169,13 +174,13 @@
         
           <li><a href="tech_taxonomies.html">Taxonomies</a> &raquo;</li>
         
-      <li>Content Format Taxonomy</li>
+      <li>Internal Staff Role Taxonomy</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/tax_content_format.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/tax_internal_staff.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -188,33 +193,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="content-format-taxonomy">
-<h1>Content Format Taxonomy<a class="headerlink" href="#content-format-taxonomy" title="Permalink to this headline">¶</a></h1>
-<p>The <a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/taxonomy_manager/voc/content_category">content format taxonomy</a> is used to manage the different types of legal content.  The content format is set automatically by the system.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Do not add new terms to this taxonomy without telling Gwen.  They will not be automatically associated to legal content without a code update.</p>
-</div>
-<p>The content format is added to legal content in the “primary content type” field based on the content blocks used in the piece of content.  The rules for determining primary content type are as follows and once a match is found, the system stops processing (so an article that meets rule 1, no other rules can overwrite it).</p>
-<p>The content type is set to:</p>
-<ol class="arabic simple">
-<li>IICLE if it contains an IICLE block</li>
-<li>Easy form if it contains an automated document block</li>
-<li>Teach me if it contains a teach me block</li>
-<li>Guide if it contains a legal bundle block</li>
-<li>How-to if it contains a process step</li>
-<li>Form - download if it contains a static form block AND that form has a file attached</li>
-<li>Form - link if it contains a static form block AND that form has a URL field in it</li>
-<li>Link - if it contains a link content block</li>
-<li>File - if it contains a file content block</li>
-<li>Video - if it contains a video block</li>
-<li>Text article - if no other rule has fired, it is treated as a text article.</li>
-</ol>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">These rules stop with the first match.  So an article that contains an IICLE block, a video, and a file will be classified as an IICLE; an article with a video and a text block will be treated as a video.  An article with a process step and a text block would be treated as a How-to but an article with a process step and a legal bundle would be treated as a Guide.</p>
-</div>
-<p>These content formats are then used as labels on the legal information and search results pages.</p>
+  <div class="section" id="internal-staff-role-taxonomy">
+<h1>Internal Staff Role Taxonomy<a class="headerlink" href="#internal-staff-role-taxonomy" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -225,10 +205,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tech_menus.html" class="btn btn-neutral float-right" title="Menu Management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="tax_support_request_types.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="tax_legal_issues.html" class="btn btn-neutral" title="Legal Issue Taxonomy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tax_region.html" class="btn btn-neutral" title="Region Taxonomy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
