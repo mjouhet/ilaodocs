@@ -4,6 +4,7 @@ Taxonomies
 Content-related
 ----------------
 .. toctree::
+   :maxdepth: 1
    
    tax_legal_issues
    tax_content_format
@@ -14,6 +15,8 @@ Content-related
 Get Legal Help Related
 ----------------------
 .. toctree::
+   :maxdepth: 1
+  
    tax_amenities
    tax_legal_server_financial
    tax_legal_server_problem_code
@@ -21,6 +24,8 @@ Get Legal Help Related
 Other Taxonomies
 --------------------
 .. toctree::
+   :maxdepth: 1
+  
    tax_region
    tax_internal_staff
    tax_support_request_types

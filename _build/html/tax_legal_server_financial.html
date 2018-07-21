@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Region Taxonomy" href="tax_region.html" />
+    <link rel="next" title="Legal Server Problem Code Mappings" href="tax_legal_server_problem_code.html" />
     <link rel="prev" title="Amenities Taxonomy" href="tax_amenities.html" /> 
 
   
@@ -105,6 +105,7 @@
 <li class="toctree-l3 current"><a class="reference internal" href="tech_taxonomies.html#get-legal-help-related">Get Legal Help Related</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="tax_amenities.html">Amenities Taxonomy</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Legal Server Financial Mappings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tax_legal_server_problem_code.html">Legal Server Problem Code Mappings</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="tech_taxonomies.html#other-taxonomies">Other Taxonomies</a></li>
@@ -195,7 +196,25 @@
             
   <div class="section" id="legal-server-financial-mappings">
 <h1>Legal Server Financial Mappings<a class="headerlink" href="#legal-server-financial-mappings" title="Permalink to this headline">¶</a></h1>
-<p>The legal server financial mappings taxonomy maps Legal Server financial categories to OTIS financial categories.</p>
+<p>The legal server financial mappings taxonomy maps Legal Server financial categories to OTIS financial categories.  The list of terms is made up of those labels that match Legal Server’s incoming financial category labels as defined in their <a class="reference external" href="https://iloi.legalserver.org/static/external_xml_intake/lookup.xsd">XML lookup</a>.</p>
+<div class="section" id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<p>For each taxonomy term, there is a:</p>
+<blockquote>
+<div><ul class="simple">
+<li>field to map to one or more OTIS financial terms</li>
+<li>field to enter text to append to case notes.</li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For example, Legal Server accepts an incoming value of “Work-Related Expenses” but OTIS collects those as individual elements for child care, transportation expenses, and other work-related expenses.  In the system, we map those 3 OTIS items to Work-Related Expenses and add notes that say “May include child care, transportation or other work-related expenses.”</p>
+</div>
+</div>
+<div class="section" id="permissions">
+<h2>Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline">¶</a></h2>
+<p>Only users with the site architect or developer roles may add, edit, or delete terms in this taxonomy.</p>
+</div>
 </div>
 
 
@@ -206,7 +225,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tax_region.html" class="btn btn-neutral float-right" title="Region Taxonomy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="tax_legal_server_problem_code.html" class="btn btn-neutral float-right" title="Legal Server Problem Code Mappings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="tax_amenities.html" class="btn btn-neutral" title="Amenities Taxonomy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

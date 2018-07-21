@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="tax_annual_updates.html" />
+    <link rel="next" title="Annual Updates Taxonomy" href="tax_annual_updates.html" />
     <link rel="prev" title="Site FAQ Categories Taxonomy" href="tax_faqs.html" /> 
 
   
@@ -106,6 +106,7 @@
 <li class="toctree-l4"><a class="reference internal" href="tax_content_format.html">Content Format Taxonomy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tax_faqs.html">Site FAQ Categories Taxonomy</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Glossary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tax_annual_updates.html">Annual Updates Taxonomy</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="tech_taxonomies.html#get-legal-help-related">Get Legal Help Related</a></li>
@@ -200,7 +201,19 @@
 <p>The glossary taxonomy is used by Lexicon to manage our glossary.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last">See also the Glossary</p>
+<p class="last">See also .. <a class="reference external" href="lc_glossary.html">Glossary &amp; Lexicon</a></p>
+</div>
+<p>The glossary also has fields for:</p>
+<ul class="simple">
+<li>Related terms:  these can be used to populate “See also” in the Glossary</li>
+<li>Synonyms:  these can be used by Lexicon to refer users to a glossary term when the text is a different term.  For example, if the glossary has a definition for lawyer but the content uses the word attorney.  If attorney is listed as a synonym, the user will see the lawyer definition.</li>
+</ul>
+<div class="section" id="translation-notes">
+<h2>Translation Notes<a class="headerlink" href="#translation-notes" title="Permalink to this headline">¶</a></h2>
+<p>The glossary uses a different form of translation management than other terms.  Other taxonomies use the “localize” option which allows for one-to-one translation between English and other languages.  The glossary uses “translate” which allows for different terms per language.  This is required by the Lexicon module.  What this means is that we can have a term in just one language.  For example, we can have “No” in English and a separate glossary term for “No” with a different definition in Spanish.</p>
+<p>Unless they are not English terms, new terms should be added with the language set to “English.”  That will then display the “Save and translate” button and the term can then be translated into other languages.</p>
+<p>It is easiest to manage the translation of the glossary through the <a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/taxonomy/glossary">Drupal Core taxonomy interface</a>  rather than the taxonomy manager.</p>
+<p>On that page, you will see the language selector (with options for language neutral, English, and Spanish) and if set to anything but language neutral, you’ll see a Save and Translate button and a Translate tab.</p>
 </div>
 </div>
 
@@ -212,7 +225,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tax_annual_updates.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="tax_annual_updates.html" class="btn btn-neutral float-right" title="Annual Updates Taxonomy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="tax_faqs.html" class="btn btn-neutral" title="Site FAQ Categories Taxonomy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

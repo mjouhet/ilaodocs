@@ -12,4 +12,4 @@ Legal Information
    lc_video_content
    lc_iicle
    lc_other_formats
-
+   lc_glossary

@@ -27,7 +27,9 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Region Taxonomy" href="tax_region.html" />
+    <link rel="prev" title="Legal Server Financial Mappings" href="tax_legal_server_financial.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -81,7 +83,7 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="get_legal_help.html">Get Legal Help</a></li>
 <li class="toctree-l1"><a class="reference internal" href="legal_information.html">Legal Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="for_legal_professionals.html">For Legal Professionals</a></li>
@@ -97,7 +99,29 @@
 <li class="toctree-l1"><a class="reference internal" href="managing_organizations.html">Managing Organizations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tech_mailchimp.html">Mailchimp Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tech_google_groups.html">Discussion Boards &amp; Google Groups</a></li>
-<li class="toctree-l1"><a class="reference internal" href="technical_information.html">Other Site Administration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="technical_information.html">Other Site Administration</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="tech_taxonomies.html">Taxonomies</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tech_taxonomies.html#content-related">Content-related</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="tech_taxonomies.html#get-legal-help-related">Get Legal Help Related</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="tax_amenities.html">Amenities Taxonomy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tax_legal_server_financial.html">Legal Server Financial Mappings</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Legal Server Problem Code Mappings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tech_taxonomies.html#other-taxonomies">Other Taxonomies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tech_menus.html">Menu Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech_blocks.html">Custom blocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech_cron.html">Special Scheduled Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech_rules.html">Rules configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech_sms.html">Twilio &amp; SMS Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech_mailchimp.html">Mailchimp Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech_context.html">ILAO Custom Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech_breadcrumbs.html">Breadcrumbs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tech_feeds.html">Feed Importers</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="seo.html">SEO Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation_management.html">Translation Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_integrations.html">Data Integrations</a></li>
@@ -147,6 +171,10 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
+          <li><a href="technical_information.html">Other Site Administration</a> &raquo;</li>
+        
+          <li><a href="tech_taxonomies.html">Taxonomies</a> &raquo;</li>
+        
       <li>Legal Server Problem Code Mappings</li>
     
     
@@ -168,7 +196,18 @@
             
   <div class="section" id="legal-server-problem-code-mappings">
 <h1>Legal Server Problem Code Mappings<a class="headerlink" href="#legal-server-problem-code-mappings" title="Permalink to this headline">¶</a></h1>
-<p>The Legal Server problem code mappings taxonomy maps ILAO’s legal issue taxonomy to problem codes in Legal Server to support eTransfers.</p>
+<p>The <a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/taxonomy_manager/voc/legal_server_problem_code_mappings">Legal Server problem code mappings taxonomy</a> maps ILAO’s legal issue taxonomy to problem codes in Legal Server to support eTransfers.</p>
+<p>The taxonomy is made up of the <a class="reference external" href="https://iloi.legalserver.org/static/external_xml_intake/lookup.xsd">Legal problem codes defined by Legal Server</a> for use in eTransfers. It includes fields for:
+* legal issues from our <a class="reference external" href="tax_legal_issues.html">Legal issues taxonomy</a>
+* LSC problem code</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For example, we’ve mapped our bankruptcy terms (Bankruptcy, a bankruptcy case currently in court, Filing for bankruptcy, Somone filing for bankrupcty who owes me money) to Legal Server code 01 Bankruptcy/ Debtor Relief.  When a user selects one of these in Get Legal Help and completes online intake, it shows up in Legal Server under the 01 Bankruptcy code.</p>
+</div>
+<div class="section" id="permissions">
+<h2>Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline">¶</a></h2>
+<p>Only users with the site architect or developer roles may add, edit, or delete terms in this taxonomy.</p>
+</div>
 </div>
 
 
@@ -176,6 +215,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tax_region.html" class="btn btn-neutral float-right" title="Region Taxonomy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tax_legal_server_financial.html" class="btn btn-neutral" title="Legal Server Financial Mappings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
