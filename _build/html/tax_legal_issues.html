@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Other Site Administration &mdash; ILAO 2.17.0 documentation</title>
+  <title>Legal Issues Taxonomy &mdash; ILAO 2.17.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Taxonomies" href="tech_taxonomies.html" />
-    <link rel="prev" title="Discussion Boards &amp; Google Groups" href="tech_google_groups.html" /> 
+    <link rel="next" title="Menu Management" href="tech_menus.html" />
+    <link rel="prev" title="Taxonomies" href="tech_taxonomies.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -99,8 +99,15 @@
 <li class="toctree-l1"><a class="reference internal" href="managing_organizations.html">Managing Organizations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tech_mailchimp.html">Mailchimp Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tech_google_groups.html">Discussion Boards &amp; Google Groups</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Other Site Administration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tech_taxonomies.html">Taxonomies</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="technical_information.html">Other Site Administration</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="tech_taxonomies.html">Taxonomies</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Legal Issues Taxonomy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#structure">Structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="tech_menus.html">Menu Management</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tech_blocks.html">Custom blocks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tech_cron.html">Special Scheduled Tasks</a></li>
@@ -161,13 +168,17 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Other Site Administration</li>
+          <li><a href="technical_information.html">Other Site Administration</a> &raquo;</li>
+        
+          <li><a href="tech_taxonomies.html">Taxonomies</a> &raquo;</li>
+        
+      <li>Legal Issues Taxonomy</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/technical_information.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/tax_legal_issues.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -180,35 +191,50 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="other-site-administration">
-<h1>Other Site Administration<a class="headerlink" href="#other-site-administration" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="tech_taxonomies.html">Taxonomies</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tax_legal_issues.html">Legal Issues Taxonomy</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tax_legal_issues.html#structure">Structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tax_legal_issues.html#usage">Usage</a></li>
+  <div class="section" id="legal-issues-taxonomy">
+<h1>Legal Issues Taxonomy<a class="headerlink" href="#legal-issues-taxonomy" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>The legal issue taxonomy is used to:</dt>
+<dd><ul class="first last simple">
+<li>Tag legal content, ADRM, portal pages to substantive terms</li>
+<li>Tag triage rules and referral services to the legal topics that the programs handle</li>
+<li>Provide a front-end user interface for classifying user’s legal issues for Get Legal Help</li>
+<li>Provide two custom use cases for About Lawyers and Practice Resources</li>
 </ul>
-</li>
+</dd>
+</dl>
+<div class="section" id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>The taxonomy has 11 top level headings.  9 of these are used in the main site navigation:</dt>
+<dd><ul class="first last simple">
+<li>Court &amp; Hearings</li>
+<li>Family &amp; Safety</li>
+<li>House &amp; Apartment</li>
+<li>Money &amp; Debt</li>
+<li>Business &amp; Work</li>
+<li>School &amp; Education</li>
+<li>Citizens &amp; Immigration</li>
+<li>Health &amp; Benefits</li>
+<li>Crime &amp; Traffic</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tech_menus.html">Menu Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tech_blocks.html">Custom blocks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tech_cron.html">Special Scheduled Tasks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tech_rules.html">Rules configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tech_sms.html">Twilio &amp; SMS Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tech_sms.html#see-also">See also</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="sms_surveys.html">SMS Surveys</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sms_campaigns.html">SMS Campaigns</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tech_mailchimp.html">Mailchimp Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tech_context.html">ILAO Custom Contexts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tech_breadcrumbs.html">Breadcrumbs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tech_feeds.html">Feed Importers</a></li>
-</ul>
+</dd>
+</dl>
+<p>The remaining 2 are special use cases:  About Lawyers and Practice Resources.</p>
+<div class="section" id="about-lawyers">
+<h3>About Lawyers<a class="headerlink" href="#about-lawyers" title="Permalink to this headline">¶</a></h3>
+<p>About Lawyers is a special legal issue taxonomy term that is used exclusively to populate an About Lawyers block on the Get Legal Help pages.</p>
+</div>
+<div class="section" id="practice-resources">
+<h3>Practice Resources<a class="headerlink" href="#practice-resources" title="Permalink to this headline">¶</a></h3>
+<p>This taxonomy term was added to allow us to create the practice resources page.  Some of the topics (professional responisbility, working with clients, lawyering skills) are substantive. Other terms are designed to “hold” specific types of information:
+* Forms that are restricted to lawyers (Forms for Lawyers)
+* IICLE smartbooks
+* MCLE onDemand (video content that has MCLE available)</p>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -220,10 +246,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="tech_taxonomies.html" class="btn btn-neutral float-right" title="Taxonomies" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="tech_menus.html" class="btn btn-neutral float-right" title="Menu Management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="tech_google_groups.html" class="btn btn-neutral" title="Discussion Boards &amp; Google Groups" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tech_taxonomies.html" class="btn btn-neutral" title="Taxonomies" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
