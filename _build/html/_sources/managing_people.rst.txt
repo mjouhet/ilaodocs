@@ -8,7 +8,6 @@ For members
    :maxdepth: 2
 
    account_registration
-   account_approval
    account_dashboard
    account_deletion
 

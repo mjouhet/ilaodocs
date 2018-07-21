@@ -1,3 +1,3 @@
 ==============================
-Joining IllinoisLegalAid.org
+User Profiles & Registration
 ==============================

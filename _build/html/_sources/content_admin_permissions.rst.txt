@@ -1,3 +1,3 @@
 =============================
-Who Can Manage Content?
+Content Permissions
 =============================
