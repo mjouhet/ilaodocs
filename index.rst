@@ -5,6 +5,8 @@
 
 Welcome to ILAO's website documentation!
 ========================================
+.. todo: Clean this up!
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
