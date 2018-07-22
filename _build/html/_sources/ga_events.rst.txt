@@ -52,7 +52,7 @@ The event label is the YouTube ID and title.
 
 .. note:: As an example, we can see how many users watched the Going to Small Claims Court and how far they got in the image below.
 
-.. image: assets/youtube-example.png
+.. image:: assets/youtube-example.png
 
 Page Not Found (404) errors
 -----------------------------
