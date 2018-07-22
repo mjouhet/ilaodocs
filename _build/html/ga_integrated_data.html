@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Google Analytics Integration &mdash; ILAO 2.17.0 documentation</title>
+  <title>Google Analytics Data In Website &mdash; ILAO 2.17.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Google Analytics Data In Website" href="ga_integrated_data.html" />
-    <link rel="prev" title="Data Integrations" href="data_integrations.html" /> 
+    <link rel="next" title="Google Analytics Events" href="ga_events.html" />
+    <link rel="prev" title="Google Analytics Integration" href="google_analytics.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -103,8 +103,8 @@
 <li class="toctree-l1"><a class="reference internal" href="seo.html">SEO Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation_management.html">Translation Management</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="data_integrations.html">Data Integrations</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Google Analytics Integration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ga_integrated_data.html">Google Analytics Data In Website</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="google_analytics.html">Google Analytics Integration</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Google Analytics Data In Website</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ga_events.html">Google Analytics Events</a></li>
 </ul>
 </li>
@@ -160,13 +160,15 @@
         
           <li><a href="data_integrations.html">Data Integrations</a> &raquo;</li>
         
-      <li>Google Analytics Integration</li>
+          <li><a href="google_analytics.html">Google Analytics Integration</a> &raquo;</li>
+        
+      <li>Google Analytics Data In Website</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/google_analytics.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/ga_integrated_data.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -179,14 +181,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="google-analytics-integration">
-<h1>Google Analytics Integration<a class="headerlink" href="#google-analytics-integration" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="ga_integrated_data.html">Google Analytics Data In Website</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ga_events.html">Google Analytics Events</a></li>
+  <div class="section" id="google-analytics-data-in-website">
+<h1>Google Analytics Data In Website<a class="headerlink" href="#google-analytics-data-in-website" title="Permalink to this headline">¶</a></h1>
+<p>We pull in two metrics into the legal content content type on a regular basis:</p>
+<ul class="simple">
+<li>Popular views which pulls in the number of page views for a node in the last 2 days.  This was going to be used for Popular today but it would likely never change and was not implemented.</li>
+<li>Longer-term page views which pulls in the number of page views for a node over the last 60 days.  This metric is used to determine what shows up on the legal information subcategory pages, form library block, related forms block, related articles block as it is the primary sort for those views, showing the more popular items first.</li>
 </ul>
-</div>
 </div>
 
 
@@ -197,10 +198,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ga_integrated_data.html" class="btn btn-neutral float-right" title="Google Analytics Data In Website" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="ga_events.html" class="btn btn-neutral float-right" title="Google Analytics Events" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="data_integrations.html" class="btn btn-neutral" title="Data Integrations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="google_analytics.html" class="btn btn-neutral" title="Google Analytics Integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

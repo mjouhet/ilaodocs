@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Google Analytics Integration &mdash; ILAO 2.17.0 documentation</title>
+  <title>Google Analytics Events &mdash; ILAO 2.17.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Google Analytics Data In Website" href="ga_integrated_data.html" />
-    <link rel="prev" title="Data Integrations" href="data_integrations.html" /> 
+    <link rel="next" title="Acquia Lift Integration" href="acquia_lift.html" />
+    <link rel="prev" title="Google Analytics Integration" href="google_analytics.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -103,9 +103,18 @@
 <li class="toctree-l1"><a class="reference internal" href="seo.html">SEO Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation_management.html">Translation Management</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="data_integrations.html">Data Integrations</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Google Analytics Integration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ga_integrated_data.html">Google Analytics Data In Website</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ga_events.html">Google Analytics Events</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="google_analytics.html">Google Analytics Integration</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Google Analytics Events</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#form-submissions">Form Submissions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#form-abandonment">Form Abandonment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outbound-links">Outbound Links</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-downloads">File Downloads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#print-intents">Print Intents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#addthis-events">AddThis Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#youtube-events">YouTube Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#page-not-found-404-errors">Page Not Found (404) errors</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="acquia_lift.html">Acquia Lift Integration</a></li>
@@ -160,13 +169,15 @@
         
           <li><a href="data_integrations.html">Data Integrations</a> &raquo;</li>
         
-      <li>Google Analytics Integration</li>
+          <li><a href="google_analytics.html">Google Analytics Integration</a> &raquo;</li>
+        
+      <li>Google Analytics Events</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/google_analytics.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/ga_events.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -179,13 +190,64 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="google-analytics-integration">
-<h1>Google Analytics Integration<a class="headerlink" href="#google-analytics-integration" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="ga_integrated_data.html">Google Analytics Data In Website</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ga_events.html">Google Analytics Events</a></li>
+  <div class="section" id="google-analytics-events">
+<h1>Google Analytics Events<a class="headerlink" href="#google-analytics-events" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="form-submissions">
+<h2>Form Submissions<a class="headerlink" href="#form-submissions" title="Permalink to this headline">¶</a></h2>
+<p>The following forms are tracked when a user submits them:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.illinoislegalaid.org/get-legal-help">Get Legal Help</a></li>
+<li>Triage starting point (/triage-start)</li>
+<li><a class="reference external" href="https://www.illinoislegalaid.org/get-legal-help/triage-start">User registration</a></li>
 </ul>
+</div>
+<div class="section" id="form-abandonment">
+<h2>Form Abandonment<a class="headerlink" href="#form-abandonment" title="Permalink to this headline">¶</a></h2>
+<p>We track abandonment of the user registration form.</p>
+</div>
+<div class="section" id="outbound-links">
+<h2>Outbound Links<a class="headerlink" href="#outbound-links" title="Permalink to this headline">¶</a></h2>
+<p>We track all outbound links.  The hostname is saved as the event action and the url as the event label.  For example, a link to <a class="reference external" href="https://www.lawhelpinteractive.org/form">https://www.lawhelpinteractive.org/form</a> would be saved with an action of lawhelpinteractive.org and the event label would be <a class="reference external" href="https://www.lawhelpinteractive.org/form">https://www.lawhelpinteractive.org/form</a>.</p>
+</div>
+<div class="section" id="file-downloads">
+<h2>File Downloads<a class="headerlink" href="#file-downloads" title="Permalink to this headline">¶</a></h2>
+<p>We track all file downloads, whether from our website or directly linked to from our site (for example, if we directly link to a PDF on another site).  URLS that include sites/default are ILAO-hosted files.</p>
+</div>
+<div class="section" id="print-intents">
+<h2>Print Intents<a class="headerlink" href="#print-intents" title="Permalink to this headline">¶</a></h2>
+<p>We track print intents.  Print intents occur whenever the user hits the print button or uses control+P, etc.  We refer to these as intents because there is no way to determine if the user actually printed or not.</p>
+<p>The print icon on our site is tied to AddThis and is tracked under the AddThis stats.</p>
+</div>
+<div class="section" id="addthis-events">
+<h2>AddThis Events<a class="headerlink" href="#addthis-events" title="Permalink to this headline">¶</a></h2>
+<p>We track usage of the AddThis toolbar that appears on various content pages.  This tracks clicks for:</p>
+<ul class="simple">
+<li>printing</li>
+<li>email</li>
+<li>post to Facebook</li>
+<li>share on Twitter</li>
+<li>share on LinkedIn</li>
+<li>share on Google+</li>
+</ul>
+</div>
+<div class="section" id="youtube-events">
+<h2>YouTube Events<a class="headerlink" href="#youtube-events" title="Permalink to this headline">¶</a></h2>
+<p>We have integrated Google Analytics with YouTube so that we can track how users interact with our videos.  We have actions for:</p>
+<ul class="simple">
+<li>Playing the video</li>
+<li>Pausing the video</li>
+<li>Exiting the video</li>
+<li>Percentage completion (0%, 25%, 50%, 75%, 90%, and 100%)</li>
+</ul>
+<p>The event label is the YouTube ID and title.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As an example, we can see how many users watched the Going to Small Claims Court and how far they got in the image below.</p>
+</div>
+</div>
+<div class="section" id="page-not-found-404-errors">
+<h2>Page Not Found (404) errors<a class="headerlink" href="#page-not-found-404-errors" title="Permalink to this headline">¶</a></h2>
+<p>We capture Page not found errors.  The event action is the referring URL and the event label is the 404 page.  If the user did not click a link on our website, the event action may be undefined.</p>
 </div>
 </div>
 
@@ -197,10 +259,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ga_integrated_data.html" class="btn btn-neutral float-right" title="Google Analytics Data In Website" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="acquia_lift.html" class="btn btn-neutral float-right" title="Acquia Lift Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="data_integrations.html" class="btn btn-neutral" title="Data Integrations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="google_analytics.html" class="btn btn-neutral" title="Google Analytics Integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
