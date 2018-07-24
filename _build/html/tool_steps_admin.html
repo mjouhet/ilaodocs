@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tool Steps &mdash; ILAO 2.17.0 documentation</title>
+  <title>Tool Step Content Type &mdash; ILAO 2.17.0 documentation</title>
   
 
   
@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Portal content" href="portal_admin.html" />
-    <link rel="prev" title="Adding &amp; Editing Toolbox “Tools”" href="tool_admin.html" /> 
+    <link rel="prev" title="Toolbox “Tools” Content Type" href="tool_admin.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -97,10 +97,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="managing_content.html">Content Administration</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="legal_content_admin.html">Legal content administration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrm_content_admin.html">Attorney Manual Content</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="toolboxes_admin.html">Toolboxes &amp; Tools Administration</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="toolbox_admin.html">Adding &amp; Edting Toolboxes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tool_admin.html">Adding &amp; Editing Toolbox “Tools”</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Tool Steps</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="toolboxes_admin.html">Toolboxes</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="toolboxes_admin.html#toolbox-structure">Toolbox structure</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="toolbox_admin.html">Toolbox Content Type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tool_admin.html">Toolbox “Tools” Content Type</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Tool Step Content Type</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="portal_admin.html">Portal content</a></li>
@@ -170,9 +173,9 @@
         
           <li><a href="managing_content.html">Content Administration</a> &raquo;</li>
         
-          <li><a href="toolboxes_admin.html">Toolboxes &amp; Tools Administration</a> &raquo;</li>
+          <li><a href="toolboxes_admin.html">Toolboxes</a> &raquo;</li>
         
-      <li>Tool Steps</li>
+      <li>Tool Step Content Type</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -191,8 +194,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="tool-steps">
-<h1>Tool Steps<a class="headerlink" href="#tool-steps" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="tool-step-content-type">
+<h1>Tool Step Content Type<a class="headerlink" href="#tool-step-content-type" title="Permalink to this headline">¶</a></h1>
+<p>The tool step is the most granular page in the Toolbox framework.  Tool steps are either:</p>
+<ul class="simple">
+<li>a discrete step in the process</li>
+<li>a decision point</li>
+</ul>
+<p>Each tool step must have:
+* A title
+* A yes/no as to whether the step is always required.  If the step is not always required, you can add text that will display indicating when the step is/is not required.
+* Step type.  This is one of:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Webform</li>
+<li>Single form information</li>
+<li>Multiple form information</li>
+<li>Text</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>An indication if this is the last step in the process.</li>
+<li>Whether to include a Learn more component on the page.</li>
+</ul>
+<dl class="docutils">
+<dt>Each tool may have:</dt>
+<dd><ul class="first last simple">
+<li>Key terms</li>
+<li>Short answer component</li>
+<li>Yes/No webform component</li>
+<li>Contact follow up component</li>
+</ul>
+</dd>
+</dl>
 </div>
 
 
@@ -206,7 +240,7 @@
         <a href="portal_admin.html" class="btn btn-neutral float-right" title="Portal content" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="tool_admin.html" class="btn btn-neutral" title="Adding &amp; Editing Toolbox “Tools”" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tool_admin.html" class="btn btn-neutral" title="Toolbox “Tools” Content Type" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

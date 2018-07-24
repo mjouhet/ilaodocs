@@ -19,5 +19,6 @@ Toolbox structure
    toolbox_admin.rst
    tool_admin.rst
    tool_steps_admin.rst
-
+   toolbox_user_interactions.rst
+   toolbox_reporting.rst
 
