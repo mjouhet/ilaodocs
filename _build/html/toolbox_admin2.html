@@ -27,9 +27,7 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Toolbox Content Type" href="toolbox_admin.html" />
-    <link rel="prev" title="Attorney Manual Content" href="adrm_content_admin.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -83,7 +81,7 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="get_legal_help.html">Get Legal Help</a></li>
 <li class="toctree-l1"><a class="reference internal" href="legal_information.html">Legal Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="for_legal_professionals.html">For Legal Professionals</a></li>
@@ -94,29 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="comments_ratings.html">Comments &amp; Ratings System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_engagement.html">Share Bar &amp; Favorites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contact_us.html">Contacting ILAO</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="managing_content.html">Content Administration</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="legal_content_admin.html">Legal content administration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adrm_content_admin.html">Attorney Manual Content</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Toolboxes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#toolbox-structure">Toolbox structure</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="toolbox_admin.html">Toolbox Content Type</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tool_admin.html">Adding &amp; Editing Toolbox “Tools”</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tool_steps_admin.html">Tool Steps</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="portal_admin.html">Portal content</a></li>
-<li class="toctree-l2"><a class="reference internal" href="events_content_admin.html">Calendar events administration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="job_postings_content_admin.html">Managing Job Postings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="volunteer_postings_content_admin.html">Managing Volunteer Opportunities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="internships_content_admin.html">Managing Internships &amp; Fellowships</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sms_surveys.html">SMS Surveys</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sms_campaigns.html">SMS Campaigns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="content_admin_reporting.html">Content Reporting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="content_admin_permissions.html">Content Permissions</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="managing_content.html">Content Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="managing_people.html">User Accounts &amp; Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="managing_organizations.html">Managing Organizations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tech_mailchimp.html">Mailchimp Integration</a></li>
@@ -171,15 +147,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="managing_content.html">Content Administration</a> &raquo;</li>
-        
       <li>Toolboxes</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/toolboxes_admin.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/toolbox_admin2.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -198,23 +172,21 @@
 <h2>Toolbox structure<a class="headerlink" href="#toolbox-structure" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Toolbox:  a container that holds one or more tools designed to address a set of related legal issues.  Toolboxes should be able to fit within one level 2 legal issue.</li>
-<li>Tools:  a content type that drives a user through a single process.  The process does not have to be linear.</li>
+<li><dl class="first docutils">
+<dt>Tools:  a content type that drives a user through a single process.  The process does not have to be linear.  Tools always contain:</dt>
+<dd><ul class="first last">
+<li>A checklist of steps</li>
+<li>A difficulty rating</li>
+<li>One or more pages</li>
+</ul>
+</dd>
+</dl>
+</li>
 <li>Tool pages:  this is the content type for each page in a tool.  Each page represents either a step in the process or a decision point.</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">As an example, a user who has had their drivers license revoked may have lost their license for any number of reasons (DUI, back child support, unpaid parking tickets), each with its own process to get the license back.  The toolbox would be “Getting my Drivers License back” and it would contain tools for “I lost my license because of a DUI”, “I lost my license because of unpaid child support” and “I lost my license due to unpaid parking tickets.”  Within each of these tools are a set of pages to guide the user through the steps (for example, an overview step, a fill out your forms step, a file your forms step, a do you have a court date scheduled? decision point which can then direct the user to a “Going to court” step.</p>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="toolbox_admin.html">Toolbox Content Type</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tool_admin.html">Adding &amp; Editing Toolbox “Tools”</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tool_admin.html#what-is-a-tool">What is a Tool?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tool_admin.html#difference-between-a-tool-toolbox-and-a-tool-step">Difference between a Tool, Toolbox, and a Tool Step</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tool_steps_admin.html">Tool Steps</a></li>
-</ul>
 </div>
 </div>
 </div>
@@ -224,15 +196,6 @@
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="toolbox_admin.html" class="btn btn-neutral float-right" title="Toolbox Content Type" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="adrm_content_admin.html" class="btn btn-neutral" title="Attorney Manual Content" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

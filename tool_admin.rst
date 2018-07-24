@@ -1,5 +1,5 @@
-==================================
-Adding & Editing Toolbox "Tools"
+================================== 
+Toolbox "Tools" Content Type
 ==================================
 
 What is a Tool?

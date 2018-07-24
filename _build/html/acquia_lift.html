@@ -104,7 +104,10 @@
 <li class="toctree-l1"><a class="reference internal" href="translation_management.html">Translation Management</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="data_integrations.html">Data Integrations</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="google_analytics.html">Google Analytics Integration</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Acquia Lift Integration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Acquia Lift Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#core-configuration">Core Configuration</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="recommendation_algorithm.html">Recommendation Algorithm</a></li>
 </ul>
 </li>
@@ -177,6 +180,11 @@
             
   <div class="section" id="acquia-lift-integration">
 <h1>Acquia Lift Integration<a class="headerlink" href="#acquia-lift-integration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="core-configuration">
+<h2>Core Configuration<a class="headerlink" href="#core-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The core configuration is stored in the settings.php file in sites/default.  This is to ensure that unique site IDs are used for dev (including all various local development environments), staging, and production.</p>
+<p>Our production instance has a name of ILAO Production and a site ID of ilao_prod.  Our staging instance has a name of ILAO Stage and a site ID of ilao_stage.</p>
+</div>
 </div>
 
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Adding &amp; Edting Toolboxes &mdash; ILAO 2.17.0 documentation</title>
+  <title>Toolbox Content Type &mdash; ILAO 2.17.0 documentation</title>
   
 
   
@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Adding &amp; Editing Toolbox “Tools”" href="tool_admin.html" />
-    <link rel="prev" title="Toolboxes &amp; Tools Administration" href="toolboxes_admin.html" /> 
+    <link rel="prev" title="Toolboxes" href="toolboxes_admin.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -97,15 +97,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="managing_content.html">Content Administration</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="legal_content_admin.html">Legal content administration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrm_content_admin.html">Attorney Manual Content</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="toolboxes_admin.html">Toolboxes &amp; Tools Administration</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Adding &amp; Edting Toolboxes</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#what-is-a-toolbox">What is a toolbox?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#attaching-to-a-portal">Attaching to a portal</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#inclusion-in-legal-information">Inclusion in legal information</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="toolboxes_admin.html">Toolboxes</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="toolboxes_admin.html#toolbox-structure">Toolbox structure</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Toolbox Content Type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tool_admin.html">Adding &amp; Editing Toolbox “Tools”</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tool_steps_admin.html">Tool Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="tool_admin.html">Adding &amp; Editing Toolbox “Tools”</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tool_steps_admin.html">Tool Steps</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="portal_admin.html">Portal content</a></li>
@@ -175,9 +173,9 @@
         
           <li><a href="managing_content.html">Content Administration</a> &raquo;</li>
         
-          <li><a href="toolboxes_admin.html">Toolboxes &amp; Tools Administration</a> &raquo;</li>
+          <li><a href="toolboxes_admin.html">Toolboxes</a> &raquo;</li>
         
-      <li>Adding &amp; Edting Toolboxes</li>
+      <li>Toolbox Content Type</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -196,17 +194,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="adding-edting-toolboxes">
-<h1>Adding &amp; Edting Toolboxes<a class="headerlink" href="#adding-edting-toolboxes" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="what-is-a-toolbox">
-<h2>What is a toolbox?<a class="headerlink" href="#what-is-a-toolbox" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="toolbox-content-type">
+<h1>Toolbox Content Type<a class="headerlink" href="#toolbox-content-type" title="Permalink to this headline">¶</a></h1>
+<p>Toolboxes are attached to portals and tools are attached to toolboxes.</p>
+<p>A toolbox must contain:</p>
+<ul class="simple">
+<li>A title</li>
+<li>A reference to an existing portal.  <strong>Create the portal page first</strong></li>
+<li>A content description, limited to 200 characters for use on the website.</li>
+<li>A meta description, limited to 300 characters for use on social media and in SERPs</li>
+<li><dl class="first docutils">
+<dt>Purpose description, selector form label, and overall level of effort.  These are used in a webform on the portal page to help the user select which toolboxes in a portal apply to them.</dt>
+<dd><ul class="first last">
+<li>Purpose description - text that displays on the webform results page.  Purpose descriptions should begin with “Getting your [x] will help you by [y]”</li>
+<li>Overall level of effort - easy, medium or hard.  The guideline here is how long it takes and whether a court appearance is required.  Select “easy” if the user can complete most of the issues in 1-3 days; select “medium” if the issues generally don’t require a hearing and can be completed in 7-14 days; select “hard” if the issues generally require a hearing or take longer than 14 days to complete.</li>
+<li>Selector form label - this appears on the webform itself next to a checkbox for the user to pick.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="figure">
+<img alt="_images/r2w_purpose_description.png" src="_images/r2w_purpose_description.png" />
 </div>
-<div class="section" id="attaching-to-a-portal">
-<h2>Attaching to a portal<a class="headerlink" href="#attaching-to-a-portal" title="Permalink to this headline">¶</a></h2>
+<p>The image above displays the purpose description and level of effort on the evaluator confirmation page.</p>
+<div class="figure">
+<img alt="_images/r2w_evaluator.png" src="_images/r2w_evaluator.png" />
 </div>
-<div class="section" id="inclusion-in-legal-information">
-<h2>Inclusion in legal information<a class="headerlink" href="#inclusion-in-legal-information" title="Permalink to this headline">¶</a></h2>
-</div>
+<p>The image above is the evaluator form for the Ready to Work portal.  Each toolbox in the portal is represented by a single checkbox and label.  The label is pulled from the Selector form label.</p>
+<p>A toolbox page will always contain a form to select tools within the toolbox but may also have additional page components, such as text blocks, as well.  The page components field allows us to add those components.</p>
 </div>
 
 
@@ -220,7 +236,7 @@
         <a href="tool_admin.html" class="btn btn-neutral float-right" title="Adding &amp; Editing Toolbox “Tools”" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="toolboxes_admin.html" class="btn btn-neutral" title="Toolboxes &amp; Tools Administration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="toolboxes_admin.html" class="btn btn-neutral" title="Toolboxes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
