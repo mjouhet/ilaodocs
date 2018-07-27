@@ -114,7 +114,6 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="rec_processing_sql.html">Updating the Google Analytics Data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rec_processing_python.html">Updating recommendations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="recommendation_algorithm.html#data-sources">Data Sources</a></li>
 </ul>
 </li>
 </ul>
@@ -199,40 +198,34 @@
 </div>
 <div class="section" id="google-analytics-data">
 <h2>Google analytics data<a class="headerlink" href="#google-analytics-data" title="Permalink to this headline">¶</a></h2>
-<p><strong>GA landing page path duration all time</strong></p>
+<div class="section" id="ga-landing-page-path-duration-all-time">
+<h3>GA landing page path duration all time<a class="headerlink" href="#ga-landing-page-path-duration-all-time" title="Permalink to this headline">¶</a></h3>
 <p>This file must be named ga_landing_page_path_duration_all_time.csv.  The file should be added to the data_for_sql folder in the data folder where the recommender code is.</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>This CSV should include:</dt>
-<dd><ul class="first last simple">
+<p>This CSV should include:</p>
+<ul class="simple">
 <li>landingpagepath (for example, /legal-information/getting-divorce</li>
 <li>pagepath (for example, /legal-information/getting-divorce</li>
 <li>secondpagepath:
 * (not set) if empty
 * pagepath if set</li>
 <li>previouspagepath:
-* (entrance) if empty (in original data it was always entrance)</li>
-<li>sessions - number of sessions in the report</li>
+* (entrance) if empty (in original data it was always entrance)
+* sessions - number of sessions in the report</li>
 <li>avgsessionduration - a float value representing the average session duration</li>
 <li>start_date, The startdate of the report, Formatted as mm/dd/yy.</li>
 <li>end_date.  The end date of the report.  Formatted as mm/dd/yy.</li>
 </ul>
-</dd>
-</dl>
-</div></blockquote>
-<p><strong>GA page path duration all time</strong>
-This file must be named ga_page_path_duration_all_time.csv.  The file goes in the data/data_for_sql folder.</p>
-<dl class="docutils">
-<dt>The CSV must include:</dt>
-<dd><ul class="first last simple">
-<li>pagepath (for example, /legal-information/getting-divorce)</li>
-<li>sessions; integer representing the number of sessions the page was visited during the report span</li>
-<li>avgsessionduration: float representing the average session duration during the report span</li>
-<li>start_date: the start date of the report formatted as mm/dd/yy.</li>
-<li>end_date: the end date of the report formatted as mm/dd/yyy.</li>
-</ul>
-</dd>
-</dl>
+</div>
+<div class="section" id="ga-page-path-duration-all-time">
+<h3>GA page path duration all time<a class="headerlink" href="#ga-page-path-duration-all-time" title="Permalink to this headline">¶</a></h3>
+<p>This file must be named ga_page_path_duration_all_time.csv.  The file goes in the data/data_for_sql folder.</p>
+<p>The CSV must include:
+* pagepath (for example, /legal-information/getting-divorce)
+* sessions; integer representing the number of sessions the page was visited during the report span
+* avgsessionduration: float representing the average session duration during the report span
+* start_date: the start date of the report formatted as mm/dd/yy.
+* end_date: the end date of the report formatted as mm/dd/yyy.</p>
+</div>
 </div>
 </div>
 

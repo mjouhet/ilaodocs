@@ -9,41 +9,6 @@ Recommendation Algorithm
    rec_processing_sql
    rec_processing_python
 
-Data Sources
---------------
-To create the recommended for you blocks on the website with updated data we must update the underlying data sources used by the algorithm.
 
-Website "Scrappers"
-^^^^^^^^^^^^^^^^^^^^
-* Scrape the existing website to create the scraper CSV files
-
-Google analytics data
-^^^^^^^^^^^^^^^^^^^^^^
-**GA landing page path duration all time**
-
-This file must be named ga_landing_page_path_duration_all_time.csv.  The file should be added to the data_for_sql folder in the data folder where the recommender code is.
-
- This CSV should include:
-     * landingpagepath (for example, /legal-information/getting-divorce
-     * pagepath (for example, /legal-information/getting-divorce
-     * secondpagepath:
-       * (not set) if empty
-       * pagepath if set
-     * previouspagepath:
-       * (entrance) if empty (in original data it was always entrance)
-     * sessions - number of sessions in the report
-     * avgsessionduration - a float value representing the average session duration
-     * start_date, The startdate of the report, Formatted as mm/dd/yy.
-     * end_date.  The end date of the report.  Formatted as mm/dd/yy.
-
-**GA page path duration all time**
-This file must be named ga_page_path_duration_all_time.csv.  The file goes in the data/data_for_sql folder.
-
-The CSV must include:
- * pagepath (for example, /legal-information/getting-divorce)
- * sessions; integer representing the number of sessions the page was visited during the report span
- * avgsessionduration: float representing the average session duration during the report span
- * start_date: the start date of the report formatted as mm/dd/yy.
- * end_date: the end date of the report formatted as mm/dd/yyy.
 
       

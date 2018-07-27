@@ -110,11 +110,6 @@
 <li class="toctree-l3"><a class="reference internal" href="rec_getting_datasources.html">Datasources for Recommender</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rec_processing_sql.html">Updating the Google Analytics Data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rec_processing_python.html">Updating recommendations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#data-sources">Data Sources</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#website-scrappers">Website “Scrappers”</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#google-analytics-data">Google analytics data</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -196,56 +191,13 @@
 <li class="toctree-l2"><a class="reference internal" href="rec_getting_datasources.html#google-analytics-data">Google analytics data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="rec_processing_sql.html">Updating the Google Analytics Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rec_processing_sql.html">Updating the Google Analytics Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rec_processing_sql.html#create-database-to-work-with">Create database to work with</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rec_processing_sql.html#execute-sql-script">Execute SQL script</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="rec_processing_python.html">Updating recommendations</a></li>
 </ul>
-</div>
-<div class="section" id="data-sources">
-<h2>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this headline">¶</a></h2>
-<p>To create the recommended for you blocks on the website with updated data we must update the underlying data sources used by the algorithm.</p>
-<div class="section" id="website-scrappers">
-<h3>Website “Scrappers”<a class="headerlink" href="#website-scrappers" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Scrape the existing website to create the scraper CSV files</li>
-</ul>
-</div>
-<div class="section" id="google-analytics-data">
-<h3>Google analytics data<a class="headerlink" href="#google-analytics-data" title="Permalink to this headline">¶</a></h3>
-<p><strong>GA landing page path duration all time</strong></p>
-<p>This file must be named ga_landing_page_path_duration_all_time.csv.  The file should be added to the data_for_sql folder in the data folder where the recommender code is.</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>This CSV should include:</dt>
-<dd><ul class="first last simple">
-<li>landingpagepath (for example, /legal-information/getting-divorce</li>
-<li>pagepath (for example, /legal-information/getting-divorce</li>
-<li>secondpagepath:
-* (not set) if empty
-* pagepath if set</li>
-<li>previouspagepath:
-* (entrance) if empty (in original data it was always entrance)</li>
-<li>sessions - number of sessions in the report</li>
-<li>avgsessionduration - a float value representing the average session duration</li>
-<li>start_date, The startdate of the report, Formatted as mm/dd/yy.</li>
-<li>end_date.  The end date of the report.  Formatted as mm/dd/yy.</li>
-</ul>
-</dd>
-</dl>
-</div></blockquote>
-<p><strong>GA page path duration all time</strong>
-This file must be named ga_page_path_duration_all_time.csv.  The file goes in the data/data_for_sql folder.</p>
-<dl class="docutils">
-<dt>The CSV must include:</dt>
-<dd><ul class="first last simple">
-<li>pagepath (for example, /legal-information/getting-divorce)</li>
-<li>sessions; integer representing the number of sessions the page was visited during the report span</li>
-<li>avgsessionduration: float representing the average session duration during the report span</li>
-<li>start_date: the start date of the report formatted as mm/dd/yy.</li>
-<li>end_date: the end date of the report formatted as mm/dd/yyy.</li>
-</ul>
-</dd>
-</dl>
-</div>
 </div>
 </div>
 
