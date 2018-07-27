@@ -195,12 +195,12 @@
 <p>In MySQL, create a database named rec-ga.</p>
 <div class="section" id="page-path-data">
 <h3>Page path data<a class="headerlink" href="#page-path-data" title="Permalink to this headline">¶</a></h3>
-<p>Create a new table named ga_page_path_duration_all_time.  Create 5 columns for the table:</p>
+<p>Create a new table named ga_page_path_duration_all_time.  Create 6 columns for the table:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="45%" />
-<col width="28%" />
-<col width="28%" />
+<col width="41%" />
+<col width="25%" />
+<col width="33%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Name</th>
@@ -209,23 +209,27 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>pagepath</td>
+<tr class="row-even"><td>row_number</td>
+<td>int</td>
+<td>Auto-increment</td>
+</tr>
+<tr class="row-odd"><td>pagepath</td>
 <td>varchar</td>
 <td>Length: 1000</td>
 </tr>
-<tr class="row-odd"><td>sessions</td>
+<tr class="row-even"><td>sessions</td>
 <td>int</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-even"><td>avgsessionduration</td>
+<tr class="row-odd"><td>avgsessionduration</td>
 <td>float</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-odd"><td>start_date</td>
+<tr class="row-even"><td>start_date</td>
 <td>date</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-even"><td>end_date</td>
+<tr class="row-odd"><td>end_date</td>
 <td>date</td>
 <td>&#160;</td>
 </tr>

@@ -10,21 +10,23 @@ In MySQL, create a database named rec-ga.
 Page path data
 -------------------------------------
 
-Create a new table named ga_page_path_duration_all_time.  Create 5 columns for the table:
+Create a new table named ga_page_path_duration_all_time.  Create 6 columns for the table:
 
-+---------------------+-------------+-------------+
-| Name                | Type        |  Params     |
-+=====================+=============+=============+
-| pagepath            | varchar     | Length: 1000|
-+---------------------+-------------+-------------+
-| sessions            | int         |             |
-+---------------------+-------------+-------------+
-| avgsessionduration  | float       |             |
-+---------------------+-------------+-------------+
-| start_date          | date        |             |
-+---------------------+-------------+-------------+
-| end_date            | date        |             |
-+---------------------+-------------+-------------+
++---------------------+-------------+-----------------+
+| Name                | Type        |  Params         |
++=====================+=============+=================+
+| row_number          | int         | Auto-increment  |
++---------------------+-------------+-----------------+
+| pagepath            | varchar     | Length: 1000    |
++---------------------+-------------+-----------------+
+| sessions            | int         |                 |
++---------------------+-------------+-----------------+
+| avgsessionduration  | float       |                 |
++---------------------+-------------+-----------------+
+| start_date          | date        |                 |
++---------------------+-------------+-----------------+
+| end_date            | date        |                 |
++---------------------+-------------+-----------------+
 
 Import the CSV file into this new table:
 
