@@ -25,4 +25,5 @@ Each tool may have:
   * Short answer component
   * Yes/No webform component
   * Contact follow up component
+  * Learn more carousel
  

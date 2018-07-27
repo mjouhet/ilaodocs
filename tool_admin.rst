@@ -20,6 +20,6 @@ The toolbox tool may have a "Learn More" component.  The learn more component ma
   * ADRM content
   * Blog posts
 
-.. figure:: assets/r2w_tool
+.. figure:: assets/r2w_tool.png
 
    The image above represents a tool page.  The Step button is populated automatically from the steps.

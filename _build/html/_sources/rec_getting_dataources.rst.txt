@@ -1,16 +1,6 @@
-==========================
-Recommendation Algorithm
-==========================
-.. toctree::
-   :maxdepth: 2
-
-   rec_overview_civis
-   rec_getting_datasources
-   rec_processing_sql
-   rec_processing_python
-
-Data Sources
---------------
+============================
+Datasources for Recommender
+============================
 To create the recommended for you blocks on the website with updated data we must update the underlying data sources used by the algorithm.
 
 Website "Scrappers"
@@ -47,3 +37,4 @@ The CSV must include:
  * end_date: the end date of the report formatted as mm/dd/yyy.
 
       
+

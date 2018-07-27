@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Toolboxes &mdash; ILAO 2.17.0 documentation</title>
+  <title>Technical Overview &mdash; ILAO 2.17.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Toolbox Content Type" href="toolbox_admin.html" />
-    <link rel="prev" title="Attorney Manual Content" href="adrm_content_admin.html" /> 
+    <link rel="next" title="Updating the Google Analytics Data" href="rec_processing_sql.html" />
+    <link rel="prev" title="Recommendation Algorithm" href="recommendation_algorithm.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -94,31 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="comments_ratings.html">Comments &amp; Ratings System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_engagement.html">Share Bar &amp; Favorites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contact_us.html">Contacting ILAO</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="managing_content.html">Content Administration</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="legal_content_admin.html">Legal content administration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adrm_content_admin.html">Attorney Manual Content</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Toolboxes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#toolbox-structure">Toolbox structure</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="toolbox_admin.html">Toolbox Content Type</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tool_admin.html">Toolbox “Tools” Content Type</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tool_steps_admin.html">Tool Step Content Type</a></li>
-<li class="toctree-l4"><a class="reference internal" href="toolboxes_user_interactions.html">Toolboxes &amp; User Engagement</a></li>
-<li class="toctree-l4"><a class="reference internal" href="toolbox_reporting.html">Toolbox Reporting</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="portal_admin.html">Portal content</a></li>
-<li class="toctree-l2"><a class="reference internal" href="events_content_admin.html">Calendar events administration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="job_postings_content_admin.html">Managing Job Postings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="volunteer_postings_content_admin.html">Managing Volunteer Opportunities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="internships_content_admin.html">Managing Internships &amp; Fellowships</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sms_surveys.html">SMS Surveys</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sms_campaigns.html">SMS Campaigns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="content_admin_reporting.html">Content Reporting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="content_admin_permissions.html">Content Permissions</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="managing_content.html">Content Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="managing_people.html">User Accounts &amp; Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="managing_organizations.html">Managing Organizations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tech_mailchimp.html">Mailchimp Integration</a></li>
@@ -126,7 +102,18 @@
 <li class="toctree-l1"><a class="reference internal" href="technical_information.html">Other Site Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="seo.html">SEO Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation_management.html">Translation Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_integrations.html">Data Integrations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="data_integrations.html">Data Integrations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="google_analytics.html">Google Analytics Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="acquia_lift.html">Acquia Lift Integration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="recommendation_algorithm.html">Recommendation Algorithm</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Technical Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rec_processing_sql.html">Updating the Google Analytics Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rec_processing_python.html">Updating recommendations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="recommendation_algorithm.html#data-sources">Data Sources</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="tech_styles.html">Website Styles</a></li>
 </ul>
 
@@ -173,15 +160,17 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="managing_content.html">Content Administration</a> &raquo;</li>
+          <li><a href="data_integrations.html">Data Integrations</a> &raquo;</li>
         
-      <li>Toolboxes</li>
+          <li><a href="recommendation_algorithm.html">Recommendation Algorithm</a> &raquo;</li>
+        
+      <li>Technical Overview</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/toolboxes_admin.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/rec_overview_civis.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -194,33 +183,53 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="toolboxes">
-<h1>Toolboxes<a class="headerlink" href="#toolboxes" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="toolbox-structure">
-<h2>Toolbox structure<a class="headerlink" href="#toolbox-structure" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Portal main page:  a container that holds grid of toolboxes associated with a specific legal issue.  Additional content may also be included.</li>
-<li>Toolbox:  a container that holds one or more tools designed to address a set of related legal issues.  Toolboxes should be able to fit within one level 2 legal issue.</li>
-<li>Tools:  a content type that drives a user through a single process.  The process does not have to be linear.</li>
-<li>Tool pages:  this is the content type for each page in a tool.  Each page represents either a step in the process or a decision point.</li>
+  <div class="section" id="technical-overview">
+<h1>Technical Overview<a class="headerlink" href="#technical-overview" title="Permalink to this headline">¶</a></h1>
+<p>This is the code used to generate a static set of recommendations for ILAO web pages
+from a snapshot of Google Analytics data, downloaded from the Google Analytics API.
+Recommendations are generated from a set of python and SQL scripts based on logic from events and session duration.</p>
+<p>The folder structure is as follows:</p>
+<table class="docutils option-list" frame="void" rules="none">
+<col class="option" />
+<col class="description" />
+<tbody valign="top">
+<tr><td class="option-group">
+<kbd><span class="option">/rec_csvs</span></kbd></td>
+<td><ul class="first last simple">
+<li>final recommendations in csv format.</li>
 </ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">As an example, a user who has had their drivers license revoked may have lost their license for any number of reasons (DUI, back child support, unpaid parking tickets), each with its own process to get the license back.  The toolbox would be “Getting my Drivers License back” and it would contain tools for “I lost my license because of a DUI”, “I lost my license because of unpaid child support” and “I lost my license due to unpaid parking tickets.”  Within each of these tools are a set of pages to guide the user through the steps (for example, an overview step, a fill out your forms step, a file your forms step, a do you have a court date scheduled? decision point which can then direct the user to a “Going to court” step.</p>
-</div>
-<p>To create:
-* Create a portal main page with type “main page.”  This is the main portal page.
-* Create a portal main page with type “toolbox selector.”  This is the evaluator form for portals that have multiple toolboxes.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="toolbox_admin.html">Toolbox Content Type</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tool_admin.html">Toolbox “Tools” Content Type</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tool_steps_admin.html">Tool Step Content Type</a></li>
-<li class="toctree-l1"><a class="reference internal" href="toolboxes_user_interactions.html">Toolboxes &amp; User Engagement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="toolbox_reporting.html">Toolbox Reporting</a></li>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">/sql</span></kbd></td>
+<td><ul class="first last simple">
+<li>sql query generating a new set of recommendations based on AVG SESSION DURATION.</li>
 </ul>
-</div>
-</div>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">/python</span></kbd></td>
+<td><ul class="first last simple">
+<li>3 python notebooks for generating recommendations. This includes our final script for recommendations based on EVENTS, and 2 other approaches we tried.</li>
+</ul>
+</td></tr>
+<tr><td class="option-group">
+<kbd><span class="option">/data</span></kbd></td>
+<td><ul class="first last simple">
+<li>a snapshot of data from Google Analytics and our scrape used in python notebooks. The data that corresponds to the SQL scripts is in a subfolder called /data_for_sql. The data that corresponds to the python scripts is in a subfolder called /data_for_python. You may need to update the file location in the python notebook.</li>
+</ul>
+</td></tr>
+</tbody>
+</table>
+<p>To generate new recommendations, the python notebooks and SQL queries must be run on new data pulled from Google Analytics. The format of this data is described below:</p>
+<p>Required to run recommendations for events:
+Exports from Google Analytics (Window on our export was Aug 1, 2016 - May 2017)
+- Landing page path, event category, event label, total events, sessions with event
+- Page path, event category, event label, total events, sessions with event</p>
+<p>Table of page URL, page category, and cluster that we pulled from the scrape (This would be static unless new URLs are added).</p>
+<p>Required to run recommendations for session duration:
+Exports from Google Analytics (Window on our export was Aug 1, 2016 - May 2017)
+- Landing page, page path, second page, avg session duration, sessions
+- Page path, avg session duration, sessions</p>
+<p>Table of page URL, page category, and cluster that we pulled from the scrape (This would be static unless new URLs are added).</p>
 </div>
 
 
@@ -231,10 +240,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="toolbox_admin.html" class="btn btn-neutral float-right" title="Toolbox Content Type" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="rec_processing_sql.html" class="btn btn-neutral float-right" title="Updating the Google Analytics Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="adrm_content_admin.html" class="btn btn-neutral" title="Attorney Manual Content" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="recommendation_algorithm.html" class="btn btn-neutral" title="Recommendation Algorithm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
