@@ -14,6 +14,7 @@ A toolbox must contain:
    * Purpose description - text that displays on the webform results page.  Purpose descriptions should begin with "Getting your [x] will help you by [y]"
    * Overall level of effort - easy, medium or hard.  The guideline here is how long it takes and whether a court appearance is required.  Select "easy" if the user can complete most of the issues in 1-3 days; select "medium" if the issues generally don't require a hearing and can be completed in 7-14 days; select "hard" if the issues generally require a hearing or take longer than 14 days to complete.
    * Selector form label - this appears on the webform itself next to a checkbox for the user to pick.
+   * A yes/no to encourage the user to seek legal help.  This will display a standard block encouraging the user to use Get Legal Help.  Defaults to yes when the overall level of effort is hard.
 
 .. figure:: assets/r2w_purpose_description.png
 

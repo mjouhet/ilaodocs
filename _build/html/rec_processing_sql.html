@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Data Integrations &mdash; ILAO 2.17.0 documentation</title>
+  <title>Updating the Google Analytics Data &mdash; ILAO 2.17.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Google Analytics Integration" href="google_analytics.html" />
-    <link rel="prev" title="Lingotek Configuration" href="tmgmt_lingotek_configuration.html" /> 
+    <link rel="next" title="Updating recommendations" href="rec_processing_python.html" />
+    <link rel="prev" title="Datasources for Recommender" href="rec_getting_datasources.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -102,10 +102,20 @@
 <li class="toctree-l1"><a class="reference internal" href="technical_information.html">Other Site Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="seo.html">SEO Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation_management.html">Translation Management</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Integrations</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="data_integrations.html">Data Integrations</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="google_analytics.html">Google Analytics Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="acquia_lift.html">Acquia Lift Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="recommendation_algorithm.html">Recommendation Algorithm</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="recommendation_algorithm.html">Recommendation Algorithm</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="rec_overview_civis.html">Technical Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rec_getting_datasources.html">Datasources for Recommender</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Updating the Google Analytics Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-database-to-work-with">Create database to work with</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#execute-sql-script">Execute SQL script</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rec_processing_python.html">Updating recommendations</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tech_styles.html">Website Styles</a></li>
@@ -154,13 +164,17 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Data Integrations</li>
+          <li><a href="data_integrations.html">Data Integrations</a> &raquo;</li>
+        
+          <li><a href="recommendation_algorithm.html">Recommendation Algorithm</a> &raquo;</li>
+        
+      <li>Updating the Google Analytics Data</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/data_integrations.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/rec_processing_sql.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -173,27 +187,120 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="data-integrations">
-<h1>Data Integrations<a class="headerlink" href="#data-integrations" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="google_analytics.html">Google Analytics Integration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ga_integrated_data.html">Google Analytics Data In Website</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ga_events.html">Google Analytics Events</a></li>
+  <div class="section" id="updating-the-google-analytics-data">
+<h1>Updating the Google Analytics Data<a class="headerlink" href="#updating-the-google-analytics-data" title="Permalink to this headline">¶</a></h1>
+<p>To update the Google Analytics data after pulling it, you must run a sql script in it.  To do that, you will need an instance of MySQL.</p>
+<div class="section" id="create-database-to-work-with">
+<h2>Create database to work with<a class="headerlink" href="#create-database-to-work-with" title="Permalink to this headline">¶</a></h2>
+<p>In MySQL, create a database named rec-ga.</p>
+<div class="section" id="page-path-data">
+<h3>Page path data<a class="headerlink" href="#page-path-data" title="Permalink to this headline">¶</a></h3>
+<p>Create a new table named ga_page_path_duration_all_time.  Create 6 columns for the table:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="25%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Params</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>row_number</td>
+<td>int</td>
+<td>Auto-increment</td>
+</tr>
+<tr class="row-odd"><td>pagepath</td>
+<td>varchar</td>
+<td>Length: 1000</td>
+</tr>
+<tr class="row-even"><td>sessions</td>
+<td>int</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>avgsessionduration</td>
+<td>float</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>start_date</td>
+<td>date</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>end_date</td>
+<td>date</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>Import the CSV file into this new table:</p>
+<ul class="simple">
+<li>Strip out header row from the CSV</li>
+<li>Enusre that start and end dates are formatted as yyyy-mm-dd</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="acquia_lift.html">Acquia Lift Integration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="acquia_lift.html#core-configuration">Core Configuration</a></li>
+</div>
+<div class="section" id="landing-page-path-data">
+<h3>Landing page path data<a class="headerlink" href="#landing-page-path-data" title="Permalink to this headline">¶</a></h3>
+<p>Create a new table named ga_landing_page_path_duration_all_time. Create 8 columns for the table:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="45%" />
+<col width="28%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Type</th>
+<th class="head">Params</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>landingpagepath</td>
+<td>varchar</td>
+<td>Length: 1000</td>
+</tr>
+<tr class="row-odd"><td>pagepath</td>
+<td>varchar</td>
+<td>Length: 1000</td>
+</tr>
+<tr class="row-even"><td>secondpagepath</td>
+<td>varchar</td>
+<td>Length: 1000</td>
+</tr>
+<tr class="row-odd"><td>previouspagepath</td>
+<td>varchar</td>
+<td>Length: 1000</td>
+</tr>
+<tr class="row-even"><td>sessions</td>
+<td>int</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>avgsessionduration</td>
+<td>float</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>start_date</td>
+<td>date</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>end_date</td>
+<td>date</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p>Import the CSV file into this new table:</p>
+<ul class="simple">
+<li>Strip out header row from the CSV</li>
+<li>Enusre that start and end dates are formatted as yyyy-mm-dd</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="recommendation_algorithm.html">Recommendation Algorithm</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rec_overview_civis.html">Technical Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rec_getting_datasources.html">Datasources for Recommender</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rec_processing_sql.html">Updating the Google Analytics Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rec_processing_python.html">Updating recommendations</a></li>
-</ul>
-</li>
-</ul>
+</div>
+</div>
+<div class="section" id="execute-sql-script">
+<h2>Execute SQL script<a class="headerlink" href="#execute-sql-script" title="Permalink to this headline">¶</a></h2>
+<p>Run the ilao_avg_session_duration_recs.sql file by importing it into the database.</p>
 </div>
 </div>
 
@@ -205,10 +312,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="google_analytics.html" class="btn btn-neutral float-right" title="Google Analytics Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="rec_processing_python.html" class="btn btn-neutral float-right" title="Updating recommendations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="tmgmt_lingotek_configuration.html" class="btn btn-neutral" title="Lingotek Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="rec_getting_datasources.html" class="btn btn-neutral" title="Datasources for Recommender" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

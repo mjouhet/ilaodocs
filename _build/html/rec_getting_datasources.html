@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Data Integrations &mdash; ILAO 2.17.0 documentation</title>
+  <title>Datasources for Recommender &mdash; ILAO 2.17.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Google Analytics Integration" href="google_analytics.html" />
-    <link rel="prev" title="Lingotek Configuration" href="tmgmt_lingotek_configuration.html" /> 
+    <link rel="next" title="Updating the Google Analytics Data" href="rec_processing_sql.html" />
+    <link rel="prev" title="Technical Overview" href="rec_overview_civis.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -102,10 +102,20 @@
 <li class="toctree-l1"><a class="reference internal" href="technical_information.html">Other Site Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="seo.html">SEO Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation_management.html">Translation Management</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Integrations</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="data_integrations.html">Data Integrations</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="google_analytics.html">Google Analytics Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="acquia_lift.html">Acquia Lift Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="recommendation_algorithm.html">Recommendation Algorithm</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="recommendation_algorithm.html">Recommendation Algorithm</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="rec_overview_civis.html">Technical Overview</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Datasources for Recommender</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#website-scrappers">Website “Scrappers”</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#google-analytics-data">Google analytics data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="rec_processing_sql.html">Updating the Google Analytics Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rec_processing_python.html">Updating recommendations</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tech_styles.html">Website Styles</a></li>
@@ -154,13 +164,17 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Data Integrations</li>
+          <li><a href="data_integrations.html">Data Integrations</a> &raquo;</li>
+        
+          <li><a href="recommendation_algorithm.html">Recommendation Algorithm</a> &raquo;</li>
+        
+      <li>Datasources for Recommender</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/data_integrations.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/rec_getting_datasources.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -173,27 +187,45 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="data-integrations">
-<h1>Data Integrations<a class="headerlink" href="#data-integrations" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="google_analytics.html">Google Analytics Integration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ga_integrated_data.html">Google Analytics Data In Website</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ga_events.html">Google Analytics Events</a></li>
+  <div class="section" id="datasources-for-recommender">
+<h1>Datasources for Recommender<a class="headerlink" href="#datasources-for-recommender" title="Permalink to this headline">¶</a></h1>
+<p>To create the recommended for you blocks on the website with updated data we must update the underlying data sources used by the algorithm.</p>
+<div class="section" id="website-scrappers">
+<h2>Website “Scrappers”<a class="headerlink" href="#website-scrappers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Scrape the existing website to create the scraper CSV files</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="acquia_lift.html">Acquia Lift Integration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="acquia_lift.html#core-configuration">Core Configuration</a></li>
+</div>
+<div class="section" id="google-analytics-data">
+<h2>Google analytics data<a class="headerlink" href="#google-analytics-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ga-landing-page-path-duration-all-time">
+<h3>GA landing page path duration all time<a class="headerlink" href="#ga-landing-page-path-duration-all-time" title="Permalink to this headline">¶</a></h3>
+<p>This file must be named ga_landing_page_path_duration_all_time.csv.  The file should be added to the data_for_sql folder in the data folder where the recommender code is.</p>
+<p>This CSV should include:</p>
+<ul class="simple">
+<li>landingpagepath (for example, /legal-information/getting-divorce</li>
+<li>pagepath (for example, /legal-information/getting-divorce</li>
+<li>secondpagepath:
+* (not set) if empty
+* pagepath if set</li>
+<li>previouspagepath:
+* (entrance) if empty (in original data it was always entrance)
+* sessions - number of sessions in the report</li>
+<li>avgsessionduration - a float value representing the average session duration</li>
+<li>start_date, The startdate of the report, Formatted as mm/dd/yy.</li>
+<li>end_date.  The end date of the report.  Formatted as mm/dd/yy.</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="recommendation_algorithm.html">Recommendation Algorithm</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rec_overview_civis.html">Technical Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rec_getting_datasources.html">Datasources for Recommender</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rec_processing_sql.html">Updating the Google Analytics Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rec_processing_python.html">Updating recommendations</a></li>
-</ul>
-</li>
-</ul>
+</div>
+<div class="section" id="ga-page-path-duration-all-time">
+<h3>GA page path duration all time<a class="headerlink" href="#ga-page-path-duration-all-time" title="Permalink to this headline">¶</a></h3>
+<p>This file must be named ga_page_path_duration_all_time.csv.  The file goes in the data/data_for_sql folder.</p>
+<p>The CSV must include:
+* pagepath (for example, /legal-information/getting-divorce)
+* sessions; integer representing the number of sessions the page was visited during the report span
+* avgsessionduration: float representing the average session duration during the report span
+* start_date: the start date of the report formatted as mm/dd/yy.
+* end_date: the end date of the report formatted as mm/dd/yyy.</p>
+</div>
 </div>
 </div>
 
@@ -205,10 +237,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="google_analytics.html" class="btn btn-neutral float-right" title="Google Analytics Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="rec_processing_sql.html" class="btn btn-neutral float-right" title="Updating the Google Analytics Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="tmgmt_lingotek_configuration.html" class="btn btn-neutral" title="Lingotek Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="rec_overview_civis.html" class="btn btn-neutral" title="Technical Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
