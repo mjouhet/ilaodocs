@@ -212,6 +212,17 @@ Triage user legal problem
    where oas_triage_user.uid not in (2, 4486, 4646, 1) 
    and oas_triage_user.created > 1470064821
    
+Triage user population
+------------------------
+.. code:: sql
+
+   SELECT entity_id as triage_id,
+   field_limited_populations_tid as term_id,
+   name as population_name,
+   FROM field_data_field_limited_populations
+   inner join taxonomy_term_data on taxonomy_term_data.tid = field_limited_populations_tid
+   where entity_type = 'oas_triage_user'   
+   
    
 Intake Settings
 ==================
@@ -283,12 +294,32 @@ Intake Settings
   inner join ilao_oas_income_standard on 
   ilao_oas_income_standard.id = 
   field_data_oas_income_standard.oas_income_standard_target_id
+  
+Intake settings & Legal issues
+-------------------------------
+
+.. code:: sql
+   
+   SELECT DISTINCT intake_settings_id,
+   oas_intake_settings.name as intake_settings_name,
+   enabled,
+   from_unixtime(created) as 'created', 
+   from_unixtime(changed) as 'last_updated',
+   tid as term_id,
+   taxonomy_term_data.name as legal_issue
+   from oas_intake_settings
+   inner join field_data_field_legal_issues on field_data_field_legal_issues.entity_id = intake_settings_id
+   inner join taxonomy_term_data on field_data_field_legal_issues.field_legal_issues_tid = tid
+   where field_data_field_legal_issues.entity_type = 'oas_intake_settings'
+   and tid not in (Select parent from taxonomy_term_hierarchy where taxonomy_term_hierarchy.tid = tid)
+   order by intake_settings_id
+ 
 
 Financial Categories per Intake Setting
-=========================================
+----------------------------------------
 
 Assets
-^^^^^^
+^^^^^^^^
 
 .. code:: sql
 
@@ -307,7 +338,7 @@ Assets
    order by oas_intake_settings.intake_settings_id, delta
 
 Income
-^^^^^^
+^^^^^^^^
 
 .. code:: sql
 
@@ -343,7 +374,147 @@ Expenses
    on ilao_oas_financial_category.ilao_oas_financial_category_id = 
    oas_expense_categories_target_id 
    order by oas_intake_settings.intake_settings_id, delta
+   
+Intake settings: waive Income based on population
+--------------------------------------------------   
 
+.. code:: sql
+
+   SELECT entity_id as intake_settings_id, 
+   oas_income_exempt_tid as term_id, 
+   name as population 
+   from field_data_oas_income_exempt
+   inner join taxonomy_term_data on tid = oas_income_exempt_tid
+   where entity_type = 'oas_intake_settings'
+   
+Triage Rules
+================
+
+List of triage rules
+---------------------
+
+.. code:: sql
+
+   SELECT DISTINCT nid,
+   field_data_title_field.title_field_value as title,
+   status, 
+   from_unixtime(created) as created, 
+   from_unixtime(changed) as last_updated 
+   from node 
+   inner join field_data_title_field on nid = field_data_title_field.entity_id
+   where type = 'triage_rules'
+
+Triage rules with associated services
+--------------------------------------
+
+.. code:: sql
+
+   SELECT DISTINCT node.nid,
+   field_data_title_field.title_field_value as title,
+   node.status, 
+   from_unixtime(node.created) as 'created', 
+   from_unixtime(node.changed) as 'last_updated',
+   field_data_field_service.field_service_target_id as 'service_id',
+   services.title as 'service_title'
+   from node 
+   inner join field_data_title_field on nid = field_data_title_field.entity_id
+   inner join field_data_field_service ON
+   field_data_field_service.entity_id = nid
+   inner join node as services ON
+   services.nid = field_data_field_service.field_service_target_id
+   where node.type = 'triage_rules'
+   
+Triage rules with associated legal issues
+-------------------------------------------
+
+Mapping of legal issues tagged to a triage rules item.  Note that this query excludes anything but lowest level terms because legal issue must be an exact match.
+ 
+
+.. code:: sql
+
+   SELECT DISTINCT node.nid,
+   field_data_title_field.title_field_value as title,
+   node.status, 
+   from_unixtime(node.created) as 'created', 
+   from_unixtime(node.changed) as 'last_updated',
+   tid as term_id,
+   name as legal_issue
+   from node 
+   inner join field_data_title_field on nid = field_data_title_field.entity_id
+   inner join field_data_field_legal_issues on field_data_field_legal_issues.entity_id = nid
+   inner join taxonomy_term_data on field_data_field_legal_issues.field_legal_issues_tid = tid
+   where node.type = 'triage_rules'
+   and field_data_field_legal_issues.bundle = 'triage_rules'
+   and tid not in (Select parent from taxonomy_term_hierarchy where taxonomy_term_hierarchy.tid = tid)
+   order by nid
+
+Services with Online Intake
+============================
+
+List of services that have at least one intake settings
+-------------------------------------------------------
+
+.. code:: sql
+
+   Select node.nid as service_id,
+   node.title as service_title,
+   node.status,
+   field_data_field_location_ref.field_location_ref_target_id as location_id,
+   locations.title as 'location',
+   og_membership.gid as organization_id,
+   organizations.title as organization_name
+   from node 
+   inner join field_data_field_location_ref on field_data_field_location_ref.entity_id = node.nid 
+   inner join og_membership on etid = node.nid
+   inner join node as locations
+   on locations.nid = field_data_field_location_ref.field_location_ref_target_id
+   inner join node as organizations
+   on og_membership.gid = organizations.nid
+   where node.type = 'location_services'
+   and node.nid in (Select entity_id from oas_intake_settings)
+   
+List of services with limited populations served
+-------------------------------------------------
+
+.. code:: sql
+   
+   Select node.nid as service_id,
+   node.title as service_title,
+   field_data_field_limited_populations.field_limited_populations_tid as term_id,
+   name as population
+   from node 
+   inner join field_data_field_limited_populations on entity_id = node.nid
+   inner join taxonomy_term_data on tid = field_data_field_limited_populations.field_limited_populations_tid
+   where node.type = 'location_services'
+   and node.nid in (Select entity_id from oas_intake_settings)
+   and bundle = 'location_services'
+
+
+List of services with lowest-level legal issues
+--------------------------------------------------
+We use only the lowest level since that's what users are forced to drill down to.
+
+.. code:: sql
+
+   Select node.nid as service_id,
+   node.title as service_title,
+   node.status,
+   tid as term_id,
+   name as legal_issue
+   
+   from node 
+   inner join field_data_field_legal_issues
+   on node.nid = field_data_field_legal_issues.entity_id
+   inner join taxonomy_term_data
+   on taxonomy_term_data.tid = field_data_field_legal_issues.field_legal_issues_tid
+   
+   where node.type = 'location_services'
+   and node.nid in (Select entity_id from oas_intake_settings)
+   and bundle = 'location_services'
+    and tid not in (Select parent from taxonomy_term_hierarchy
+                  )
+   
+     
    
    
 

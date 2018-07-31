@@ -90,18 +90,32 @@
 <li class="toctree-l2"><a class="reference internal" href="otis_integration.html">Online Triage and Intake System (OTIS)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="otis_queries.html">OTIS-related queries</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">OTIS Database Tables &amp; Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#determining-if-intake-is-available">Determining if intake is available</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#oas-triage-user">OAS Triage User</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#fields">Fields</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#triage-user-legal-issue">Triage user legal issue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#triage-user-populations">Triage user populations</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#oas-intake-settings">OAS Intake Settings</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#intake-settings-geographic-eligibility">Intake settings &amp; Geographic Eligibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#intake-settings-legal-issue">Intake settings &amp; legal issue</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#financial-categories">Financial Categories</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#population-parameters">Population Parameters</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#location-services">Location Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#triage-rules">Triage Rules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#list-of-triage-rules">List of triage rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#with-associated-services">With associated services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#with-associated-legal-issues">With associated legal issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#location-services">Location Services</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#list-of-services-with-their-location-and-organization">List of services with their location and organization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#list-of-services-limited-to-specific-populations">List of services limited to specific populations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#list-of-services-with-legal-issues">List of services with legal issues</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -194,8 +208,32 @@
   <div class="section" id="otis-database-tables-relationships">
 <h1>OTIS Database Tables &amp; Relationships<a class="headerlink" href="#otis-database-tables-relationships" title="Permalink to this headline">¶</a></h1>
 <p>The documentation below references specific queries and tables generated for reporting purposes and the relationship between them.</p>
+<div class="section" id="determining-if-intake-is-available">
+<h2>Determining if intake is available<a class="headerlink" href="#determining-if-intake-is-available" title="Permalink to this headline">¶</a></h2>
+<p>Intake is available when:</p>
+<blockquote>
+<div><ul class="simple">
+<li>the user’s zip code matches the zip code associated with an intake setting</li>
+<li>the user’s legal problem matches a legal issue associated with an intake setting</li>
+<li>the user matches the service on population, or the service is open to all</li>
+<li>intake settings is set to enabled</li>
+<li>the current count of intakes is less than the number of intakes allowed or the intake limit is set to unlimited</li>
+<li>there are triage rules that
+* match the service associated with an intake setting
+* match the intake settings on legal issue
+* are published</li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Example:
+A program may have 1 service “Housing unit” that covers all housing issues in Kane, Kendall, and DeKalb counties.  They may have 2 sets of intake settings: one for Kane county and one for Kendall &amp; Dekalb county. Kane county is closed however. They then set up triage rules for foreclosure and associate them with the Housing Unit.  A user in Kane county would get referrals to the service and a user in DeKalb would get online intake because while there are triage rules matching the service, the intake settings controls location and those are only open for Kendall &amp; DeKalb counties.</p>
+</div>
+</div>
 <div class="section" id="oas-triage-user">
 <h2>OAS Triage User<a class="headerlink" href="#oas-triage-user" title="Permalink to this headline">¶</a></h2>
+<p>OAS_triage_user is the entity that stores all the information about someone who uses
+Get Legal Help, from ILAO triage through program triage and referrals/intake.</p>
 <div class="section" id="fields">
 <h3>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
@@ -328,10 +366,37 @@ If node/number user declined modal</td>
 </tbody>
 </table>
 </div>
+<div class="section" id="triage-user-populations">
+<h3>Triage user populations<a class="headerlink" href="#triage-user-populations" title="Permalink to this headline">¶</a></h3>
+<p>If the user identified a special population on the main Get Legal Help screen,
+it shows up in this query.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>triage_id</td>
+<td>Triage ID of the session</td>
+</tr>
+<tr class="row-odd"><td>term_id</td>
+<td>Term ID from populations</td>
+</tr>
+<tr class="row-even"><td>population_name</td>
+<td>Label used to describe population</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="section" id="oas-intake-settings">
 <h2>OAS Intake Settings<a class="headerlink" href="#oas-intake-settings" title="Permalink to this headline">¶</a></h2>
-<p>Intake settings is the key data structure for a program’s intake parameters for a service
+<p>Intake settings is the key data structure (entity) for a program’s intake parameters for a service
 or subset of legal issues within a service.</p>
 <p>These settings power the intake section once the user completes ILAO’s triage
 and program triage without getting diverted.</p>
@@ -458,6 +523,10 @@ region.</p>
 <p>The <a class="reference external" href="otis_queries.html#queries-for-geographic-reach">three queries</a> under geographic reach can be used to generate the
 list of zip codes for services by geographic_reach.</p>
 </div>
+<div class="section" id="intake-settings-legal-issue">
+<h3>Intake settings &amp; legal issue<a class="headerlink" href="#intake-settings-legal-issue" title="Permalink to this headline">¶</a></h3>
+<p>The intake settings legal issue controls whether an intake setting applies to a given session.</p>
+</div>
 <div class="section" id="financial-categories">
 <h3>Financial Categories<a class="headerlink" href="#financial-categories" title="Permalink to this headline">¶</a></h3>
 <p>If the program wants to collect income, assets, and/or expenses, we then ask them to pick
@@ -562,12 +631,243 @@ when displayed to the user.</td>
 </div>
 <div class="section" id="population-parameters">
 <h3>Population Parameters<a class="headerlink" href="#population-parameters" title="Permalink to this headline">¶</a></h3>
+<p>There are 2 ways population impacts the intake settings:</p>
+<blockquote>
+<div><ul class="simple">
+<li>If the associated service is limited to a population, so is the intake setting.</li>
+<li>Regardless of the service, a program can waive income rules to specific populations.
+This information is in the intake settings.</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="triage-rules">
+<h2>Triage Rules<a class="headerlink" href="#triage-rules" title="Permalink to this headline">¶</a></h2>
+<p>Triage rules are a type of website content that allows programs to write their own triage
+rules.  Triage rules are related to:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Services through a field that maps the triage rules to one or more services.  A program may choose to use one set of triage rules for 6 services; they would still need to have 6 separate intake settings (one per service).</li>
+<li>Intake settings through the legal issues selected.  A program may have multiple sets of triage rules that cover different legal issues but still use the same set of intake settings.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="list-of-triage-rules">
+<h3>List of triage rules<a class="headerlink" href="#list-of-triage-rules" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>nid</td>
+<td>Node ID of the triage rules</td>
+</tr>
+<tr class="row-odd"><td>title</td>
+<td>Name of the triage rules</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>0 = unpublished
+1 = published</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>Date/time initially created</td>
+</tr>
+<tr class="row-even"><td>last_update</td>
+<td>Date/time last changed</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="with-associated-services">
+<h3>With associated services<a class="headerlink" href="#with-associated-services" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>nid</td>
+<td>Node ID of the triage rules</td>
+</tr>
+<tr class="row-odd"><td>title</td>
+<td>Name of the triage rules</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>0 = unpublished
+1 = published</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>Date/time initially created</td>
+</tr>
+<tr class="row-even"><td>last_update</td>
+<td>Date/time last changed</td>
+</tr>
+<tr class="row-odd"><td>service _id</td>
+<td>Node ID for the service</td>
+</tr>
+<tr class="row-even"><td>service_title</td>
+<td>Title of the associated service</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="with-associated-legal-issues">
+<h3>With associated legal issues<a class="headerlink" href="#with-associated-legal-issues" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>nid</td>
+<td>Node ID of the triage rules</td>
+</tr>
+<tr class="row-odd"><td>title</td>
+<td>Name of the triage rules</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>0 = unpublished
+1 = published</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>Date/time initially created</td>
+</tr>
+<tr class="row-even"><td>last_update</td>
+<td>Date/time last changed</td>
+</tr>
+<tr class="row-odd"><td>term_id</td>
+<td>Term ID of the legal issue</td>
+</tr>
+<tr class="row-even"><td>legal_issue</td>
+<td>Name of the legal issue</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="section" id="location-services">
 <h2>Location Services<a class="headerlink" href="#location-services" title="Permalink to this headline">¶</a></h2>
-<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">LECT</span> <span class="n">field_data_oas_asset_categories</span><span class="o">.</span><span class="n">entity_id</span> <span class="k">as</span> <span class="n">intake_settings_id</span><span class="p">,</span> <span class="n">oas_asset_categories_target_id</span> <span class="k">as</span> <span class="n">financial_id</span><span class="p">,</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">settings_name</span><span class="p">,</span> <span class="n">ilao_oas_financial_category</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">asset</span> <span class="n">FROM</span> <span class="n">field_data_oas_asset_categories</span> <span class="n">inner</span> <span class="n">join</span> <span class="n">oas_intake_settings</span> <span class="n">on</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">intake_settings_id</span> <span class="o">=</span> <span class="n">field_data_oas_asset_categories</span><span class="o">.</span><span class="n">entity_id</span> <span class="n">inner</span> <span class="n">join</span> <span class="n">ilao_oas_financial_category</span> <span class="n">on</span> <span class="n">ilao_oas_financial_category</span><span class="o">.</span><span class="n">ilao_oas_financial_category_id</span> <span class="o">=</span> <span class="n">oas_asset_categories_target_id</span> <span class="n">order</span> <span class="n">by</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">intake_settings_id</span><span class="p">,</span> <span class="n">delta</span>
-</pre></div>
+<div class="section" id="list-of-services-with-their-location-and-organization">
+<h3>List of services with their location and organization<a class="headerlink" href="#list-of-services-with-their-location-and-organization" title="Permalink to this headline">¶</a></h3>
+<p>Each service is tied to exactly 1 location and that location is tied to exactly 1
+organization.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>service_id</td>
+<td>Node ID of the service</td>
+</tr>
+<tr class="row-odd"><td>service_title</td>
+<td>Name of the service</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>Status of the service
+0 = unpublished
+1 = published</td>
+</tr>
+<tr class="row-odd"><td>location_id</td>
+<td>Node id of the location of the service</td>
+</tr>
+<tr class="row-even"><td>location</td>
+<td>Name of the location</td>
+</tr>
+<tr class="row-odd"><td>organization_id</td>
+<td>Node id of the organization</td>
+</tr>
+<tr class="row-even"><td>organization_nam</td>
+<td>Name of the organization</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="list-of-services-limited-to-specific-populations">
+<h3>List of services limited to specific populations<a class="headerlink" href="#list-of-services-limited-to-specific-populations" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>service_id</td>
+<td>Node ID of the service</td>
+</tr>
+<tr class="row-odd"><td>service_title</td>
+<td>Name of the service</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>Status of the service
+0 = unpublished
+1 = published</td>
+</tr>
+<tr class="row-odd"><td>term_id</td>
+<td>Term id of the population</td>
+</tr>
+<tr class="row-even"><td>population</td>
+<td>Name of the population</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="list-of-services-with-legal-issues">
+<h3>List of services with legal issues<a class="headerlink" href="#list-of-services-with-legal-issues" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>service_id</td>
+<td>Node ID of the service</td>
+</tr>
+<tr class="row-odd"><td>service_title</td>
+<td>Name of the service</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>Status of the service
+0 = unpublished
+1 = published</td>
+</tr>
+<tr class="row-odd"><td>term_id</td>
+<td>Term id of the legal issue</td>
+</tr>
+<tr class="row-even"><td>legal_issue</td>
+<td>Name of the legal issue</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

@@ -4,8 +4,33 @@ OTIS Database Tables & Relationships
 
 The documentation below references specific queries and tables generated for reporting purposes and the relationship between them.
 
+Determining if intake is available
+==========================================
+Intake is available when:
+ 
+ * the user's zip code matches the zip code associated with an intake setting
+ * the user's legal problem matches a legal issue associated with an intake setting
+ * the user matches the service on population, or the service is open to all
+ * intake settings is set to enabled
+ * the current count of intakes is less than the number of intakes allowed or the intake limit is set to unlimited
+ * there are triage rules that
+   * match the service associated with an intake setting
+   * match the intake settings on legal issue
+   * are published
+
+.. note::
+
+   Example:
+   A program may have 1 service "Housing unit" that covers all housing issues in Kane, Kendall, and DeKalb counties.  They may have 2 sets of intake settings: one for Kane county and one for Kendall & Dekalb county. Kane county is closed however. They then set up triage rules for foreclosure and associate them with the Housing Unit.  A user in Kane county would get referrals to the service and a user in DeKalb would get online intake because while there are triage rules matching the service, the intake settings controls location and those are only open for Kendall & DeKalb counties.
+   
+ 
+ 
+
 OAS Triage User
 =================
+OAS_triage_user is the entity that stores all the information about someone who uses
+Get Legal Help, from ILAO triage through program triage and referrals/intake.
+
 Fields
 --------
 
@@ -90,10 +115,27 @@ The legal issue is the lowest level term in the legal issue taxonomy.
 |  legal_problem_name      | Name of the legal issue             |
 +--------------------------+-------------------------------------+
 
+Triage user populations
+-------------------------
+
+If the user identified a special population on the main Get Legal Help screen,
+it shows up in this query.
+
++--------------------------+-------------------------------------+
+|  Field                   |   Notes                             |
++==========================+=====================================+
+|  triage_id               |  Triage ID of the session           |
++--------------------------+-------------------------------------+
+|  term_id                 | Term ID from populations            |
++--------------------------+-------------------------------------+
+|  population_name         | Label used to describe population   |
++--------------------------+-------------------------------------+
+
+
 OAS Intake Settings
 ====================
 
-Intake settings is the key data structure for a program's intake parameters for a service
+Intake settings is the key data structure (entity) for a program's intake parameters for a service
 or subset of legal issues within a service. 
 
 These settings power the intake section once the user completes ILAO's triage
@@ -183,6 +225,12 @@ region.
 The `three queries <otis_queries.html#queries-for-geographic-reach>`_ under geographic reach can be used to generate the
 list of zip codes for services by geographic_reach.
 
+Intake settings & legal issue
+------------------------------
+The intake settings legal issue controls whether an intake setting applies to a given session.
+
+
+
 Financial Categories
 -----------------------
 If the program wants to collect income, assets, and/or expenses, we then ask them to pick
@@ -190,7 +238,7 @@ from a list of financial categories in each class.  This information is stores i
 own tables. 
 
 Assets
-^^^^^^^
+^^^^^^
 
 +--------------------------+-----------------------------------------+
 |  Field                   |   Notes                                 |
@@ -208,7 +256,7 @@ Assets
 +--------------------------+-----------------------------------------+
 
 Income
-^^^^^^^
+^^^^^^
 
 +--------------------------+-----------------------------------------+
 |  Field                   |   Notes                                 |
@@ -226,7 +274,7 @@ Income
 +--------------------------+-----------------------------------------+
 
 Expenses
-^^^^^^^^^
+^^^^^^^^
 
 +--------------------------+-----------------------------------------+
 |  Field                   |   Notes                                 |
@@ -245,16 +293,154 @@ Expenses
 
 Population Parameters
 ----------------------
+There are 2 ways population impacts the intake settings:
 
+ * If the associated service is limited to a population, so is the intake setting.
+ * Regardless of the service, a program can waive income rules to specific populations.
+   This information is in the intake settings.
 
+Triage Rules
+=============
+Triage rules are a type of website content that allows programs to write their own triage
+rules.  Triage rules are related to:
+
+ * Services through a field that maps the triage rules to one or more services.  A program may choose to use one set of triage rules for 6 services; they would still need to have 6 separate intake settings (one per service).
+ * Intake settings through the legal issues selected.  A program may have multiple sets of triage rules that cover different legal issues but still use the same set of intake settings.
+ 
+List of triage rules
+----------------------
+ 
++--------------------------+-----------------------------------------+
+|  Field                   |   Notes                                 |
++==========================+=========================================+
+|  nid                     | Node ID of the triage rules             |
++--------------------------+-----------------------------------------+
+|  title                   | Name of the triage rules                |
++--------------------------+-----------------------------------------+
+|  status                  | 0 = unpublished                         |
+|                          | 1 = published                           |
++--------------------------+-----------------------------------------+
+|  created                 | Date/time initially created             |
++--------------------------+-----------------------------------------+
+|  last_update             | Date/time last changed                  |
++--------------------------+-----------------------------------------+
+
+With associated services
+------------------------
+
++--------------------------+-----------------------------------------+
+|  Field                   |   Notes                                 |
++==========================+=========================================+
+|  nid                     | Node ID of the triage rules             |
++--------------------------+-----------------------------------------+
+|  title                   | Name of the triage rules                |
++--------------------------+-----------------------------------------+
+|  status                  | 0 = unpublished                         |
+|                          | 1 = published                           |
++--------------------------+-----------------------------------------+
+|  created                 | Date/time initially created             |
++--------------------------+-----------------------------------------+
+|  last_update             | Date/time last changed                  |
++--------------------------+-----------------------------------------+
+|  service _id             | Node ID for the service                 |
++--------------------------+-----------------------------------------+
+|  service_title           | Title of the associated service         |
++--------------------------+-----------------------------------------+
+
+With associated legal issues
+----------------------------
+
++--------------------------+-----------------------------------------+
+|  Field                   |   Notes                                 |
++==========================+=========================================+
+|  nid                     | Node ID of the triage rules             |
++--------------------------+-----------------------------------------+
+|  title                   | Name of the triage rules                |
++--------------------------+-----------------------------------------+
+|  status                  | 0 = unpublished                         |
+|                          | 1 = published                           |
++--------------------------+-----------------------------------------+
+|  created                 | Date/time initially created             |
++--------------------------+-----------------------------------------+
+|  last_update             | Date/time last changed                  |
++--------------------------+-----------------------------------------+
+|  term_id                 | Term ID of the legal issue              |
++--------------------------+-----------------------------------------+
+|  legal_issue             | Name of the legal issue                 |
++--------------------------+-----------------------------------------+
 
 
 Location Services
 ==================    
 
+List of services with their location and organization
+------------------------------------------------------
+
+Each service is tied to exactly 1 location and that location is tied to exactly 1 
+organization.
+
++--------------------------+-----------------------------------------+
+|  Field                   |   Notes                                 |
++==========================+=========================================+
+|  service_id              | Node ID of the service                  |
++--------------------------+-----------------------------------------+
+|  service_title           | Name of the service                     |
++--------------------------+-----------------------------------------+
+|  status                  | Status of the service                   |
+|                          | 0 = unpublished                         |
+|                          | 1 = published                           |
++--------------------------+-----------------------------------------+
+|  location_id             | Node id of the location of the service  |
++--------------------------+-----------------------------------------+
+|  location                | Name of the location                    |
++--------------------------+-----------------------------------------+
+|  organization_id         | Node id of the organization             |
++--------------------------+-----------------------------------------+
+|  organization_nam        | Name of the organization                |
++--------------------------+-----------------------------------------+
+
+List of services limited to specific populations
+-------------------------------------------------
+
++--------------------------+-----------------------------------------+
+|  Field                   |   Notes                                 |
++==========================+=========================================+
+|  service_id              | Node ID of the service                  |
++--------------------------+-----------------------------------------+
+|  service_title           | Name of the service                     |
++--------------------------+-----------------------------------------+
+|  status                  | Status of the service                   |
+|                          | 0 = unpublished                         |
+|                          | 1 = published                           |
++--------------------------+-----------------------------------------+
+|  term_id                 | Term id of the population               |
++--------------------------+-----------------------------------------+
+| population               | Name of the population                  |
++--------------------------+-----------------------------------------+
 
 
 
-.. code:: sql
 
-  LECT field_data_oas_asset_categories.entity_id as intake_settings_id, oas_asset_categories_target_id as financial_id, oas_intake_settings.name as settings_name, ilao_oas_financial_category.name as asset FROM field_data_oas_asset_categories inner join oas_intake_settings on oas_intake_settings.intake_settings_id = field_data_oas_asset_categories.entity_id inner join ilao_oas_financial_category on ilao_oas_financial_category.ilao_oas_financial_category_id = oas_asset_categories_target_id order by oas_intake_settings.intake_settings_id, delta
+List of services with legal issues
+-----------------------------------
+
++--------------------------+-----------------------------------------+
+|  Field                   |   Notes                                 |
++==========================+=========================================+
+|  service_id              | Node ID of the service                  |
++--------------------------+-----------------------------------------+
+|  service_title           | Name of the service                     |
++--------------------------+-----------------------------------------+
+|  status                  | Status of the service                   |
+|                          | 0 = unpublished                         |
+|                          | 1 = published                           |
++--------------------------+-----------------------------------------+
+|  term_id                 | Term id of the legal issue              |
++--------------------------+-----------------------------------------+
+|  legal_issue             | Name of the legal issue                 |
++--------------------------+-----------------------------------------+
+
+
+
+
+

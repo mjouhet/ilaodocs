@@ -98,10 +98,27 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#triage-user">Triage User</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#triage-user-legal-problem">Triage user legal problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#triage-user-population">Triage user population</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#intake-settings">Intake Settings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#financial-categories-per-intake-setting">Financial Categories per Intake Setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#intake-settings">Intake Settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#intake-settings-legal-issues">Intake settings &amp; Legal issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#financial-categories-per-intake-setting">Financial Categories per Intake Setting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#intake-settings-waive-income-based-on-population">Intake settings: waive Income based on population</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#triage-rules">Triage Rules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#list-of-triage-rules">List of triage rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#triage-rules-with-associated-services">Triage rules with associated services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#triage-rules-with-associated-legal-issues">Triage rules with associated legal issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#services-with-online-intake">Services with Online Intake</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#list-of-services-that-have-at-least-one-intake-settings">List of services that have at least one intake settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#list-of-services-with-limited-populations-served">List of services with limited populations served</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#list-of-services-with-lowest-level-legal-issues">List of services with lowest-level legal issues</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="otis_technical.html">OTIS Database Tables &amp; Relationships</a></li>
@@ -392,6 +409,17 @@ WHERE  entity_type = &#39;oas_intake_settings&#39; AND  tid in
 </pre></div>
 </div>
 </div>
+<div class="section" id="triage-user-population">
+<h3>Triage user population<a class="headerlink" href="#triage-user-population" title="Permalink to this headline">¶</a></h3>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">entity_id</span> <span class="k">as</span> <span class="n">triage_id</span><span class="p">,</span>
+<span class="n">field_limited_populations_tid</span> <span class="k">as</span> <span class="n">term_id</span><span class="p">,</span>
+<span class="n">name</span> <span class="k">as</span> <span class="n">population_name</span><span class="p">,</span>
+<span class="n">FROM</span> <span class="n">field_data_field_limited_populations</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">taxonomy_term_data</span> <span class="n">on</span> <span class="n">taxonomy_term_data</span><span class="o">.</span><span class="n">tid</span> <span class="o">=</span> <span class="n">field_limited_populations_tid</span>
+<span class="n">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_triage_user&#39;</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="intake-settings">
 <h2>Intake Settings<a class="headerlink" href="#intake-settings" title="Permalink to this headline">¶</a></h2>
@@ -462,9 +490,28 @@ WHERE  entity_type = &#39;oas_intake_settings&#39; AND  tid in
 <span class="n">field_data_oas_income_standard</span><span class="o">.</span><span class="n">oas_income_standard_target_id</span>
 </pre></div>
 </div>
+<div class="section" id="intake-settings-legal-issues">
+<h3>Intake settings &amp; Legal issues<a class="headerlink" href="#intake-settings-legal-issues" title="Permalink to this headline">¶</a></h3>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">intake_settings_id</span><span class="p">,</span>
+<span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">intake_settings_name</span><span class="p">,</span>
+<span class="n">enabled</span><span class="p">,</span>
+<span class="n">from_unixtime</span><span class="p">(</span><span class="n">created</span><span class="p">)</span> <span class="k">as</span> <span class="s1">&#39;created&#39;</span><span class="p">,</span>
+<span class="n">from_unixtime</span><span class="p">(</span><span class="n">changed</span><span class="p">)</span> <span class="k">as</span> <span class="s1">&#39;last_updated&#39;</span><span class="p">,</span>
+<span class="n">tid</span> <span class="k">as</span> <span class="n">term_id</span><span class="p">,</span>
+<span class="n">taxonomy_term_data</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">legal_issue</span>
+<span class="kn">from</span> <span class="nn">oas_intake_settings</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">field_data_field_legal_issues</span> <span class="n">on</span> <span class="n">field_data_field_legal_issues</span><span class="o">.</span><span class="n">entity_id</span> <span class="o">=</span> <span class="n">intake_settings_id</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">taxonomy_term_data</span> <span class="n">on</span> <span class="n">field_data_field_legal_issues</span><span class="o">.</span><span class="n">field_legal_issues_tid</span> <span class="o">=</span> <span class="n">tid</span>
+<span class="n">where</span> <span class="n">field_data_field_legal_issues</span><span class="o">.</span><span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_intake_settings&#39;</span>
+<span class="ow">and</span> <span class="n">tid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Select</span> <span class="n">parent</span> <span class="kn">from</span> <span class="nn">taxonomy_term_hierarchy</span> <span class="n">where</span> <span class="n">taxonomy_term_hierarchy</span><span class="o">.</span><span class="n">tid</span> <span class="o">=</span> <span class="n">tid</span><span class="p">)</span>
+<span class="n">order</span> <span class="n">by</span> <span class="n">intake_settings_id</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="financial-categories-per-intake-setting">
-<h2>Financial Categories per Intake Setting<a class="headerlink" href="#financial-categories-per-intake-setting" title="Permalink to this headline">¶</a></h2>
+<h3>Financial Categories per Intake Setting<a class="headerlink" href="#financial-categories-per-intake-setting" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="assets">
+<h4>Assets<a class="headerlink" href="#assets" title="Permalink to this headline">¶</a></h4>
 <div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">field_data_oas_asset_categories</span><span class="o">.</span><span class="n">entity_id</span> <span class="k">as</span> <span class="n">intake_settings_id</span><span class="p">,</span>
 <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">intake_settings_name</span><span class="p">,</span>
 <span class="n">oas_asset_categories_target_id</span> <span class="k">as</span> <span class="n">financial_id</span><span class="p">,</span>
@@ -480,6 +527,9 @@ WHERE  entity_type = &#39;oas_intake_settings&#39; AND  tid in
 <span class="n">order</span> <span class="n">by</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">intake_settings_id</span><span class="p">,</span> <span class="n">delta</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="income">
+<h4>Income<a class="headerlink" href="#income" title="Permalink to this headline">¶</a></h4>
 <div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">field_data_oas_income_categories</span><span class="o">.</span><span class="n">entity_id</span> <span class="k">as</span> <span class="n">intake_settings_id</span><span class="p">,</span>
 <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">intake_settings_name</span><span class="p">,</span>
 <span class="n">oas_income_categories_target_id</span> <span class="k">as</span> <span class="n">financial_id</span><span class="p">,</span>
@@ -495,6 +545,9 @@ WHERE  entity_type = &#39;oas_intake_settings&#39; AND  tid in
 <span class="n">order</span> <span class="n">by</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">intake_settings_id</span><span class="p">,</span> <span class="n">delta</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="expenses">
+<h4>Expenses<a class="headerlink" href="#expenses" title="Permalink to this headline">¶</a></h4>
 <div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">field_data_oas_expense_categories</span><span class="o">.</span><span class="n">entity_id</span> <span class="k">as</span> <span class="n">intake_settings_id</span><span class="p">,</span>
 <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">intake_settings_name</span><span class="p">,</span>
 <span class="n">oas_expense_categories_target_id</span> <span class="k">as</span> <span class="n">financial_id</span><span class="p">,</span>
@@ -509,6 +562,137 @@ WHERE  entity_type = &#39;oas_intake_settings&#39; AND  tid in
 <span class="n">oas_expense_categories_target_id</span>
 <span class="n">order</span> <span class="n">by</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">intake_settings_id</span><span class="p">,</span> <span class="n">delta</span>
 </pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="intake-settings-waive-income-based-on-population">
+<h3>Intake settings: waive Income based on population<a class="headerlink" href="#intake-settings-waive-income-based-on-population" title="Permalink to this headline">¶</a></h3>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">entity_id</span> <span class="k">as</span> <span class="n">intake_settings_id</span><span class="p">,</span>
+<span class="n">oas_income_exempt_tid</span> <span class="k">as</span> <span class="n">term_id</span><span class="p">,</span>
+<span class="n">name</span> <span class="k">as</span> <span class="n">population</span>
+<span class="kn">from</span> <span class="nn">field_data_oas_income_exempt</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">taxonomy_term_data</span> <span class="n">on</span> <span class="n">tid</span> <span class="o">=</span> <span class="n">oas_income_exempt_tid</span>
+<span class="n">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_intake_settings&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="triage-rules">
+<h2>Triage Rules<a class="headerlink" href="#triage-rules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="list-of-triage-rules">
+<h3>List of triage rules<a class="headerlink" href="#list-of-triage-rules" title="Permalink to this headline">¶</a></h3>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">nid</span><span class="p">,</span>
+<span class="n">field_data_title_field</span><span class="o">.</span><span class="n">title_field_value</span> <span class="k">as</span> <span class="n">title</span><span class="p">,</span>
+<span class="n">status</span><span class="p">,</span>
+<span class="n">from_unixtime</span><span class="p">(</span><span class="n">created</span><span class="p">)</span> <span class="k">as</span> <span class="n">created</span><span class="p">,</span>
+<span class="n">from_unixtime</span><span class="p">(</span><span class="n">changed</span><span class="p">)</span> <span class="k">as</span> <span class="n">last_updated</span>
+<span class="kn">from</span> <span class="nn">node</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">field_data_title_field</span> <span class="n">on</span> <span class="n">nid</span> <span class="o">=</span> <span class="n">field_data_title_field</span><span class="o">.</span><span class="n">entity_id</span>
+<span class="n">where</span> <span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;triage_rules&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="triage-rules-with-associated-services">
+<h3>Triage rules with associated services<a class="headerlink" href="#triage-rules-with-associated-services" title="Permalink to this headline">¶</a></h3>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span><span class="p">,</span>
+<span class="n">field_data_title_field</span><span class="o">.</span><span class="n">title_field_value</span> <span class="k">as</span> <span class="n">title</span><span class="p">,</span>
+<span class="n">node</span><span class="o">.</span><span class="n">status</span><span class="p">,</span>
+<span class="n">from_unixtime</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">created</span><span class="p">)</span> <span class="k">as</span> <span class="s1">&#39;created&#39;</span><span class="p">,</span>
+<span class="n">from_unixtime</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">changed</span><span class="p">)</span> <span class="k">as</span> <span class="s1">&#39;last_updated&#39;</span><span class="p">,</span>
+<span class="n">field_data_field_service</span><span class="o">.</span><span class="n">field_service_target_id</span> <span class="k">as</span> <span class="s1">&#39;service_id&#39;</span><span class="p">,</span>
+<span class="n">services</span><span class="o">.</span><span class="n">title</span> <span class="k">as</span> <span class="s1">&#39;service_title&#39;</span>
+<span class="kn">from</span> <span class="nn">node</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">field_data_title_field</span> <span class="n">on</span> <span class="n">nid</span> <span class="o">=</span> <span class="n">field_data_title_field</span><span class="o">.</span><span class="n">entity_id</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">field_data_field_service</span> <span class="n">ON</span>
+<span class="n">field_data_field_service</span><span class="o">.</span><span class="n">entity_id</span> <span class="o">=</span> <span class="n">nid</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">node</span> <span class="k">as</span> <span class="n">services</span> <span class="n">ON</span>
+<span class="n">services</span><span class="o">.</span><span class="n">nid</span> <span class="o">=</span> <span class="n">field_data_field_service</span><span class="o">.</span><span class="n">field_service_target_id</span>
+<span class="n">where</span> <span class="n">node</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">&#39;triage_rules&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="triage-rules-with-associated-legal-issues">
+<h3>Triage rules with associated legal issues<a class="headerlink" href="#triage-rules-with-associated-legal-issues" title="Permalink to this headline">¶</a></h3>
+<p>Mapping of legal issues tagged to a triage rules item.  Note that this query excludes anything but lowest level terms because legal issue must be an exact match.</p>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">DISTINCT</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span><span class="p">,</span>
+<span class="n">field_data_title_field</span><span class="o">.</span><span class="n">title_field_value</span> <span class="k">as</span> <span class="n">title</span><span class="p">,</span>
+<span class="n">node</span><span class="o">.</span><span class="n">status</span><span class="p">,</span>
+<span class="n">from_unixtime</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">created</span><span class="p">)</span> <span class="k">as</span> <span class="s1">&#39;created&#39;</span><span class="p">,</span>
+<span class="n">from_unixtime</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">changed</span><span class="p">)</span> <span class="k">as</span> <span class="s1">&#39;last_updated&#39;</span><span class="p">,</span>
+<span class="n">tid</span> <span class="k">as</span> <span class="n">term_id</span><span class="p">,</span>
+<span class="n">name</span> <span class="k">as</span> <span class="n">legal_issue</span>
+<span class="kn">from</span> <span class="nn">node</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">field_data_title_field</span> <span class="n">on</span> <span class="n">nid</span> <span class="o">=</span> <span class="n">field_data_title_field</span><span class="o">.</span><span class="n">entity_id</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">field_data_field_legal_issues</span> <span class="n">on</span> <span class="n">field_data_field_legal_issues</span><span class="o">.</span><span class="n">entity_id</span> <span class="o">=</span> <span class="n">nid</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">taxonomy_term_data</span> <span class="n">on</span> <span class="n">field_data_field_legal_issues</span><span class="o">.</span><span class="n">field_legal_issues_tid</span> <span class="o">=</span> <span class="n">tid</span>
+<span class="n">where</span> <span class="n">node</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">&#39;triage_rules&#39;</span>
+<span class="ow">and</span> <span class="n">field_data_field_legal_issues</span><span class="o">.</span><span class="n">bundle</span> <span class="o">=</span> <span class="s1">&#39;triage_rules&#39;</span>
+<span class="ow">and</span> <span class="n">tid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Select</span> <span class="n">parent</span> <span class="kn">from</span> <span class="nn">taxonomy_term_hierarchy</span> <span class="n">where</span> <span class="n">taxonomy_term_hierarchy</span><span class="o">.</span><span class="n">tid</span> <span class="o">=</span> <span class="n">tid</span><span class="p">)</span>
+<span class="n">order</span> <span class="n">by</span> <span class="n">nid</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="services-with-online-intake">
+<h2>Services with Online Intake<a class="headerlink" href="#services-with-online-intake" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="list-of-services-that-have-at-least-one-intake-settings">
+<h3>List of services that have at least one intake settings<a class="headerlink" href="#list-of-services-that-have-at-least-one-intake-settings" title="Permalink to this headline">¶</a></h3>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">Select</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span> <span class="k">as</span> <span class="n">service_id</span><span class="p">,</span>
+<span class="n">node</span><span class="o">.</span><span class="n">title</span> <span class="k">as</span> <span class="n">service_title</span><span class="p">,</span>
+<span class="n">node</span><span class="o">.</span><span class="n">status</span><span class="p">,</span>
+<span class="n">field_data_field_location_ref</span><span class="o">.</span><span class="n">field_location_ref_target_id</span> <span class="k">as</span> <span class="n">location_id</span><span class="p">,</span>
+<span class="n">locations</span><span class="o">.</span><span class="n">title</span> <span class="k">as</span> <span class="s1">&#39;location&#39;</span><span class="p">,</span>
+<span class="n">og_membership</span><span class="o">.</span><span class="n">gid</span> <span class="k">as</span> <span class="n">organization_id</span><span class="p">,</span>
+<span class="n">organizations</span><span class="o">.</span><span class="n">title</span> <span class="k">as</span> <span class="n">organization_name</span>
+<span class="kn">from</span> <span class="nn">node</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">field_data_field_location_ref</span> <span class="n">on</span> <span class="n">field_data_field_location_ref</span><span class="o">.</span><span class="n">entity_id</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">og_membership</span> <span class="n">on</span> <span class="n">etid</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">node</span> <span class="k">as</span> <span class="n">locations</span>
+<span class="n">on</span> <span class="n">locations</span><span class="o">.</span><span class="n">nid</span> <span class="o">=</span> <span class="n">field_data_field_location_ref</span><span class="o">.</span><span class="n">field_location_ref_target_id</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">node</span> <span class="k">as</span> <span class="n">organizations</span>
+<span class="n">on</span> <span class="n">og_membership</span><span class="o">.</span><span class="n">gid</span> <span class="o">=</span> <span class="n">organizations</span><span class="o">.</span><span class="n">nid</span>
+<span class="n">where</span> <span class="n">node</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">&#39;location_services&#39;</span>
+<span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Select</span> <span class="n">entity_id</span> <span class="kn">from</span> <span class="nn">oas_intake_settings</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-of-services-with-limited-populations-served">
+<h3>List of services with limited populations served<a class="headerlink" href="#list-of-services-with-limited-populations-served" title="Permalink to this headline">¶</a></h3>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">Select</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span> <span class="k">as</span> <span class="n">service_id</span><span class="p">,</span>
+<span class="n">node</span><span class="o">.</span><span class="n">title</span> <span class="k">as</span> <span class="n">service_title</span><span class="p">,</span>
+<span class="n">field_data_field_limited_populations</span><span class="o">.</span><span class="n">field_limited_populations_tid</span> <span class="k">as</span> <span class="n">term_id</span><span class="p">,</span>
+<span class="n">name</span> <span class="k">as</span> <span class="n">population</span>
+<span class="kn">from</span> <span class="nn">node</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">field_data_field_limited_populations</span> <span class="n">on</span> <span class="n">entity_id</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">taxonomy_term_data</span> <span class="n">on</span> <span class="n">tid</span> <span class="o">=</span> <span class="n">field_data_field_limited_populations</span><span class="o">.</span><span class="n">field_limited_populations_tid</span>
+<span class="n">where</span> <span class="n">node</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">&#39;location_services&#39;</span>
+<span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Select</span> <span class="n">entity_id</span> <span class="kn">from</span> <span class="nn">oas_intake_settings</span><span class="p">)</span>
+<span class="ow">and</span> <span class="n">bundle</span> <span class="o">=</span> <span class="s1">&#39;location_services&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="list-of-services-with-lowest-level-legal-issues">
+<h3>List of services with lowest-level legal issues<a class="headerlink" href="#list-of-services-with-lowest-level-legal-issues" title="Permalink to this headline">¶</a></h3>
+<p>We use only the lowest level since that’s what users are forced to drill down to.</p>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">Select</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span> <span class="k">as</span> <span class="n">service_id</span><span class="p">,</span>
+<span class="n">node</span><span class="o">.</span><span class="n">title</span> <span class="k">as</span> <span class="n">service_title</span><span class="p">,</span>
+<span class="n">node</span><span class="o">.</span><span class="n">status</span><span class="p">,</span>
+<span class="n">tid</span> <span class="k">as</span> <span class="n">term_id</span><span class="p">,</span>
+<span class="n">name</span> <span class="k">as</span> <span class="n">legal_issue</span>
+
+<span class="kn">from</span> <span class="nn">node</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">field_data_field_legal_issues</span>
+<span class="n">on</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span> <span class="o">=</span> <span class="n">field_data_field_legal_issues</span><span class="o">.</span><span class="n">entity_id</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">taxonomy_term_data</span>
+<span class="n">on</span> <span class="n">taxonomy_term_data</span><span class="o">.</span><span class="n">tid</span> <span class="o">=</span> <span class="n">field_data_field_legal_issues</span><span class="o">.</span><span class="n">field_legal_issues_tid</span>
+
+<span class="n">where</span> <span class="n">node</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">&#39;location_services&#39;</span>
+<span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Select</span> <span class="n">entity_id</span> <span class="kn">from</span> <span class="nn">oas_intake_settings</span><span class="p">)</span>
+<span class="ow">and</span> <span class="n">bundle</span> <span class="o">=</span> <span class="s1">&#39;location_services&#39;</span>
+ <span class="ow">and</span> <span class="n">tid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Select</span> <span class="n">parent</span> <span class="kn">from</span> <span class="nn">taxonomy_term_hierarchy</span>
+               <span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
