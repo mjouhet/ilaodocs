@@ -1,0 +1,640 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OTIS Database Tables &amp; Relationships &mdash; ILAO 2.17.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Legal Information" href="legal_information.html" />
+    <link rel="prev" title="OTIS-related queries" href="otis_queries.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ILAO
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.17.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="get_legal_help.html">Get Legal Help</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="referrals.html">Referrals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legal_self_help_centers.html">Legal Self-Help Center Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otis_integration.html">Online Triage and Intake System (OTIS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otis_queries.html">OTIS-related queries</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OTIS Database Tables &amp; Relationships</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#oas-triage-user">OAS Triage User</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fields">Fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#triage-user-legal-issue">Triage user legal issue</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#oas-intake-settings">OAS Intake Settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#intake-settings-geographic-eligibility">Intake settings &amp; Geographic Eligibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#financial-categories">Financial Categories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#population-parameters">Population Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#location-services">Location Services</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="legal_information.html">Legal Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for_legal_professionals.html">For Legal Professionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="site_search.html">Site Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="site_faqs.html">Site FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_us.html">ILAO Organization Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ilao_blog.html">ILAO Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments_ratings.html">Comments &amp; Ratings System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_engagement.html">Share Bar &amp; Favorites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact_us.html">Contacting ILAO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managing_content.html">Content Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managing_people.html">User Accounts &amp; Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managing_organizations.html">Managing Organizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tech_mailchimp.html">Mailchimp Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tech_google_groups.html">Discussion Boards &amp; Google Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technical_information.html">Other Site Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seo.html">SEO Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translation_management.html">Translation Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_integrations.html">Data Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tech_styles.html">Website Styles</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ILAO</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="get_legal_help.html">Get Legal Help</a> &raquo;</li>
+        
+      <li>OTIS Database Tables &amp; Relationships</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/otis_technical.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="otis-database-tables-relationships">
+<h1>OTIS Database Tables &amp; Relationships<a class="headerlink" href="#otis-database-tables-relationships" title="Permalink to this headline">¶</a></h1>
+<p>The documentation below references specific queries and tables generated for reporting purposes and the relationship between them.</p>
+<div class="section" id="oas-triage-user">
+<h2>OAS Triage User<a class="headerlink" href="#oas-triage-user" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fields">
+<h3>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>triage_id</td>
+<td>Unique ID for the session</td>
+</tr>
+<tr class="row-odd"><td>uid</td>
+<td>If logged in, the user’s ID</td>
+</tr>
+<tr class="row-even"><td>age</td>
+<td>Intake only</td>
+</tr>
+<tr class="row-odd"><td>triage_changed</td>
+<td>Time of last triage activity</td>
+</tr>
+<tr class="row-even"><td>citizenship</td>
+<td>Intake only if asked</td>
+</tr>
+<tr class="row-odd"><td>county</td>
+<td>Intake, computed from zip code</td>
+</tr>
+<tr class="row-even"><td>triage_started</td>
+<td>Time Get Legal Help form submitted</td>
+</tr>
+<tr class="row-odd"><td>ethnicity</td>
+<td>Intake only if asked</td>
+</tr>
+<tr class="row-even"><td>gender</td>
+<td>Intake only if asked</td>
+</tr>
+<tr class="row-odd"><td>household_adults</td>
+<td>Intake only</td>
+</tr>
+<tr class="row-even"><td>household_children</td>
+<td>Intake only</td>
+</tr>
+<tr class="row-odd"><td>household_size</td>
+<td>May be empty if user skipped
+on Get Legal Help form</td>
+</tr>
+<tr class="row-even"><td>immigrant_status</td>
+<td>Intake only if asked</td>
+</tr>
+<tr class="row-odd"><td>intake_started</td>
+<td>Time of first intake page saved</td>
+</tr>
+<tr class="row-even"><td>intake_changed</td>
+<td>Time of last intake activity</td>
+</tr>
+<tr class="row-odd"><td>last_screen_viewed</td>
+<td>Last page viewed by user
+If node/number user declined modal</td>
+</tr>
+<tr class="row-even"><td>marital_status</td>
+<td>Intake only if asked</td>
+</tr>
+<tr class="row-odd"><td>primary_language</td>
+<td>Intake only if asked</td>
+</tr>
+<tr class="row-even"><td>overincome</td>
+<td>null = user skipped on GLH form
+0 = No
+1 = Yes (Triage only)
+2= Over income (Intake only)
+3 = Over asset (Intake only)</td>
+</tr>
+<tr class="row-odd"><td>race</td>
+<td>Intake only if asked</td>
+</tr>
+<tr class="row-even"><td>state</td>
+<td>Intake only; computed from zip</td>
+</tr>
+<tr class="row-odd"><td>total_income</td>
+<td>Intake only if asked; computed</td>
+</tr>
+<tr class="row-even"><td>total_assets</td>
+<td>Intake only if asked; computed</td>
+</tr>
+<tr class="row-odd"><td>total_expenses</td>
+<td>Intake only if asked; computed</td>
+</tr>
+<tr class="row-even"><td>triage_status</td>
+<td>Last triage status reached</td>
+</tr>
+<tr class="row-odd"><td>zip_code</td>
+<td>User’s zip code</td>
+</tr>
+<tr class="row-even"><td>service_id</td>
+<td>Node ID of the service</td>
+</tr>
+<tr class="row-odd"><td>intake_settings_id</td>
+<td>ID the intake settings used</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="triage-user-legal-issue">
+<h3>Triage user legal issue<a class="headerlink" href="#triage-user-legal-issue" title="Permalink to this headline">¶</a></h3>
+<p>The legal issue is the lowest level term in the legal issue taxonomy.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="41%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>triage_id</td>
+<td>Triage ID of the session</td>
+</tr>
+<tr class="row-odd"><td>legal_problem</td>
+<td>Term ID from legal issues</td>
+</tr>
+<tr class="row-even"><td>legal_problem_name</td>
+<td>Name of the legal issue</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="oas-intake-settings">
+<h2>OAS Intake Settings<a class="headerlink" href="#oas-intake-settings" title="Permalink to this headline">¶</a></h2>
+<p>Intake settings is the key data structure for a program’s intake parameters for a service
+or subset of legal issues within a service.</p>
+<p>These settings power the intake section once the user completes ILAO’s triage
+and program triage without getting diverted.</p>
+<p>All Yes/No values are stored as 0 (No) or 1 (Yes).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>service</td>
+<td>Name of the service tied to settings</td>
+</tr>
+<tr class="row-odd"><td>service_id</td>
+<td>Node ID of the service</td>
+</tr>
+<tr class="row-even"><td>intake_settings_id</td>
+<td>Intake settings unique id</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>Name of the intake settings</td>
+</tr>
+<tr class="row-even"><td>allow_prisoners</td>
+<td>Yes/No if people in jail can apply</td>
+</tr>
+<tr class="row-odd"><td>apply_asset_limit</td>
+<td>Yes/No</td>
+</tr>
+<tr class="row-even"><td>apply_income_limit</td>
+<td>Yes/No</td>
+</tr>
+<tr class="row-odd"><td>callback_number</td>
+<td>Phone number for callbacks</td>
+</tr>
+<tr class="row-even"><td>callback_type</td>
+<td>We call client or client calls</td>
+</tr>
+<tr class="row-odd"><td>last_updated</td>
+<td>Time of last update to these settings</td>
+</tr>
+<tr class="row-even"><td>collect_citizenship</td>
+<td>Yes/No to ask for citizenship</td>
+</tr>
+<tr class="row-odd"><td>collect_country</td>
+<td>Yes/No to ask for country of origin</td>
+</tr>
+<tr class="row-even"><td>collect_language</td>
+<td>Yes/No to ask for primary language</td>
+</tr>
+<tr class="row-odd"><td>collect_gender</td>
+<td>Yes/No to ask for gender</td>
+</tr>
+<tr class="row-even"><td>collect_race</td>
+<td>Yes/No to ask for user’s race</td>
+</tr>
+<tr class="row-odd"><td>collect_ethnicity</td>
+<td>Yes/No to ask for user’s ethnicity</td>
+</tr>
+<tr class="row-even"><td>collect_income</td>
+<td>Yes/No to ask for income information</td>
+</tr>
+<tr class="row-odd"><td>collect_assets</td>
+<td>Yes/No to ask user for assets</td>
+</tr>
+<tr class="row-even"><td>collect_expenses</td>
+<td>Yes/No to ask for expense info</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>Time of intake settings created</td>
+</tr>
+<tr class="row-even"><td>enabled</td>
+<td>Are these settings active?</td>
+</tr>
+<tr class="row-odd"><td>intake_limit</td>
+<td>Max number of intakes; 0 = unlimited</td>
+</tr>
+<tr class="row-even"><td>maximum_allowed_income</td>
+<td>Maximum percent of allowed income</td>
+</tr>
+<tr class="row-odd"><td>maximum_allowed_assets</td>
+<td>Dollar amount of allowed assets</td>
+</tr>
+<tr class="row-even"><td>maximum_callbacks
+_per_slot</td>
+<td>Maximum number of callbacks that can be
+scheduled for a particular hour slot</td>
+</tr>
+<tr class="row-odd"><td>minimum_minor_age</td>
+<td>Lowest allowed age to apply online
+Default is 18; minimum allowed is 13</td>
+</tr>
+<tr class="row-even"><td>minimum_senior_age</td>
+<td>Lowest age to be considered a senior</td>
+</tr>
+<tr class="row-odd"><td>reset_limit_frequency</td>
+<td>How often intake limits are reset</td>
+</tr>
+<tr class="row-even"><td>personal_exemption
+_amount</td>
+<td>Dollar amount of personal property that
+is deducted from assets before
+calculating asset eligibility.</td>
+</tr>
+<tr class="row-odd"><td>income_standard</td>
+<td>Income standard to apply</td>
+</tr>
+<tr class="row-even"><td>geographic_reach</td>
+<td>Indicates whether intake settings are
+limited at the city or county level or
+are statewide.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="intake-settings-geographic-eligibility">
+<h3>Intake settings &amp; Geographic Eligibility<a class="headerlink" href="#intake-settings-geographic-eligibility" title="Permalink to this headline">¶</a></h3>
+<p>Programs can set intake settings to be available to the same geographic
+region as the associated service or they can limit intake to a different
+region.</p>
+<p>The <a class="reference external" href="otis_queries.html#queries-for-geographic-reach">three queries</a> under geographic reach can be used to generate the
+list of zip codes for services by geographic_reach.</p>
+</div>
+<div class="section" id="financial-categories">
+<h3>Financial Categories<a class="headerlink" href="#financial-categories" title="Permalink to this headline">¶</a></h3>
+<p>If the program wants to collect income, assets, and/or expenses, we then ask them to pick
+from a list of financial categories in each class.  This information is stores in its
+own tables.</p>
+<div class="section" id="assets">
+<h4>Assets<a class="headerlink" href="#assets" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>intake_settings_id</td>
+<td>Intake settings id</td>
+</tr>
+<tr class="row-odd"><td>intake_settings_name</td>
+<td>Name of the intake settings</td>
+</tr>
+<tr class="row-even"><td>financial_id</td>
+<td>ID of the asset</td>
+</tr>
+<tr class="row-odd"><td>asset</td>
+<td>Name of the asset to be collected</td>
+</tr>
+<tr class="row-even"><td>subcategory</td>
+<td>Grouping the asset belongs to when
+displayed to the user.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="income">
+<h4>Income<a class="headerlink" href="#income" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>intake_settings_id</td>
+<td>Intake settings id</td>
+</tr>
+<tr class="row-odd"><td>intake_settings_name</td>
+<td>Name of the intake settings</td>
+</tr>
+<tr class="row-even"><td>financial_id</td>
+<td>ID of the income item</td>
+</tr>
+<tr class="row-odd"><td>income</td>
+<td>Name of the income item to be collected</td>
+</tr>
+<tr class="row-even"><td>subcategory</td>
+<td>Grouping the income item belongs to
+when displayed to the user.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="expenses">
+<h4>Expenses<a class="headerlink" href="#expenses" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>intake_settings_id</td>
+<td>Intake settings id</td>
+</tr>
+<tr class="row-odd"><td>intake_settings_name</td>
+<td>Name of the intake settings</td>
+</tr>
+<tr class="row-even"><td>financial_id</td>
+<td>ID of the expense</td>
+</tr>
+<tr class="row-odd"><td>expense</td>
+<td>Name of the expense to be collected</td>
+</tr>
+<tr class="row-even"><td>subcategory</td>
+<td>Grouping the expense belongs to
+when displayed to the user.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="population-parameters">
+<h3>Population Parameters<a class="headerlink" href="#population-parameters" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="location-services">
+<h2>Location Services<a class="headerlink" href="#location-services" title="Permalink to this headline">¶</a></h2>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">LECT</span> <span class="n">field_data_oas_asset_categories</span><span class="o">.</span><span class="n">entity_id</span> <span class="k">as</span> <span class="n">intake_settings_id</span><span class="p">,</span> <span class="n">oas_asset_categories_target_id</span> <span class="k">as</span> <span class="n">financial_id</span><span class="p">,</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">settings_name</span><span class="p">,</span> <span class="n">ilao_oas_financial_category</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">asset</span> <span class="n">FROM</span> <span class="n">field_data_oas_asset_categories</span> <span class="n">inner</span> <span class="n">join</span> <span class="n">oas_intake_settings</span> <span class="n">on</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">intake_settings_id</span> <span class="o">=</span> <span class="n">field_data_oas_asset_categories</span><span class="o">.</span><span class="n">entity_id</span> <span class="n">inner</span> <span class="n">join</span> <span class="n">ilao_oas_financial_category</span> <span class="n">on</span> <span class="n">ilao_oas_financial_category</span><span class="o">.</span><span class="n">ilao_oas_financial_category_id</span> <span class="o">=</span> <span class="n">oas_asset_categories_target_id</span> <span class="n">order</span> <span class="n">by</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">intake_settings_id</span><span class="p">,</span> <span class="n">delta</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="legal_information.html" class="btn btn-neutral float-right" title="Legal Information" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="otis_queries.html" class="btn btn-neutral" title="OTIS-related queries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Illinois Legal Aid Online.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.17.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

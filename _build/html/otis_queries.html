@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Legal Information" href="legal_information.html" />
+    <link rel="next" title="OTIS Database Tables &amp; Relationships" href="otis_technical.html" />
     <link rel="prev" title="E-transfers with LegalServer" href="otis_integration_legal_server_integration.html" /> 
 
   
@@ -92,9 +92,19 @@
 <li class="toctree-l3"><a class="reference internal" href="#legal-issues-with-any-triage-rules">Legal issues with any triage rules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#legal-issues-with-published-triage-rules">Legal issues with published triage rules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#legal-issues-with-no-triage-rules-regardless-of-level">Legal issues with no triage rules, regardless of level</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#legal-issues-with-no-triage-rules-lowest-level-terms-only">Legal issues with no triage rules, lowest level terms only</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#legal-issues-with-no-triage-rules-lowest-level-terms-only">Legal issues with no triage rules, lowest level terms only</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#queries-for-geographic-reach">Queries for Geographic Reach</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#triage-user">Triage User</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#triage-user-legal-problem">Triage user legal problem</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#intake-settings">Intake Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#financial-categories-per-intake-setting">Financial Categories per Intake Setting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="otis_technical.html">OTIS Database Tables &amp; Relationships</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="legal_information.html">Legal Information</a></li>
@@ -187,7 +197,7 @@
 <div class="section" id="legal-issues-with-any-triage-rules">
 <h2>Legal issues with any triage rules<a class="headerlink" href="#legal-issues-with-any-triage-rules" title="Permalink to this headline">¶</a></h2>
 <p>Returns all triage rules with their associated taxonomy terms.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">Select</span> <span class="k">distinct</span> <span class="n">taxonomy_entity_index</span><span class="p">.</span><span class="n">entity_id</span><span class="p">,</span>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">Select</span> <span class="k">distinct</span> <span class="n">taxonomy_entity_index</span><span class="p">.</span><span class="n">entity_id</span><span class="p">,</span>
 <span class="n">taxonomy_entity_index</span><span class="p">.</span><span class="n">tid</span><span class="p">,</span>
 <span class="n">taxonomy_term_data</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
 <span class="n">field_data_title_field</span><span class="p">.</span><span class="n">title_field_value</span>
@@ -203,7 +213,7 @@
 </div>
 <div class="section" id="legal-issues-with-published-triage-rules">
 <h2>Legal issues with published triage rules<a class="headerlink" href="#legal-issues-with-published-triage-rules" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">taxonomy_entity_index</span><span class="p">.</span><span class="n">entity_id</span><span class="p">,</span>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="k">DISTINCT</span> <span class="n">taxonomy_entity_index</span><span class="p">.</span><span class="n">entity_id</span><span class="p">,</span>
 <span class="n">taxonomy_entity_index</span><span class="p">.</span><span class="n">tid</span><span class="p">,</span>
 <span class="n">taxonomy_term_data</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
 <span class="n">field_data_title_field</span><span class="p">.</span><span class="n">title_field_value</span>
@@ -222,7 +232,7 @@
 <div class="section" id="legal-issues-with-no-triage-rules-regardless-of-level">
 <h2>Legal issues with no triage rules, regardless of level<a class="headerlink" href="#legal-issues-with-no-triage-rules-regardless-of-level" title="Permalink to this headline">¶</a></h2>
 <p>The tid not in clause excludes terms under About Lawyers, Courts &amp; Hearings, and Practice Resources.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>SELECT tid, name from taxonomy_term_data where tid not in
+<div class="highlight-sql"><div class="highlight"><pre><span></span>SELECT tid, name from taxonomy_term_data where tid not in
 (SELECT taxonomy_entity_index.tid from taxonomy_entity_index
 inner join taxonomy_term_data
 on taxonomy_entity_index.tid = taxonomy_term_data.tid
@@ -243,7 +253,7 @@ AND vid = 61 and tid not in
 <div class="section" id="legal-issues-with-no-triage-rules-lowest-level-terms-only">
 <h2>Legal issues with no triage rules, lowest level terms only<a class="headerlink" href="#legal-issues-with-no-triage-rules-lowest-level-terms-only" title="Permalink to this headline">¶</a></h2>
 <p>The tid not in clause excludes terms under About Lawyers, Courts &amp; Hearings, and Practice Resources. Only taxonomy terms that are not parent terms are included.  This means only those terms that are the lowest level terms are returned.</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>SELECT tid, name from taxonomy_term_data where tid not in
+<div class="highlight-sql"><div class="highlight"><pre><span></span>SELECT tid, name from taxonomy_term_data where tid not in
 (SELECT taxonomy_entity_index.tid from taxonomy_entity_index
 inner join taxonomy_term_data
 on taxonomy_entity_index.tid = taxonomy_term_data.tid
@@ -261,16 +271,21 @@ AND vid = 61 and tid not in
 and tid not in (SELECT parent from taxonomy_term_hierarchy)
 </pre></div>
 </div>
-<p>Gets all intake settings by zip code when coded by city</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">tid</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">entity_id</span> <span class="k">from</span> <span class="n">field_data_field_cities</span>
+<div class="section" id="queries-for-geographic-reach">
+<h3>Queries for Geographic Reach<a class="headerlink" href="#queries-for-geographic-reach" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="gets-all-intake-settings-by-zip-code-when-coded-by-city">
+<h4>Gets all intake settings by zip code when coded by city<a class="headerlink" href="#gets-all-intake-settings-by-zip-code-when-coded-by-city" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">tid</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">entity_id</span> <span class="k">from</span> <span class="n">field_data_field_cities</span>
 <span class="k">inner</span> <span class="k">join</span> <span class="n">taxonomy_term_data</span>
 <span class="k">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_intake_settings&#39;</span> <span class="k">and</span> <span class="n">tid</span> <span class="k">in</span>
 <span class="p">(</span><span class="k">SELECT</span> <span class="n">tid</span> <span class="k">from</span> <span class="n">taxonomy_term_hierarchy</span>
  <span class="k">where</span> <span class="n">parent</span> <span class="o">=</span> <span class="n">field_data_field_cities</span><span class="p">.</span><span class="n">field_cities_target_id</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Gets all intake settings by zip code when coded to counties</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span>SELECT tid, name, entity_id
+</div>
+<div class="section" id="gets-all-intake-settings-by-zip-code-when-coded-to-counties">
+<h4>Gets all intake settings by zip code when coded to counties<a class="headerlink" href="#gets-all-intake-settings-by-zip-code-when-coded-to-counties" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-sql"><div class="highlight"><pre><span></span>SELECT tid, name, entity_id
 FROM field_data_field_counties
 INNER JOIN  taxonomy_term_data
 WHERE  entity_type = &#39;oas_intake_settings&#39; AND  tid in
@@ -280,8 +295,10 @@ WHERE  entity_type = &#39;oas_intake_settings&#39; AND  tid in
  where tid = field_data_field_counties.field_counties_target_id)))
 </pre></div>
 </div>
-<p>All IL zip codes</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">Select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">taxonomy_term_hierarchy</span>
+</div>
+<div class="section" id="gets-all-illinois-zip-codes-use-for-statewide-intake-settings">
+<h4>Gets all Illinois zip codes; use for statewide intake settings<a class="headerlink" href="#gets-all-illinois-zip-codes-use-for-statewide-intake-settings" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">Select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">taxonomy_term_hierarchy</span>
 <span class="k">inner</span> <span class="k">join</span> <span class="n">taxonomy_term_data</span>
 <span class="k">on</span> <span class="n">taxonomy_term_data</span><span class="p">.</span><span class="n">tid</span> <span class="o">=</span> <span class="n">taxonomy_term_hierarchy</span><span class="p">.</span><span class="n">tid</span>
 <span class="k">WHERE</span> <span class="n">parent</span> <span class="k">in</span>
@@ -292,8 +309,10 @@ WHERE  entity_type = &#39;oas_intake_settings&#39; AND  tid in
 <span class="k">and</span> <span class="n">taxonomy_term_data</span><span class="p">.</span><span class="n">vid</span> <span class="o">=</span> <span class="mi">76</span>
 </pre></div>
 </div>
-<p>Intake settings by location setting</p>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span> <span class="k">SELECT</span> <span class="n">intake_settings_id</span><span class="p">,</span>
+</div>
+<div class="section" id="intake-settings-by-geographic-reach">
+<h4>Intake settings by geographic reach<a class="headerlink" href="#intake-settings-by-geographic-reach" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-sql"><div class="highlight"><pre><span></span> <span class="k">SELECT</span> <span class="n">intake_settings_id</span><span class="p">,</span>
  <span class="k">CASE</span>
   <span class="k">WHEN</span> <span class="n">intake_settings_id</span> <span class="k">in</span> <span class="p">(</span><span class="k">Select</span> <span class="n">entity_id</span> <span class="k">from</span> <span class="n">field_data_field_statewide</span> <span class="k">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_intake_settings&#39;</span> <span class="k">and</span> <span class="n">field_data_field_statewide</span><span class="p">.</span><span class="n">field_statewide_value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">THEN</span> <span class="s1">&#39;statewide&#39;</span>
   <span class="k">WHEN</span> <span class="n">intake_settings_id</span> <span class="k">in</span> <span class="p">(</span><span class="k">Select</span> <span class="n">entity_id</span> <span class="k">from</span> <span class="n">field_data_field_cities</span> <span class="k">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_intake_settings&#39;</span><span class="p">)</span> <span class="k">THEN</span> <span class="s1">&#39;city-limited&#39;</span>
@@ -301,6 +320,194 @@ WHERE  entity_type = &#39;oas_intake_settings&#39; AND  tid in
  <span class="k">ELSE</span> <span class="s1">&#39;localized&#39;</span>
 <span class="k">END</span>
 <span class="k">from</span> <span class="n">oas_intake_settings</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="triage-user">
+<h2>Triage User<a class="headerlink" href="#triage-user" title="Permalink to this headline">¶</a></h2>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">Select</span>
+<span class="n">triage_id</span><span class="p">,</span>
+<span class="n">oas_triage_user</span><span class="o">.</span><span class="n">uid</span><span class="p">,</span>
+<span class="n">age</span><span class="p">,</span>
+<span class="n">from_unixtime</span><span class="p">(</span><span class="n">oas_triage_user</span><span class="o">.</span><span class="n">changed</span><span class="p">)</span> <span class="k">as</span> <span class="n">triage_changed</span><span class="p">,</span>
+<span class="n">citizenship</span><span class="p">,</span>
+<span class="n">county</span><span class="p">,</span>
+<span class="n">from_unixtime</span><span class="p">(</span><span class="n">oas_triage_user</span><span class="o">.</span><span class="n">created</span><span class="p">)</span> <span class="k">as</span> <span class="n">triage_started</span><span class="p">,</span>
+<span class="n">ethnicity</span><span class="p">,</span>
+<span class="n">gender</span><span class="p">,</span>
+<span class="n">household_adults</span><span class="p">,</span>
+<span class="n">household_children</span><span class="p">,</span>
+<span class="n">household_size</span><span class="p">,</span>
+<span class="n">immigrant_status</span><span class="p">,</span>
+<span class="n">from_unixtime</span><span class="p">(</span><span class="n">intake_created</span><span class="p">)</span> <span class="k">as</span> <span class="n">intake_started</span><span class="p">,</span>
+<span class="n">from_unixtime</span><span class="p">(</span><span class="n">intake_changed</span><span class="p">)</span> <span class="k">as</span> <span class="n">intake_changed</span><span class="p">,</span>
+<span class="n">last_screen_viewed</span><span class="p">,</span>
+<span class="n">marital_status</span><span class="p">,</span>
+<span class="n">overincome</span><span class="p">,</span>
+<span class="n">primary_language</span><span class="p">,</span>
+<span class="n">race</span><span class="p">,</span>
+<span class="n">state</span><span class="p">,</span>
+<span class="n">total_income</span><span class="p">,</span>
+<span class="n">total_expenses</span><span class="p">,</span>
+<span class="n">total_assets</span><span class="p">,</span>
+<span class="n">triage_status</span><span class="p">,</span>
+<span class="n">zip_code</span><span class="p">,</span>
+<span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">entity_id</span> <span class="k">as</span> <span class="s1">&#39;service&#39;</span><span class="p">,</span>
+<span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">intake_settings_id</span>
+<span class="kn">from</span> <span class="nn">oas_triage_user</span>
+<span class="n">left</span> <span class="n">outer</span> <span class="n">join</span> <span class="n">oas_intake_settings</span>
+<span class="n">on</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">intake_settings_id</span> <span class="o">=</span> <span class="n">oas_triage_user</span><span class="o">.</span><span class="n">intake_organization</span>
+<span class="n">where</span> <span class="n">oas_triage_user</span><span class="o">.</span><span class="n">uid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4486</span><span class="p">,</span> <span class="mi">4646</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="ow">and</span> <span class="n">oas_triage_user</span><span class="o">.</span><span class="n">created</span> <span class="o">&gt;</span> <span class="mi">1470064821</span>
+</pre></div>
+</div>
+<div class="section" id="triage-user-legal-problem">
+<h3>Triage user legal problem<a class="headerlink" href="#triage-user-legal-problem" title="Permalink to this headline">¶</a></h3>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">Select</span> <span class="n">triage_id</span><span class="p">,</span>
+<span class="n">CASE</span>
+<span class="n">WHEN</span> <span class="n">triage_id</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Select</span> <span class="n">entity_id</span> <span class="kn">from</span> <span class="nn">field_data_field_triage_problem_history</span>
+  <span class="n">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_triage_user&#39;</span> <span class="n">order</span> <span class="n">by</span> <span class="n">delta</span> <span class="n">desc</span><span class="p">)</span> <span class="n">THEN</span>
+  <span class="p">(</span><span class="n">Select</span> <span class="n">field_data_field_triage_problem_history</span><span class="o">.</span><span class="n">field_triage_problem_history_tid</span>
+   <span class="kn">from</span> <span class="nn">field_data_field_triage_problem_history</span> <span class="n">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_triage_user&#39;</span> <span class="n">order</span> <span class="n">by</span> <span class="n">delta</span> <span class="n">desc</span> <span class="n">LIMIT</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ELSE</span>
+ <span class="p">(</span><span class="n">Select</span> <span class="n">field_data_field_triage_problem</span><span class="o">.</span><span class="n">field_triage_problem_tid</span> <span class="kn">from</span>
+  <span class="nn">field_data_field_triage_problem</span> <span class="n">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_triage_user&#39;</span> <span class="n">limit</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">END</span>
+<span class="k">as</span> <span class="n">legal_problem</span><span class="p">,</span>
+<span class="n">CASE</span>
+<span class="n">WHEN</span> <span class="n">triage_id</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Select</span> <span class="n">entity_id</span> <span class="kn">from</span> <span class="nn">field_data_field_triage_problem_history</span>
+ <span class="n">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_triage_user&#39;</span> <span class="n">order</span> <span class="n">by</span> <span class="n">delta</span> <span class="n">desc</span><span class="p">)</span> <span class="n">THEN</span>
+<span class="p">(</span><span class="n">Select</span> <span class="n">name</span> <span class="kn">from</span> <span class="nn">taxonomy_term_data</span> <span class="n">where</span> <span class="n">tid</span> <span class="o">=</span> <span class="p">(</span><span class="n">SELECT</span> <span class="n">field_data_field_triage_problem_history</span><span class="o">.</span><span class="n">field_triage_problem_history_tid</span> <span class="kn">from</span> <span class="nn">field_data_field_triage_problem_history</span> <span class="n">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_triage_user&#39;</span> <span class="n">order</span> <span class="n">by</span> <span class="n">delta</span> <span class="n">desc</span> <span class="n">LIMIT</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">ELSE</span>
+ <span class="p">(</span><span class="n">Select</span> <span class="n">name</span> <span class="kn">from</span> <span class="nn">taxonomy_term_data</span> <span class="n">where</span> <span class="n">tid</span> <span class="o">=</span>
+ <span class="p">(</span><span class="n">Select</span> <span class="n">field_data_field_triage_problem</span><span class="o">.</span><span class="n">field_triage_problem_tid</span> <span class="kn">from</span>
+  <span class="nn">field_data_field_triage_problem</span> <span class="n">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_triage_user&#39;</span> <span class="n">limit</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">END</span>
+<span class="k">as</span> <span class="n">legal_problem_name</span>
+<span class="kn">from</span> <span class="nn">oas_triage_user</span>
+<span class="n">where</span> <span class="n">oas_triage_user</span><span class="o">.</span><span class="n">uid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4486</span><span class="p">,</span> <span class="mi">4646</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="ow">and</span> <span class="n">oas_triage_user</span><span class="o">.</span><span class="n">created</span> <span class="o">&gt;</span> <span class="mi">1470064821</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="intake-settings">
+<h2>Intake Settings<a class="headerlink" href="#intake-settings" title="Permalink to this headline">¶</a></h2>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span> <span class="n">Select</span> <span class="n">title</span> <span class="k">as</span> <span class="n">service</span><span class="p">,</span>
+ <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">entity_id</span> <span class="k">as</span> <span class="n">service_id</span><span class="p">,</span>
+ <span class="n">intake_settings_id</span><span class="p">,</span>
+ <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+ <span class="n">allow_prisoners</span><span class="p">,</span>
+ <span class="n">apply_asset_limit</span><span class="p">,</span>
+ <span class="n">apply_income_limit</span><span class="p">,</span>
+ <span class="n">callback_number</span><span class="p">,</span>
+ <span class="n">callback_type</span><span class="p">,</span>
+ <span class="n">from_unixtime</span><span class="p">(</span><span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">changed</span><span class="p">)</span> <span class="k">as</span> <span class="s1">&#39;last_updated&#39;</span><span class="p">,</span>
+ <span class="n">collect_assets</span><span class="p">,</span>
+ <span class="n">collect_citizenship</span><span class="p">,</span>
+ <span class="n">collect_country</span><span class="p">,</span>
+ <span class="n">collect_language</span><span class="p">,</span>
+ <span class="n">collect_gender</span><span class="p">,</span>
+ <span class="n">collect_race</span><span class="p">,</span>
+ <span class="n">collect_ethnicity</span><span class="p">,</span>
+ <span class="n">collect_income</span><span class="p">,</span>
+ <span class="n">collect_assets</span><span class="p">,</span>
+ <span class="n">collect_expenses</span><span class="p">,</span>
+ <span class="n">collect_expenses_over_income</span><span class="p">,</span>
+ <span class="n">from_unixtime</span><span class="p">(</span><span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">created</span><span class="p">)</span> <span class="k">as</span> <span class="s1">&#39;created&#39;</span><span class="p">,</span>
+ <span class="n">enabled</span><span class="p">,</span>
+ <span class="n">intake_limit</span><span class="p">,</span>
+ <span class="n">maximum_allowed_income</span><span class="p">,</span>
+ <span class="n">maximum_allowed_assets</span><span class="p">,</span>
+ <span class="n">maximum_callbacks_per_slot</span><span class="p">,</span>
+ <span class="n">minimum_minor_age</span><span class="p">,</span>
+ <span class="n">minimum_senior_age</span><span class="p">,</span>
+ <span class="n">personal_exemption_amount</span><span class="p">,</span>
+ <span class="n">CASE</span>
+  <span class="n">WHEN</span> <span class="n">intake_limit</span> <span class="o">!=</span> <span class="mi">0</span> <span class="n">THEN</span>
+  <span class="n">CASE</span>
+    <span class="n">WHEN</span> <span class="n">reset_limit_frequency</span> <span class="o">=</span> <span class="mi">1</span> <span class="n">THEN</span> <span class="s1">&#39;per day&#39;</span>
+    <span class="n">WHEN</span> <span class="n">reset_limit_frequency</span> <span class="o">=</span> <span class="mi">7</span> <span class="n">THEN</span> <span class="s1">&#39;per week&#39;</span>
+    <span class="n">WHEN</span> <span class="n">reset_limit_frequency</span> <span class="o">=</span> <span class="mi">30</span> <span class="n">THEN</span> <span class="s1">&#39;per month&#39;</span>
+  <span class="n">END</span>
+  <span class="n">ELSE</span> <span class="s1">&#39;unlimited&#39;</span>
+<span class="n">END</span>
+<span class="k">as</span> <span class="n">reset_limit_frequency</span><span class="p">,</span>
+<span class="n">CASE</span>
+  <span class="n">WHEN</span> <span class="n">intake_settings_id</span> <span class="ow">in</span>
+   <span class="p">(</span><span class="n">Select</span> <span class="n">entity_id</span> <span class="kn">from</span> <span class="nn">field_data_field_statewide</span>
+   <span class="n">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_intake_settings&#39;</span>
+   <span class="ow">and</span> <span class="n">field_data_field_statewide</span><span class="o">.</span><span class="n">field_statewide_value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+   <span class="n">THEN</span> <span class="s1">&#39;statewide&#39;</span>
+  <span class="n">WHEN</span> <span class="n">intake_settings_id</span> <span class="ow">in</span>
+   <span class="p">(</span><span class="n">Select</span> <span class="n">entity_id</span> <span class="kn">from</span> <span class="nn">field_data_field_cities</span>
+    <span class="n">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_intake_settings&#39;</span><span class="p">)</span> <span class="n">THEN</span> <span class="s1">&#39;city-limited&#39;</span>
+  <span class="n">WHEN</span> <span class="n">intake_settings_id</span> <span class="ow">in</span>
+   <span class="p">(</span><span class="n">Select</span> <span class="n">entity_id</span> <span class="kn">from</span> <span class="nn">field_data_field_counties</span>
+   <span class="n">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_intake_settings&#39;</span><span class="p">)</span>
+   <span class="n">THEN</span> <span class="s1">&#39;county-limited&#39;</span>
+ <span class="n">ELSE</span> <span class="s1">&#39;localized&#39;</span>
+ <span class="n">END</span>
+<span class="k">as</span> <span class="n">geographic_reach</span><span class="p">,</span>
+<span class="n">ilao_oas_income_standard</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="s1">&#39;income_standard&#39;</span>
+<span class="kn">from</span> <span class="nn">oas_intake_settings</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">node</span> <span class="n">on</span>
+<span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">entity_id</span> <span class="o">=</span> <span class="n">nid</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">field_data_oas_income_standard</span> <span class="n">ON</span>
+<span class="n">field_data_oas_income_standard</span><span class="o">.</span><span class="n">entity_id</span> <span class="o">=</span> <span class="n">intake_settings_id</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">ilao_oas_income_standard</span> <span class="n">on</span>
+<span class="n">ilao_oas_income_standard</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span>
+<span class="n">field_data_oas_income_standard</span><span class="o">.</span><span class="n">oas_income_standard_target_id</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="financial-categories-per-intake-setting">
+<h2>Financial Categories per Intake Setting<a class="headerlink" href="#financial-categories-per-intake-setting" title="Permalink to this headline">¶</a></h2>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">field_data_oas_asset_categories</span><span class="o">.</span><span class="n">entity_id</span> <span class="k">as</span> <span class="n">intake_settings_id</span><span class="p">,</span>
+<span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">intake_settings_name</span><span class="p">,</span>
+<span class="n">oas_asset_categories_target_id</span> <span class="k">as</span> <span class="n">financial_id</span><span class="p">,</span>
+<span class="n">ilao_oas_financial_category</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">asset</span><span class="p">,</span>
+<span class="n">subcategory</span>
+<span class="n">FROM</span> <span class="n">field_data_oas_asset_categories</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">oas_intake_settings</span>
+<span class="n">on</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">intake_settings_id</span> <span class="o">=</span>
+ <span class="n">field_data_oas_asset_categories</span><span class="o">.</span><span class="n">entity_id</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">ilao_oas_financial_category</span>
+<span class="n">on</span> <span class="n">ilao_oas_financial_category</span><span class="o">.</span><span class="n">ilao_oas_financial_category_id</span> <span class="o">=</span>
+<span class="n">oas_asset_categories_target_id</span>
+<span class="n">order</span> <span class="n">by</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">intake_settings_id</span><span class="p">,</span> <span class="n">delta</span>
+</pre></div>
+</div>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">field_data_oas_income_categories</span><span class="o">.</span><span class="n">entity_id</span> <span class="k">as</span> <span class="n">intake_settings_id</span><span class="p">,</span>
+<span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">intake_settings_name</span><span class="p">,</span>
+<span class="n">oas_income_categories_target_id</span> <span class="k">as</span> <span class="n">financial_id</span><span class="p">,</span>
+<span class="n">ilao_oas_financial_category</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">income</span><span class="p">,</span>
+<span class="n">subcategory</span>
+<span class="n">FROM</span> <span class="n">field_data_oas_income_categories</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">oas_intake_settings</span>
+<span class="n">on</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">intake_settings_id</span> <span class="o">=</span>
+ <span class="n">field_data_oas_income_categories</span><span class="o">.</span><span class="n">entity_id</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">ilao_oas_financial_category</span>
+<span class="n">on</span> <span class="n">ilao_oas_financial_category</span><span class="o">.</span><span class="n">ilao_oas_financial_category_id</span> <span class="o">=</span>
+<span class="n">oas_income_categories_target_id</span>
+<span class="n">order</span> <span class="n">by</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">intake_settings_id</span><span class="p">,</span> <span class="n">delta</span>
+</pre></div>
+</div>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">field_data_oas_expense_categories</span><span class="o">.</span><span class="n">entity_id</span> <span class="k">as</span> <span class="n">intake_settings_id</span><span class="p">,</span>
+<span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">intake_settings_name</span><span class="p">,</span>
+<span class="n">oas_expense_categories_target_id</span> <span class="k">as</span> <span class="n">financial_id</span><span class="p">,</span>
+<span class="n">ilao_oas_financial_category</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">income</span><span class="p">,</span>
+<span class="n">subcategory</span>
+<span class="n">FROM</span> <span class="n">field_data_oas_expense_categories</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">oas_intake_settings</span>
+<span class="n">on</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">intake_settings_id</span> <span class="o">=</span>
+ <span class="n">field_data_oas_expense_categories</span><span class="o">.</span><span class="n">entity_id</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">ilao_oas_financial_category</span>
+<span class="n">on</span> <span class="n">ilao_oas_financial_category</span><span class="o">.</span><span class="n">ilao_oas_financial_category_id</span> <span class="o">=</span>
+<span class="n">oas_expense_categories_target_id</span>
+<span class="n">order</span> <span class="n">by</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">intake_settings_id</span><span class="p">,</span> <span class="n">delta</span>
 </pre></div>
 </div>
 </div>
@@ -314,7 +521,7 @@ WHERE  entity_type = &#39;oas_intake_settings&#39; AND  tid in
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="legal_information.html" class="btn btn-neutral float-right" title="Legal Information" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="otis_technical.html" class="btn btn-neutral float-right" title="OTIS Database Tables &amp; Relationships" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="otis_integration_legal_server_integration.html" class="btn btn-neutral" title="E-transfers with LegalServer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
