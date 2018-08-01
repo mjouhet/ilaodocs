@@ -92,28 +92,40 @@ Intake Settings
 
 Gets all intake settings by zip code when coded by city
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Returns all published intake settings and the associated zip codes.
 
 ..  code-block:: sql
 
-    SELECT tid, name, entity_id from field_data_field_cities 
-    inner join taxonomy_term_data
-    where entity_type = 'oas_intake_settings' and tid in
-    (SELECT tid from taxonomy_term_hierarchy
+   SELECT entity_id as intake_settings_id,
+   tid as term_id, 
+   name as zip_code
+   from field_data_field_cities
+   inner join taxonomy_term_data
+   where entity_type = 'oas_intake_settings' and tid in
+   (SELECT tid from taxonomy_term_hierarchy
      where parent = field_data_field_cities.field_cities_target_id)
+     and entity_id in (Select intake_settings_id
+                   from oas_intake_settings
+                   where enabled = 1)
 
 Gets all intake settings by zip code when coded to counties
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: sql
 
-   SELECT tid, name, entity_id
+   SELECT entity_id as intake_settings_id,
+   tid as term_id, 
+   name as zip_code
    FROM field_data_field_counties
-   INNER JOIN  taxonomy_term_data
+   INNER JOIN taxonomy_term_data
    WHERE  entity_type = 'oas_intake_settings' AND  tid in
-   (SELECT tid from taxonomy_term_hierarchy where parent in 
+   (SELECT tid from taxonomy_term_hierarchy where parent in
    (Select tid from taxonomy_term_hierarchy where parent in
    (Select tid from taxonomy_term_data
     where tid = field_data_field_counties.field_counties_target_id)))
+   and entity_id in (Select intake_settings_id
+                   from oas_intake_settings
+                   where enabled = 1)
 
 Gets all Illinois zip codes; use for statewide intake settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

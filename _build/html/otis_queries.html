@@ -300,24 +300,36 @@ and tid not in (SELECT parent from taxonomy_term_hierarchy)
 <h3>Intake Settings<a class="headerlink" href="#intake-settings" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="gets-all-intake-settings-by-zip-code-when-coded-by-city">
 <h4>Gets all intake settings by zip code when coded by city<a class="headerlink" href="#gets-all-intake-settings-by-zip-code-when-coded-by-city" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">tid</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">entity_id</span> <span class="k">from</span> <span class="n">field_data_field_cities</span>
+<p>Returns all published intake settings and the associated zip codes.</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">entity_id</span> <span class="k">as</span> <span class="n">intake_settings_id</span><span class="p">,</span>
+<span class="n">tid</span> <span class="k">as</span> <span class="n">term_id</span><span class="p">,</span>
+<span class="n">name</span> <span class="k">as</span> <span class="n">zip_code</span>
+<span class="k">from</span> <span class="n">field_data_field_cities</span>
 <span class="k">inner</span> <span class="k">join</span> <span class="n">taxonomy_term_data</span>
 <span class="k">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_intake_settings&#39;</span> <span class="k">and</span> <span class="n">tid</span> <span class="k">in</span>
 <span class="p">(</span><span class="k">SELECT</span> <span class="n">tid</span> <span class="k">from</span> <span class="n">taxonomy_term_hierarchy</span>
- <span class="k">where</span> <span class="n">parent</span> <span class="o">=</span> <span class="n">field_data_field_cities</span><span class="p">.</span><span class="n">field_cities_target_id</span><span class="p">)</span>
+  <span class="k">where</span> <span class="n">parent</span> <span class="o">=</span> <span class="n">field_data_field_cities</span><span class="p">.</span><span class="n">field_cities_target_id</span><span class="p">)</span>
+  <span class="k">and</span> <span class="n">entity_id</span> <span class="k">in</span> <span class="p">(</span><span class="k">Select</span> <span class="n">intake_settings_id</span>
+                <span class="k">from</span> <span class="n">oas_intake_settings</span>
+                <span class="k">where</span> <span class="n">enabled</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="gets-all-intake-settings-by-zip-code-when-coded-to-counties">
 <h4>Gets all intake settings by zip code when coded to counties<a class="headerlink" href="#gets-all-intake-settings-by-zip-code-when-coded-to-counties" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-sql"><div class="highlight"><pre><span></span>SELECT tid, name, entity_id
+<div class="highlight-sql"><div class="highlight"><pre><span></span>SELECT entity_id as intake_settings_id,
+tid as term_id,
+name as zip_code
 FROM field_data_field_counties
-INNER JOIN  taxonomy_term_data
+INNER JOIN taxonomy_term_data
 WHERE  entity_type = &#39;oas_intake_settings&#39; AND  tid in
 (SELECT tid from taxonomy_term_hierarchy where parent in
 (Select tid from taxonomy_term_hierarchy where parent in
 (Select tid from taxonomy_term_data
  where tid = field_data_field_counties.field_counties_target_id)))
+and entity_id in (Select intake_settings_id
+                from oas_intake_settings
+                where enabled = 1)
 </pre></div>
 </div>
 </div>
