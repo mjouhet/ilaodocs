@@ -250,7 +250,7 @@ Gets all Illinois zip codes; use for statewide services
    and taxonomy_term_data.vid = 76
 
 Services with online intake settings by geographic reach
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^drush^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: sql
 
