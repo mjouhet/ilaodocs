@@ -225,6 +225,18 @@ region.
 The `three queries <otis_queries.html#queries-for-geographic-reach>`_ under geographic reach can be used to generate the
 list of zip codes for services by geographic_reach.
 
++--------------------------+-----------------------------------------+
+|  Field                   |   Notes                                 |
++==========================+=========================================+
+|  intake_settings_id      | Intake settings id                      |
++--------------------------+-----------------------------------------+
+|  term_id                 | Term ID of the zip code                 |
++--------------------------+-----------------------------------------+
+|  zip_code                | Zip code                                |
++--------------------------+-----------------------------------------+
+
+
+
 Intake settings & legal issue
 ------------------------------
 The intake settings legal issue controls whether an intake setting applies to a given session.
