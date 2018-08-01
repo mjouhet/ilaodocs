@@ -92,8 +92,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#legal-issues-with-any-triage-rules">Legal issues with any triage rules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#legal-issues-with-published-triage-rules">Legal issues with published triage rules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#legal-issues-with-no-triage-rules-regardless-of-level">Legal issues with no triage rules, regardless of level</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#legal-issues-with-no-triage-rules-lowest-level-terms-only">Legal issues with no triage rules, lowest level terms only</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#queries-for-geographic-reach">Queries for Geographic Reach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#legal-issues-with-no-triage-rules-lowest-level-terms-only">Legal issues with no triage rules, lowest level terms only</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#queries-for-geographic-reach">Queries for Geographic Reach</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#intake-settings">Intake Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#services">Services</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#triage-user">Triage User</a><ul>
@@ -101,7 +103,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#triage-user-population">Triage user population</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#intake-settings">Intake Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Intake Settings</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#intake-settings-legal-issues">Intake settings &amp; Legal issues</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#financial-categories-per-intake-setting">Financial Categories per Intake Setting</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#intake-settings-waive-income-based-on-population">Intake settings: waive Income based on population</a></li>
@@ -117,6 +119,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#list-of-services-that-have-at-least-one-intake-settings">List of services that have at least one intake settings</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#list-of-services-with-limited-populations-served">List of services with limited populations served</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#list-of-services-with-lowest-level-legal-issues">List of services with lowest-level legal issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#services-by-geographic-coverage">Services by geographic coverage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#services-vs-intake-settings-geographic-coverage">Services vs intake settings geographic coverage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#services-by-eligibility-type">Services by eligibility type</a></li>
 </ul>
 </li>
 </ul>
@@ -288,8 +293,11 @@ AND vid = 61 and tid not in
 and tid not in (SELECT parent from taxonomy_term_hierarchy)
 </pre></div>
 </div>
+</div>
 <div class="section" id="queries-for-geographic-reach">
-<h3>Queries for Geographic Reach<a class="headerlink" href="#queries-for-geographic-reach" title="Permalink to this headline">¶</a></h3>
+<h2>Queries for Geographic Reach<a class="headerlink" href="#queries-for-geographic-reach" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="intake-settings">
+<h3>Intake Settings<a class="headerlink" href="#intake-settings" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="gets-all-intake-settings-by-zip-code-when-coded-by-city">
 <h4>Gets all intake settings by zip code when coded by city<a class="headerlink" href="#gets-all-intake-settings-by-zip-code-when-coded-by-city" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">tid</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">entity_id</span> <span class="k">from</span> <span class="n">field_data_field_cities</span>
@@ -337,6 +345,126 @@ WHERE  entity_type = &#39;oas_intake_settings&#39; AND  tid in
  <span class="k">ELSE</span> <span class="s1">&#39;localized&#39;</span>
 <span class="k">END</span>
 <span class="k">from</span> <span class="n">oas_intake_settings</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="services">
+<h3>Services<a class="headerlink" href="#services" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="gets-all-services-by-zip-code-when-coded-by-city">
+<h4>Gets all services by zip code when coded by city<a class="headerlink" href="#gets-all-services-by-zip-code-when-coded-by-city" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">nid</span><span class="p">,</span>
+<span class="n">node</span><span class="p">.</span><span class="n">title</span> <span class="k">as</span> <span class="n">service_title</span><span class="p">,</span>
+<span class="n">node</span><span class="p">.</span><span class="n">status</span><span class="p">,</span>
+<span class="n">tid</span> <span class="k">as</span> <span class="n">term_name</span><span class="p">,</span>
+<span class="n">name</span> <span class="k">as</span> <span class="n">zip_code</span>
+<span class="k">from</span> <span class="n">field_data_field_cities</span>
+<span class="k">inner</span> <span class="k">join</span> <span class="n">node</span> <span class="k">on</span> <span class="n">entity_id</span> <span class="o">=</span> <span class="n">nid</span>
+<span class="k">inner</span> <span class="k">join</span> <span class="n">taxonomy_term_data</span>
+<span class="k">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;node&#39;</span>
+<span class="k">and</span> <span class="n">bundle</span> <span class="o">=</span> <span class="s1">&#39;location_services&#39;</span>
+<span class="k">and</span> <span class="n">tid</span> <span class="k">in</span>
+<span class="p">(</span><span class="k">SELECT</span> <span class="n">tid</span> <span class="k">from</span> <span class="n">taxonomy_term_hierarchy</span>
+ <span class="k">where</span> <span class="n">parent</span> <span class="o">=</span> <span class="n">field_data_field_cities</span><span class="p">.</span><span class="n">field_cities_target_id</span><span class="p">)</span>
+<span class="k">and</span> <span class="n">nid</span> <span class="k">in</span> <span class="p">(</span><span class="k">Select</span> <span class="n">entity_id</span> <span class="k">from</span> <span class="n">oas_intake_settings</span><span class="p">)</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">nid</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h4>Gets all intake settings by zip code when coded to counties<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">nid</span><span class="p">,</span>
+<span class="n">node</span><span class="p">.</span><span class="n">title</span> <span class="k">as</span> <span class="n">service_title</span><span class="p">,</span>
+<span class="n">node</span><span class="p">.</span><span class="n">status</span><span class="p">,</span>
+<span class="n">tid</span> <span class="k">as</span> <span class="n">term_name</span><span class="p">,</span>
+<span class="n">name</span> <span class="k">as</span> <span class="n">zip_code</span>
+<span class="k">from</span> <span class="n">field_data_field_counties</span>
+<span class="k">inner</span> <span class="k">join</span> <span class="n">node</span> <span class="k">on</span> <span class="n">entity_id</span> <span class="o">=</span> <span class="n">nid</span>
+<span class="k">inner</span> <span class="k">join</span> <span class="n">taxonomy_term_data</span>
+<span class="k">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;node&#39;</span>
+<span class="k">and</span> <span class="n">bundle</span> <span class="o">=</span> <span class="s1">&#39;location_services&#39;</span>
+<span class="k">and</span> <span class="n">tid</span> <span class="k">in</span>
+<span class="p">(</span><span class="k">SELECT</span> <span class="n">tid</span> <span class="k">from</span> <span class="n">taxonomy_term_hierarchy</span> <span class="k">where</span> <span class="n">parent</span> <span class="k">in</span>
+<span class="p">(</span><span class="k">Select</span> <span class="n">tid</span> <span class="k">from</span> <span class="n">taxonomy_term_hierarchy</span> <span class="k">where</span> <span class="n">parent</span> <span class="k">in</span>
+<span class="p">(</span><span class="k">Select</span> <span class="n">tid</span> <span class="k">from</span> <span class="n">taxonomy_term_data</span>
+<span class="k">where</span> <span class="n">tid</span> <span class="o">=</span> <span class="n">field_data_field_counties</span><span class="p">.</span><span class="n">field_counties_target_id</span><span class="p">)))</span>
+<span class="k">and</span> <span class="n">nid</span> <span class="k">in</span> <span class="p">(</span><span class="k">Select</span> <span class="n">entity_id</span> <span class="k">from</span> <span class="n">oas_intake_settings</span><span class="p">)</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">nid</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gets-all-services-by-zip-code-when-coded-to-zip-code">
+<h4>Gets all services by zip code when coded to zip code<a class="headerlink" href="#gets-all-services-by-zip-code-when-coded-to-zip-code" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">nid</span><span class="p">,</span>
+<span class="n">node</span><span class="p">.</span><span class="n">title</span> <span class="k">as</span> <span class="n">service_title</span><span class="p">,</span>
+<span class="n">node</span><span class="p">.</span><span class="n">status</span><span class="p">,</span>
+<span class="n">tid</span> <span class="k">as</span> <span class="n">term_name</span><span class="p">,</span>
+<span class="n">name</span> <span class="k">as</span> <span class="n">zip_code</span>
+<span class="k">from</span> <span class="n">field_data_field_zipcodes</span>
+<span class="k">inner</span> <span class="k">join</span> <span class="n">node</span> <span class="k">on</span> <span class="n">entity_id</span> <span class="o">=</span> <span class="n">nid</span>
+<span class="k">inner</span> <span class="k">join</span> <span class="n">taxonomy_term_data</span>
+<span class="k">on</span> <span class="n">field_data_field_zipcodes</span><span class="p">.</span><span class="n">field_zipcodes_target_id</span> <span class="o">=</span> <span class="n">tid</span>
+<span class="k">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;node&#39;</span>
+<span class="k">and</span> <span class="n">bundle</span> <span class="o">=</span> <span class="s1">&#39;location_services&#39;</span>
+<span class="k">and</span> <span class="n">nid</span> <span class="k">in</span> <span class="p">(</span><span class="k">Select</span> <span class="n">entity_id</span> <span class="k">from</span> <span class="n">oas_intake_settings</span><span class="p">)</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">nid</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gets-all-services-by-zip-code-when-statewide">
+<h4>Gets all services by zip code when statewide<a class="headerlink" href="#gets-all-services-by-zip-code-when-statewide" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span>  <span class="n">nid</span><span class="p">,</span>
+<span class="n">node</span><span class="p">.</span><span class="n">title</span> <span class="k">as</span> <span class="n">service_title</span><span class="p">,</span>
+<span class="n">node</span><span class="p">.</span><span class="n">status</span><span class="p">,</span>
+<span class="n">tid</span> <span class="k">as</span> <span class="n">term_name</span><span class="p">,</span>
+<span class="n">name</span> <span class="k">as</span> <span class="n">zip_code</span>
+<span class="k">from</span> <span class="n">field_data_field_zipcodes</span>
+<span class="k">inner</span> <span class="k">join</span> <span class="n">node</span> <span class="k">on</span> <span class="n">entity_id</span> <span class="o">=</span> <span class="n">nid</span>
+<span class="k">inner</span> <span class="k">join</span> <span class="n">taxonomy_term_data</span>
+<span class="k">on</span> <span class="n">field_data_field_zipcodes</span><span class="p">.</span><span class="n">field_zipcodes_target_id</span> <span class="o">=</span> <span class="n">tid</span>
+<span class="k">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;node&#39;</span>
+<span class="k">and</span> <span class="n">bundle</span> <span class="o">=</span> <span class="s1">&#39;location_services&#39;</span>
+<span class="k">and</span> <span class="n">nid</span> <span class="k">in</span> <span class="p">(</span><span class="k">Select</span> <span class="n">entity_id</span> <span class="k">from</span> <span class="n">oas_intake_settings</span><span class="p">)</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">nid</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gets-all-illinois-zip-codes-use-for-statewide-services">
+<h4>Gets all Illinois zip codes; use for statewide services<a class="headerlink" href="#gets-all-illinois-zip-codes-use-for-statewide-services" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">Select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">taxonomy_term_hierarchy</span>
+<span class="k">inner</span> <span class="k">join</span> <span class="n">taxonomy_term_data</span>
+<span class="k">on</span> <span class="n">taxonomy_term_data</span><span class="p">.</span><span class="n">tid</span> <span class="o">=</span> <span class="n">taxonomy_term_hierarchy</span><span class="p">.</span><span class="n">tid</span>
+<span class="k">WHERE</span> <span class="n">parent</span> <span class="k">in</span>
+<span class="p">(</span><span class="k">select</span> <span class="n">tid</span> <span class="k">from</span> <span class="n">taxonomy_term_hierarchy</span>
+   <span class="k">where</span> <span class="n">parent</span> <span class="k">in</span>
+   <span class="p">(</span><span class="k">select</span> <span class="n">tid</span> <span class="k">from</span> <span class="n">taxonomy_term_hierarchy</span> <span class="k">where</span> <span class="n">parent</span> <span class="o">=</span>
+   <span class="p">(</span><span class="k">Select</span> <span class="n">tid</span> <span class="k">from</span> <span class="n">taxonomy_term_data</span> <span class="k">where</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Illinois&#39;</span><span class="p">)))</span>
+<span class="k">and</span> <span class="n">taxonomy_term_data</span><span class="p">.</span><span class="n">vid</span> <span class="o">=</span> <span class="mi">76</span>
+</pre></div>
+</div>
+<p>Services with online intake settings by geographic reach
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^drush^^^^</p>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">nid</span><span class="p">,</span>
+<span class="n">title</span> <span class="k">as</span> <span class="n">service_name</span><span class="p">,</span>
+<span class="n">status</span><span class="p">,</span>
+<span class="k">CASE</span>
+ <span class="k">WHEN</span> <span class="n">nid</span> <span class="k">in</span> <span class="p">(</span><span class="k">Select</span> <span class="n">entity_id</span> <span class="k">from</span> <span class="n">field_data_field_statewide</span>
+   <span class="k">where</span> <span class="n">bundle</span> <span class="o">=</span> <span class="s1">&#39;location_services&#39;</span>
+   <span class="k">and</span> <span class="n">field_data_field_statewide</span><span class="p">.</span><span class="n">field_statewide_value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+   <span class="k">THEN</span> <span class="s1">&#39;statewide&#39;</span>
+ <span class="k">WHEN</span> <span class="n">nid</span> <span class="k">in</span> <span class="p">(</span><span class="k">Select</span> <span class="n">entity_id</span> <span class="k">from</span> <span class="n">field_data_field_cities</span>
+  <span class="k">where</span> <span class="n">bundle</span> <span class="o">=</span> <span class="s1">&#39;location_services&#39;</span><span class="p">)</span>
+  <span class="k">THEN</span> <span class="s1">&#39;city-limited&#39;</span>
+ <span class="k">WHEN</span> <span class="n">nid</span> <span class="k">in</span> <span class="p">(</span><span class="k">Select</span> <span class="n">entity_id</span> <span class="k">from</span> <span class="n">field_data_field_counties</span>
+ <span class="k">where</span> <span class="n">bundle</span> <span class="o">=</span> <span class="s1">&#39;location_services&#39;</span><span class="p">)</span>
+ <span class="k">THEN</span> <span class="s1">&#39;county-limited&#39;</span>
+<span class="k">ELSE</span> <span class="s1">&#39;zip-codes&#39;</span>
+<span class="k">END</span>
+<span class="k">as</span> <span class="n">geography</span>
+<span class="k">from</span> <span class="n">node</span>
+<span class="k">where</span> <span class="k">type</span> <span class="o">=</span> <span class="s1">&#39;location_services&#39;</span>
+<span class="k">and</span> <span class="n">nid</span> <span class="k">in</span> <span class="p">(</span><span class="k">Select</span> <span class="n">entity_id</span> <span class="k">from</span> <span class="n">oas_intake_settings</span><span class="p">)</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="n">nid</span>
 </pre></div>
 </div>
 </div>
@@ -421,8 +549,8 @@ WHERE  entity_type = &#39;oas_intake_settings&#39; AND  tid in
 </div>
 </div>
 </div>
-<div class="section" id="intake-settings">
-<h2>Intake Settings<a class="headerlink" href="#intake-settings" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2>Intake Settings<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="code sql highlight-default"><div class="highlight"><pre><span></span> <span class="n">Select</span> <span class="n">title</span> <span class="k">as</span> <span class="n">service</span><span class="p">,</span>
  <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">entity_id</span> <span class="k">as</span> <span class="n">service_id</span><span class="p">,</span>
  <span class="n">intake_settings_id</span><span class="p">,</span>
@@ -660,6 +788,7 @@ WHERE  entity_type = &#39;oas_intake_settings&#39; AND  tid in
 <h3>List of services with limited populations served<a class="headerlink" href="#list-of-services-with-limited-populations-served" title="Permalink to this headline">¶</a></h3>
 <div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">Select</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span> <span class="k">as</span> <span class="n">service_id</span><span class="p">,</span>
 <span class="n">node</span><span class="o">.</span><span class="n">title</span> <span class="k">as</span> <span class="n">service_title</span><span class="p">,</span>
+<span class="n">status</span><span class="p">,</span>
 <span class="n">field_data_field_limited_populations</span><span class="o">.</span><span class="n">field_limited_populations_tid</span> <span class="k">as</span> <span class="n">term_id</span><span class="p">,</span>
 <span class="n">name</span> <span class="k">as</span> <span class="n">population</span>
 <span class="kn">from</span> <span class="nn">node</span>
@@ -691,6 +820,49 @@ WHERE  entity_type = &#39;oas_intake_settings&#39; AND  tid in
 <span class="ow">and</span> <span class="n">bundle</span> <span class="o">=</span> <span class="s1">&#39;location_services&#39;</span>
  <span class="ow">and</span> <span class="n">tid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Select</span> <span class="n">parent</span> <span class="kn">from</span> <span class="nn">taxonomy_term_hierarchy</span>
                <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="services-by-geographic-coverage">
+<h3>Services by geographic coverage<a class="headerlink" href="#services-by-geographic-coverage" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="services-vs-intake-settings-geographic-coverage">
+<h3>Services vs intake settings geographic coverage<a class="headerlink" href="#services-vs-intake-settings-geographic-coverage" title="Permalink to this headline">¶</a></h3>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">Select</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">intake_settings</span><span class="p">,</span>
+<span class="n">field_data_field_same_service_area_as_locat</span><span class="o">.</span><span class="n">entity_id</span> <span class="k">as</span> <span class="n">intake_settings_id</span><span class="p">,</span>
+<span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">enabled</span> <span class="k">as</span> <span class="n">status</span><span class="p">,</span>
+<span class="n">field_data_field_same_service_area_as_locat</span><span class="o">.</span><span class="n">field_same_service_area_as_locat_value</span>
+ <span class="k">as</span> <span class="n">has_same_geographic_area</span><span class="p">,</span>
+<span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">entity_id</span> <span class="k">as</span> <span class="n">service_id</span><span class="p">,</span>
+<span class="n">node</span><span class="o">.</span><span class="n">title</span> <span class="k">as</span> <span class="n">service_name</span><span class="p">,</span>
+<span class="n">node</span><span class="o">.</span><span class="n">status</span> <span class="k">as</span> <span class="n">service_status</span>
+<span class="kn">from</span> <span class="nn">field_data_field_same_service_area_as_locat</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">oas_intake_settings</span>
+<span class="n">on</span> <span class="n">intake_settings_id</span> <span class="o">=</span> <span class="n">field_data_field_same_service_area_as_locat</span><span class="o">.</span><span class="n">entity_id</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">node</span>
+<span class="n">on</span> <span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">entity_id</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span>
+<span class="n">where</span> <span class="n">field_data_field_same_service_area_as_locat</span><span class="o">.</span><span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_intake_settings&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="services-by-eligibility-type">
+<h3>Services by eligibility type<a class="headerlink" href="#services-by-eligibility-type" title="Permalink to this headline">¶</a></h3>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span> <span class="n">Select</span> <span class="n">entity_id</span> <span class="k">as</span> <span class="n">service_id</span> <span class="p">,</span> <span class="n">title</span> <span class="k">as</span> <span class="n">service_name</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span>
+ <span class="n">CASE</span>
+  <span class="n">WHEN</span> <span class="n">field_service_eligibility_value</span> <span class="o">=</span> <span class="mi">1</span>
+   <span class="n">THEN</span> <span class="s1">&#39;Free to everyone&#39;</span>
+  <span class="n">WHEN</span> <span class="n">field_service_eligibility_value</span> <span class="o">=</span> <span class="mi">2</span>
+   <span class="n">THEN</span> <span class="s1">&#39;Free to eligible persons&#39;</span>
+  <span class="n">WHEN</span> <span class="n">field_service_eligibility_value</span> <span class="o">=</span> <span class="mi">3</span>
+   <span class="n">THEN</span> <span class="s1">&#39;Sliding scale&#39;</span>
+  <span class="n">WHEN</span> <span class="n">field_service_eligibility_value</span> <span class="o">=</span> <span class="mi">4</span>
+   <span class="n">THEN</span> <span class="s1">&#39;Flat fee&#39;</span>
+<span class="n">END</span>
+<span class="k">as</span> <span class="n">income_eligibility</span>
+<span class="kn">from</span> <span class="nn">field_data_field_service_eligibility</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">node</span> <span class="n">on</span> <span class="n">entity_id</span> <span class="o">=</span> <span class="n">nid</span>
+<span class="n">where</span> <span class="n">bundle</span> <span class="o">=</span> <span class="s1">&#39;location_services&#39;</span>
+<span class="ow">and</span> <span class="n">nid</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Select</span> <span class="n">entity_id</span> <span class="kn">from</span> <span class="nn">oas_intake_settings</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

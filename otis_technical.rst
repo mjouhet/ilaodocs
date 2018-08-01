@@ -421,8 +421,8 @@ List of services limited to specific populations
 
 
 
-List of services with legal issues
------------------------------------
+List of services with their legal issues
+-----------------------------------------
 
 +--------------------------+-----------------------------------------+
 |  Field                   |   Notes                                 |
@@ -440,6 +440,81 @@ List of services with legal issues
 |  legal_issue             | Name of the legal issue                 |
 +--------------------------+-----------------------------------------+
 
+
+Services by geographic coverage
+---------------------------------
+Services by geographic coverage require running multiple queries since
+that data can be stored at the state, county, city or zip level.
+
+The format for all of this data is the same:
+
++--------------------------+-----------------------------------------+
+|  Field                   |   Notes                                 |
++==========================+=========================================+
+|  nid                     | Node ID of the service                  |
++--------------------------+-----------------------------------------+
+|  service_title           | Name of the service                     |
++--------------------------+-----------------------------------------+
+|  status                  | Status of the service                   |
+|                          | 0 = unpublished                         |
+|                          | 1 = published                           |
++--------------------------+-----------------------------------------+
+|  term_id                 | Term id of the zip code                 |
++--------------------------+-----------------------------------------+
+|  zip_code                | Zip code                                |
++--------------------------+-----------------------------------------+
+
+
+
+
+Services vs intake settings geographic coverage
+------------------------------------------------
+
+
++--------------------------+-----------------------------------------+
+|  Field                   |   Notes                                 |
++==========================+=========================================+
+|  intake_settings         | Name of the intake settings             |
++--------------------------+-----------------------------------------+
+| intake_settings_id       | ID of the intake settings               |
++--------------------------+-----------------------------------------+
+|  status                  | Status of the intake_settings           |
+|                          | 0 = unpublished                         |
+|                          | 1 = published                           |
++--------------------------+-----------------------------------------+
+|  has_same_geographic     | Does the intake settings use the same   |
+|  _area                   | geographic region as service?           |
++--------------------------+-----------------------------------------+
+|  service_id              | Node ID of the service                  |
++--------------------------+-----------------------------------------+
+| service_name             | Name of the service                     |
++--------------------------+-----------------------------------------+
+| service_status           | Status of the service                   |
+|                          | 0 = unpublished                         |
+|                          | 1 = published                           |
++--------------------------+-----------------------------------------+
+
+Services by fees
+------------------------
+
++--------------------------+-----------------------------------------+
+|  Field                   |   Notes                                 |
++==========================+=========================================+
+|  service_id              | Node ID of the service                  |
++--------------------------+-----------------------------------------+
+| service_name             | Name of the service                     |
++--------------------------+-----------------------------------------+
+| statys                   | Status of the service                   |
+|                          | 0 = unpublished                         |
+|                          | 1 = published                           |
++--------------------------+-----------------------------------------+
+| income_eligibility       | Free to everyone                        |
+|                          | Free to eligible persons                |
+|                          | Sliding scale                           |
+|                          | Flat free                               |
++--------------------------+-----------------------------------------+
+
+Free to everyone and free to eligible persons take priority over sliding scale and flat fees.
 
 
 

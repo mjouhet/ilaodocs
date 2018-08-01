@@ -85,6 +85,9 @@ The tid not in clause excludes terms under About Lawyers, Courts & Hearings, and
    and tid not in (SELECT parent from taxonomy_term_hierarchy)
    
 Queries for Geographic Reach
+=============================
+
+Intake Settings
 -------------------------------   
 
 Gets all intake settings by zip code when coded by city
@@ -141,6 +144,139 @@ Intake settings by geographic reach
    ELSE 'localized'
   END  
   from oas_intake_settings
+  
+Services
+---------
+
+Gets all services by zip code when coded by city
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  code-block:: sql
+
+    SELECT  nid,
+    node.title as service_title, 
+    node.status, 
+    tid as term_name, 
+    name as zip_code
+    from field_data_field_cities
+    inner join node on entity_id = nid
+    inner join taxonomy_term_data
+    where entity_type = 'node'
+    and bundle = 'location_services'
+    and tid in
+    (SELECT tid from taxonomy_term_hierarchy
+     where parent = field_data_field_cities.field_cities_target_id)
+    and nid in (Select entity_id from oas_intake_settings) 
+    order by nid 
+
+Gets all intake settings by zip code when coded to counties
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: sql
+
+   SELECT  nid,
+   node.title as service_title, 
+   node.status, 
+   tid as term_name, 
+   name as zip_code
+   from field_data_field_counties
+   inner join node on entity_id = nid
+   inner join taxonomy_term_data
+   where entity_type = 'node'
+   and bundle = 'location_services'
+   and tid in
+   (SELECT tid from taxonomy_term_hierarchy where parent in
+   (Select tid from taxonomy_term_hierarchy where parent in
+   (Select tid from taxonomy_term_data
+   where tid = field_data_field_counties.field_counties_target_id)))
+   and nid in (Select entity_id from oas_intake_settings)
+   order by nid 
+   
+Gets all services by zip code when coded to zip code
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: sql
+
+   SELECT  nid,
+   node.title as service_title, 
+   node.status, 
+   tid as term_name, 
+   name as zip_code
+   from field_data_field_zipcodes
+   inner join node on entity_id = nid
+   inner join taxonomy_term_data
+   on field_data_field_zipcodes.field_zipcodes_target_id = tid
+   where entity_type = 'node'
+   and bundle = 'location_services'
+   and nid in (Select entity_id from oas_intake_settings)
+   order by nid 
+     
+Gets all services by zip code when statewide
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: sql
+
+   SELECT  nid,
+   node.title as service_title, 
+   node.status, 
+   tid as term_name, 
+   name as zip_code
+   from field_data_field_zipcodes
+   inner join node on entity_id = nid
+   inner join taxonomy_term_data
+   on field_data_field_zipcodes.field_zipcodes_target_id = tid
+   where entity_type = 'node'
+   and bundle = 'location_services'
+   and nid in (Select entity_id from oas_intake_settings)
+   order by nid 
+     
+           
+     
+
+Gets all Illinois zip codes; use for statewide services
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+.. code-block:: sql
+
+   Select * from taxonomy_term_hierarchy 
+   inner join taxonomy_term_data
+   on taxonomy_term_data.tid = taxonomy_term_hierarchy.tid
+   WHERE parent in
+   (select tid from taxonomy_term_hierarchy
+      where parent in
+      (select tid from taxonomy_term_hierarchy where parent =
+      (Select tid from taxonomy_term_data where name = 'Illinois')))
+   and taxonomy_term_data.vid = 76
+
+Services with online intake settings by geographic reach
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^drush^^^^
+
+.. code-block:: sql
+
+   SELECT nid,
+   title as service_name,
+   status,
+   CASE
+    WHEN nid in (Select entity_id from field_data_field_statewide 
+      where bundle = 'location_services' 
+      and field_data_field_statewide.field_statewide_value = 1) 
+      THEN 'statewide'
+    WHEN nid in (Select entity_id from field_data_field_cities
+     where bundle = 'location_services') 
+     THEN 'city-limited'
+    WHEN nid in (Select entity_id from field_data_field_counties 
+    where bundle = 'location_services') 
+    THEN 'county-limited'
+   ELSE 'zip-codes'
+   END
+   as geography
+   from node
+   where type = 'location_services'
+   and nid in (Select entity_id from oas_intake_settings)
+   ORDER BY nid
+
+  
 
 Triage User 
 ================
@@ -480,6 +616,7 @@ List of services with limited populations served
    
    Select node.nid as service_id,
    node.title as service_title,
+   status,
    field_data_field_limited_populations.field_limited_populations_tid as term_id,
    name as population
    from node 
@@ -514,7 +651,51 @@ We use only the lowest level since that's what users are forced to drill down to
     and tid not in (Select parent from taxonomy_term_hierarchy
                   )
    
-     
+Services by geographic coverage
+---------------------------------
+
+
+Services vs intake settings geographic coverage
+------------------------------------------------
+
+.. code:: sql
+
+   Select oas_intake_settings.name as intake_settings, 
+   field_data_field_same_service_area_as_locat.entity_id as intake_settings_id, 
+   oas_intake_settings.enabled as status, 
+   field_data_field_same_service_area_as_locat.field_same_service_area_as_locat_value 
+    as has_same_geographic_area, 
+   oas_intake_settings.entity_id as service_id, 
+   node.title as service_name, 
+   node.status as service_status 
+   from field_data_field_same_service_area_as_locat 
+   inner join oas_intake_settings 
+   on intake_settings_id = field_data_field_same_service_area_as_locat.entity_id 
+   inner join node 
+   on oas_intake_settings.entity_id = node.nid 
+   where field_data_field_same_service_area_as_locat.entity_type = 'oas_intake_settings'
+
+Services by eligibility type
+-----------------------------
+
+.. code:: sql
+
+   Select entity_id as service_id , title as service_name, status,
+   CASE
+    WHEN field_service_eligibility_value = 1
+     THEN 'Free to everyone'
+    WHEN field_service_eligibility_value = 2
+     THEN 'Free to eligible persons'
+    WHEN field_service_eligibility_value = 3
+     THEN 'Sliding scale'
+    WHEN field_service_eligibility_value = 4
+     THEN 'Flat fee'
+  END
+  as income_eligibility
+  from field_data_field_service_eligibility
+  inner join node on entity_id = nid
+  where bundle = 'location_services'
+  and nid in (Select entity_id from oas_intake_settings)     
    
    
 

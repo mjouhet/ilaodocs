@@ -113,7 +113,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#location-services">Location Services</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#list-of-services-with-their-location-and-organization">List of services with their location and organization</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#list-of-services-limited-to-specific-populations">List of services limited to specific populations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#list-of-services-with-legal-issues">List of services with legal issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#list-of-services-with-their-legal-issues">List of services with their legal issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#services-by-geographic-coverage">Services by geographic coverage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#services-vs-intake-settings-geographic-coverage">Services vs intake settings geographic coverage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#services-by-fees">Services by fees</a></li>
 </ul>
 </li>
 </ul>
@@ -836,8 +839,8 @@ organization.</p>
 </tbody>
 </table>
 </div>
-<div class="section" id="list-of-services-with-legal-issues">
-<h3>List of services with legal issues<a class="headerlink" href="#list-of-services-with-legal-issues" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="list-of-services-with-their-legal-issues">
+<h3>List of services with their legal issues<a class="headerlink" href="#list-of-services-with-their-legal-issues" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="39%" />
@@ -868,6 +871,119 @@ organization.</p>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="services-by-geographic-coverage">
+<h3>Services by geographic coverage<a class="headerlink" href="#services-by-geographic-coverage" title="Permalink to this headline">¶</a></h3>
+<p>Services by geographic coverage require running multiple queries since
+that data can be stored at the state, county, city or zip level.</p>
+<p>The format for all of this data is the same:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>nid</td>
+<td>Node ID of the service</td>
+</tr>
+<tr class="row-odd"><td>service_title</td>
+<td>Name of the service</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>Status of the service
+0 = unpublished
+1 = published</td>
+</tr>
+<tr class="row-odd"><td>term_id</td>
+<td>Term id of the zip code</td>
+</tr>
+<tr class="row-even"><td>zip_code</td>
+<td>Zip code</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="services-vs-intake-settings-geographic-coverage">
+<h3>Services vs intake settings geographic coverage<a class="headerlink" href="#services-vs-intake-settings-geographic-coverage" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>intake_settings</td>
+<td>Name of the intake settings</td>
+</tr>
+<tr class="row-odd"><td>intake_settings_id</td>
+<td>ID of the intake settings</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>Status of the intake_settings
+0 = unpublished
+1 = published</td>
+</tr>
+<tr class="row-odd"><td>has_same_geographic
+_area</td>
+<td>Does the intake settings use the same
+geographic region as service?</td>
+</tr>
+<tr class="row-even"><td>service_id</td>
+<td>Node ID of the service</td>
+</tr>
+<tr class="row-odd"><td>service_name</td>
+<td>Name of the service</td>
+</tr>
+<tr class="row-even"><td>service_status</td>
+<td>Status of the service
+0 = unpublished
+1 = published</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="services-by-fees">
+<h3>Services by fees<a class="headerlink" href="#services-by-fees" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>service_id</td>
+<td>Node ID of the service</td>
+</tr>
+<tr class="row-odd"><td>service_name</td>
+<td>Name of the service</td>
+</tr>
+<tr class="row-even"><td>statys</td>
+<td>Status of the service
+0 = unpublished
+1 = published</td>
+</tr>
+<tr class="row-odd"><td>income_eligibility</td>
+<td>Free to everyone
+Free to eligible persons
+Sliding scale
+Flat free</td>
+</tr>
+</tbody>
+</table>
+<p>Free to everyone and free to eligible persons take priority over sliding scale and flat fees.</p>
 </div>
 </div>
 </div>
