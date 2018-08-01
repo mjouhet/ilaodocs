@@ -157,7 +157,7 @@ All Yes/No values are stored as 0 (No) or 1 (Yes).
 +--------------------------+-----------------------------------------+
 |  allow_prisoners         | Yes/No if people in jail can apply      |
 +--------------------------+-----------------------------------------+
-|  apply_asset_limit       | Yes/No                                  |
+|  apply_asset_limit       | Yes/No.  Currently unused.              |
 +--------------------------+-----------------------------------------+
 |  apply_income_limit      | Yes/No                                  |
 +--------------------------+-----------------------------------------+
@@ -194,6 +194,7 @@ All Yes/No values are stored as 0 (No) or 1 (Yes).
 |  maximum_allowed_income  | Maximum percent of allowed income       |
 +--------------------------+-----------------------------------------+
 |  maximum_allowed_assets  | Dollar amount of allowed assets         |
+|                          | 0 is treated as unlimited               |
 +--------------------------+-----------------------------------------+
 |  maximum_callbacks       | Maximum number of callbacks that can be |
 |  _per_slot               | scheduled for a particular hour slot    |
@@ -381,6 +382,79 @@ With associated legal issues
 |  legal_issue             | Name of the legal issue                 |
 +--------------------------+-----------------------------------------+
 
+Webform components
+----------------------
+
+Webform components are the individual questions, etc asked or shown in a set of triage rules.
+
+
++--------------------------+-----------------------------------------+
+|  Field                   |   Notes                                 |
++==========================+=========================================+
+|  triage_rules_id         | Node ID of the triage rules             |
++--------------------------+-----------------------------------------+
+|  component_id            | Unique id for the component on a        |
+|                          | specific webform.  Generally sequential |
++--------------------------+-----------------------------------------+
+|  form_key                | Key as stored by webform                |
++--------------------------+-----------------------------------------+
+|  name                    | Administrative label; also displayed to |
+|                          | to users when a question                |
++--------------------------+-----------------------------------------+
+|  type                    | The type of form element.  See below    |
++--------------------------+-----------------------------------------+
+|  value                   | For markup, the text to display         |
+|                          | For hidden elements, the value to save  |
++--------------------------+-----------------------------------------+
+|  status                  | Whether the triage rules is published   |
++--------------------------+-----------------------------------------+
+
+Triage form element types
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+ * hidden:  these do not display to users. 
+   * End point defines the exit point (intake, divert, bypass)
+   * Notes is used to store text that gets appended to case notes in an etransfer
+   
+* Select: radio select question; user must pick an option
+* textfield: text input; user enters some text.
+* yesno: radio question with only a Yes/No option
+* markup: displays a message to the user without a question
+* date: date field
+
+Webform conditionals
+---------------------
+Webform conditionals allow us to add branching logic to triage rules' components.
+
+For example, if I create a yesno component "Are you married?" and another component
+"end point" of type hidden, I might have a conditional like:
+
+ * When [are you married] equals 1 (value), set end point (action) to Divert (argument).
+ * When [are you married] equals 0 (value), set end point (action) to Intake  (argument).
+ 
++--------------------------+-----------------------------------------+
+|  Field                   |   Notes                                 |
++==========================+=========================================+
+|  nid                     | Node ID of the triage rules             |
++--------------------------+-----------------------------------------+
+|  rgid                    | Unique id for the conditional rule group|
++--------------------------+-----------------------------------------+
+|  rid                     | Unique id for the rule                  |
++--------------------------+-----------------------------------------+
+|  source_type             | This is always "component"              |
++--------------------------+-----------------------------------------+
+|  source                  | The component number                    |
++--------------------------+-----------------------------------------+
+|  operator                | Operator for the rule.  Example         |
+|                          | [component] equals [value], equals is   |
+|                          | the operator                            |
++--------------------------+-----------------------------------------+
+|  value                   | Value to evaluate condition for         |
++--------------------------+-----------------------------------------+
+|  action                  | Action to take.                         |
++--------------------------+-----------------------------------------+
+|  argument                | The value for the action                |
++--------------------------+-----------------------------------------+
 
 Location Services
 ==================    

@@ -113,6 +113,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#list-of-triage-rules">List of triage rules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#triage-rules-with-associated-services">Triage rules with associated services</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#triage-rules-with-associated-legal-issues">Triage rules with associated legal issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#triage-rules-webform-components">Triage rules webform components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#triage-rules-webform-conditionals">Triage rules webform conditionals</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#services-with-online-intake">Services with Online Intake</a><ul>
@@ -317,19 +319,18 @@ and tid not in (SELECT parent from taxonomy_term_hierarchy)
 </div>
 <div class="section" id="gets-all-intake-settings-by-zip-code-when-coded-to-counties">
 <h4>Gets all intake settings by zip code when coded to counties<a class="headerlink" href="#gets-all-intake-settings-by-zip-code-when-coded-to-counties" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-sql"><div class="highlight"><pre><span></span>SELECT entity_id as intake_settings_id,
-tid as term_id,
-name as zip_code
-FROM field_data_field_counties
-INNER JOIN taxonomy_term_data
-WHERE  entity_type = &#39;oas_intake_settings&#39; AND  tid in
-(SELECT tid from taxonomy_term_hierarchy where parent in
-(Select tid from taxonomy_term_hierarchy where parent in
-(Select tid from taxonomy_term_data
- where tid = field_data_field_counties.field_counties_target_id)))
-and entity_id in (Select intake_settings_id
-                from oas_intake_settings
-                where enabled = 1)
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">entity_id</span> <span class="k">as</span> <span class="n">intake_settings_id</span><span class="p">,</span>
+<span class="n">tid</span> <span class="k">as</span> <span class="n">term_id</span><span class="p">,</span>
+<span class="n">name</span> <span class="k">as</span> <span class="n">zip_code</span>
+<span class="k">from</span> <span class="n">field_data_field_counties</span>
+<span class="k">inner</span> <span class="k">join</span> <span class="n">taxonomy_term_data</span>
+<span class="k">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_intake_settings&#39;</span> <span class="k">and</span> <span class="n">tid</span> <span class="k">in</span>
+<span class="p">(</span><span class="k">SELECT</span> <span class="n">tid</span> <span class="k">from</span> <span class="n">taxonomy_term_hierarchy</span> <span class="k">where</span> <span class="n">parent</span> <span class="k">in</span> <span class="p">(</span>
+<span class="k">Select</span> <span class="n">tid</span> <span class="k">from</span> <span class="n">taxonomy_term_hierarchy</span> <span class="k">where</span> <span class="n">parent</span> <span class="k">in</span> <span class="p">(</span><span class="k">Select</span> <span class="n">tid</span>
+<span class="k">from</span> <span class="n">taxonomy_term_data</span> <span class="k">where</span> <span class="n">tid</span> <span class="o">=</span> <span class="n">field_data_field_counties</span><span class="p">.</span><span class="n">field_counties_target_id</span><span class="p">)))</span>
+  <span class="k">and</span> <span class="n">entity_id</span> <span class="k">in</span> <span class="p">(</span><span class="k">Select</span> <span class="n">intake_settings_id</span>
+                <span class="k">from</span> <span class="n">oas_intake_settings</span>
+                <span class="k">where</span> <span class="n">enabled</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -708,12 +709,14 @@ and entity_id in (Select intake_settings_id
 </div>
 <div class="section" id="intake-settings-waive-income-based-on-population">
 <h3>Intake settings: waive Income based on population<a class="headerlink" href="#intake-settings-waive-income-based-on-population" title="Permalink to this headline">¶</a></h3>
-<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">entity_id</span> <span class="k">as</span> <span class="n">intake_settings_id</span><span class="p">,</span>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">field_data_oas_income_exempt</span><span class="o">.</span><span class="n">entity_id</span> <span class="k">as</span> <span class="n">intake_settings_id</span><span class="p">,</span>
 <span class="n">oas_income_exempt_tid</span> <span class="k">as</span> <span class="n">term_id</span><span class="p">,</span>
-<span class="n">name</span> <span class="k">as</span> <span class="n">population</span>
+<span class="n">taxonomy_term_data</span><span class="o">.</span><span class="n">name</span> <span class="k">as</span> <span class="n">population</span><span class="p">,</span>
+<span class="n">oas_intake_settings</span><span class="o">.</span><span class="n">enabled</span> <span class="k">as</span> <span class="n">status</span>
 <span class="kn">from</span> <span class="nn">field_data_oas_income_exempt</span>
 <span class="n">inner</span> <span class="n">join</span> <span class="n">taxonomy_term_data</span> <span class="n">on</span> <span class="n">tid</span> <span class="o">=</span> <span class="n">oas_income_exempt_tid</span>
-<span class="n">where</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_intake_settings&#39;</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">oas_intake_settings</span> <span class="n">on</span> <span class="n">intake_settings_id</span> <span class="o">=</span> <span class="n">field_data_oas_income_exempt</span><span class="o">.</span><span class="n">entity_id</span>
+<span class="n">where</span> <span class="n">field_data_oas_income_exempt</span><span class="o">.</span><span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_intake_settings&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -770,6 +773,40 @@ and entity_id in (Select intake_settings_id
 <span class="ow">and</span> <span class="n">field_data_field_legal_issues</span><span class="o">.</span><span class="n">bundle</span> <span class="o">=</span> <span class="s1">&#39;triage_rules&#39;</span>
 <span class="ow">and</span> <span class="n">tid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">Select</span> <span class="n">parent</span> <span class="kn">from</span> <span class="nn">taxonomy_term_hierarchy</span> <span class="n">where</span> <span class="n">taxonomy_term_hierarchy</span><span class="o">.</span><span class="n">tid</span> <span class="o">=</span> <span class="n">tid</span><span class="p">)</span>
 <span class="n">order</span> <span class="n">by</span> <span class="n">nid</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="triage-rules-webform-components">
+<h3>Triage rules webform components<a class="headerlink" href="#triage-rules-webform-components" title="Permalink to this headline">¶</a></h3>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span> <span class="k">as</span> <span class="n">triage_rules_id</span><span class="p">,</span>
+<span class="n">cid</span> <span class="k">as</span> <span class="n">component_id</span><span class="p">,</span>
+<span class="n">form_key</span><span class="p">,</span>
+<span class="n">name</span><span class="p">,</span>
+<span class="n">webform_component</span><span class="o">.</span><span class="n">type</span><span class="p">,</span>
+<span class="n">value</span><span class="p">,</span>
+<span class="n">status</span>
+<span class="n">FROM</span> <span class="n">webform_component</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">node</span> <span class="n">on</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span> <span class="o">=</span> <span class="n">webform_component</span><span class="o">.</span><span class="n">nid</span>
+<span class="n">where</span> <span class="n">node</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s1">&#39;triage_rules&#39;</span>
+<span class="n">order</span> <span class="n">by</span> <span class="n">node</span><span class="o">.</span><span class="n">nid</span><span class="p">,</span> <span class="n">cid</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="triage-rules-webform-conditionals">
+<h3>Triage rules webform conditionals<a class="headerlink" href="#triage-rules-webform-conditionals" title="Permalink to this headline">¶</a></h3>
+<div class="code sql highlight-default"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="n">webform_conditional_rules</span><span class="o">.</span><span class="n">nid</span><span class="p">,</span>
+<span class="n">webform_conditional_rules</span><span class="o">.</span><span class="n">rgid</span><span class="p">,</span>
+<span class="n">rid</span><span class="p">,</span>
+<span class="n">source_type</span><span class="p">,</span>
+<span class="n">source</span><span class="p">,</span>
+<span class="n">operator</span><span class="p">,</span>
+<span class="n">value</span><span class="p">,</span>
+<span class="n">action</span><span class="p">,</span>
+<span class="n">argument</span>
+<span class="n">FROM</span> <span class="n">webform_conditional_rules</span>
+<span class="n">inner</span> <span class="n">join</span> <span class="n">webform_conditional_actions</span>
+<span class="n">on</span> <span class="n">webform_conditional_rules</span><span class="o">.</span><span class="n">rgid</span> <span class="o">=</span> <span class="n">webform_conditional_actions</span><span class="o">.</span><span class="n">rgid</span>
+<span class="n">order</span> <span class="n">by</span> <span class="n">webform_conditional_rules</span><span class="o">.</span><span class="n">nid</span><span class="p">,</span> <span class="n">webform_conditional_rules</span><span class="o">.</span><span class="n">rgid</span>
 </pre></div>
 </div>
 </div>

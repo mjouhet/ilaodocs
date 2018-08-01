@@ -108,6 +108,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#list-of-triage-rules">List of triage rules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#with-associated-services">With associated services</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#with-associated-legal-issues">With associated legal issues</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#webform-components">Webform components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#webform-conditionals">Webform conditionals</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#location-services">Location Services</a><ul>
@@ -431,7 +433,7 @@ and program triage without getting diverted.</p>
 <td>Yes/No if people in jail can apply</td>
 </tr>
 <tr class="row-odd"><td>apply_asset_limit</td>
-<td>Yes/No</td>
+<td>Yes/No.  Currently unused.</td>
 </tr>
 <tr class="row-even"><td>apply_income_limit</td>
 <td>Yes/No</td>
@@ -485,7 +487,8 @@ and program triage without getting diverted.</p>
 <td>Maximum percent of allowed income</td>
 </tr>
 <tr class="row-odd"><td>maximum_allowed_assets</td>
-<td>Dollar amount of allowed assets</td>
+<td>Dollar amount of allowed assets
+0 is treated as unlimited</td>
 </tr>
 <tr class="row-even"><td>maximum_callbacks
 _per_slot</td>
@@ -780,6 +783,118 @@ rules.  Triage rules are related to:</p>
 </tr>
 <tr class="row-even"><td>legal_issue</td>
 <td>Name of the legal issue</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="webform-components">
+<h3>Webform components<a class="headerlink" href="#webform-components" title="Permalink to this headline">¶</a></h3>
+<p>Webform components are the individual questions, etc asked or shown in a set of triage rules.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>triage_rules_id</td>
+<td>Node ID of the triage rules</td>
+</tr>
+<tr class="row-odd"><td>component_id</td>
+<td>Unique id for the component on a
+specific webform.  Generally sequential</td>
+</tr>
+<tr class="row-even"><td>form_key</td>
+<td>Key as stored by webform</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>Administrative label; also displayed to
+to users when a question</td>
+</tr>
+<tr class="row-even"><td>type</td>
+<td>The type of form element.  See below</td>
+</tr>
+<tr class="row-odd"><td>value</td>
+<td>For markup, the text to display
+For hidden elements, the value to save</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>Whether the triage rules is published</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="triage-form-element-types">
+<h4>Triage form element types<a class="headerlink" href="#triage-form-element-types" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li>hidden:  these do not display to users.
+* End point defines the exit point (intake, divert, bypass)
+* Notes is used to store text that gets appended to case notes in an etransfer</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Select: radio select question; user must pick an option</li>
+<li>textfield: text input; user enters some text.</li>
+<li>yesno: radio question with only a Yes/No option</li>
+<li>markup: displays a message to the user without a question</li>
+<li>date: date field</li>
+</ul>
+</div>
+</div>
+<div class="section" id="webform-conditionals">
+<h3>Webform conditionals<a class="headerlink" href="#webform-conditionals" title="Permalink to this headline">¶</a></h3>
+<p>Webform conditionals allow us to add branching logic to triage rules’ components.</p>
+<p>For example, if I create a yesno component “Are you married?” and another component
+“end point” of type hidden, I might have a conditional like:</p>
+<blockquote>
+<div><ul class="simple">
+<li>When [are you married] equals 1 (value), set end point (action) to Divert (argument).</li>
+<li>When [are you married] equals 0 (value), set end point (action) to Intake  (argument).</li>
+</ul>
+</div></blockquote>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>nid</td>
+<td>Node ID of the triage rules</td>
+</tr>
+<tr class="row-odd"><td>rgid</td>
+<td>Unique id for the conditional rule group</td>
+</tr>
+<tr class="row-even"><td>rid</td>
+<td>Unique id for the rule</td>
+</tr>
+<tr class="row-odd"><td>source_type</td>
+<td>This is always “component”</td>
+</tr>
+<tr class="row-even"><td>source</td>
+<td>The component number</td>
+</tr>
+<tr class="row-odd"><td>operator</td>
+<td>Operator for the rule.  Example
+[component] equals [value], equals is
+the operator</td>
+</tr>
+<tr class="row-even"><td>value</td>
+<td>Value to evaluate condition for</td>
+</tr>
+<tr class="row-odd"><td>action</td>
+<td>Action to take.</td>
+</tr>
+<tr class="row-even"><td>argument</td>
+<td>The value for the action</td>
 </tr>
 </tbody>
 </table>

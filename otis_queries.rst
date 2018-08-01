@@ -116,17 +116,16 @@ Gets all intake settings by zip code when coded to counties
    SELECT entity_id as intake_settings_id,
    tid as term_id, 
    name as zip_code
-   FROM field_data_field_counties
-   INNER JOIN taxonomy_term_data
-   WHERE  entity_type = 'oas_intake_settings' AND  tid in
-   (SELECT tid from taxonomy_term_hierarchy where parent in
-   (Select tid from taxonomy_term_hierarchy where parent in
-   (Select tid from taxonomy_term_data
-    where tid = field_data_field_counties.field_counties_target_id)))
-   and entity_id in (Select intake_settings_id
+   from field_data_field_counties
+   inner join taxonomy_term_data
+   where entity_type = 'oas_intake_settings' and tid in
+   (SELECT tid from taxonomy_term_hierarchy where parent in (
+   Select tid from taxonomy_term_hierarchy where parent in (Select tid
+   from taxonomy_term_data where tid = field_data_field_counties.field_counties_target_id)))
+     and entity_id in (Select intake_settings_id
                    from oas_intake_settings
                    where enabled = 1)
-
+    
 Gets all Illinois zip codes; use for statewide intake settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -528,12 +527,14 @@ Intake settings: waive Income based on population
 
 .. code:: sql
 
-   SELECT entity_id as intake_settings_id, 
-   oas_income_exempt_tid as term_id, 
-   name as population 
+   SELECT field_data_oas_income_exempt.entity_id as intake_settings_id,
+   oas_income_exempt_tid as term_id,
+   taxonomy_term_data.name as population,
+   oas_intake_settings.enabled as status
    from field_data_oas_income_exempt
    inner join taxonomy_term_data on tid = oas_income_exempt_tid
-   where entity_type = 'oas_intake_settings'
+   inner join oas_intake_settings on intake_settings_id = field_data_oas_income_exempt.entity_id
+   where field_data_oas_income_exempt.entity_type = 'oas_intake_settings'
    
 Triage Rules
 ================
@@ -595,6 +596,42 @@ Mapping of legal issues tagged to a triage rules item.  Note that this query exc
    and field_data_field_legal_issues.bundle = 'triage_rules'
    and tid not in (Select parent from taxonomy_term_hierarchy where taxonomy_term_hierarchy.tid = tid)
    order by nid
+   
+Triage rules webform components
+---------------------------------
+
+.. code:: sql
+
+   SELECT node.nid as triage_rules_id,
+   cid as component_id, 
+   form_key,
+   name,
+   webform_component.type,
+   value,
+   status
+   FROM webform_component
+   inner join node on node.nid = webform_component.nid
+   where node.type = 'triage_rules'
+   order by node.nid, cid
+
+Triage rules webform conditionals
+----------------------------------
+
+.. code:: sql
+
+   SELECT webform_conditional_rules.nid, 
+   webform_conditional_rules.rgid, 
+   rid, 
+   source_type, 
+   source, 
+   operator, 
+   value, 
+   action, 
+   argument 
+   FROM webform_conditional_rules
+   inner join webform_conditional_actions
+   on webform_conditional_rules.rgid = webform_conditional_actions.rgid
+   order by webform_conditional_rules.nid, webform_conditional_rules.rgid   
 
 Services with Online Intake
 ============================
@@ -708,6 +745,8 @@ Services by eligibility type
   inner join node on entity_id = nid
   where bundle = 'location_services'
   and nid in (Select entity_id from oas_intake_settings)     
+  
+  
    
    
 
