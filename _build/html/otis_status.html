@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Online Triage and Intake System (OTIS) &mdash; ILAO 2.17.0 documentation</title>
+  <title>Triage &amp; Intake Statuses &mdash; ILAO 2.17.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Applying for legal help" href="otis_process.html" />
-    <link rel="prev" title="Legal Self-Help Center Directory" href="legal_self_help_centers.html" /> 
+    <link rel="next" title="OTIS-related queries" href="otis_queries.html" />
+    <link rel="prev" title="E-transfers with LegalServer" href="otis_integration_legal_server_integration.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -87,14 +87,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="get_legal_help.html">Get Legal Help</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="referrals.html">Referrals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="legal_self_help_centers.html">Legal Self-Help Center Directory</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Online Triage and Intake System (OTIS)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#for-individuals">For individuals</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="otis_process.html">Applying for legal help</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#for-partner-organizations">For partner organizations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#administration">Administration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#reporting">Reporting</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="otis_integration.html">Online Triage and Intake System (OTIS)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="otis_integration.html#for-individuals">For individuals</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="otis_integration.html#for-partner-organizations">For partner organizations</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="otis_integration.html#administration">Administration</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="otis_integration.html#reporting">Reporting</a></li>
 </ul>
 </li>
 </ul>
@@ -169,13 +166,15 @@
         
           <li><a href="get_legal_help.html">Get Legal Help</a> &raquo;</li>
         
-      <li>Online Triage and Intake System (OTIS)</li>
+          <li><a href="otis_integration.html">Online Triage and Intake System (OTIS)</a> &raquo;</li>
+        
+      <li>Triage &amp; Intake Statuses</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/otis_integration.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/otis_status.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -188,36 +187,102 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="online-triage-and-intake-system-otis">
-<h1>Online Triage and Intake System (OTIS)<a class="headerlink" href="#online-triage-and-intake-system-otis" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="for-individuals">
-<h2>For individuals<a class="headerlink" href="#for-individuals" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="otis_process.html">Applying for legal help</a></li>
-</ul>
+  <div class="section" id="triage-intake-statuses">
+<h1>Triage &amp; Intake Statuses<a class="headerlink" href="#triage-intake-statuses" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="triage-statuses">
+<h2>Triage statuses<a class="headerlink" href="#triage-statuses" title="Permalink to this headline">¶</a></h2>
+<p>Triage statuses capture the user from the first <a class="reference external" href="https://www.illinoislegalaid.org/get-legal-help">get legal help</a> page to either intake or referrals.</p>
+<p>Triage statuses include users who were given the modal in legal content or started on Get Legal Help.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Definition</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Modal</td>
+<td>User was shown the modal but closed it</td>
+</tr>
+<tr class="row-odd"><td>Modal - intake available</td>
+<td>User entered zip in modal&amp; shown intake
+was available but did not proceed</td>
+</tr>
+<tr class="row-even"><td><dl class="first last docutils">
+<dt>Modal - intake not</dt>
+<dd>available</dd>
+</dl>
+</td>
+<td>User was shown the modal, provided zip
+but intake was not available</td>
+</tr>
+<tr class="row-odd"><td>Started</td>
+<td>User submitted the main form &amp; stopped</td>
+</tr>
+<tr class="row-even"><td>Legal issue and top of
+triage tree</td>
+<td>User accessed 1 of 2 pages to determine
+what their legal issue is and stopped</td>
+</tr>
+<tr class="row-odd"><td>Out of area</td>
+<td>User entered a non-IL address</td>
+</tr>
+<tr class="row-even"><td>Program triage</td>
+<td>Users started program triage rules.</td>
+</tr>
+<tr class="row-odd"><td>Referrals</td>
+<td>Users were given legal aid referrals.
+User never saw online intake.</td>
+</tr>
+<tr class="row-even"><td>Over-income Referrals</td>
+<td>Users were given over-income referrals.
+User never saw online intake.</td>
+</tr>
+<tr class="row-odd"><td rowspan="2">Program triage completed</td>
+<td rowspan="2">User completed program triage</td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
 </div>
-</div>
-<div class="section" id="for-partner-organizations">
-<h2>For partner organizations<a class="headerlink" href="#for-partner-organizations" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="administration">
-<h3>Administration<a class="headerlink" href="#administration" title="Permalink to this headline">¶</a></h3>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="otis_integration_intake_settings.html">Managing Your Intake Settings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="otis_integration_triage_rules.html">Managing Your Triage Rules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="otis_integration_legal_server_integration.html">E-transfers with LegalServer</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="reporting">
-<h3>Reporting<a class="headerlink" href="#reporting" title="Permalink to this headline">¶</a></h3>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="otis_status.html">Triage &amp; Intake Statuses</a></li>
-</ul>
-</div>
-</div>
+<div class="section" id="intake-statuses">
+<h2>Intake statuses<a class="headerlink" href="#intake-statuses" title="Permalink to this headline">¶</a></h2>
+<p>Intake statuses are specific to OTIS.  This means a user has at least seen a program triage rule page.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Definition</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Bypass intake</td>
+<td>the user completed the program’s triage rules and was
+taken to the bypass intake message. They did not complete
+an intake application.</td>
+</tr>
+<tr class="row-odd"><td>Diverted</td>
+<td>the user completed the program’s triage rules and was
+diverted because of legal issue.</td>
+</tr>
+<tr class="row-even"><td>Offered</td>
+<td>the user completed the program’s triage rules and was
+offered intake. The user did not start the intake form.</td>
+</tr>
+</tbody>
+</table>
+<p>the user completed the program’s triage rules and was offered intake. The user did not start the intake form.
+Started - the user completed the program’s triage rules, was offered intake and completed at least one page in the intake form but did not complete the application.
+Eligible - the user completed the program’s triage rules, began intake and finished any financial information screens but did not complete the contact information.
+Over-income - the user completed the program’s triage rules, was offered intake, completed an intake application but was over-income.
+Over-asset - the user completed the program’s triage rules, was offered intake, completed an intake application but was over-asset (and not over-income).
+eTransferred -the user completed the program’s triage rules, was offered intake, completed an intake application that was eTransferred to the program.</p>
 </div>
 </div>
 
@@ -229,10 +294,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="otis_process.html" class="btn btn-neutral float-right" title="Applying for legal help" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="otis_queries.html" class="btn btn-neutral float-right" title="OTIS-related queries" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="legal_self_help_centers.html" class="btn btn-neutral" title="Legal Self-Help Center Directory" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="otis_integration_legal_server_integration.html" class="btn btn-neutral" title="E-transfers with LegalServer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
