@@ -253,8 +253,8 @@ User never saw online intake.</td>
 <p>Intake statuses are specific to OTIS.  This means a user has at least seen a program triage rule page.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="31%" />
-<col width="69%" />
+<col width="37%" />
+<col width="63%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Name</th>
@@ -263,42 +263,107 @@ User never saw online intake.</td>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Bypass intake</td>
-<td>the user completed the program’s triage rules and was
-taken to the bypass intake message. They did not complete
-an intake application.</td>
+<td>the user completed the program’s triage
+rules and was taken to the bypass intake
+message. They did not complete an intake
+application.</td>
 </tr>
 <tr class="row-odd"><td>Diverted</td>
-<td>the user completed the program’s triage rules and was
-diverted because of legal issue.</td>
+<td>user completed the program’s triage rules
+and was diverted because of legal issue.</td>
 </tr>
 <tr class="row-even"><td>Offered</td>
-<td>the user completed the program’s triage rules and was
-offered intake. The user did not start the intake form.</td>
+<td>user completed the program’s triage rules
+and was offered intake. The user did not
+start the intake form.</td>
 </tr>
 <tr class="row-odd"><td>Started</td>
-<td>the user completed the program’s triage rules, was
-offered intake and completed at least one page in the
-intake form but did not complete the application.</td>
+<td>user completed the program’s triage rules,
+was offered intake and completed at least
+one page in the intake form but did not
+complete the application.</td>
 </tr>
 <tr class="row-even"><td>Eligible</td>
-<td>the user completed the program’s triage rules, began
-intake and finished any financial information screens but
-did not complete the contact information.</td>
+<td>user completed the program’s triage rules,
+began intake and finished any financial
+information screen, was eligible but did
+not complete the contact information.</td>
 </tr>
 <tr class="row-odd"><td>Over-income</td>
-<td>the user completed the program’s triage rules, was
-offered intake, completed an intake application but was
-over-income.</td>
+<td>user completed the program’s triage rules,
+was offered intake, completed an intake
+application but was over-income.</td>
 </tr>
 <tr class="row-even"><td>Over-asset</td>
-<td>the user completed the program’s triage rules, was
-offered intake, completed an intake application but was
-over-asset (and not over-income).</td>
+<td>user completed the program’s triage rules,
+was offered intake, completed an intake
+application but was over-asset (and not
+over-income).</td>
 </tr>
 <tr class="row-odd"><td>Etransferred</td>
-<td>the user completed the program’s triage rules, was
-offered intake, completed an intake application that was
-eTransferred to the program.</td>
+<td>user completed the program’s triage rules,
+offered intake, completed an intake
+application that was eTransferred to the
+program.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="last-screen-viewed">
+<h2>Last Screen Viewed<a class="headerlink" href="#last-screen-viewed" title="Permalink to this headline">¶</a></h2>
+<p>We try to capture the last page the user viewed.  For users who are presented with the
+modal and do not continue on, they will see a last page viewed that corresponds to the
+piece of content.  These are represented by /node/[nid], /es/node/[nid], /legal-information/[node-title],
+or /informacion-legal/[node-title].</p>
+<p>If the user gets past Get Legal Help and into OTIS, the last screen viewed is captured as:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Program triage</td>
+<td>User completed program triage.  They may
+have been diverted, offered intake, or
+bypassed intake</td>
+</tr>
+<tr class="row-odd"><td>Intake start</td>
+<td>User submitted the demographic page only</td>
+</tr>
+<tr class="row-even"><td>Intake household</td>
+<td>User submitted their household size info</td>
+</tr>
+<tr class="row-odd"><td>Income questions,
+Expense questions,
+Asset questions</td>
+<td>User submitted the form for the specific
+category and may have exited as started,
+eligible, over-income, over-asset based on
+program configuration.</td>
+</tr>
+<tr class="row-even"><td>Address form</td>
+<td>User completed address form.  This will only
+show if the user then fails to wait for the
+Please call confirm</td>
+</tr>
+<tr class="row-odd"><td>Callback form</td>
+<td>Issue is set to “we call client”; user did
+not select a callback time</td>
+</tr>
+<tr class="row-even"><td>Callback confirm</td>
+<td>Successful e-transfer; we call client</td>
+</tr>
+<tr class="row-odd"><td>Please call</td>
+<td>Successful e-transfer; client calls</td>
+</tr>
+<tr class="row-even"><td>Failure Screen</td>
+<td>Initial e-transfer failed; system retries
+for next several hours</td>
 </tr>
 </tbody>
 </table>
