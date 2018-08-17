@@ -106,6 +106,10 @@
 <li class="toctree-l2"><a class="reference internal" href="google_analytics.html">Google Analytics Integration</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Acquia Lift Integration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#core-configuration">Core Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tracking">Tracking</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#looking-up-your-user-cookie-id">Looking up your user cookie ID</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="recommendation_algorithm.html">Recommendation Algorithm</a></li>
@@ -184,6 +188,24 @@
 <h2>Core Configuration<a class="headerlink" href="#core-configuration" title="Permalink to this headline">¶</a></h2>
 <p>The core configuration is stored in the settings.php file in sites/default.  This is to ensure that unique site IDs are used for dev (including all various local development environments), staging, and production.</p>
 <p>Our production instance has a name of ILAO Production and a site ID of ilao_prod.  Our staging instance has a name of ILAO Stage and a site ID of ilao_stage.</p>
+</div>
+<div class="section" id="tracking">
+<h2>Tracking<a class="headerlink" href="#tracking" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="looking-up-your-user-cookie-id">
+<h3>Looking up your user cookie ID<a class="headerlink" href="#looking-up-your-user-cookie-id" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>To find your cookie ID:</dt>
+<dd><ul class="first last simple">
+<li>Open Chome</li>
+<li>Go to our website</li>
+<li>In Chrome, go to View/Developer tools and Application</li>
+<li>Under cookies, look under www.illinoislegalaid.org</li>
+<li>It is the tc_ptid cookie</li>
+</ul>
+</dd>
+</dl>
+<img alt="_images/cookie_image.png" src="_images/cookie_image.png" />
+</div>
 </div>
 </div>
 
