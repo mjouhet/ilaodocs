@@ -203,10 +203,19 @@
 <li>a discrete step in the process</li>
 <li>a decision point</li>
 </ul>
-<p>Each tool step must have:
-* A title
-* A yes/no as to whether the step is always required.  If the step is not always required, you can add text that will display indicating when the step is/is not required.
-* Step type.  This is one of:</p>
+<div class="section" id="required-elements">
+<h2>Required Elements<a class="headerlink" href="#required-elements" title="Permalink to this headline">¶</a></h2>
+<p>The following are required for each step in a tool:</p>
+<ul class="simple">
+<li>A title</li>
+<li>A yes/no as to whether the step is always required.  If the step is not always required, an explanation of when the step is/is not required must be provided.</li>
+<li>A step type.  This is the main body of the page and should be limited to one per page. A step type would be one of the following:</li>
+<li>An indication if this is the last step in the process.</li>
+<li>Whether to include a learn more component</li>
+</ul>
+<div class="section" id="step-types">
+<h3>Step Types<a class="headerlink" href="#step-types" title="Permalink to this headline">¶</a></h3>
+<p>The system supports 4 step types:</p>
 <blockquote>
 <div><ul class="simple">
 <li>Webform</li>
@@ -215,21 +224,35 @@
 <li>Text</li>
 </ul>
 </div></blockquote>
-<ul class="simple">
-<li>An indication if this is the last step in the process.</li>
-<li>Whether to include a Learn more component on the page.</li>
-</ul>
-<dl class="docutils">
-<dt>Each tool may have:</dt>
-<dd><ul class="first last simple">
-<li>Key terms</li>
+</div>
+</div>
+<div class="section" id="optional-elements">
+<h2>Optional Elements<a class="headerlink" href="#optional-elements" title="Permalink to this headline">¶</a></h2>
+<p>In addition to providing the main step, we have options for:</p>
+<div class="section" id="page-components">
+<h3>Page components<a class="headerlink" href="#page-components" title="Permalink to this headline">¶</a></h3>
+<p>Page components include:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Callout</li>
+<li>Key terms component</li>
 <li>Short answer component</li>
-<li>Yes/No webform component</li>
-<li>Contact follow up component</li>
-<li>Learn more carousel</li>
+<li>Portal CTA</li>
+<li>Portal CTA/image</li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
+</div>
+<div class="section" id="contact-tickler">
+<h3>Contact Tickler<a class="headerlink" href="#contact-tickler" title="Permalink to this headline">¶</a></h3>
+<p>The contact tickler is an optional component that allows us to set up reminders.</p>
+<p>A tool step may have multiple ticklers.  Each tickler must include:</p>
+<ul class="simple">
+<li>Trigger date.  This is either [x] days from the completion timestamp of the previous step or [x] days from the completion of the current timestamp.</li>
+<li>An SMS message.  This will get sent to users who have opted in to SMS based on the trigger date.</li>
+<li>An email message, with subject and body.  This will get sent to users who have opted in to email notifications based on the trigger date.</li>
+</ul>
+</div>
+</div>
 </div>
 
 
