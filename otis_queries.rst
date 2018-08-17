@@ -746,9 +746,39 @@ Services by eligibility type
   where bundle = 'location_services'
   and nid in (Select entity_id from oas_intake_settings)     
   
-  
+Legal issues combined table
+----------------------------
+
+.. code-block:: sql
+
+   Select triage_id, intake_status,
+   field_data_field_triage_problem.field_triage_problem_tid,
+   taxonomy_term_data.name,
+   (Select name from taxonomy_term_data where tid =
+   (Select field_data_field_triage_problem_history.field_triage_problem_history_tid
+   from field_data_field_triage_problem_history
+   where entity_id = triage_id
+   and entity_type = 'oas_triage_user'
+   order by delta DESC limit 1)
+   limit 1)
+   as history
+   from oas_triage_user
+   left join field_data_field_triage_problem on
+   field_data_field_triage_problem.entity_id = triage_id
+   inner join taxonomy_term_data on tid = 
+   field_data_field_triage_problem.field_triage_problem_tid
+   order by triage_id DESC  
    
-   
+Help type requested by triage user
+-----------------------------------
+
+.. code-block:: sql
+
+  SELECT triage_id,
+  GROUP_CONCAT(field_data_oas_triage_help_type.oas_triage_help_type_value)
+  from oas_triage_user
+  inner join field_data_oas_triage_help_type on triage_id = entity_id
+  group by triage_id   
 
    
    

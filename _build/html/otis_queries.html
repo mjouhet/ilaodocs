@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="OTIS Database Tables &amp; Relationships" href="otis_technical.html" />
-    <link rel="prev" title="E-transfers with LegalServer" href="otis_integration_legal_server_integration.html" /> 
+    <link rel="prev" title="Triage &amp; Intake Statuses" href="otis_status.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -124,6 +124,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#services-by-geographic-coverage">Services by geographic coverage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#services-vs-intake-settings-geographic-coverage">Services vs intake settings geographic coverage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#services-by-eligibility-type">Services by eligibility type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#legal-issues-combined-table">Legal issues combined table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#help-type-requested-by-triage-user">Help type requested by triage user</a></li>
 </ul>
 </li>
 </ul>
@@ -916,6 +918,38 @@ and tid not in (SELECT parent from taxonomy_term_hierarchy)
 </pre></div>
 </div>
 </div>
+<div class="section" id="legal-issues-combined-table">
+<h3>Legal issues combined table<a class="headerlink" href="#legal-issues-combined-table" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">Select</span> <span class="n">triage_id</span><span class="p">,</span> <span class="n">intake_status</span><span class="p">,</span>
+<span class="n">field_data_field_triage_problem</span><span class="p">.</span><span class="n">field_triage_problem_tid</span><span class="p">,</span>
+<span class="n">taxonomy_term_data</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+<span class="p">(</span><span class="k">Select</span> <span class="n">name</span> <span class="k">from</span> <span class="n">taxonomy_term_data</span> <span class="k">where</span> <span class="n">tid</span> <span class="o">=</span>
+<span class="p">(</span><span class="k">Select</span> <span class="n">field_data_field_triage_problem_history</span><span class="p">.</span><span class="n">field_triage_problem_history_tid</span>
+<span class="k">from</span> <span class="n">field_data_field_triage_problem_history</span>
+<span class="k">where</span> <span class="n">entity_id</span> <span class="o">=</span> <span class="n">triage_id</span>
+<span class="k">and</span> <span class="n">entity_type</span> <span class="o">=</span> <span class="s1">&#39;oas_triage_user&#39;</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">delta</span> <span class="k">DESC</span> <span class="k">limit</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">limit</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">as</span> <span class="n">history</span>
+<span class="k">from</span> <span class="n">oas_triage_user</span>
+<span class="k">left</span> <span class="k">join</span> <span class="n">field_data_field_triage_problem</span> <span class="k">on</span>
+<span class="n">field_data_field_triage_problem</span><span class="p">.</span><span class="n">entity_id</span> <span class="o">=</span> <span class="n">triage_id</span>
+<span class="k">inner</span> <span class="k">join</span> <span class="n">taxonomy_term_data</span> <span class="k">on</span> <span class="n">tid</span> <span class="o">=</span>
+<span class="n">field_data_field_triage_problem</span><span class="p">.</span><span class="n">field_triage_problem_tid</span>
+<span class="k">order</span> <span class="k">by</span> <span class="n">triage_id</span> <span class="k">DESC</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="help-type-requested-by-triage-user">
+<h3>Help type requested by triage user<a class="headerlink" href="#help-type-requested-by-triage-user" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sql"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="n">triage_id</span><span class="p">,</span>
+<span class="n">GROUP_CONCAT</span><span class="p">(</span><span class="n">field_data_oas_triage_help_type</span><span class="p">.</span><span class="n">oas_triage_help_type_value</span><span class="p">)</span>
+<span class="k">from</span> <span class="n">oas_triage_user</span>
+<span class="k">inner</span> <span class="k">join</span> <span class="n">field_data_oas_triage_help_type</span> <span class="k">on</span> <span class="n">triage_id</span> <span class="o">=</span> <span class="n">entity_id</span>
+<span class="k">group</span> <span class="k">by</span> <span class="n">triage_id</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
@@ -930,7 +964,7 @@ and tid not in (SELECT parent from taxonomy_term_hierarchy)
         <a href="otis_technical.html" class="btn btn-neutral float-right" title="OTIS Database Tables &amp; Relationships" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="otis_integration_legal_server_integration.html" class="btn btn-neutral" title="E-transfers with LegalServer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="otis_status.html" class="btn btn-neutral" title="Triage &amp; Intake Statuses" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
