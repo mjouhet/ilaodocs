@@ -109,6 +109,8 @@
 <li class="toctree-l4 current"><a class="current reference internal" href="#">General data collected by Acquia Lift</a></li>
 <li class="toctree-l4"><a class="reference internal" href="acquia_ilao_person_data.html">ILAO person custom data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="acquia_ilao_touch_data.html">ILAO touch (page view) custom data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="acquia_ilao_event_data.html">ILAO Specific Event data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="acquia_ilao_segments.html">ILAO Segments</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="acquia_lift.html#tracking">Tracking</a></li>
@@ -189,6 +191,152 @@
   <div class="section" id="general-data-collected-by-acquia-lift">
 <h1>General data collected by Acquia Lift<a class="headerlink" href="#general-data-collected-by-acquia-lift" title="Permalink to this headline">¶</a></h1>
 <p>Acquia Lift collects a lot of data automatically for each user that we can segment on.</p>
+<p>Full documentation is available <a class="reference external" href="https://docs.acquia.com/lift/profile-mgr/segment/category/">here</a>.</p>
+<div class="section" id="client-time-and-server-time">
+<h2>Client Time and Server Time<a class="headerlink" href="#client-time-and-server-time" title="Permalink to this headline">¶</a></h2>
+<p>We can segment on users who visit on a specific:</p>
+<ul class="simple">
+<li>day of the month</li>
+<li>day of the week</li>
+<li>hour of the day</li>
+<li>month of the year</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Example: To get all weekend visitors, I can create a segment with criteria of</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>a client time: day of week of Saturday</li>
+<li>a client time: day of week of Sunday</li>
+<li>set the criteria to “any” to capture users who visit either day</li>
+</ul>
+</div></blockquote>
+</div>
+<p>The difference between client time and server time is whose time zone is used:</p>
+<ul class="simple">
+<li>Our website (server time) is always Central time</li>
+<li>Client time may vary based on their time zone</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Example:  I want to target all users who visit ILAO during business hours.
+Using server time set to 9am - 5pm, a user in California accessing the site at 7am will be included as it is 9am Server time while that same user would not be counted using client time.</p>
+<p class="last">Example: I want to pop up a “Good morning” message to all who visit ILAO between 8am and 12pm.
+A user in NY would see the Good morning if they accessed the site at 1pm Eastern using server time but not if the segment used client time.</p>
+</div>
+</div>
+<div class="section" id="content-history">
+<h2>Content History<a class="headerlink" href="#content-history" title="Permalink to this headline">¶</a></h2>
+<p>By default, we can segment on keyword count and section count.</p>
+<p>Examples:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Example: to get all users who viewed content in the about us section this week, I can create a
+segment with a category name of “content history: section count” and enter the correct section name,
+and set the time period to past 7 days.</p>
+<p class="last">Other time options include: current touch (session), today, last 30 days, last 60 days, last 90 days, last 24 hours</p>
+</div>
+</div>
+<div class="section" id="current-location">
+<h2>Current Location<a class="headerlink" href="#current-location" title="Permalink to this headline">¶</a></h2>
+<p>Location is automatically captured at the following levels:</p>
+<ul class="simple">
+<li>City</li>
+<li>State (Region)</li>
+<li>Country</li>
+<li>DMA code</li>
+</ul>
+</div>
+<div class="section" id="current-system">
+<h2>Current System<a class="headerlink" href="#current-system" title="Permalink to this headline">¶</a></h2>
+<p>We can segment automatically on the user’s:</p>
+<ul class="simple">
+<li>Browser (supports options for: Chrome, Firefox, IE, Opera, and other)</li>
+<li>Platform (desktop, laptop, game console, tablet, other)</li>
+<li>System (no look up provided)</li>
+</ul>
+</div>
+<div class="section" id="event">
+<h2>Event<a class="headerlink" href="#event" title="Permalink to this headline">¶</a></h2>
+<p>By default, we can segment on event count.  For this, we need to:</p>
+<ul class="simple">
+<li>Filter on website</li>
+<li>Filter on event</li>
+<li>Filter on time period (current session, today, last [x] days, etc.</li>
+<li>Set the count.  Options include less than, greater than,  equal to, etc.</li>
+</ul>
+<img alt="_images/eventcount.png" src="_images/eventcount.png" />
+</div>
+<div class="section" id="external-campaign">
+<h2>External campaign<a class="headerlink" href="#external-campaign" title="Permalink to this headline">¶</a></h2>
+<p>We can create segments based on the standard Google analytics external campaign parameters below:</p>
+<ul class="simple">
+<li>utm_source</li>
+<li>utm_medium</li>
+<li>utm_term</li>
+<li>utm_content</li>
+<li>utm_campaign</li>
+</ul>
+</div>
+<div class="section" id="page-content">
+<h2>Page Content<a class="headerlink" href="#page-content" title="Permalink to this headline">¶</a></h2>
+<p>We can create segments based on:</p>
+<ul class="simple">
+<li>Article keywords</li>
+<li>Content section</li>
+<li>Content title</li>
+<li>Page type</li>
+<li>Page URL</li>
+<li>Persona</li>
+</ul>
+</div>
+<div class="section" id="person-properties">
+<h2>Person Properties<a class="headerlink" href="#person-properties" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Anonymous (yes/no)</li>
+<li>Days since last visit</li>
+<li>Do not track (yes/no)</li>
+<li>Engagement score</li>
+<li>Favorite content section (defined as “most visited content section”)</li>
+<li>Favorite content type</li>
+<li>Favorite keyword</li>
+<li>First time visitor (yes/no)</li>
+<li>Persona</li>
+</ul>
+</div>
+<div class="section" id="person-ranking">
+<h2>Person Ranking<a class="headerlink" href="#person-ranking" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Article keywords</li>
+<li>Content section</li>
+<li>Content type</li>
+<li>Engagement score</li>
+<li>Events</li>
+<li>Persona</li>
+<li>Platform</li>
+</ul>
+</div>
+<div class="section" id="touch">
+<h2>Touch<a class="headerlink" href="#touch" title="Permalink to this headline">¶</a></h2>
+<p>Touch is the current session.  We can create segments based on the current touch:</p>
+<ul class="simple">
+<li>Engagement score</li>
+<li>Number of page views</li>
+<li>Duration</li>
+<li>Duration in seconds</li>
+</ul>
+</div>
+<div class="section" id="visit-source">
+<h2>Visit Source<a class="headerlink" href="#visit-source" title="Permalink to this headline">¶</a></h2>
+<p>We can segment based on where the user came from:</p>
+<ul class="simple">
+<li>Domain</li>
+<li>Referrer domain</li>
+<li>Search engine</li>
+<li>Search terms (note:  Google typically no longer provides these)</li>
+<li>URL: first webpage that the visitor accessed on our website</li>
+</ul>
+</div>
 </div>
 
 
