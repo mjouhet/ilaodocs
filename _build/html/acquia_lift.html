@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Recommendation Algorithm" href="recommendation_algorithm.html" />
+    <link rel="next" title="General data collected by Acquia Lift" href="acquia_default_data.html" />
     <link rel="prev" title="Google Analytics Events" href="ga_events.html" /> 
 
   
@@ -105,7 +105,14 @@
 <li class="toctree-l1 current"><a class="reference internal" href="data_integrations.html">Data Integrations</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="google_analytics.html">Google Analytics Integration</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Acquia Lift Integration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#core-configuration">Core Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#core-configuration">Core Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="acquia_default_data.html">General data collected by Acquia Lift</a></li>
+<li class="toctree-l4"><a class="reference internal" href="acquia_ilao_person_data.html">ILAO person custom data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="acquia_ilao_touch_data.html">ILAO touch (page view) custom data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="acquia_ilao_event_data.html">ILAO Specific Event data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="acquia_ilao_segments.html">ILAO Segments</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#tracking">Tracking</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#looking-up-your-user-cookie-id">Looking up your user cookie ID</a></li>
 </ul>
@@ -188,6 +195,15 @@
 <h2>Core Configuration<a class="headerlink" href="#core-configuration" title="Permalink to this headline">¶</a></h2>
 <p>The core configuration is stored in the settings.php file in sites/default.  This is to ensure that unique site IDs are used for dev (including all various local development environments), staging, and production.</p>
 <p>Our production instance has a name of ILAO Production and a site ID of ilao_prod.  Our staging instance has a name of ILAO Stage and a site ID of ilao_stage.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="acquia_default_data.html">General data collected by Acquia Lift</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acquia_ilao_person_data.html">ILAO person custom data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acquia_ilao_touch_data.html">ILAO touch (page view) custom data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acquia_ilao_event_data.html">ILAO Specific Event data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acquia_ilao_segments.html">ILAO Segments</a></li>
+</ul>
+</div>
 </div>
 <div class="section" id="tracking">
 <h2>Tracking<a class="headerlink" href="#tracking" title="Permalink to this headline">¶</a></h2>
@@ -217,7 +233,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="recommendation_algorithm.html" class="btn btn-neutral float-right" title="Recommendation Algorithm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="acquia_default_data.html" class="btn btn-neutral float-right" title="General data collected by Acquia Lift" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="ga_events.html" class="btn btn-neutral" title="Google Analytics Events" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
