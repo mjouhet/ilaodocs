@@ -22,6 +22,7 @@ To create:
 .. toctree::
    :maxdepth: 2
 
+   toolbox_portal.rst
    toolbox_admin.rst
    tool_admin.rst
    tool_steps_admin.rst

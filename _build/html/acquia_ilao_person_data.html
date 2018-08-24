@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="ILAO touch (page view) custom data" href="acquia_ilao_touch_data.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="acquia_default_data.html" /> 
+    <link rel="prev" title="General data collected by Acquia Lift" href="acquia_default_data.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -106,8 +106,11 @@
 <li class="toctree-l2"><a class="reference internal" href="google_analytics.html">Google Analytics Integration</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="acquia_lift.html">Acquia Lift Integration</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="acquia_lift.html#core-configuration">Core Configuration</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="acquia_default_data.html">General data collected by Acquia Lift</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">ILAO person custom data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="acquia_ilao_touch_data.html">ILAO touch (page view) custom data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="acquia_ilao_event_data.html">ILAO Specific Event data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="acquia_ilao_segments.html">ILAO Segments</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="acquia_lift.html#tracking">Tracking</a></li>
@@ -187,6 +190,63 @@
             
   <div class="section" id="ilao-person-custom-data">
 <h1>ILAO person custom data<a class="headerlink" href="#ilao-person-custom-data" title="Permalink to this headline">¶</a></h1>
+<p>ILAO captures the email address of users as the identity piece.  Email comes from:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Mail field for registered users</li>
+<li>From email fields for anonymous users:<ul>
+<li>Contact us form</li>
+<li>Online intake contact form</li>
+<li>Newsletter subscription form</li>
+<li>Blog subscription form</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<p>We can have up to 50 additional user defined variables for “person.”
+We have defined the following as additional user-defined variables:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="77%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Variable name</th>
+<th class="head">Definition</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>person_udf1</td>
+<td>Year born.
+Available for online intake and registered users</td>
+</tr>
+<tr class="row-odd"><td>person_udf2</td>
+<td>Primary registered user role
+Available for registered users only.
+We store the best role for a user:
+Intern, if has intern role
+Staff if has staff role and not intern
+All others: advocate, pro bono, law student,
+navigator, public</td>
+</tr>
+<tr class="row-even"><td>person_udf3</td>
+<td>User testing status (registered users only</td>
+</tr>
+<tr class="row-odd"><td>person_udf4</td>
+<td>Organization/Company/Law school (registered)</td>
+</tr>
+<tr class="row-even"><td>person_udf5</td>
+<td>Content editor role
+Indicates whether the user is a SME or has
+edited a piece of legal content</td>
+</tr>
+<tr class="row-odd"><td>person_udf6</td>
+<td>Organization role
+Indicates whether user is org admin, OTIS admin,
+or both.</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -200,7 +260,7 @@
         <a href="acquia_ilao_touch_data.html" class="btn btn-neutral float-right" title="ILAO touch (page view) custom data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="acquia_default_data.html" class="btn btn-neutral" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="acquia_default_data.html" class="btn btn-neutral" title="General data collected by Acquia Lift" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

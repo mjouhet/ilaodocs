@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="acquia_ilao_segments.html" />
+    <link rel="next" title="ILAO Segments" href="acquia_ilao_segments.html" />
     <link rel="prev" title="ILAO touch (page view) custom data" href="acquia_ilao_touch_data.html" /> 
 
   
@@ -110,6 +110,7 @@
 <li class="toctree-l4"><a class="reference internal" href="acquia_ilao_person_data.html">ILAO person custom data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="acquia_ilao_touch_data.html">ILAO touch (page view) custom data</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">ILAO Specific Event data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="acquia_ilao_segments.html">ILAO Segments</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="acquia_lift.html#tracking">Tracking</a></li>
@@ -189,6 +190,148 @@
             
   <div class="section" id="ilao-specific-event-data">
 <h1>ILAO Specific Event data<a class="headerlink" href="#ilao-specific-event-data" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://docs.acquia.com/lift/omni/event/">Documentation</a> related to default data collected by Acquia for events</p>
+<div class="section" id="content-types">
+<h2>Content types<a class="headerlink" href="#content-types" title="Permalink to this headline">¶</a></h2>
+<p>We have multiple content types on our website (legal content, basic pages, blog posts, etc).
+Within legal content, we also have a primary content format (Easy form, video, text, etc).</p>
+<p>Within Acquia Lift, we capture content type so that we can segment based on both pieces of data.</p>
+<p>This table outlines how we store our content types in Lift.  For pages that are not nodes, the content type may be empty.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Acquia Lift value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>event</td>
+<td>calendar event (event content type)</td>
+</tr>
+<tr class="row-odd"><td>job</td>
+<td>job posting</td>
+</tr>
+<tr class="row-even"><td>internship</td>
+<td>internship/fellowship content type</td>
+</tr>
+<tr class="row-odd"><td>legal video</td>
+<td>legal content with a primary content
+type of “video”</td>
+</tr>
+<tr class="row-even"><td>legal easy form</td>
+<td>legal content with a primary content
+type of “easy form”</td>
+</tr>
+<tr class="row-odd"><td>legal how-to</td>
+<td>legal content with a primary content
+type of “how-to”</td>
+</tr>
+<tr class="row-even"><td>legal how-to</td>
+<td>legal content with a primary content
+type of “how-to”</td>
+</tr>
+<tr class="row-odd"><td>legal guide</td>
+<td>legal content with a primary content
+type of “guide”</td>
+</tr>
+<tr class="row-even"><td>legal form</td>
+<td>legal content with a primary content
+type of “static form”, “form-download
+or “form-link”</td>
+</tr>
+<tr class="row-odd"><td>legal lawyer
+manual</td>
+<td>ADRM content</td>
+</tr>
+<tr class="row-even"><td>legal iicle</td>
+<td>IICLE content</td>
+</tr>
+<tr class="row-odd"><td>legal portal</td>
+<td>Portal main page content</td>
+</tr>
+<tr class="row-even"><td>legal blog</td>
+<td>Blog content type with a blog category
+of law changes or Legal Q&amp;A</td>
+</tr>
+<tr class="row-odd"><td>ilao blog</td>
+<td>Blog post that is not a legal blog</td>
+</tr>
+<tr class="row-even"><td>faq</td>
+<td>Site FAQ content type</td>
+</tr>
+<tr class="row-odd"><td>ilao page</td>
+<td>Basic page content type</td>
+</tr>
+<tr class="row-even"><td>triage rules</td>
+<td>Triage rule content type</td>
+</tr>
+<tr class="row-odd"><td>organization</td>
+<td>Organization page</td>
+</tr>
+<tr class="row-even"><td>Location</td>
+<td>Location page</td>
+</tr>
+<tr class="row-odd"><td>service</td>
+<td>Service page</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="content-section">
+<h2>Content Section<a class="headerlink" href="#content-section" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="content-keywords">
+<h2>Content Keywords<a class="headerlink" href="#content-keywords" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="custom-fields">
+<h2>Custom fields<a class="headerlink" href="#custom-fields" title="Permalink to this headline">¶</a></h2>
+<p>We can have up to 50 event user-defined fields.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Definition</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>event_udf1</td>
+<td>Audience.  Options are: All, public,
+advocate, pro bono, attorney, law student
+The default is All
+except:
+ADRM content, advanced is attorney
+Restricted legal content is 1 of:
+attorney, advocate, pro bono
+Calendar events have audience field
+Site FAQS have access restrictions</td>
+</tr>
+<tr class="row-odd"><td>event_udf2</td>
+<td>Language.  The current language</td>
+</tr>
+<tr class="row-even"><td>event_udf3</td>
+<td>Service type (for locations/services)
+Options are:
+Direct Hotline
+Direct Advice desk
+Direct Service
+Legal information
+Lawyer referral
+Legal self-help center
+Other</td>
+</tr>
+<tr class="row-odd"><td>event_udf4</td>
+<td>Legal position (neutral, plaintiff,
+defendant</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
@@ -199,7 +342,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="acquia_ilao_segments.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="acquia_ilao_segments.html" class="btn btn-neutral float-right" title="ILAO Segments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="acquia_ilao_touch_data.html" class="btn btn-neutral" title="ILAO touch (page view) custom data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
