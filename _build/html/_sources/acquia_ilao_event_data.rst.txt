@@ -81,27 +81,30 @@ We can have up to 50 event user-defined fields.
 +------------------+-------------------------------------------+
 | Field            | Definition                                |
 +==================+===========================================+
-| event_udf1       | Audience.  Options are: All, public,      |
-|                  | advocate, pro bono, attorney, law student |
-|                  | The default is All                        |
-|                  | except:                                   |
-|                  | ADRM content, advanced is attorney        |
-|                  | Restricted legal content is 1 of:         |
-|                  | attorney, advocate, pro bono              | 
-|                  | Calendar events have audience field       |
-|                  | Site FAQS have access restrictions        | 
+| event_udf1       | Audience.  Options are:                   |
+|                  |                                           |
+|                  | * All (default)                           |
+|                  | * attorney (ADRM, advanced content)       |
+|                  | * pro bono (restricted to pro bono)       |
+|                  | * advocate (IICLE, restricted to advocate |
+|                  | * law student                             |
+|                  |                                           |
+|                  | Calendar events and site FAQs have        |
+|                  | audience settings that are mapped         | 
 +------------------+-------------------------------------------+
 | event_udf2       | Language.  The current language           |
 +------------------+-------------------------------------------+
 | event_udf3       | Service type (for locations/services)     |
 |                  | Options are:                              |
-|                  | Direct Hotline                            |
-|                  | Direct Advice desk                        |
-|                  | Direct Service                            |
-|                  | Legal information                         |
-|                  | Lawyer referral                           |
-|                  | Legal self-help center                    |
-|                  | Other                                     |
+|                  |                                           |
+|                  | * Direct Hotline                          |
+|                  | * Direct Advice desk                      |
+|                  | * Direct Service                          |
+|                  | * Legal information                       |
+|                  | * Lawyer referral                         |
+|                  | * Legal self-help center                  |
+|                  | * Other                                   |
+|                  |                                           |
 +------------------+-------------------------------------------+
 | event_udf4       | Legal position (neutral, plaintiff,       |
 |                  | defendant                                 |
