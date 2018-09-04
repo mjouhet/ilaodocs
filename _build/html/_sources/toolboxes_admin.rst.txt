@@ -5,7 +5,9 @@ Toolboxes
 Toolbox structure
 -------------------
 
-* Portal main page:  a container that holds grid of toolboxes associated with a specific legal issue.  Additional content may also be included. 
+* Portal main page:  a container that holds grid of toolboxes associated with a specific legal issue.  Additional content may also be included as sub pages.
+
+* Portal main page with a toolbox selector form.  For portals that contain more than one toolbox, users need to be able to pick which one they want to start with.
 
 * Toolbox:  a container that holds one or more tools designed to address a set of related legal issues.  Toolboxes should be able to fit within one level 2 legal issue. 
 

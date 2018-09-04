@@ -40,6 +40,12 @@ Taxonomy term page
 
 The taxonomy term page contains the list of all questions in a given category that the user has access to.  The questions are ordered by row weight.
 
+We show a snipped of each question on this page.  For short FAQs, the entire answer may be displayed.  For longer FAQs, a ... follows the snippet.
+
+.. image:: assets/faq-taxonomy.png
+
+
+
 On the left (or below the list on mobile) are links back to all of the other Site FAQ categories).
 
 Question pages

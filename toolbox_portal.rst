@@ -15,3 +15,7 @@ There are 2 portal pages that need to be created:
 
    On production, a staff member needs to update the block configuration so that the blue block does not appear on the portal pages.  This is done by updating the (Mobile) Displays blue block for location & icon and (Desktop) Displays blue block for location & icon to exclude the subdomain and subdomain/* paths (for example, voc and voc/* for the Victim of Crime portal
 
+.. warning::
+
+   While we use the term subdomain, we don't actually want to use subdomains.  For consolidated reporting purposes, we want to use https://www.illinoislegalaid.org/[subdomain] as the primary url.
+   

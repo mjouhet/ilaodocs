@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Creating the toolbox portal &mdash; ILAO 2.17.0 documentation</title>
+  <title>Toolbox selector form &mdash; ILAO 2.17.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Toolbox Content Type" href="toolbox_admin.html" />
-    <link rel="prev" title="Toolboxes" href="toolboxes_admin.html" /> 
+    <link rel="next" title="Calendar events administration" href="events_content_admin.html" />
+    <link rel="prev" title="Portal Split Column Layout" href="portal_admin_split_column.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -97,19 +97,22 @@
 <li class="toctree-l1 current"><a class="reference internal" href="managing_content.html">Content Administration</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="legal_content_admin.html">Legal content administration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrm_content_admin.html">Attorney Manual Content</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="toolboxes_admin.html">Toolboxes</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="toolboxes_admin.html#toolbox-structure">Toolbox structure</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Creating the toolbox portal</a></li>
-<li class="toctree-l4"><a class="reference internal" href="toolbox_admin.html">Toolbox Content Type</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tool_admin.html">Toolbox “Tools” Content Type</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tool_steps_admin.html">Tool Step Content Type</a></li>
-<li class="toctree-l4"><a class="reference internal" href="toolboxes_user_interactions.html">Toolboxes &amp; User Engagement</a></li>
-<li class="toctree-l4"><a class="reference internal" href="toolbox_reporting.html">Toolbox Reporting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toolboxes_admin.html">Toolboxes</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="portal_admin.html">Portal content</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="portal_admin.html#what-is-a-portal">What is a portal?</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="portal_admin.html#portal-components">Portal components</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="portal_admin_grid.html">Portal grid component</a></li>
+<li class="toctree-l4"><a class="reference internal" href="portal_admin_timeline.html">Portal timelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="portal_admin_summary.html">Portal Summary Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="portal_admin_webform.html">Working with Portal Webforms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="portal_admin_structured_content.html">Portal structured content layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="portal_admin_sidebar.html">Portal Sidebar Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="portal_admin_split_column.html">Portal Split Column Layout</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Toolbox selector form</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="portal_admin.html">Portal content</a></li>
 <li class="toctree-l2"><a class="reference internal" href="events_content_admin.html">Calendar events administration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="job_postings_content_admin.html">Managing Job Postings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="volunteer_postings_content_admin.html">Managing Volunteer Opportunities</a></li>
@@ -176,15 +179,15 @@
         
           <li><a href="managing_content.html">Content Administration</a> &raquo;</li>
         
-          <li><a href="toolboxes_admin.html">Toolboxes</a> &raquo;</li>
+          <li><a href="portal_admin.html">Portal content</a> &raquo;</li>
         
-      <li>Creating the toolbox portal</li>
+      <li>Toolbox selector form</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/toolbox_portal.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/portal_admin_toolbox_selector_form.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -197,23 +200,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="creating-the-toolbox-portal">
-<h1>Creating the toolbox portal<a class="headerlink" href="#creating-the-toolbox-portal" title="Permalink to this headline">¶</a></h1>
-<p>Groups of related toolboxes should be planned to be grouped together in a
-single portal.</p>
-<p>There are 2 portal pages that need to be created:</p>
-<ul class="simple">
-<li>A page that uses the “main page” portal type.  This will be the initial landing page for the portal. This page can have whatevef page elements the creator wants to include but should not have a toolbox selector form.</li>
-<li>A page that uses the toolbox selector page type.  On this page, you must include a Toolbox Selector Form.  The only element on the form to add is a title.  The rest will be populated by the associated toolboxes.</li>
-</ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">On production, a staff member needs to update the block configuration so that the blue block does not appear on the portal pages.  This is done by updating the (Mobile) Displays blue block for location &amp; icon and (Desktop) Displays blue block for location &amp; icon to exclude the subdomain and subdomain/* paths (for example, voc and voc/* for the Victim of Crime portal</p>
-</div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">While we use the term subdomain, we don’t actually want to use subdomains.  For consolidated reporting purposes, we want to use <a class="reference external" href="https://www.illinoislegalaid.org/[subdomain">https://www.illinoislegalaid.org/[subdomain</a>] as the primary url.</p>
-</div>
+  <div class="section" id="toolbox-selector-form">
+<h1>Toolbox selector form<a class="headerlink" href="#toolbox-selector-form" title="Permalink to this headline">¶</a></h1>
+<p>The toolbox selector form is a special portal component.  It should <em>only</em> be used in conjunction with a portal page of type “toolbox selector page.”</p>
+<p>Adding a toolbox selector form allows you to provide a title to the form within a portal to let users select which toolboxes they want to work with.</p>
 </div>
 
 
@@ -224,10 +214,10 @@ single portal.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="toolbox_admin.html" class="btn btn-neutral float-right" title="Toolbox Content Type" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="events_content_admin.html" class="btn btn-neutral float-right" title="Calendar events administration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="toolboxes_admin.html" class="btn btn-neutral" title="Toolboxes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="portal_admin_split_column.html" class="btn btn-neutral" title="Portal Split Column Layout" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

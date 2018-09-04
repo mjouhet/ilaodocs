@@ -108,6 +108,7 @@
 <li class="toctree-l4"><a class="reference internal" href="portal_admin_structured_content.html">Portal structured content layout</a></li>
 <li class="toctree-l4"><a class="reference internal" href="portal_admin_sidebar.html">Portal Sidebar Layout</a></li>
 <li class="toctree-l4"><a class="reference internal" href="portal_admin_split_column.html">Portal Split Column Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="portal_admin_toolbox_selector_form.html">Toolbox selector form</a></li>
 </ul>
 </li>
 </ul>
@@ -201,7 +202,53 @@
 <h1>Portal content<a class="headerlink" href="#portal-content" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="what-is-a-portal">
 <h2>What is a portal?<a class="headerlink" href="#what-is-a-portal" title="Permalink to this headline">¶</a></h2>
-<p>A portal has a defined structure to bundle a set of related issues together.</p>
+<p>A portal has a defined structure to bundle a set of related issues together with a common subdomain.</p>
+<p>There are three types of portal pages:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="44%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Page type</th>
+<th class="head">Description</th>
+<th class="head">Number per portal</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Main</td>
+<td>Home page for the portal</td>
+<td>1 per portal</td>
+</tr>
+<tr class="row-odd"><td>Toolbox selector</td>
+<td>Generates a form to select
+toolboxes to work on</td>
+<td>1 per portal if
+toolboxes used</td>
+</tr>
+<tr class="row-even"><td>Sub page</td>
+<td>All other portal pages</td>
+<td>Unlimited</td>
+</tr>
+</tbody>
+</table>
+<p>Each portal requires:</p>
+<ul class="simple">
+<li>A subdomain.  This must be unique to the site and binds the portal pages together.  The subdomain will be set up as <a class="reference external" href="https://www.illinoislegalaid.org/[subdomain">https://www.illinoislegalaid.org/[subdomain</a>]</li>
+<li>Page type.  See table above.</li>
+<li>Title.  The page title.</li>
+<li>Meta description.  This is used in our search engine optimization.</li>
+<li>Image, for use in social media.</li>
+<li>Hero image.<ul>
+<li>The hero image should be 1920x1280.</li>
+<li>A title is required.  This appears on the image on portal main pages and should be the same across portal pages within the same portal.</li>
+<li>A subtitle is required.  This appears beneath the title on the image.  It should also be the same across pages within the same portal.</li>
+</ul>
+</li>
+<li>A primary legal category and legal category.  These helps control where the portal displays within site navigation.</li>
+<li>One or more portal paragraphs.  See the portal components on this page.</li>
+</ul>
 </div>
 <div class="section" id="portal-components">
 <h2>Portal components<a class="headerlink" href="#portal-components" title="Permalink to this headline">¶</a></h2>
@@ -214,6 +261,7 @@
 <li class="toctree-l1"><a class="reference internal" href="portal_admin_structured_content.html">Portal structured content layout</a></li>
 <li class="toctree-l1"><a class="reference internal" href="portal_admin_sidebar.html">Portal Sidebar Layout</a></li>
 <li class="toctree-l1"><a class="reference internal" href="portal_admin_split_column.html">Portal Split Column Layout</a></li>
+<li class="toctree-l1"><a class="reference internal" href="portal_admin_toolbox_selector_form.html">Toolbox selector form</a></li>
 </ul>
 </div>
 </div>
