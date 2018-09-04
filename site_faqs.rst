@@ -24,6 +24,17 @@ The main site FAQs page displays pages of all taxonomy terms in the Frequenty As
 
 The cards only show questions that the user has access to.  For example, the Using IICLE category has questions that are only relevant to advocate users and are only visible to them.
 
+.. figure:: assets/site-faq-card-advocate.png
+
+   Advocate users see more questions when viewing the Using IICLE card than anonymous users (below).
+
+.. image:: assets/site-faq-card-anonymous.png
+
+Searching FAQs
+---------------
+
+From the site FAQ card page, users can also search within the site FAQ library.
+
 Taxonomy term page
 ===================
 
