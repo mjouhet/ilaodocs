@@ -98,7 +98,9 @@
 <li class="toctree-l2"><a class="reference internal" href="legal_content_admin.html">Legal content administration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrm_content_admin.html">Attorney Manual Content</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="toolboxes_admin.html">Toolboxes</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="toolboxes_admin.html#toolbox-structure">Toolbox structure</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="toolboxes_admin.html#toolbox-structure">Toolbox structure</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="toolboxes_admin.html#toolbox-components">Toolbox components</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="toolbox_portal.html">Creating the toolbox portal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="toolbox_admin.html">Toolbox Content Type</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tool_admin.html">Toolbox “Tools” Content Type</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Tool Step Content Type</a></li>
@@ -203,55 +205,60 @@
 <li>a discrete step in the process</li>
 <li>a decision point</li>
 </ul>
-<div class="section" id="required-elements">
-<h2>Required Elements<a class="headerlink" href="#required-elements" title="Permalink to this headline">¶</a></h2>
-<p>The following are required for each step in a tool:</p>
+<p>A tool step should contain:</p>
 <ul class="simple">
 <li>A title</li>
 <li>A yes/no as to whether the step is always required.  If the step is not always required, an explanation of when the step is/is not required must be provided.</li>
-<li>A step type.  This is the main body of the page and should be limited to one per page. A step type would be one of the following:</li>
-<li>An indication if this is the last step in the process.</li>
-<li>Whether to include a learn more component</li>
-</ul>
-<div class="section" id="step-types">
-<h3>Step Types<a class="headerlink" href="#step-types" title="Permalink to this headline">¶</a></h3>
-<p>The system supports 4 step types:</p>
-<blockquote>
-<div><ul class="simple">
+<li>A step type.  This is the main body of the page and should be limited to one per page. A step type would be one of the following:<ul>
 <li>Webform</li>
-<li>Single form information</li>
-<li>Multiple form information</li>
-<li>Text</li>
+<li>Single form</li>
+<li>Multiple form</li>
+<li>Process step</li>
 </ul>
-</div></blockquote>
-</div>
-</div>
-<div class="section" id="optional-elements">
-<h2>Optional Elements<a class="headerlink" href="#optional-elements" title="Permalink to this headline">¶</a></h2>
-<p>In addition to providing the main step, we have options for:</p>
-<div class="section" id="page-components">
-<h3>Page components<a class="headerlink" href="#page-components" title="Permalink to this headline">¶</a></h3>
-<p>Page components include:</p>
-<blockquote>
-<div><ul class="simple">
+</li>
+<li>Optionally, one or more tool step components.  These include:<ul>
 <li>Callout</li>
 <li>Key terms component</li>
 <li>Short answer component</li>
-<li>Portal CTA</li>
-<li>Portal CTA/image</li>
 </ul>
-</div></blockquote>
-</div>
-<div class="section" id="contact-tickler">
-<h3>Contact Tickler<a class="headerlink" href="#contact-tickler" title="Permalink to this headline">¶</a></h3>
-<p>The contact tickler is an optional component that allows us to set up reminders.</p>
-<p>A tool step may have multiple ticklers.  Each tickler must include:</p>
-<ul class="simple">
+</li>
+<li>Tickler settings.  This allows us to set reminders via SMS and/or email.  Each tickler must include:<ul>
 <li>Trigger date.  This is either [x] days from the completion timestamp of the previous step or [x] days from the completion of the current timestamp.</li>
 <li>An SMS message.  This will get sent to users who have opted in to SMS based on the trigger date.</li>
 <li>An email message, with subject and body.  This will get sent to users who have opted in to email notifications based on the trigger date.</li>
 </ul>
+</li>
+<li>An indication if this is the last step in the process.</li>
+<li>Whether to include a learn more component</li>
+</ul>
+<div class="section" id="step-types">
+<h2>Step Types<a class="headerlink" href="#step-types" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="process-step">
+<h3>Process Step<a class="headerlink" href="#process-step" title="Permalink to this headline">¶</a></h3>
+<p>The basic step type is the <strong>process step</strong>.  This is similar to the process step used in legal content.</p>
+<p>A tool step should <strong>never</strong> have more than one process step.</p>
+<div class="figure">
+<img alt="_images/toolbox-process-step.png" src="_images/toolbox-process-step.png" />
 </div>
+</div>
+<div class="section" id="webform">
+<h3>Webform<a class="headerlink" href="#webform" title="Permalink to this headline">¶</a></h3>
+<p>The webform option allows you to embed an existing webform into the page to support basic branching within the tool.</p>
+</div>
+<div class="section" id="fill-out-forms-single">
+<h3>Fill out forms (single)<a class="headerlink" href="#fill-out-forms-single" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Because of field sharing, this will technically allow you to add more than one form.  <strong>Don’t</strong>.  The page will render badly if you do.  Use the multiple form if you need more than one required form.</p>
+</div>
+<p>..figure:: assets/toolbox-single-form.png</p>
+</div>
+<div class="section" id="fill-out-forms-multiple">
+<h3>Fill out forms (multiple)<a class="headerlink" href="#fill-out-forms-multiple" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="tool-step-components">
+<h2>Tool Step Components<a class="headerlink" href="#tool-step-components" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

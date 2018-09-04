@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Toolbox “Tools” Content Type" href="tool_admin.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="toolbox_portal.html" /> 
+    <link rel="prev" title="Creating the toolbox portal" href="toolbox_portal.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -98,7 +98,9 @@
 <li class="toctree-l2"><a class="reference internal" href="legal_content_admin.html">Legal content administration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrm_content_admin.html">Attorney Manual Content</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="toolboxes_admin.html">Toolboxes</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="toolboxes_admin.html#toolbox-structure">Toolbox structure</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="toolboxes_admin.html#toolbox-structure">Toolbox structure</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="toolboxes_admin.html#toolbox-components">Toolbox components</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="toolbox_portal.html">Creating the toolbox portal</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Toolbox Content Type</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tool_admin.html">Toolbox “Tools” Content Type</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tool_steps_admin.html">Tool Step Content Type</a></li>
@@ -198,16 +200,16 @@
             
   <div class="section" id="toolbox-content-type">
 <h1>Toolbox Content Type<a class="headerlink" href="#toolbox-content-type" title="Permalink to this headline">¶</a></h1>
-<p>Toolboxes are attached to portals and tools are attached to toolboxes.</p>
-<dl class="docutils">
-<dt>The primary purpose of the toolbox content type is to allow a user to pick from the tools associated with a toolbox that match their problem.</dt>
-<dd>A toolbox page can also provide additional information to the user.</dd>
-</dl>
+<p>Toolboxes are attached to portals; tools are attached to toolboxes and then toolbox tool steps are attached to tools.</p>
+<p>The primary purpose of the toolbox content type is to allow a user to pick from the tools associated with a toolbox that match their problem.</p>
+<p>A toolbox page can also provide additional information to the user.</p>
 <p>A toolbox must contain:</p>
 <ul>
 <li><p class="first">A title.  The system will automatically add “Let’s focus” to the page title.</p>
 </li>
-<li><p class="first">A reference to an existing portal.  <strong>Create the portal page first</strong></p>
+<li><p class="first">An image, for use in social media.</p>
+</li>
+<li><p class="first">A reference to an existing portal.  <strong>Create the portal page first</strong> The portal does not need to be published.</p>
 </li>
 <li><p class="first">A content description, limited to 200 characters for use on the website.</p>
 </li>
@@ -223,6 +225,8 @@
 </div></blockquote>
 </li>
 <li><p class="first">A yes/no to encourage the user to seek legal help.  This will display a standard block encouraging the user to use Get Legal Help.  Defaults to yes when the overall level of effort is hard.</p>
+</li>
+<li><p class="first">Fast fact block.  This is optional and will display a “Fast fact block” on the sidebar on the toolbox page.</p>
 </li>
 <li><p class="first">Page components.  On a toolbox page, we can add block-styled components similar to those used on portal content including:</p>
 <ul class="simple">
@@ -253,7 +257,7 @@
         <a href="tool_admin.html" class="btn btn-neutral float-right" title="Toolbox “Tools” Content Type" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="toolbox_portal.html" class="btn btn-neutral" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="toolbox_portal.html" class="btn btn-neutral" title="Creating the toolbox portal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

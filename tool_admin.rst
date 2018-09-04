@@ -2,7 +2,7 @@
 Toolbox "Tools" Content Type
 ==================================
 
-The toolbox "tool" content type is tied to a specific toolbox.  It is designed to walk a user through a set of steps to complete a process (for example, in our criminal expungement toolbox, there would be a tool for expunging an adult criminal record and another tool for expunging a juvenile criminal record.
+The toolbox "tool" content type is tied to a specific toolbox.  It is designed to walk a user through a set of steps to complete a process (for example, in our criminal expungement toolbox, there would be a tool for expunging an adult criminal record and another tool for expunging a juvenile criminal record).
 
 Toolbox Tools must have:
 
@@ -19,6 +19,8 @@ The toolbox tool may have a "Learn More" component.  The learn more component ma
   * Legal content
   * ADRM content
   * Blog posts
+  
+* Selector form label.  Most toolboxes will contain multiple tools and we need to encourage the user to pick which tool(s) they need to complete.  
 
 .. figure:: assets/r2w_tool.png
 
