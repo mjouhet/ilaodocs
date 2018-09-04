@@ -88,7 +88,12 @@
 <li class="toctree-l1"><a class="reference internal" href="legal_information.html">Legal Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="for_legal_professionals.html">For Legal Professionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="site_search.html">Site Search</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Site FAQs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Site FAQs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#site-faq-cards">Site FAQ Cards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#taxonomy-term-page">Taxonomy term page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#question-pages">Question pages</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="about_us.html">ILAO Organization Pages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ilao_blog.html">ILAO Blog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comments_ratings.html">Comments &amp; Ratings System</a></li>
@@ -175,6 +180,7 @@
 <div><ul class="simple">
 <li>written for end users</li>
 <li>be written in plain language</li>
+<li>written as a question with an answer</li>
 <li>be platform neutral (should be correct for mobile, tablet, and desktop users) * relevant to the user (FAQs that relate to restricted functions should be restricted to users with those roles)</li>
 <li>ordered in a meaningful way</li>
 </ul>
@@ -189,6 +195,29 @@
 </ul>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">FAQs without a row weight  will float higher than those with a row weight as empty is treated as “lower” than with a value.  For FAQ taxonomy terms where order is important, we need to add row weights to each question.</p>
+</div>
+<div class="section" id="site-faq-cards">
+<h2>Site FAQ Cards<a class="headerlink" href="#site-faq-cards" title="Permalink to this headline">¶</a></h2>
+<p>The main site FAQs page displays pages of all taxonomy terms in the Frequenty Asked Questions taxonomy that have questions.  It displays 3, ordered by <em>row weight</em>.  It includes a count of the number of additional questions, if there are more than 3.</p>
+<p>The cards only show questions that the user has access to.  For example, the Using IICLE category has questions that are only relevant to advocate users and are only visible to them.</p>
+</div>
+<div class="section" id="taxonomy-term-page">
+<h2>Taxonomy term page<a class="headerlink" href="#taxonomy-term-page" title="Permalink to this headline">¶</a></h2>
+<p>The taxonomy term page contains the list of all questions in a given category that the user has access to.  The questions are ordered by row weight.</p>
+<p>On the left (or below the list on mobile) are links back to all of the other Site FAQ categories).</p>
+</div>
+<div class="section" id="question-pages">
+<h2>Question pages<a class="headerlink" href="#question-pages" title="Permalink to this headline">¶</a></h2>
+<p>Individual quesion pages include the share bar.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Comments were removed from FAQs in release 2.19.0.  This was done because they were not being used to leave comments on the FAQs but to ask for legal help or were spam.</p>
+</div>
+<p>Each question page also contains a list of the other FAQs that share that taxonomy term, ordered by row weight.</p>
+</div>
 </div>
 
 

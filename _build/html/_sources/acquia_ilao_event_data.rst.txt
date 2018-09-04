@@ -2,6 +2,13 @@
 ILAO Specific Event data
 =====================================
 
+An event is a specific action taken on the website.  An event may be:
+
+* viewing a page
+* completing a form
+* printing a page
+* anything that can be tracked as an event in Google tag manager
+
 `Documentation <https://docs.acquia.com/lift/omni/event/>`_ related to default data collected by Acquia for events
 
 Content types
