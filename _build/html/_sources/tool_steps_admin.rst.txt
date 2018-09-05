@@ -100,7 +100,16 @@ Use the callout to highlight key pieces of information.
 
 .. figure:: assets/toolbox-callout-simple.png
 
-   This image includes a simple callout with just a title.  Also shown is one view of the key terms.
+   This image includes a simple callout with just a body.  Also shown is one view of the key terms.
 
 
 Callouts may have a title and must have a body.  They may also use a portal icon and may be positioned above or below the content (on desktop, call outs will be positioned to the right of the page component; on mobile, above or below)
+
+Key Terms component
+--------------------
+The key terms component can be used in place of defining terms within the step but where the definition shouldn't be part of the standard glossary.  Each key term:
+
+* term
+* description (definition)
+
+You can add multiple key terms components.  The system will group them together and display just the terms in a block.  When a user clicks on a term, it will expand to show the definition.
