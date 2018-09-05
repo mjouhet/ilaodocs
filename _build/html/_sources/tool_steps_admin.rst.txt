@@ -48,22 +48,59 @@ A tool step should **never** have more than one process step.
 Webform
 ---------
 
-The webform option allows you to embed an existing webform into the page to support basic branching within the tool.
+Coming soon!
 
 Fill out forms (single)
 ------------------------
+When using this component, you must select from published forms on our website.  This will then generate a page layout similar to the one below, pulling in key components from the content so that they do not have to be entered more than once.
 
-.. warning:: Because of field sharing, this will technically allow you to add more than one form.  **Don't**.  The page will render badly if you do.  Use the multiple form if you need more than one required form.
+.. figure:: assets/toolbox-single-form-output.png
+
+   Example of automated form used in fill out forms (single)
+   
+.. warning:: Because of field sharing, this will technically allow you to add more than one form.  **Don't**.  The page will render badly if you do.  Use the multiple form if you need more than one required form or if you need to use external forms.
 
 
-..figure:: assets/toolbox-single-form.png
+.. figure:: assets/toolbox-single-form.png
 
 Fill out forms (multiple)
 --------------------------
+The fill out forms (multiple) can be used to create lists of forms that need to be filled out.  Forms can be grouped as required or as optional and the system supports internal and external forms.
 
+.. figure:: assets/toolbox-tool-step-multiple.png
+
+   Multiple form admin component
+   
+A multiple form component requires that you:
+
+* Provide a label for the required forms.  This will appear above the list.  For example:  You must fill out the following forms: or Fill out your chapter 7 forms:
+* Provide a label for the optional forms.  This will appear above the list of optional forms, if optional forms are included.  For example:  You may also need:
+* Add one or more internal or external forms.  Adding an internal form works just like the fill out forms (single).  External forms require:
+  * a title.  This is the name of the form
+  * the url to the form
+  * a description of the form
+  * whether the form is optional or required.
+  
+Forms can be reordered so that they appear as you want but will be grouped together as required or optional.  
+
+.. warning:: There are form callout fields in the fill out forms components currently. Those will be deprecated and removed in favor of the tool component callout instead. **DO NOT USE**
 
 
 Tool Step Components
 =======================
+We currently support 3 tool step components on the page:
+
+* Callout
+* Key terms component
+* Short answer component
+
+Callout
+-------------
+Use the callout to highlight key pieces of information.  
+
+.. figure:: assets/toolbox-callout-simple.png
+
+   This image includes a simple callout with just a title.  Also shown is one view of the key terms.
 
 
+Callouts may have a title and must have a body.  They may also use a portal icon and may be positioned above or below the content (on desktop, call outs will be positioned to the right of the page component; on mobile, above or below)

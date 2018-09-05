@@ -243,22 +243,64 @@
 </div>
 <div class="section" id="webform">
 <h3>Webform<a class="headerlink" href="#webform" title="Permalink to this headline">¶</a></h3>
-<p>The webform option allows you to embed an existing webform into the page to support basic branching within the tool.</p>
+<p>Coming soon!</p>
 </div>
 <div class="section" id="fill-out-forms-single">
 <h3>Fill out forms (single)<a class="headerlink" href="#fill-out-forms-single" title="Permalink to this headline">¶</a></h3>
+<p>When using this component, you must select from published forms on our website.  This will then generate a page layout similar to the one below, pulling in key components from the content so that they do not have to be entered more than once.</p>
+<div class="figure" id="id1">
+<img alt="_images/toolbox-single-form-output.png" src="_images/toolbox-single-form-output.png" />
+<p class="caption"><span class="caption-text">Example of automated form used in fill out forms (single)</span></p>
+</div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">Because of field sharing, this will technically allow you to add more than one form.  <strong>Don’t</strong>.  The page will render badly if you do.  Use the multiple form if you need more than one required form.</p>
+<p class="last">Because of field sharing, this will technically allow you to add more than one form.  <strong>Don’t</strong>.  The page will render badly if you do.  Use the multiple form if you need more than one required form or if you need to use external forms.</p>
 </div>
-<p>..figure:: assets/toolbox-single-form.png</p>
+<div class="figure">
+<img alt="_images/toolbox-single-form.png" src="_images/toolbox-single-form.png" />
+</div>
 </div>
 <div class="section" id="fill-out-forms-multiple">
 <h3>Fill out forms (multiple)<a class="headerlink" href="#fill-out-forms-multiple" title="Permalink to this headline">¶</a></h3>
+<p>The fill out forms (multiple) can be used to create lists of forms that need to be filled out.  Forms can be grouped as required or as optional and the system supports internal and external forms.</p>
+<div class="figure" id="id2">
+<img alt="_images/toolbox-tool-step-multiple.png" src="_images/toolbox-tool-step-multiple.png" />
+<p class="caption"><span class="caption-text">Multiple form admin component</span></p>
+</div>
+<p>A multiple form component requires that you:</p>
+<ul class="simple">
+<li>Provide a label for the required forms.  This will appear above the list.  For example:  You must fill out the following forms: or Fill out your chapter 7 forms:</li>
+<li>Provide a label for the optional forms.  This will appear above the list of optional forms, if optional forms are included.  For example:  You may also need:</li>
+<li>Add one or more internal or external forms.  Adding an internal form works just like the fill out forms (single).  External forms require:
+* a title.  This is the name of the form
+* the url to the form
+* a description of the form
+* whether the form is optional or required.</li>
+</ul>
+<p>Forms can be reordered so that they appear as you want but will be grouped together as required or optional.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">There are form callout fields in the fill out forms components currently. Those will be deprecated and removed in favor of the tool component callout instead. <strong>DO NOT USE</strong></p>
+</div>
 </div>
 </div>
 <div class="section" id="tool-step-components">
 <h2>Tool Step Components<a class="headerlink" href="#tool-step-components" title="Permalink to this headline">¶</a></h2>
+<p>We currently support 3 tool step components on the page:</p>
+<ul class="simple">
+<li>Callout</li>
+<li>Key terms component</li>
+<li>Short answer component</li>
+</ul>
+<div class="section" id="callout">
+<h3>Callout<a class="headerlink" href="#callout" title="Permalink to this headline">¶</a></h3>
+<p>Use the callout to highlight key pieces of information.</p>
+<div class="figure" id="id3">
+<img alt="_images/toolbox-callout-simple.png" src="_images/toolbox-callout-simple.png" />
+<p class="caption"><span class="caption-text">This image includes a simple callout with just a title.  Also shown is one view of the key terms.</span></p>
+</div>
+<p>Callouts may have a title and must have a body.  They may also use a portal icon and may be positioned above or below the content (on desktop, call outs will be positioned to the right of the page component; on mobile, above or below)</p>
+</div>
 </div>
 </div>
 
