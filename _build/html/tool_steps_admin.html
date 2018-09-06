@@ -230,6 +230,7 @@
 </li>
 <li>An indication if this is the last step in the process.</li>
 <li>Whether to include a learn more component</li>
+<li>The tool to which the step belongs</li>
 </ul>
 <div class="section" id="step-types">
 <h2>Step Types<a class="headerlink" href="#step-types" title="Permalink to this headline">¶</a></h2>
@@ -309,6 +310,42 @@
 <li>description (definition)</li>
 </ul>
 <p>You can add multiple key terms components.  The system will group them together and display just the terms in a block.  When a user clicks on a term, it will expand to show the definition.</p>
+</div>
+<div class="section" id="short-answer-component">
+<h3>Short answer component<a class="headerlink" href="#short-answer-component" title="Permalink to this headline">¶</a></h3>
+<p>A short answer component can be used a sort of mini-FAQ or other grouped cluster of information.</p>
+<img alt="_images/toolbox-step-short-answer.png" src="_images/toolbox-step-short-answer.png" />
+<p>The component has a label, which defaults to Commonly asked questions.  This is the header for the section.</p>
+<p>Then you can add one or more component.  Each component has:</p>
+<ul class="simple">
+<li>a title</li>
+<li>a body, which is limited to 250 characters.</li>
+</ul>
+<p>The component will be displayed to the right of the body of the page and lists each component label.  When clicked, the body displays.</p>
+</div>
+</div>
+<div class="section" id="tickler-settings">
+<h2>Tickler Settings<a class="headerlink" href="#tickler-settings" title="Permalink to this headline">¶</a></h2>
+<p>The tickler settings field allows us to set one or more triggers that will send the user an offline message if they have notifications enabled.  Messages may be either SMS or emails.</p>
+<img alt="_images/toolbox-step-tickler.png" src="_images/toolbox-step-tickler.png" />
+<p>For each tickler you must;</p>
+<ul class="simple">
+<li>Define the number of days after an event in which to trigger the message</li>
+<li>Define the trigger type.  This is the event that the number of days is based off of.  The trigger types are:<ul>
+<li>From the end date of the last step.</li>
+<li>From the end date of this step</li>
+<li>From the visit date of the last step, if not completed. (not built yet)</li>
+<li>From the visit date of the current step, if not completed. (not built yet)</li>
+</ul>
+</li>
+<li>The SMS message to send.  This is limited to 160 characters currently to ensure the message is a single text message.</li>
+<li>The email to send.  This includes both a subject and a body. The subject is limited to 100 characters and the body to 500.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>For example, in Step 1, we tell the user to gather their documents; Step 2 they fill out their forms, and Step 3 they file their forms.</p>
+<p>A tickler may be set up in Step 2 that trigger 10 days after the user completes Step 1 to remind them to come back and fill out their forms.</p>
+<p class="last">A second tickler that fires 5 days after they visit Step 2 to remind them to ask if they filled out their forms.</p>
 </div>
 </div>
 </div>

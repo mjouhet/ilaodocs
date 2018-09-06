@@ -32,6 +32,7 @@ A tool step should contain:
 
 * An indication if this is the last step in the process.
 * Whether to include a learn more component
+* The tool to which the step belongs
 
 Step Types
 =============
@@ -113,3 +114,48 @@ The key terms component can be used in place of defining terms within the step b
 * description (definition)
 
 You can add multiple key terms components.  The system will group them together and display just the terms in a block.  When a user clicks on a term, it will expand to show the definition.
+
+Short answer component
+-----------------------
+
+A short answer component can be used a sort of mini-FAQ or other grouped cluster of information.
+
+.. image:: assets/toolbox-step-short-answer.png
+
+The component has a label, which defaults to Commonly asked questions.  This is the header for the section.
+
+Then you can add one or more component.  Each component has:
+
+* a title
+* a body, which is limited to 250 characters.  
+
+The component will be displayed to the right of the body of the page and lists each component label.  When clicked, the body displays.
+
+Tickler Settings
+===================
+
+The tickler settings field allows us to set one or more triggers that will send the user an offline message if they have notifications enabled.  Messages may be either SMS or emails.
+
+.. image:: assets/toolbox-step-tickler.png
+
+For each tickler you must;
+
+* Define the number of days after an event in which to trigger the message
+* Define the trigger type.  This is the event that the number of days is based off of.  The trigger types are:
+
+  * From the end date of the last step. 
+  * From the end date of this step
+  * From the visit date of the last step, if not completed. (not built yet)
+  * From the visit date of the current step, if not completed. (not built yet)
+  
+* The SMS message to send.  This is limited to 160 characters currently to ensure the message is a single text message.
+* The email to send.  This includes both a subject and a body. The subject is limited to 100 characters and the body to 500.
+
+.. note::
+   For example, in Step 1, we tell the user to gather their documents; Step 2 they fill out their forms, and Step 3 they file their forms.  
+   
+   A tickler may be set up in Step 2 that trigger 10 days after the user completes Step 1 to remind them to come back and fill out their forms. 
+   
+   A second tickler that fires 5 days after they visit Step 2 to remind them to ask if they filled out their forms.
+   
+   
