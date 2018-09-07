@@ -8,3 +8,5 @@ Site Search
    search_configuration
    search_using
    
+Known issues
+=================

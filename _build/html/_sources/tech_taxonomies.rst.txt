@@ -6,7 +6,7 @@ Content-Related
 ================
 
 Legal Content-related
-----------------
+-----------------------
 .. toctree::
    :maxdepth: 1
    

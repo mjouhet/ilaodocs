@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Search Configuration &mdash; ILAO 2.17.0 documentation</title>
+  <title>Search Configuration &mdash; ILAO 2.19.0 documentation</title>
   
 
   
@@ -58,7 +58,7 @@
             
             
               <div class="version">
-                2.17.0
+                2.19.0
               </div>
             
           
@@ -88,8 +88,27 @@
 <li class="toctree-l1"><a class="reference internal" href="legal_information.html">Legal Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="for_legal_professionals.html">For Legal Professionals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="site_search.html">Site Search</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Search Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Search Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#drupal-modules">Drupal Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#acquia-connector-module">Acquia Connector Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apache-solr-module">Apache Solr Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apache-solr-exclude">Apache Solr Exclude</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apache-solr-multilingual">Apache Solr Multilingual</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apache-solr-paragraphs">Apache Solr Paragraphs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#facetapi">FacetAPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apache-solr-views">Apache Solr Views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-autocomplete">Search Autocomplete</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-settings">Basic Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apache-solr-configuration">Apache Solr Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="search_using.html">Using the Site Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="site_search.html#known-issues">Known issues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="site_faqs.html">Site FAQs</a></li>
@@ -176,6 +195,143 @@
             
   <div class="section" id="search-configuration">
 <h1>Search Configuration<a class="headerlink" href="#search-configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="drupal-modules">
+<h2>Drupal Modules<a class="headerlink" href="#drupal-modules" title="Permalink to this headline">¶</a></h2>
+<p>ILAO currently uses an array of Apache Solr modules to construct our site search.</p>
+<p>ILAO’s search is build on Acquia’s Search, which is a Solr-based configuration hosted, managed, and secured by Acquia.</p>
+<p>For Drupal 7, Acquia recommends that we use Apache Solr and does not recommend the use of the Search API module, which is more powerful, when using their search platform.
+When we migrate to Drupal 8, that will change.</p>
+<div class="section" id="acquia-connector-module">
+<h3>Acquia Connector Module<a class="headerlink" href="#acquia-connector-module" title="Permalink to this headline">¶</a></h3>
+<p>The Acquia connector module is required to connect ILAO’s website to Acquia’s search as it provides the security authentication that is required.</p>
+<p>We do not have access to any of the configuration files provided by Acquia’s Solr search including:</p>
+<ul class="simple">
+<li>Synonyms</li>
+<li>Spellings</li>
+<li>Stopwords</li>
+<li>Protected words</li>
+</ul>
+</div>
+<div class="section" id="apache-solr-module">
+<h3>Apache Solr Module<a class="headerlink" href="#apache-solr-module" title="Permalink to this headline">¶</a></h3>
+<p>The Apache Solr module provides the bulk of the configuration options.
+Drupal sites can use either the Apache Solr module OR the Search API module but not both.</p>
+</div>
+<div class="section" id="apache-solr-exclude">
+<h3>Apache Solr Exclude<a class="headerlink" href="#apache-solr-exclude" title="Permalink to this headline">¶</a></h3>
+<p>The Apache Solr Exclude module allows us to exclude nodes from the search index on a per-node basis.
+It adds a field to each node where we can mark “yes, exclude from search” where needed on content types where we have implemented it.
+It is implemented on our website for:</p>
+<ul class="simple">
+<li>Legal content</li>
+<li>Basic pages</li>
+</ul>
+</div>
+<div class="section" id="apache-solr-multilingual">
+<h3>Apache Solr Multilingual<a class="headerlink" href="#apache-solr-multilingual" title="Permalink to this headline">¶</a></h3>
+<p>The Apache Solr multilingual module adds support for multilingual websites.</p>
+</div>
+<div class="section" id="apache-solr-paragraphs">
+<h3>Apache Solr Paragraphs<a class="headerlink" href="#apache-solr-paragraphs" title="Permalink to this headline">¶</a></h3>
+<p>The Apache Solr paragraphs module is needed to accommodate ILAO’s use of the paragraphs module throughout the site.</p>
+</div>
+<div class="section" id="facetapi">
+<h3>FacetAPI<a class="headerlink" href="#facetapi" title="Permalink to this headline">¶</a></h3>
+<p>The FacetAPI module is installed but minimally used on ILAO’s website.</p>
+<p>We support the following facets:</p>
+<ul class="simple">
+<li>node type</li>
+</ul>
+<p>The FacetAPI module would allow us to add filters/facets to searches for most fields in our database.
+Facets can be restricted by roles (for example, allowing only advocate users to filter by last updated date) and by bundle attached to (for example, allowing searches on legal issue only for legal content and not for events).</p>
+</div>
+<div class="section" id="apache-solr-views">
+<h3>Apache Solr Views<a class="headerlink" href="#apache-solr-views" title="Permalink to this headline">¶</a></h3>
+<p>Apache Solr Views allows one to completely configure the search results pages using Views.  This is far superior to the built in search page that is provided by the ApacheSolr module.</p>
+</div>
+<div class="section" id="search-autocomplete">
+<h3>Search Autocomplete<a class="headerlink" href="#search-autocomplete" title="Permalink to this headline">¶</a></h3>
+<p>The Search Autocomplete module allows us to include an autocomplete feature in our search bar.
+This module allows us to define, either a static list of results (for example, divorce =&gt; getting a divorce) or a view.</p>
+<blockquote>
+<div>We use a search autocomplete view.</div></blockquote>
+</div>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basic-settings">
+<h3>Basic Settings<a class="headerlink" href="#basic-settings" title="Permalink to this headline">¶</a></h3>
+<p>Minimum word length:  3 characters (words with less than 3 characters are ignored)
+Logs searches (should disable this)
+Translitateration enabled (allows searching of accented and unaccented characters as the same character)</p>
+</div>
+<div class="section" id="apache-solr-configuration">
+<h3>Apache Solr Configuration<a class="headerlink" href="#apache-solr-configuration" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="index-configuration">
+<h4>Index Configuration<a class="headerlink" href="#index-configuration" title="Permalink to this headline">¶</a></h4>
+<p>Content types included in search:</p>
+<ul class="simple">
+<li>Basic pages</li>
+<li>Blog posts</li>
+<li>Events</li>
+<li>Internships/Fellowships</li>
+<li>Job postings</li>
+<li>Legal content</li>
+<li>Site FAQ</li>
+<li>Volunteer opportunities</li>
+<li>Portal main page (?)</li>
+</ul>
+</div>
+<div class="section" id="bias-configuration">
+<h4>Bias Configuration<a class="headerlink" href="#bias-configuration" title="Permalink to this headline">¶</a></h4>
+<p><strong>Result Biases</strong>
+More recently created content gets weighted slightly higher</p>
+<p><strong>Type Biases</strong>
+Legal content is weighted slightly heavier with a .2 boost</p>
+<p><strong>Field Biases</strong></p>
+<p>We use field biases to boost the weight of certain fields as exposed by the Apache Solr module:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="69%" />
+<col width="31%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Boost</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Title</td>
+<td>5</td>
+</tr>
+<tr class="row-odd"><td>H1 tag</td>
+<td>3</td>
+</tr>
+<tr class="row-even"><td>H2, H3 tag</td>
+<td>3</td>
+</tr>
+<tr class="row-odd"><td>H4 - H6 tag</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>EM or strong tags</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>The following field biases are available but are not currently implemented:</p>
+<ul class="simple">
+<li>Full rendered body (to be considered given paragraphs)</li>
+<li>Text in A tags</li>
+<li>Taxonomy term names</li>
+<li>In total or by vocabulary</li>
+<li>Author names</li>
+<li>Extra rendered content or keywords</li>
+<li>Comments</li>
+<li>Path alias</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -220,7 +376,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'2.17.0',
+            VERSION:'2.19.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
