@@ -124,7 +124,7 @@ Person Ranking
 * Persona
 * Platform
 
-.. notes::
+.. note::
    For example, maybe we create a segment for users who more often use a desktop over 
    other platforms or we create a segment where users view video content frequently.
 
