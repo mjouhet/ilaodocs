@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Legal Self-Help Center Directory" href="legal_self_help_centers.html" />
+    <link rel="next" title="Referral algorithm" href="referral_algorithm.html" />
     <link rel="prev" title="Get Legal Help" href="get_legal_help.html" /> 
 
   
@@ -86,11 +86,8 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="get_legal_help.html">Get Legal Help</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Referrals</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#referral-algorithm">Referral algorithm</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#non-bar-referral-services">Non-bar referral services</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#bar-referrals">Bar referrals</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="referral_algorithm.html">Referral algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="referral_rendering.html">Referral Listings</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="legal_self_help_centers.html">Legal Self-Help Center Directory</a></li>
@@ -187,57 +184,15 @@
   <div class="section" id="referrals">
 <h1>Referrals<a class="headerlink" href="#referrals" title="Permalink to this headline">¶</a></h1>
 <p>See also Managing your organization, location and services.</p>
-<div class="section" id="referral-algorithm">
-<h2>Referral algorithm<a class="headerlink" href="#referral-algorithm" title="Permalink to this headline">¶</a></h2>
-<p>The referral algorithm relies on a complex database query designed.</p>
-<div class="section" id="non-bar-referral-services">
-<h3>Non-bar referral services<a class="headerlink" href="#non-bar-referral-services" title="Permalink to this headline">¶</a></h3>
-<p>The system checks for non-bar referrals separately from bar referrals and the results the user sees is based initially on their income status:</p>
-<ul class="simple">
-<li>Users who are not overincome are given 3 referrals based on the way the service is provided (phone, in person, and online).</li>
-<li>Users who are overincome are given 2 referrals: phone and in person. The only online referral is ILAO’s Legal Answers, which is income limited.</li>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="referral_algorithm.html">Referral algorithm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="referral_algorithm.html#non-bar-referral-services">Non-bar referral services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="referral_algorithm.html#bar-referrals">Bar referrals</a></li>
 </ul>
-<div class="section" id="mandatory-criteria">
-<h4>Mandatory criteria<a class="headerlink" href="#mandatory-criteria" title="Permalink to this headline">¶</a></h4>
-<p>In order for a service to be a referral for a user it must match the user’s query on:</p>
-<ul class="simple">
-<li>legal issue</li>
-<li>zip code</li>
-<li>income; for users who are over-income, they only get results that are not marked “free to low-income users”</li>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="referral_rendering.html">Referral Listings</a></li>
 </ul>
-<p>In addition:
-* the service must be open
-* the service must provide direct representation
-* the service must not be accepting online intakes.</p>
-</div>
-<div class="section" id="scoring-of-referrals">
-<h4>Scoring of referrals<a class="headerlink" href="#scoring-of-referrals" title="Permalink to this headline">¶</a></h4>
-<p>A score is generated for each referral. All services start with a score of 0.</p>
-<ul class="simple">
-<li>.5 is added to the score when the service specifically is limited to a population the user belongs to.</li>
-<li>The score is increased by x/3000 where x is the service’s documented capacity.</li>
-<li>The score is increased by .25 if the service has regular weekly hours</li>
-</ul>
-<p>For all  referrals:</p>
-<ul class="simple">
-<li>Referrals with less than regular weekly hours are only returned if they are open wihtin the next 7 days.  For example, a clinic open only on the 1st of the month will be excluded from being returns between the 2nd and 23rd of the month.</li>
-</ul>
-<p>For in-person referrals:</p>
-<ul class="simple">
-<li>when multiple walk-in clinics are available, the nearest one geographically is returned.</li>
-</ul>
-</div>
-</div>
-<div class="section" id="bar-referrals">
-<h3>Bar referrals<a class="headerlink" href="#bar-referrals" title="Permalink to this headline">¶</a></h3>
-<p>Bar referrals are essentially hard-coded as follows:</p>
-<ul class="simple">
-<li>Cook county returns the ISBA and CBA referral services</li>
-<li>All other counties return the ISBA and potentially the county bar association.</li>
-</ul>
-<p>Other referral programs in our database are never returned</p>
-<p>.</p>
-</div>
 </div>
 </div>
 
@@ -249,7 +204,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="legal_self_help_centers.html" class="btn btn-neutral float-right" title="Legal Self-Help Center Directory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="referral_algorithm.html" class="btn btn-neutral float-right" title="Referral algorithm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="get_legal_help.html" class="btn btn-neutral" title="Get Legal Help" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
