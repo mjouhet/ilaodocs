@@ -41,6 +41,16 @@ We have defined the following as additional user-defined variables:
 |               | Indicates whether user is org admin, OTIS admin,|
 |               | or both.                                        |
 +---------------+-------------------------------------------------+
+| person_udf7   | Zip code                                        |
++---------------+-------------------------------------------------+
+| person_udf8   | Gender                                          |
++---------------+-------------------------------------------------+
+| person_udf9   | Populations                                     |
++---------------+-------------------------------------------------+
+| person_udf10  | Notification preferences                        |
+|               | For logged in users whether they want email/sms |
++---------------+-------------------------------------------------+
+                
 
 
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ILAO person custom data &mdash; ILAO 2.19.0 documentation</title>
+  <title>SMS Online intake integration &mdash; ILAO 2.19.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="ILAO touch (page view) custom data" href="acquia_ilao_touch_data.html" />
-    <link rel="prev" title="General data collected by Acquia Lift" href="acquia_default_data.html" /> 
+    <link rel="next" title="Data Integrations" href="data_integrations.html" />
+    <link rel="prev" title="SMS Content Sharing" href="sms_sharing.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -102,24 +102,14 @@
 <li class="toctree-l1"><a class="reference internal" href="technical_information.html">Other Site Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="seo.html">SEO Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation_management.html">Translation Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sms_integrations.html">SMS Integrations</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="data_integrations.html">Data Integrations</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="google_analytics.html">Google Analytics Integration</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="acquia_lift.html">Acquia Lift Integration</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="acquia_lift.html#core-configuration">Core Configuration</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="acquia_default_data.html">General data collected by Acquia Lift</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">ILAO person custom data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="acquia_ilao_touch_data.html">ILAO touch (page view) custom data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="acquia_ilao_event_data.html">ILAO Specific Event data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="acquia_ilao_segments.html">ILAO Segments</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="sms_integrations.html">SMS Integrations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sms_sharing.html">SMS Content Sharing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SMS Online intake integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sms_surveys.html">SMS Surveys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sms_campaigns.html">SMS Campaigns</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="acquia_lift.html#tracking">Tracking</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="recommendation_algorithm.html">Recommendation Algorithm</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="data_integrations.html">Data Integrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tech_styles.html">Website Styles</a></li>
 </ul>
 
@@ -166,17 +156,15 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="data_integrations.html">Data Integrations</a> &raquo;</li>
+          <li><a href="sms_integrations.html">SMS Integrations</a> &raquo;</li>
         
-          <li><a href="acquia_lift.html">Acquia Lift Integration</a> &raquo;</li>
-        
-      <li>ILAO person custom data</li>
+      <li>SMS Online intake integration</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/acquia_ilao_person_data.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/sms_otis.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -189,78 +177,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="ilao-person-custom-data">
-<h1>ILAO person custom data<a class="headerlink" href="#ilao-person-custom-data" title="Permalink to this headline">¶</a></h1>
-<p>ILAO captures the email address of users as the identity piece.  Email comes from:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Mail field for registered users</li>
-<li>From email fields for anonymous users:<ul>
-<li>Contact us form</li>
-<li>Online intake contact form</li>
-<li>Newsletter subscription form</li>
-<li>Blog subscription form</li>
-</ul>
-</li>
-</ul>
-</div></blockquote>
-<p>We can have up to 50 additional user defined variables for “person.”
-We have defined the following as additional user-defined variables:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="23%" />
-<col width="77%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Variable name</th>
-<th class="head">Definition</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>person_udf1</td>
-<td>Year born.
-Available for online intake and registered users</td>
-</tr>
-<tr class="row-odd"><td>person_udf2</td>
-<td>Primary registered user role
-Available for registered users only.
-We store the best role for a user:
-Intern, if has intern role
-Staff if has staff role and not intern
-All others: advocate, pro bono, law student,
-navigator, public</td>
-</tr>
-<tr class="row-even"><td>person_udf3</td>
-<td>User testing status (registered users only</td>
-</tr>
-<tr class="row-odd"><td>person_udf4</td>
-<td>Organization/Company/Law school (registered)</td>
-</tr>
-<tr class="row-even"><td>person_udf5</td>
-<td>Content editor role
-Indicates whether the user is a SME or has
-edited a piece of legal content</td>
-</tr>
-<tr class="row-odd"><td>person_udf6</td>
-<td>Organization role
-Indicates whether user is org admin, OTIS admin,
-or both.</td>
-</tr>
-<tr class="row-even"><td>person_udf7</td>
-<td>Zip code</td>
-</tr>
-<tr class="row-odd"><td>person_udf8</td>
-<td>Gender</td>
-</tr>
-<tr class="row-even"><td>person_udf9</td>
-<td>Populations</td>
-</tr>
-<tr class="row-odd"><td>person_udf10</td>
-<td>Notification preferences
-For logged in users whether they want email/sms</td>
-</tr>
-</tbody>
-</table>
+  <div class="section" id="sms-online-intake-integration">
+<h1>SMS Online intake integration<a class="headerlink" href="#sms-online-intake-integration" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -271,10 +189,10 @@ For logged in users whether they want email/sms</td>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="acquia_ilao_touch_data.html" class="btn btn-neutral float-right" title="ILAO touch (page view) custom data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="data_integrations.html" class="btn btn-neutral float-right" title="Data Integrations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="acquia_default_data.html" class="btn btn-neutral" title="General data collected by Acquia Lift" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sms_sharing.html" class="btn btn-neutral" title="SMS Content Sharing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

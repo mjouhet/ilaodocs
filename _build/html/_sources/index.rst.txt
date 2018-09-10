@@ -28,6 +28,7 @@ Welcome to ILAO's website documentation!
    technical_information
    seo
    translation_management
+   sms_integrations
    data_integrations
    tech_styles
 

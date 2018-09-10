@@ -23,7 +23,7 @@ This table outlines how we store our content types in Lift.  For pages that are 
 +-------------------+-----------------------------------------+
 | Acquia Lift value | Description                             |
 +===================+=========================================+
-| event             | calendar event (event content type)     |
+| calendar event    | calendar event (event content type)     |
 +-------------------+-----------------------------------------+
 | job               | job posting                             |
 +-------------------+-----------------------------------------+
@@ -72,6 +72,14 @@ This table outlines how we store our content types in Lift.  For pages that are 
 +-------------------+-----------------------------------------+
 | service           | Service page                            |
 +-------------------+-----------------------------------------+
+| legal toolbox     | Toolbox page                            |
++-------------------+-----------------------------------------+
+| legal toolbox tool| Toolbox tool page                       |
++-------------------+-----------------------------------------+
+| legal toolbox     | Toolbox tool step page                  |
+| tool step         |                                         |
++-------------------+-----------------------------------------+
+
 
 Content Section
 ================
