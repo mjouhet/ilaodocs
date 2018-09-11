@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="SMS Online intake integration" href="sms_otis.html" />
-    <link rel="prev" title="SMS Integrations" href="sms_integrations.html" /> 
+    <link rel="next" title="SMS OTIS Confirmations &amp; Reminders" href="sms_otis.html" />
+    <link rel="prev" title="User notifications" href="user_notifications.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -103,8 +103,15 @@
 <li class="toctree-l1"><a class="reference internal" href="seo.html">SEO Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation_management.html">Translation Management</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="sms_integrations.html">SMS Integrations</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">SMS Content Sharing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sms_otis.html">SMS Online intake integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sms_twilio.html">Twilio Technical Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sms_optins.html">SMS Opt-ins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_notifications.html">User notifications</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SMS Content Sharing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#anonymous-users">Anonymous users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logged-in-users">Logged in users</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sms_otis.html">SMS OTIS Confirmations &amp; Reminders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sms_surveys.html">SMS Surveys</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sms_campaigns.html">SMS Campaigns</a></li>
 </ul>
@@ -179,7 +186,33 @@
             
   <div class="section" id="sms-content-sharing">
 <h1>SMS Content Sharing<a class="headerlink" href="#sms-content-sharing" title="Permalink to this headline">¶</a></h1>
-<p>=</p>
+<p>The SMS icon is added to legal content’s share bar when the legal content is not excluded from SMS.</p>
+<div class="section" id="anonymous-users">
+<h2>Anonymous users<a class="headerlink" href="#anonymous-users" title="Permalink to this headline">¶</a></h2>
+<p>Anonymous users are prompted to log in or register to share content via SMS.  They can also share it natively if they are on their mobile device and select the operating system.</p>
+<p>Selecting “Android” or “iOS” will launch a link that opens the native SMS client and pastes the URL into it.</p>
+<div class="figure">
+<img alt="_images/sms-content-anonymous.png" src="_images/sms-content-anonymous.png" />
+</div>
+</div>
+<div class="section" id="logged-in-users">
+<h2>Logged in users<a class="headerlink" href="#logged-in-users" title="Permalink to this headline">¶</a></h2>
+<p>Logged in users who have opted in will see a form to confirm their mobile number and an option to send the content as full text or as a link.</p>
+<div class="figure" id="id1">
+<img alt="_images/sms-content-logged-opted.png" src="_images/sms-content-logged-opted.png" />
+<p class="caption"><span class="caption-text">Sharing content modal for logged in users who have already opted-in to SMS</span></p>
+</div>
+<p>Logged in users who have not opted in will see a form to opt in and option to send the content as full text or as a link.
+If they opt-in, this is also stored in their user profile.</p>
+<div class="figure" id="id2">
+<img alt="_images/sms-content-logged-notopted.png" src="_images/sms-content-logged-notopted.png" />
+<p class="caption"><span class="caption-text">Sharing content modal for logged in users who have not opted-in to SMS</span></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Certain types of content, like videos, file downloads, and TeachMes do not support full text downloads.</p>
+</div>
+</div>
 </div>
 
 
@@ -190,10 +223,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="sms_otis.html" class="btn btn-neutral float-right" title="SMS Online intake integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sms_otis.html" class="btn btn-neutral float-right" title="SMS OTIS Confirmations &amp; Reminders" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sms_integrations.html" class="btn btn-neutral" title="SMS Integrations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="user_notifications.html" class="btn btn-neutral" title="User notifications" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
