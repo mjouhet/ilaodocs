@@ -103,7 +103,14 @@
 <li class="toctree-l2"><a class="reference internal" href="job_postings_content_admin.html">Managing Job Postings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="volunteer_postings_content_admin.html">Managing Volunteer Opportunities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="internships_content_admin.html">Managing Internships &amp; Fellowships</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">SMS Surveys</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SMS Surveys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#current-surveys">Current Surveys</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#online-intake-survey">Online intake survey</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-feedback-survey">User feedback survey</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="sms_campaigns.html">SMS Campaigns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="content_admin_reporting.html">Content Reporting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="content_admin_permissions.html">Content Permissions</a></li>
@@ -116,6 +123,7 @@
 <li class="toctree-l1"><a class="reference internal" href="technical_information.html">Other Site Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="seo.html">SEO Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation_management.html">Translation Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sms_integrations.html">SMS Integrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="data_integrations.html">Data Integrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tech_styles.html">Website Styles</a></li>
 </ul>
@@ -186,6 +194,37 @@
             
   <div class="section" id="sms-surveys">
 <h1>SMS Surveys<a class="headerlink" href="#sms-surveys" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="current-surveys">
+<h2>Current Surveys<a class="headerlink" href="#current-surveys" title="Permalink to this headline">¶</a></h2>
+<p>We currently have 2 surveys being sent out via SMS:</p>
+<blockquote>
+<div><ul class="simple">
+<li>an initial online intake survey</li>
+<li>a user feedback survey</li>
+</ul>
+</div></blockquote>
+<div class="section" id="online-intake-survey">
+<h3>Online intake survey<a class="headerlink" href="#online-intake-survey" title="Permalink to this headline">¶</a></h3>
+<p>The online intake survey is sent out:</p>
+<ul class="simple">
+<li>to users who have completed online intake through a legal aid organization on our website</li>
+<li>opted in to SMS via OTIS</li>
+<li>7 days after the user has had their application eTransferred to an organization</li>
+</ul>
+<p>There is a <a class="reference external" href="https://www.illinoislegalaid.org/admin/reporting/sms-survey-results">report available</a> to ILAO staff that ties together triage user data and survey results.</p>
+</div>
+<div class="section" id="user-feedback-survey">
+<h3>User feedback survey<a class="headerlink" href="#user-feedback-survey" title="Permalink to this headline">¶</a></h3>
+<p>The user feedback survey is sent out:</p>
+<ul class="simple">
+<li>to registered users</li>
+<li>who are not advocate users</li>
+<li>30 days after their last login</li>
+</ul>
+<p>The system will retry the survey every 31 days up to 3 times.</p>
+<p>There is no report available beyond the <a class="reference external" href="https://www.illinoislegalaid.org/node/119266/webform-results">standard webform results</a> page.</p>
+</div>
+</div>
 </div>
 
 

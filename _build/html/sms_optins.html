@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SMS Campaigns &mdash; ILAO 2.19.0 documentation</title>
+  <title>SMS Opt-ins &mdash; ILAO 2.19.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Content Reporting" href="content_admin_reporting.html" />
-    <link rel="prev" title="SMS Surveys" href="sms_surveys.html" /> 
+    <link rel="next" title="User notifications" href="user_notifications.html" />
+    <link rel="prev" title="Twilio Technical Information" href="sms_twilio.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -94,25 +94,7 @@
 <li class="toctree-l1"><a class="reference internal" href="comments_ratings.html">Comments &amp; Ratings System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_engagement.html">Share Bar &amp; Favorites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contact_us.html">Contacting ILAO</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="managing_content.html">Content Administration</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="legal_content_admin.html">Legal content administration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="adrm_content_admin.html">Attorney Manual Content</a></li>
-<li class="toctree-l2"><a class="reference internal" href="toolboxes_admin.html">Toolboxes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="portal_admin.html">Portal content</a></li>
-<li class="toctree-l2"><a class="reference internal" href="events_content_admin.html">Calendar events administration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="job_postings_content_admin.html">Managing Job Postings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="volunteer_postings_content_admin.html">Managing Volunteer Opportunities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="internships_content_admin.html">Managing Internships &amp; Fellowships</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sms_surveys.html">SMS Surveys</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">SMS Campaigns</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#restricted-keywords">Restricted keywords</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#campaign-keywords">Campaign Keywords</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="content_admin_reporting.html">Content Reporting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="content_admin_permissions.html">Content Permissions</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="managing_content.html">Content Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="managing_people.html">User Accounts &amp; Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="managing_organizations.html">Managing Organizations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tech_mailchimp.html">Mailchimp Integration</a></li>
@@ -120,7 +102,20 @@
 <li class="toctree-l1"><a class="reference internal" href="technical_information.html">Other Site Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="seo.html">SEO Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation_management.html">Translation Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sms_integrations.html">SMS Integrations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="sms_integrations.html">SMS Integrations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sms_twilio.html">Twilio Technical Information</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SMS Opt-ins</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#user-registration-form">User registration form</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#otis-address-form">OTIS address form</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_notifications.html">User notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sms_sharing.html">SMS Content Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sms_otis.html">SMS Online intake integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sms_surveys.html">SMS Surveys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sms_campaigns.html">SMS Campaigns</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="data_integrations.html">Data Integrations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tech_styles.html">Website Styles</a></li>
 </ul>
@@ -168,15 +163,15 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="managing_content.html">Content Administration</a> &raquo;</li>
+          <li><a href="sms_integrations.html">SMS Integrations</a> &raquo;</li>
         
-      <li>SMS Campaigns</li>
+      <li>SMS Opt-ins</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/sms_campaigns.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/sms_optins.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -189,44 +184,30 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="sms-campaigns">
-<h1>SMS Campaigns<a class="headerlink" href="#sms-campaigns" title="Permalink to this headline">¶</a></h1>
-<p>Campaigns are groupings of SMS keywords that are configured to return a specific message when received.</p>
-<p>For example, our renters’ rights campaign had keyword for rent, lease, and other terms related to landlord/tenant law.</p>
-<p>When a user texts ILAO’s number a keyword the system:</p>
+  <div class="section" id="sms-opt-ins">
+<h1>SMS Opt-ins<a class="headerlink" href="#sms-opt-ins" title="Permalink to this headline">¶</a></h1>
+<p>Users can opt-in to SMS from ILAO in two ways:</p>
 <ul class="simple">
-<li>First processes out any potential survey responses to determine that it is a campaign keyword</li>
-<li>Looks for a matching keyword; if the keyword is found, it returns the built-in response</li>
-<li>If no keyword is found, it returns the error message, as configured on the website in the SMS configuration.</li>
+<li>as a registered user, they can opt-in via the registration form.</li>
+<li>an any user, they can opt-in to receive OTIS-related text messages.</li>
 </ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Sample error message: That keyword was not found. It may be an auto correct issue. Please try again. Or go to IllinoisLegalAid.org 24/7 for legal help.</p>
+<div class="section" id="user-registration-form">
+<h2>User registration form<a class="headerlink" href="#user-registration-form" title="Permalink to this headline">¶</a></h2>
+<p>Users are asked to opt-in or opt-out of text messages when the register.  They are then required to provide their mobile number.</p>
+<div class="figure" id="id1">
+<img alt="_images/user-sms-optin.png" src="_images/user-sms-optin.png" />
+<p class="caption"><span class="caption-text">Screenshot of notification and opt-in fields on user registration form.</span></p>
 </div>
-<div class="section" id="restricted-keywords">
-<h2>Restricted keywords<a class="headerlink" href="#restricted-keywords" title="Permalink to this headline">¶</a></h2>
-<p>The following keywords can never be used in campaigns because they have special usage in SMS generally:
-* STOP
-* STOPALL
-* UNSUBSCRIBE
-* CANCEL
-* END
-* QUIT
-* START
-* YES
-* UNSTOP
-* HELP
-* INFO</p>
-<p>Campaign keywords should never be numbers.</p>
+<p>If a user texts “Stop” to ILAO’s number, the website updates their opt-in to an opt-out in addition to Twilio blocking messages from our number.</p>
 </div>
-<div class="section" id="campaign-keywords">
-<h2>Campaign Keywords<a class="headerlink" href="#campaign-keywords" title="Permalink to this headline">¶</a></h2>
-<p>Campaign keywords:</p>
-<ul class="simple">
-<li>be single words or phrases without spaces (for example secdep, rent)</li>
-<li>are not case sensitive (secdep is the same as SECDEP, SecDep, etc)</li>
-<li>may return a custom string or legal content</li>
-</ul>
+<div class="section" id="otis-address-form">
+<h2>OTIS address form<a class="headerlink" href="#otis-address-form" title="Permalink to this headline">¶</a></h2>
+<p>When a user completes online intake, they fill out a contact form. If the user is logged in and has provided a mobile number, it is pre-filled.</p>
+<p>If they indicate that the phone number is a mobile number, they are required to opt in or out of OTIS-related text messages.</p>
+<div class="figure" id="id2">
+<img alt="_images/user-otis-sms-optin.png" src="_images/user-otis-sms-optin.png" />
+<p class="caption"><span class="caption-text">Screenshot of contact form opt-in for completed intakes via OTIS.</span></p>
+</div>
 </div>
 </div>
 
@@ -238,10 +219,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="content_admin_reporting.html" class="btn btn-neutral float-right" title="Content Reporting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="user_notifications.html" class="btn btn-neutral float-right" title="User notifications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sms_surveys.html" class="btn btn-neutral" title="SMS Surveys" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sms_twilio.html" class="btn btn-neutral" title="Twilio Technical Information" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

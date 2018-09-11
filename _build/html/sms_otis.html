@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>SMS Online intake integration &mdash; ILAO 2.19.0 documentation</title>
+  <title>SMS OTIS Confirmations &amp; Reminders &mdash; ILAO 2.19.0 documentation</title>
   
 
   
@@ -103,8 +103,16 @@
 <li class="toctree-l1"><a class="reference internal" href="seo.html">SEO Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation_management.html">Translation Management</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="sms_integrations.html">SMS Integrations</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sms_twilio.html">Twilio Technical Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sms_optins.html">SMS Opt-ins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_notifications.html">User notifications</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sms_sharing.html">SMS Content Sharing</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">SMS Online intake integration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SMS OTIS Confirmations &amp; Reminders</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#confirmation-messages">Confirmation messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reminders">Reminders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#follow-up-surveys">Follow-up surveys</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="sms_surveys.html">SMS Surveys</a></li>
 <li class="toctree-l2"><a class="reference internal" href="sms_campaigns.html">SMS Campaigns</a></li>
 </ul>
@@ -158,7 +166,7 @@
         
           <li><a href="sms_integrations.html">SMS Integrations</a> &raquo;</li>
         
-      <li>SMS Online intake integration</li>
+      <li>SMS OTIS Confirmations &amp; Reminders</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -177,8 +185,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="sms-online-intake-integration">
-<h1>SMS Online intake integration<a class="headerlink" href="#sms-online-intake-integration" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="sms-otis-confirmations-reminders">
+<h1>SMS OTIS Confirmations &amp; Reminders<a class="headerlink" href="#sms-otis-confirmations-reminders" title="Permalink to this headline">¶</a></h1>
+<p>SMS is integrated with our Online Triage &amp; Intake System (OTIS) in three ways when a user has opted-in to receive OTIS-related messages:</p>
+<ul class="simple">
+<li>when a user completes an online intake, the receive their confirmation message in both email and SMS</li>
+<li>when a user completes an online intake where they schedule an appointment with a program, they receive reminders</li>
+<li>users receive follow-up system surveys that are targeted to get legal help users.</li>
+</ul>
+<div class="section" id="confirmation-messages">
+<h2>Confirmation messages<a class="headerlink" href="#confirmation-messages" title="Permalink to this headline">¶</a></h2>
+<p>Users who opt-in to SMS receive an immediate SMS confirmation message.  The message is pulled from each program’s intake settings.  If the user applied and selected call back times, those are also listed.</p>
+<div class="figure" id="id1">
+<img alt="_images/text-confirmation.png" src="_images/text-confirmation.png" />
+<p class="caption"><span class="caption-text">Sample text confirmation when user calls program.</span></p>
+</div>
+</div>
+<div class="section" id="reminders">
+<h2>Reminders<a class="headerlink" href="#reminders" title="Permalink to this headline">¶</a></h2>
+<p>The system will automatically send appointment reminders when:</p>
+<ul class="simple">
+<li>the user scheduled one or more times for the program to call them</li>
+<li>the user has opted-in to SMS through online intake</li>
+</ul>
+<p>Reminders are sent:</p>
+<ul class="simple">
+<li>24 hours before the first callback time</li>
+<li>1 hour before the first callback time</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Example: User A schedules a callback for Wednesday, September 13 at 1:00pm or Thursday, September 14 at 9:–am.</p>
+<p class="last">The user will get a 24 hour reminder at 1:00pm on September 12 and a 1 hour reminder at 12:00pm on September 12</p>
+</div>
+</div>
+<div class="section" id="follow-up-surveys">
+<h2>Follow-up surveys<a class="headerlink" href="#follow-up-surveys" title="Permalink to this headline">¶</a></h2>
+<p>Follow up surveys may be sent using the <a class="reference external" href="sms_surveys.html">SMS Surveys</a> platform.  Surveys are sent to OTIS users when:</p>
+<ul class="simple">
+<li>the primary user type for the survey is “Get used legal help”</li>
+<li>the user meets the “send on conditions” for the survey</li>
+<li>the user has opted in for SMS through online intake</li>
+</ul>
+</div>
 </div>
 
 
