@@ -6,6 +6,7 @@ Legal Information
    :maxdepth: 2
 
    form_library
+   lawyer_manuals
    lc_easy_forms
    lc_guide_content
    lc_process_content

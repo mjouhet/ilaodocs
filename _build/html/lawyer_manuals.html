@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>How-To (Process) Content &mdash; ILAO 2.19.0 documentation</title>
+  <title>Lawyer Manuals &mdash; ILAO 2.19.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Using Video Content" href="lc_video_content.html" />
-    <link rel="prev" title="Guide content" href="lc_guide_content.html" /> 
+    <link rel="next" title="Easy Forms" href="lc_easy_forms.html" />
+    <link rel="prev" title="Form Library" href="form_library.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -87,10 +87,14 @@
 <li class="toctree-l1"><a class="reference internal" href="get_legal_help.html">Get Legal Help</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="legal_information.html">Legal Information</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="form_library.html">Form Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lawyer_manuals.html">Lawyer Manuals</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lawyer Manuals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-the-outline-table-of-contents">Creating the outline/table of contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#display-within-search-results">Display within search results</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="lc_easy_forms.html">Easy Forms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lc_guide_content.html">Guide content</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">How-To (Process)  Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lc_process_content.html">How-To (Process)  Content</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lc_video_content.html">Using Video Content</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lc_iicle.html">IICLE Smartbooks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lc_other_formats.html">Other legal information formats</a></li>
@@ -163,13 +167,13 @@
         
           <li><a href="legal_information.html">Legal Information</a> &raquo;</li>
         
-      <li>How-To (Process)  Content</li>
+      <li>Lawyer Manuals</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/lc_process_content.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/lawyer_manuals.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -182,8 +186,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="how-to-process-content">
-<h1>How-To (Process)  Content<a class="headerlink" href="#how-to-process-content" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="lawyer-manuals">
+<h1>Lawyer Manuals<a class="headerlink" href="#lawyer-manuals" title="Permalink to this headline">¶</a></h1>
+<p>Lawyer manuals leverage Drupal’s book module to create a product that includes a manual home page, associated child pages (down to [x] levels), and a table of contents</p>
+<p>Lawyer manuals require:</p>
+<ul class="simple">
+<li>Title</li>
+<li>Meta description for use in metatags, search engines, and social media</li>
+<li>Content description for use on the website</li>
+<li>One or more content blocks.  The content blocks currently supported in lawyer manuals are:<ul>
+<li>Text</li>
+<li>Video</li>
+<li>File (non-form)</li>
+<li>Link (non-form)</li>
+</ul>
+</li>
+<li>Legal position</li>
+<li>Content level, which defaults to “advanced”</li>
+<li>Primary legal category: which of the 9 top categories should this be added to.* Image for social media</li>
+<li>Restrictions.  Lawyer manuals by default are not restricted but may be limited to legal aid and/or pro bono members.</li>
+<li>The lawyer manual the page belongs to.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For new manuals, select “Create new” in the ADRM field</p>
+</div>
+<ul class="simple">
+<li>Weight, for ordering pages in the book</li>
+<li>Annual updates: if the page needs to be updated based on an annual update, select it here.</li>
+<li>Exclude from search.  If the page needs to be removed from search, mark it here.</li>
+</ul>
+<div class="section" id="creating-the-outline-table-of-contents">
+<h2>Creating the outline/table of contents<a class="headerlink" href="#creating-the-outline-table-of-contents" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="display-within-search-results">
+<h2>Display within search results<a class="headerlink" href="#display-within-search-results" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Update search and site navigation so that this section is accurate.</p>
+</div>
+<p>Lawyer manual pages that are the main book page will display in navigation and search as follows:  title (Lawyer manual).  For example, the auto accidents main page will display as Auto accidents (Lawyer manual).</p>
+<p>Lawyer manual pages that are not the main book page will display in navigation and search as Book title: page title (Lawyer manual).  For example, the chapter “local laws” in the auto accidents manual will display as: Auto accidents: Local laws (Lawyer manual)</p>
+</div>
 </div>
 
 
@@ -194,10 +238,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="lc_video_content.html" class="btn btn-neutral float-right" title="Using Video Content" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="lc_easy_forms.html" class="btn btn-neutral float-right" title="Easy Forms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="lc_guide_content.html" class="btn btn-neutral" title="Guide content" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="form_library.html" class="btn btn-neutral" title="Form Library" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

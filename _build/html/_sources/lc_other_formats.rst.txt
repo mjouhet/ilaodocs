@@ -1,5 +1,5 @@
 ======================================
-Using other types of legal information
+Other legal information formats
 ======================================
 
 Text articles
