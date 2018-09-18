@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Triage Rules &mdash; ILAO 2.19.0 documentation</title>
+  <title>Automatic translation of triage rules &mdash; ILAO 2.19.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Automatic translation of triage rules" href="otis_triage_translation.html" />
-    <link rel="prev" title="Managing Your Intake Settings" href="otis_integration_intake_settings.html" /> 
+    <link rel="next" title="E-transfers with LegalServer" href="otis_integration_legal_server_integration.html" />
+    <link rel="prev" title="Triage Rules" href="otis_integration_triage_rules.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -169,13 +169,15 @@
         
           <li><a href="otis_integration.html">Online Triage and Intake System (OTIS)</a> &raquo;</li>
         
-      <li>Triage Rules</li>
+          <li><a href="otis_integration_triage_rules.html">Triage Rules</a> &raquo;</li>
+        
+      <li>Automatic translation of triage rules</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/otis_integration_triage_rules.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/otis_triage_translation.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -188,13 +190,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="triage-rules">
-<h1>Triage Rules<a class="headerlink" href="#triage-rules" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="otis_triage_translation.html">Automatic translation of triage rules</a></li>
+  <div class="section" id="automatic-translation-of-triage-rules">
+<h1>Automatic translation of triage rules<a class="headerlink" href="#automatic-translation-of-triage-rules" title="Permalink to this headline">¶</a></h1>
+<p>When triage rules are initially created, a notification is sent to Gwen and Teri to set up translation.  To do this, for each set of rules:</p>
+<ul class="simple">
+<li>Go to the triage rules</li>
+<li>Click translate</li>
+<li>Add the translation for Spanish (just click add translation and then save the page</li>
+<li>Click on webform</li>
+<li>Click on form settings</li>
+<li>Set the localization by string translation to “Expose webform component strings suitable for translation</li>
 </ul>
-</div>
+<p>Then you need to tell Drupal that we have new webform strings.  If you are enableing translations for multiple sets of triage rules, do this after completing the step above for each step</p>
+<ul class="simple">
+<li>Go to the <a class="reference external" href="https://www.illinoislegalaid.org/admin/config/regional/translate">translate interface</a> page and click Strings</li>
+<li>Check webform localization</li>
+<li>Uncheck clean up left over strings</li>
+<li>Click “Refresh strings”</li>
+</ul>
+<img alt="_images/lingotek_string_refresh.png" src="_images/lingotek_string_refresh.png" />
+<p>Then go to our <a class="reference external" href="https://www.illinoislegalaid.org/admin/settings/lingotek/manage/config">Lingotek admin page for configuration</a>.  It will likely default to show all the missing translations</p>
+<ul class="simple">
+<li>Set the pager at the bottom to 100</li>
+<li>Check all the components on the page</li>
+<li>Under actions, select “Upload to lingotek”</li>
+<li>Wait 5 minutes</li>
+<li>Under actions, select “Download all translations”</li>
+</ul>
+<img alt="_images/lingotek_config.png" src="_images/lingotek_config.png" />
 </div>
 
 
@@ -205,10 +228,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="otis_triage_translation.html" class="btn btn-neutral float-right" title="Automatic translation of triage rules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="otis_integration_legal_server_integration.html" class="btn btn-neutral float-right" title="E-transfers with LegalServer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="otis_integration_intake_settings.html" class="btn btn-neutral" title="Managing Your Intake Settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="otis_integration_triage_rules.html" class="btn btn-neutral" title="Triage Rules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

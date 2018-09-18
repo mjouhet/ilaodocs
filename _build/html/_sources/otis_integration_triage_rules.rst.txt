@@ -1,3 +1,7 @@
 ============================
-Managing Your Triage Rules
+ Triage Rules
 ============================
+
+.. toctree::
+
+   otis_triage_translation
