@@ -20,6 +20,7 @@ In order for a service to be a referral for a user it must match the user's quer
 * income; for users who are over-income, they only get results that are not marked "free to low-income users"
 
 In addition:
+
 * the service must be open
 * the service must provide direct representation
 * the service must not be accepting online intakes.

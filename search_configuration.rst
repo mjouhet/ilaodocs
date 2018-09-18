@@ -25,11 +25,13 @@ We do not have access to any of the configuration files provided by Acquia’s S
 
 Apache Solr Module
 -------------------
+
 The Apache Solr module provides the bulk of the configuration options.  
 Drupal sites can use either the Apache Solr module OR the Search API module but not both.  
 
 Apache Solr Exclude
 ---------------------
+
 The Apache Solr Exclude module allows us to exclude nodes from the search index on a per-node basis. 
 It adds a field to each node where we can mark “yes, exclude from search” where needed on content types where we have implemented it.  
 It is implemented on our website for:
@@ -39,14 +41,17 @@ It is implemented on our website for:
 
 Apache Solr Multilingual
 --------------------------
+
 The Apache Solr multilingual module adds support for multilingual websites.  
 
 Apache Solr Paragraphs
 -------------------------
+
 The Apache Solr paragraphs module is needed to accommodate ILAO’s use of the paragraphs module throughout the site.  
 
 FacetAPI
 ----------
+
 The FacetAPI module is installed but minimally used on ILAO’s website.  
 
 We support the following facets:
@@ -65,14 +70,16 @@ Search Autocomplete
 ---------------------
 
 The Search Autocomplete module allows us to include an autocomplete feature in our search bar.  
-This module allows us to define, either a static list of results (for example, divorce => getting a divorce) or a view. 
- We use a search autocomplete view.
+This module allows us to define, either a static list of results  or a view. 
+ 
+We use a search autocomplete view.
 
 Configuration
 ===============
 
 Basic Settings
 ---------------
+
 Minimum word length:  3 characters (words with less than 3 characters are ignored)
 Logs searches (should disable this)
 Translitateration enabled (allows searching of accented and unaccented characters as the same character)
