@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Managing Your Organization’s Locations &mdash; ILAO 2.19.0 documentation</title>
+  <title>404 Event management &mdash; ILAO 2.19.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Managing Your Organization’s Services" href="organization_services_admin.html" />
-    <link rel="prev" title="Managing Your Organization" href="organization_admin.html" /> 
+    <link rel="next" title="Acquia Lift Integration" href="acquia_lift.html" />
+    <link rel="prev" title="Google Analytics Events" href="ga_events.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -96,22 +96,34 @@
 <li class="toctree-l1"><a class="reference internal" href="contact_us.html">Contacting ILAO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="managing_content.html">Content Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="managing_people.html">User Accounts &amp; Administration</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="managing_organizations.html">Managing Organizations</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="organization_admin.html">Managing Your Organization</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Managing Your Organization’s Locations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="organization_services_admin.html">Managing Your Organization’s Services</a></li>
-<li class="toctree-l2"><a class="reference internal" href="otis_integration_intake_settings.html">Managing Your Intake Settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="otis_integration_triage_rules.html">Triage Rules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="organization_members.html">Organization staff</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="managing_organizations.html">Managing Organizations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tech_mailchimp.html">Mailchimp Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tech_google_groups.html">Discussion Boards &amp; Google Groups</a></li>
 <li class="toctree-l1"><a class="reference internal" href="technical_information.html">Other Site Administration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="seo.html">SEO Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="translation_management.html">Translation Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sms_integrations.html">SMS Integrations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="data_integrations.html">Data Integrations</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="data_integrations.html">Data Integrations</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="google_analytics.html">Google Analytics Integration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ga_integrated_data.html">Google Analytics Data In Website</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ga_tags.html">Defined Tags</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="ga_events.html">Google Analytics Events</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="ga_events.html#form-submissions">Form Submissions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ga_events.html#form-abandonment">Form Abandonment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ga_events.html#outbound-links">Outbound Links</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ga_events.html#file-downloads">File Downloads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ga_events.html#print-intents">Print Intents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ga_events.html#addthis-events">AddThis Events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ga_events.html#youtube-events">YouTube Events</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="ga_events.html#page-not-found-404-errors">Page Not Found (404) errors</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="acquia_lift.html">Acquia Lift Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recommendation_algorithm.html">Recommendation Algorithm</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="tech_styles.html">Website Styles</a></li>
 </ul>
 
@@ -158,15 +170,19 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="managing_organizations.html">Managing Organizations</a> &raquo;</li>
+          <li><a href="data_integrations.html">Data Integrations</a> &raquo;</li>
         
-      <li>Managing Your Organization’s Locations</li>
+          <li><a href="google_analytics.html">Google Analytics Integration</a> &raquo;</li>
+        
+          <li><a href="ga_events.html">Google Analytics Events</a> &raquo;</li>
+        
+      <li>404 Event management</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/organization_location_admin.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/ga_404.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -179,8 +195,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="managing-your-organization-s-locations">
-<h1>Managing Your Organization’s Locations<a class="headerlink" href="#managing-your-organization-s-locations" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="event-management">
+<h1>404 Event management<a class="headerlink" href="#event-management" title="Permalink to this headline">¶</a></h1>
+<p>There are 2 reports configured for 404 events.  The product team is responsible for managing 404 errors that do not happen on legal content pages.  The content team is repsonsible for managing 404 erros that happen on legal content pages.</p>
+<p>There are 2 reports configured in Google analytics to capture this information:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://analytics.google.com/analytics/web/template?uid=o6eWinnTQuW3DL0o_D6AdQ">Broken content links</a></li>
+<li><a class="reference external" href="https://analytics.google.com/analytics/web/template?uid=ZX4eXCUqR_2sG8dTJBuNqQ">Other 404 errors</a></li>
+</ul>
+<p>The other 404 errors is scheduled to be sent as an email each month on the 19th to be reviewed.  Errors above a threshold of 20 views per month will get addressed as soon as possible.</p>
 </div>
 
 
@@ -191,10 +214,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="organization_services_admin.html" class="btn btn-neutral float-right" title="Managing Your Organization’s Services" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="acquia_lift.html" class="btn btn-neutral float-right" title="Acquia Lift Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="organization_admin.html" class="btn btn-neutral" title="Managing Your Organization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ga_events.html" class="btn btn-neutral" title="Google Analytics Events" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

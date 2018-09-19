@@ -1,0 +1,12 @@
+=======================
+404 Event management
+=======================
+
+There are 2 reports configured for 404 events.  The product team is responsible for managing 404 errors that do not happen on legal content pages.  The content team is repsonsible for managing 404 erros that happen on legal content pages.
+
+There are 2 reports configured in Google analytics to capture this information:
+
+* `Broken content links <https://analytics.google.com/analytics/web/template?uid=o6eWinnTQuW3DL0o_D6AdQ>`_
+* `Other 404 errors <https://analytics.google.com/analytics/web/template?uid=ZX4eXCUqR_2sG8dTJBuNqQ>`_  
+
+The other 404 errors is scheduled to be sent as an email each month on the 19th to be reviewed.  Errors above a threshold of 20 views per month will get addressed as soon as possible.

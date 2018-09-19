@@ -58,4 +58,8 @@ Page Not Found (404) errors
 -----------------------------
 We capture Page not found errors.  The event action is the referring URL and the event label is the 404 page.  If the user did not click a link on our website, the event action may be undefined.
 
+.. toctree::
   
+   ga_404
+
+
