@@ -15,22 +15,11 @@ ILAO captures the email address of users as the identity piece.  Email comes fro
 We can have up to 50 additional user defined variables for "person."  
 We have defined the following as additional user-defined variables:
 
+UDF 1 to 3 are already in use by the default configuration.
+
 +---------------+-------------------------------------------------+
 | Variable name | Definition                                      |
 +===============+=================================================+
-| person_udf1   | Year born.                                      |
-|               | Available for online intake and registered users|
-+---------------+-------------------------------------------------+
-| person_udf2   | Primary registered user role                    |
-|               | Available for registered users only.            |
-|               | We store the best role for a user:              |
-|               | Intern, if has intern role                      |
-|               | Staff if has staff role and not intern          |
-|               | All others: advocate, pro bono, law student,    |
-|               | navigator, public                               |
-+---------------+-------------------------------------------------+
-| person_udf3   | User testing status (registered users only      |
-+---------------+-------------------------------------------------+
 | person_udf4   | Organization/Company/Law school (registered)    |
 +---------------+-------------------------------------------------+
 | person_udf5   | Content editor role                             |
@@ -49,6 +38,19 @@ We have defined the following as additional user-defined variables:
 +---------------+-------------------------------------------------+
 | person_udf10  | Notification preferences                        |
 |               | For logged in users whether they want email/sms |
++---------------+-------------------------------------------------+
+| person_udf11  | Year born.                                      |
+|               | Available for online intake and registered users|
++---------------+-------------------------------------------------+
+| person_udf12  | Primary registered user role                    |
+|               | Available for registered users only.            |
+|               | We store the best role for a user:              |
+|               | Intern, if has intern role                      |
+|               | Staff if has staff role and not intern          |
+|               | All others: advocate, pro bono, law student,    |
+|               | navigator, public                               |
++---------------+-------------------------------------------------+
+| person_udf13  | User testing status (registered users only      |
 +---------------+-------------------------------------------------+
                 
 
