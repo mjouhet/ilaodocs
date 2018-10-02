@@ -102,7 +102,16 @@
 <li class="toctree-l1"><a class="reference internal" href="technical_information.html">Other Site Administration</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="seo.html">SEO Information</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="seo_metadata.html">Metatag Configuration</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">XML Sitemaps</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">XML Sitemaps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sitemap-names">Sitemap Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#screaming-frog-configurations">Screaming Frog Configurations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#english-lc-seospiderconfig">English-lc.seospiderconfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ilao-english-general-seospiderconfig">ILAO-English-General.seospiderconfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spanish-seospiderconfig">Spanish.seospiderconfig</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="seo_robots.html">Robots.txt and Server Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="seo_pathaliases.html">Path Aliases</a></li>
 </ul>
@@ -179,6 +188,67 @@
             
   <div class="section" id="xml-sitemaps">
 <h1>XML Sitemaps<a class="headerlink" href="#xml-sitemaps" title="Permalink to this headline">¶</a></h1>
+<p>Sitemaps are generated using Screaming Frog and loaded into the website with code releases.</p>
+<div class="section" id="sitemap-names">
+<h2>Sitemap Names<a class="headerlink" href="#sitemap-names" title="Permalink to this headline">¶</a></h2>
+<p>Sitemaps are named as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li>sitemaps-index.xml contains the list of sitemaps</li>
+<li>sitemap.xml contains the general English pages sitemap</li>
+<li>sitemap-en-lc contains English legal content and anything with a /node path</li>
+<li>sitemap-es contains all of our Spanish pages</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="screaming-frog-configurations">
+<h2>Screaming Frog Configurations<a class="headerlink" href="#screaming-frog-configurations" title="Permalink to this headline">¶</a></h2>
+<p>Copies of the configuration files are on the <a class="reference external" href="https://drive.google.com/drive/u/0/folders/1OyLKlkddNqUAW_-Ei-fzlHrE0yJrBtqB?ogsrc=32">Team Drive</a>.</p>
+<div class="section" id="english-lc-seospiderconfig">
+<h3>English-lc.seospiderconfig<a class="headerlink" href="#english-lc-seospiderconfig" title="Permalink to this headline">¶</a></h3>
+<p>This configuration will spider English content as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li>anything containing legal-information/</li>
+<li>anything that begins with /node/</li>
+</ul>
+</div></blockquote>
+<p>It specifically excludes:</p>
+<blockquote>
+<div><ul class="simple">
+<li>anything beginning with /es</li>
+<li>anything in the user or www paths</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="ilao-english-general-seospiderconfig">
+<h3>ILAO-English-General.seospiderconfig<a class="headerlink" href="#ilao-english-general-seospiderconfig" title="Permalink to this headline">¶</a></h3>
+<p>This configuration file spiders English pages other than those indexed by the English-LC configuraiton.</p>
+<p>It specifically excludes:</p>
+<blockquote>
+<div><ul class="simple">
+<li>anything beginning with es</li>
+<li>anything in the user or www paths</li>
+<li>anything cotnaining legal-information</li>
+<li>anything with /email/ in the path (common for event contact forms)</li>
+<li>anything with /sites/ in the path (file attachments and the like attached to content but also theme files, Javascript and CSS)</li>
+<li>anything with /misc/ in the path (used primarily for Javascript)</li>
+<li>anything with an old legacy fuseaction tag</li>
+<li>any of the calendar day or month pages beyond the standard /calendar page.  For example, it does not index each month that we’ve ever had events</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="spanish-seospiderconfig">
+<h3>Spanish.seospiderconfig<a class="headerlink" href="#spanish-seospiderconfig" title="Permalink to this headline">¶</a></h3>
+<p>This configuration file spiders Spanish pages.</p>
+<p>It specifically includes only:</p>
+<ul class="simple">
+<li>pages that contains /es/legal-information</li>
+<li>pages that contain /es/informacion-legal</li>
+<li>pages that contain /es/node.</li>
+</ul>
+</div>
+</div>
 </div>
 
 

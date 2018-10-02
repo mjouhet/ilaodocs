@@ -50,3 +50,4 @@ Portal components
   portal_admin_sidebar
   portal_admin_split_column
   portal_admin_toolbox_selector_form
+  portal_admin_text

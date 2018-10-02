@@ -206,22 +206,80 @@
 </div></blockquote>
 <p>We can have up to 50 additional user defined variables for “person.”
 We have defined the following as additional user-defined variables:</p>
+<p>UDF 1 to 3 are already in use by the default configuration.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="23%" />
-<col width="77%" />
+<col width="19%" />
+<col width="64%" />
+<col width="17%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Variable name</th>
 <th class="head">Definition</th>
+<th class="head">Type and
+Location</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>person_udf1</td>
+<tr class="row-even"><td>person_udf4
+Company</td>
+<td>Organization/Company/Law school (registered)</td>
+<td>String
+Profile</td>
+</tr>
+<tr class="row-odd"><td>person_udf5
+Editor</td>
+<td>Content editor role
+Indicates whether the user is a SME or has
+edited a piece of legal content</td>
+<td>Boolean
+Profile</td>
+</tr>
+<tr class="row-even"><td>person_udf6
+Organization
+Role</td>
+<td>Organization role
+Indicates whether user is org admin, OTIS admin,
+or both.</td>
+<td>Comma-list
+Profile</td>
+</tr>
+<tr class="row-odd"><td>person_udf7
+Zip code</td>
+<td>Zip code</td>
+<td>String
+Profile</td>
+</tr>
+<tr class="row-even"><td>person_udf8
+Gender</td>
+<td>Gender</td>
+<td>String
+Profile</td>
+</tr>
+<tr class="row-odd"><td>person_udf9
+Population
+Segments</td>
+<td>Populations</td>
+<td>Comma-list
+Profile</td>
+</tr>
+<tr class="row-even"><td>person_udf10
+Notification
+Preferences</td>
+<td>Notification preferences
+For logged in users whether they want email/sms</td>
+<td>Comma-list
+Profile</td>
+</tr>
+<tr class="row-odd"><td>person_udf11
+Year born</td>
 <td>Year born.
 Available for online intake and registered users</td>
+<td>Integer
+Profile</td>
 </tr>
-<tr class="row-odd"><td>person_udf2</td>
+<tr class="row-even"><td>person_udf12
+Primary role</td>
 <td>Primary registered user role
 Available for registered users only.
 We store the best role for a user:
@@ -229,35 +287,14 @@ Intern, if has intern role
 Staff if has staff role and not intern
 All others: advocate, pro bono, law student,
 navigator, public</td>
+<td>String
+Profile</td>
 </tr>
-<tr class="row-even"><td>person_udf3</td>
+<tr class="row-odd"><td>person_udf13
+User tester</td>
 <td>User testing status (registered users only</td>
-</tr>
-<tr class="row-odd"><td>person_udf4</td>
-<td>Organization/Company/Law school (registered)</td>
-</tr>
-<tr class="row-even"><td>person_udf5</td>
-<td>Content editor role
-Indicates whether the user is a SME or has
-edited a piece of legal content</td>
-</tr>
-<tr class="row-odd"><td>person_udf6</td>
-<td>Organization role
-Indicates whether user is org admin, OTIS admin,
-or both.</td>
-</tr>
-<tr class="row-even"><td>person_udf7</td>
-<td>Zip code</td>
-</tr>
-<tr class="row-odd"><td>person_udf8</td>
-<td>Gender</td>
-</tr>
-<tr class="row-even"><td>person_udf9</td>
-<td>Populations</td>
-</tr>
-<tr class="row-odd"><td>person_udf10</td>
-<td>Notification preferences
-For logged in users whether they want email/sms</td>
+<td>Boolean
+Profile</td>
 </tr>
 </tbody>
 </table>
