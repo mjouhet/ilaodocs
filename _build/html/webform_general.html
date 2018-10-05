@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Webforms as blocks" href="webform_as_blocks.html" />
+    <link rel="next" title="Webform textfield" href="webform_textfield.html" />
     <link rel="prev" title="Working with Portal Webforms" href="portal_admin_webform.html" /> 
 
   
@@ -222,20 +222,34 @@
 </ul>
 <div class="section" id="form-components">
 <h2>Form components<a class="headerlink" href="#form-components" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="webform_textfield.html">Webform textfield</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webform_select.html">Webform Select Options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="webform_select.html#setting-options">Setting options</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Text fields. The user can enter one line of text.  Examples: first name.</li>
 <li>Text areas.  Multiple lines of text.  Examples: Describe your situation.</li>
 <li>Hidden.  Not exposed to users but passed in the form.  Examples: end point to direct the user to a specific page</li>
-<li>Markup. Text that is displayed to users with no field for them to enter information.  Example: alert texts.</li>
+<li>Markup or message. Text that is displayed to users with no field for them to enter information.  Example: alert texts.</li>
 <li>Select options.  Asks a question with checkboxes, radio buttons, or select list.  Examples:  Which of these apply to you with list of options, What country are you in? with list of countries</li>
-<li>Number, date, email: Text fields that validate the input for the correct type.</li>
+<li>Number: Text fields that validates that the value entered is a number.</li>
+<li>Date: Includes a date picker to select a specific date.</li>
+<li>Email:  Text fields that validates user input as an email.</li>
 <li>File: Allows users to upload a file attachment to their webform</li>
 </ul>
 </div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Not all form components are available on every content type</p>
+<p class="last">Not all form components are available on every content type.  The Yes/No component only works on the triage rules content type.</p>
+</div>
 </div>
 </div>
 <div class="section" id="webform-conditionals">
@@ -256,7 +270,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="webform_as_blocks.html" class="btn btn-neutral float-right" title="Webforms as blocks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="webform_textfield.html" class="btn btn-neutral float-right" title="Webform textfield" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="portal_admin_webform.html" class="btn btn-neutral" title="Working with Portal Webforms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
