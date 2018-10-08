@@ -255,10 +255,80 @@
 <div class="section" id="webform-conditionals">
 <h2>Webform conditionals<a class="headerlink" href="#webform-conditionals" title="Permalink to this headline">¶</a></h2>
 <p>You can attach conditions to control the display of form components.</p>
+<div class="figure" id="id1">
+<img alt="_images/webform-conditionals.png" src="_images/webform-conditionals.png" />
+<p class="caption"><span class="caption-text">Sample conditional form</span></p>
+</div>
+<p>With webform conditionals you can set up a condition in the format of IF [form element] [condition] then [another form element] is or isn’t [shown, required, or set to]</p>
+<div class="section" id="supported-conditions">
+<h3>Supported conditions<a class="headerlink" href="#supported-conditions" title="Permalink to this headline">¶</a></h3>
+<p>For selects:</p>
+<ul class="simple">
+<li>is</li>
+<li>is not</li>
+<li>is before</li>
+<li>is not before</li>
+<li>is after</li>
+<li>is not after</li>
+<li>is empty</li>
+<li>is not empty</li>
+</ul>
+<p>For textfields, textareas, email, hidden:</p>
+<ul class="simple">
+<li>is</li>
+<li>is not</li>
+<li>contains</li>
+<li>does not contain</li>
+<li>begins with</li>
+<li>ends with</li>
+<li>is blank</li>
+<li>is not blank</li>
+</ul>
+<p>For dates:</p>
+<ul class="simple">
+<li>is on [date formatted as m/d/Y]</li>
+<li>is not on</li>
+<li>is before</li>
+<li>is on or before</li>
+<li>is after</li>
+<li>is on or after</li>
+</ul>
+<p>For numbers:</p>
+<ul class="simple">
+<li>is equal to</li>
+<li>is not equal to</li>
+<li>is less than</li>
+<li>is less than or equal to</li>
+<li>is more than</li>
+<li>is more than or equal to</li>
+<li>is blank</li>
+<li>is not blank</li>
+</ul>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">Conditionals control only the display.   Every form component will be included in the results.  Components that do not display are empty.  When creating conditionals, testing for “empty” may be required.</p>
+<p class="last">Conditionals control only the display.   Every form component will be included in the results.  Components that do not display are empty/blank.  When creating conditionals, testing for “is not empty” or “is not blank” may be required.</p>
 </div>
+</div>
+<div class="section" id="supported-actions">
+<h3>Supported actions<a class="headerlink" href="#supported-actions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Is shown - this will cause a form element to be displayed</li>
+<li>Is not shown - this will cause a form element to be hidden</li>
+<li>Is required - this will cause a form element to be displayed and be required.  The form element must already be marked required</li>
+<li>Is not required - this will make a form element optiona</li>
+<li>Is set to - this will set a specific value for an element. In triage rules, we use set to to set an endpoint.  For example, if [x is true] then set end point to intake</li>
+</ul>
+</div>
+</div>
+<div class="section" id="customizations">
+<h2>Customizations<a class="headerlink" href="#customizations" title="Permalink to this headline">¶</a></h2>
+<p>Triage rules as a content type will process a hidden element of “end point” to route a user to intake, bypass intake, or referrals.</p>
+<p>For webforms, we have another customization that will handle a hidden element of “end point” to:</p>
+<ul class="simple">
+<li>If numeric, redirect the user to a specific node. For example if I set an end point to 119321, it will direct the user to “Post judgement forms” after submitting the form</li>
+<li>If not numeric, it will direct the user to an internal path.  For example, if I set an end point to get-legal-help, it will direct the user to illinoislegalaid.org/get-legal-help.  <em>Do not include the forward slash at the beginning</em></li>
+<li>External links are not currently supported in end points</li>
+</ul>
 </div>
 </div>
 
