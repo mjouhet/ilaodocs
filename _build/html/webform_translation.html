@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Working with Portal Webforms &mdash; ILAO 2.19.0 documentation</title>
+  <title>Enabling webform translation &mdash; ILAO 2.19.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Webforms" href="webform_general.html" />
-    <link rel="prev" title="Portal Summary Layout" href="portal_admin_summary.html" /> 
+    <link rel="next" title="Webform results" href="webform_results.html" />
+    <link rel="prev" title="Webforms as blocks" href="webform_as_blocks.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -104,7 +104,7 @@
 <li class="toctree-l4"><a class="reference internal" href="portal_admin_grid.html">Portal grid component</a></li>
 <li class="toctree-l4"><a class="reference internal" href="portal_admin_timeline.html">Portal timelines</a></li>
 <li class="toctree-l4"><a class="reference internal" href="portal_admin_summary.html">Portal Summary Layout</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Working with Portal Webforms</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="portal_admin_webform.html">Working with Portal Webforms</a></li>
 <li class="toctree-l4"><a class="reference internal" href="portal_admin_structured_content.html">Portal structured content layout</a></li>
 <li class="toctree-l4"><a class="reference internal" href="portal_admin_sidebar.html">Portal Sidebar Layout</a></li>
 <li class="toctree-l4"><a class="reference internal" href="portal_admin_split_column.html">Portal Split Column Layout</a></li>
@@ -183,13 +183,15 @@
         
           <li><a href="portal_admin.html">Portal content</a> &raquo;</li>
         
-      <li>Working with Portal Webforms</li>
+          <li><a href="portal_admin_webform.html">Working with Portal Webforms</a> &raquo;</li>
+        
+      <li>Enabling webform translation</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/portal_admin_webform.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/webform_translation.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -202,34 +204,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="working-with-portal-webforms">
-<h1>Working with Portal Webforms<a class="headerlink" href="#working-with-portal-webforms" title="Permalink to this headline">¶</a></h1>
-<p>Webforms can be attached to portal pages and toolbox tool step pages.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="webform_general.html">Webforms</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="webform_general.html#form-components">Form components</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="webform_textfield.html">Webform textfield</a></li>
-<li class="toctree-l3"><a class="reference internal" href="webform_select.html">Webform Select Options</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="webform_select.html#setting-options">Setting options</a></li>
+  <div class="section" id="enabling-webform-translation">
+<h1>Enabling webform translation<a class="headerlink" href="#enabling-webform-translation" title="Permalink to this headline">¶</a></h1>
+<p>To enable translation of a webform, there are 2 steps required.</p>
+<p>First, you must create a translation of the node.</p>
+<ul class="simple">
+<li>Click on Translate</li>
+<li>Click Add next to the language that does not have a translation</li>
+<li>Save the page</li>
+</ul>
+<p>This is required because we do not allow fallback translations so the translation must exist.</p>
+<p>Second, go to the webform tab:</p>
+<ul class="simple">
+<li>Click on the Localization by string translation section title</li>
+<li>Check the expose webform component strings suitable for translation</li>
+</ul>
+<img alt="_images/webform-translation.png" src="_images/webform-translation.png" />
+<p>Depending on the content type:</p>
+<ul class="simple">
+<li>for triage rules, the webform components are sent to Lingotek for translation</li>
+<li>for all other webforms, the translations must be done manually using the Translate interface.  The easiest way to do these is with POedit:<ul>
+<li>Go to <a class="reference external" href="https://www.illinoislegalaid.org/admin/config/regional/translate/i18n_string">Strings</a> and check “Webform localization” and uncheck Clean up left over strings</li>
+<li>Go to Export and select “Webform localization” under export translation.  This will download a PO file with all of the strings in all webforms.</li>
+<li>Open the file in poedit.</li>
+<li>Find the strings related to the webform(s) you created</li>
+<li>Translate and save</li>
+<li>Go to  <a class="reference external" href="https://www.illinoislegalaid.org/admin/config/regional/translate/import">Import</a> and load the file, check “Webform localization” and mode should be set to “existing string and the plural format are kept; only new strings are added” and import the file.</li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="webform_general.html#summary">Summary</a></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="webform_general.html#webform-conditionals">Webform conditionals</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="webform_general.html#supported-conditions">Supported conditions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="webform_general.html#supported-actions">Supported actions</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="webform_general.html#customizations">Customizations</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="webform_as_blocks.html">Webforms as blocks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webform_translation.html">Enabling webform translation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webform_results.html">Webform results</a></li>
-</ul>
-</div>
+<img alt="_images/webform-strings.png" src="_images/webform-strings.png" />
 </div>
 
 
@@ -240,10 +244,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="webform_general.html" class="btn btn-neutral float-right" title="Webforms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="webform_results.html" class="btn btn-neutral float-right" title="Webform results" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="portal_admin_summary.html" class="btn btn-neutral" title="Portal Summary Layout" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="webform_as_blocks.html" class="btn btn-neutral" title="Webforms as blocks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

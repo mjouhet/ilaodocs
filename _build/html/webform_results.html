@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Working with Portal Webforms &mdash; ILAO 2.19.0 documentation</title>
+  <title>Webform results &mdash; ILAO 2.19.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Webforms" href="webform_general.html" />
-    <link rel="prev" title="Portal Summary Layout" href="portal_admin_summary.html" /> 
+    <link rel="next" title="Portal structured content layout" href="portal_admin_structured_content.html" />
+    <link rel="prev" title="Enabling webform translation" href="webform_translation.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -104,7 +104,7 @@
 <li class="toctree-l4"><a class="reference internal" href="portal_admin_grid.html">Portal grid component</a></li>
 <li class="toctree-l4"><a class="reference internal" href="portal_admin_timeline.html">Portal timelines</a></li>
 <li class="toctree-l4"><a class="reference internal" href="portal_admin_summary.html">Portal Summary Layout</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Working with Portal Webforms</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="portal_admin_webform.html">Working with Portal Webforms</a></li>
 <li class="toctree-l4"><a class="reference internal" href="portal_admin_structured_content.html">Portal structured content layout</a></li>
 <li class="toctree-l4"><a class="reference internal" href="portal_admin_sidebar.html">Portal Sidebar Layout</a></li>
 <li class="toctree-l4"><a class="reference internal" href="portal_admin_split_column.html">Portal Split Column Layout</a></li>
@@ -183,13 +183,15 @@
         
           <li><a href="portal_admin.html">Portal content</a> &raquo;</li>
         
-      <li>Working with Portal Webforms</li>
+          <li><a href="portal_admin_webform.html">Working with Portal Webforms</a> &raquo;</li>
+        
+      <li>Webform results</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/portal_admin_webform.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/webform_results.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -202,34 +204,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="working-with-portal-webforms">
-<h1>Working with Portal Webforms<a class="headerlink" href="#working-with-portal-webforms" title="Permalink to this headline">¶</a></h1>
-<p>Webforms can be attached to portal pages and toolbox tool step pages.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="webform_general.html">Webforms</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="webform_general.html#form-components">Form components</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="webform_textfield.html">Webform textfield</a></li>
-<li class="toctree-l3"><a class="reference internal" href="webform_select.html">Webform Select Options</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="webform_select.html#setting-options">Setting options</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="webform_general.html#summary">Summary</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="webform_general.html#webform-conditionals">Webform conditionals</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="webform_general.html#supported-conditions">Supported conditions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="webform_general.html#supported-actions">Supported actions</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="webform_general.html#customizations">Customizations</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="webform_as_blocks.html">Webforms as blocks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webform_translation.html">Enabling webform translation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webform_results.html">Webform results</a></li>
-</ul>
+  <div class="section" id="webform-results">
+<h1>Webform results<a class="headerlink" href="#webform-results" title="Permalink to this headline">¶</a></h1>
+<p>All webforms have a standard set of results.</p>
+<p>Clicking on the Results tab will show a table of all the submissions. From here, you can view each individual submission.</p>
+<p>The “table” view shows all the values of each form and the “download” tab allows you to download the results in a CSV.</p>
+<div class="figure" id="id1">
+<img alt="_images/webform-report.png" src="_images/webform-report.png" />
+<p class="caption"><span class="caption-text">Sample table of results</span></p>
 </div>
+<p>The webform results only ever includes results from the webform itself.  For anything that ties into other data sets, we will need to either:</p>
+<ul class="simple">
+<li>Create a custom report in the website.  For example, we’ve done this with the <a class="reference external" href="https://www.illinoislegalaid.org/admin/reporting/sms-survey-results">OTIS triage user feedback survey results</a>, which uses a webform but also ties back to specific triage users. <em>This option requires developers to complete.</em></li>
+<li>Download the webform report and the other data set (such as the people table) and use a tool like Excel or Google Fusion to tie the results together.</li>
+</ul>
 </div>
 
 
@@ -240,10 +228,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="webform_general.html" class="btn btn-neutral float-right" title="Webforms" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="portal_admin_structured_content.html" class="btn btn-neutral float-right" title="Portal structured content layout" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="portal_admin_summary.html" class="btn btn-neutral" title="Portal Summary Layout" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="webform_translation.html" class="btn btn-neutral" title="Enabling webform translation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
