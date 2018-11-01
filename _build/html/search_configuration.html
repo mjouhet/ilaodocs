@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Using the Site Search" href="search_using.html" />
+    <link rel="next" title="Faceted Search" href="search_facet_configuration.html" />
     <link rel="prev" title="Site Search" href="site_search.html" /> 
 
   
@@ -107,6 +107,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="search_facet_configuration.html">Faceted Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="search_using.html">Using the Site Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="site_search.html#known-issues">Known issues</a></li>
 </ul>
@@ -238,13 +239,7 @@ It is implemented on our website for:</p>
 </div>
 <div class="section" id="facetapi">
 <h3>FacetAPI<a class="headerlink" href="#facetapi" title="Permalink to this headline">¶</a></h3>
-<p>The FacetAPI module is installed but minimally used on ILAO’s website.</p>
-<p>We support the following facets:</p>
-<ul class="simple">
-<li>node type</li>
-</ul>
-<p>The FacetAPI module would allow us to add filters/facets to searches for most fields in our database.
-Facets can be restricted by roles (for example, allowing only advocate users to filter by last updated date) and by bundle attached to (for example, allowing searches on legal issue only for legal content and not for events).</p>
+<p>The FacetAPI module allows us to offer faceted search.  See <a class="reference external" href="/search_facet_configuration.html">Faceted search</a> for more information.</p>
 </div>
 <div class="section" id="apache-solr-views">
 <h3>Apache Solr Views<a class="headerlink" href="#apache-solr-views" title="Permalink to this headline">¶</a></h3>
@@ -278,8 +273,8 @@ Translitateration enabled (allows searching of accented and unaccented character
 <li>Job postings</li>
 <li>Legal content</li>
 <li>Site FAQ</li>
-<li>Volunteer opportunities</li>
-<li>Portal main page (?)</li>
+<li>Portal main page</li>
+<li>Toolboxes and tools</li>
 </ul>
 </div>
 <div class="section" id="bias-configuration">
@@ -342,7 +337,7 @@ Legal content is weighted slightly heavier with a .2 boost</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="search_using.html" class="btn btn-neutral float-right" title="Using the Site Search" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="search_facet_configuration.html" class="btn btn-neutral float-right" title="Faceted Search" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="site_search.html" class="btn btn-neutral" title="Site Search" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

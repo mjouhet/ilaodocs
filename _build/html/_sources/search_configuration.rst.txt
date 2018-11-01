@@ -52,15 +52,8 @@ The Apache Solr paragraphs module is needed to accommodate ILAO’s use of the p
 FacetAPI
 ----------
 
-The FacetAPI module is installed but minimally used on ILAO’s website.  
+The FacetAPI module allows us to offer faceted search.  See `Faceted search </search_facet_configuration.html>`_ for more information. 
 
-We support the following facets:
-
-* node type
-
-
-The FacetAPI module would allow us to add filters/facets to searches for most fields in our database.  
-Facets can be restricted by roles (for example, allowing only advocate users to filter by last updated date) and by bundle attached to (for example, allowing searches on legal issue only for legal content and not for events).
 
 Apache Solr Views
 --------------------
@@ -99,8 +92,9 @@ Content types included in search:
 * Job postings
 * Legal content
 * Site FAQ
-* Volunteer opportunities
-* Portal main page (?)
+* Portal main page
+* Toolboxes and tools
+
 
 
 Bias Configuration
