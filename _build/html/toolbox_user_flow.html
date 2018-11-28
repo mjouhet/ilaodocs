@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Toolboxes &mdash; ILAO 2.19.0 documentation</title>
+  <title>Toolbox User Flow &mdash; ILAO 2.19.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Toolbox User Flow" href="toolbox_user_flow.html" />
-    <link rel="prev" title="Attorney Manual Content" href="adrm_content_admin.html" /> 
+    <link rel="next" title="Creating the toolbox portal" href="toolbox_portal.html" />
+    <link rel="prev" title="Toolboxes" href="toolboxes_admin.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -97,10 +97,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="managing_content.html">Content Administration</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="legal_content_admin.html">Legal content administration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="adrm_content_admin.html">Attorney Manual Content</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Toolboxes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#toolbox-structure">Toolbox structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#toolbox-components">Toolbox components</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="toolbox_user_flow.html">Toolbox User Flow</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="toolboxes_admin.html">Toolboxes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="toolboxes_admin.html#toolbox-structure">Toolbox structure</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="toolboxes_admin.html#toolbox-components">Toolbox components</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Toolbox User Flow</a></li>
 <li class="toctree-l4"><a class="reference internal" href="toolbox_portal.html">Creating the toolbox portal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="toolbox_admin.html">Toolbox Content Type</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tool_admin.html">Toolbox “Tools” Content Type</a></li>
@@ -179,13 +179,15 @@
         
           <li><a href="managing_content.html">Content Administration</a> &raquo;</li>
         
-      <li>Toolboxes</li>
+          <li><a href="toolboxes_admin.html">Toolboxes</a> &raquo;</li>
+        
+      <li>Toolbox User Flow</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/toolboxes_admin.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/toolbox_user_flow.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -198,50 +200,70 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="toolboxes">
-<h1>Toolboxes<a class="headerlink" href="#toolboxes" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="toolbox-structure">
-<h2>Toolbox structure<a class="headerlink" href="#toolbox-structure" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="toolbox-user-flow">
+<h1>Toolbox User Flow<a class="headerlink" href="#toolbox-user-flow" title="Permalink to this headline">¶</a></h1>
+<p>Toolboxes are designed to be worked on over time and are designed to bundle the processes required to complete more complex legal issues into an easier to use format than our How-to legal content articles.</p>
+<p>Toolboxes are accessed via:</p>
 <ul class="simple">
-<li>Portal main page:  a container that holds grid of toolboxes associated with a specific legal issue.  Additional content may also be included as sub pages.</li>
-<li>Portal main page with a toolbox selector form.  For portals that contain more than one toolbox, users need to be able to pick which one they want to start with.</li>
-<li>Toolbox:  a container that holds one or more tools designed to address a set of related legal issues.  Toolboxes should be able to fit within one level 2 legal issue.</li>
-<li>Tools:  a content type that drives a user through a single process.  The process does not have to be linear.</li>
-<li>Tool pages:  this is the content type for each page in a tool.  Each page represents either a step in the process or a decision point.</li>
+<li>A portal page</li>
+<li>A content category page that matches the category</li>
+<li>Search results</li>
 </ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">As an example, a user who has had their drivers license revoked may have lost their license for any number of reasons (DUI, back child support, unpaid parking tickets), each with its own process to get the license back.  The toolbox would be “Getting my Drivers License back” and it would contain tools for “I lost my license because of a DUI”, “I lost my license because of unpaid child support” and “I lost my license due to unpaid parking tickets.”  Within each of these tools are a set of pages to guide the user through the steps (for example, an overview step, a fill out your forms step, a file your forms step, a do you have a court date scheduled? decision point which can then direct the user to a “Going to court” step.</p>
-</div>
-<p>To create a portal for toolboxes:</p>
+<p>When a user starts on a portal page, they have 2 options to access a toolbox:</p>
 <ul class="simple">
-<li>Create a portal main page with type “main page.”  This is the main portal page.</li>
-<li>Create a portal main page with type “toolbox selector.”  This is the evaluator form for portals that have multiple toolboxes.</li>
+<li>Via a toolbox selector form</li>
+<li>By picking a toolbox from a grid</li>
 </ul>
+<div class="figure" id="id1">
+<img alt="_images/portal-toolbox.png" src="_images/portal-toolbox.png" />
+<p class="caption"><span class="caption-text">Portal page with links to toolbox selector form and toolboxes</span></p>
 </div>
-<div class="section" id="toolbox-components">
-<h2>Toolbox components<a class="headerlink" href="#toolbox-components" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="toolbox_user_flow.html">Toolbox User Flow</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="toolbox_user_flow.html#toolbox-selector-form">Toolbox selector form</a></li>
-<li class="toctree-l2"><a class="reference internal" href="toolbox_user_flow.html#toolbox-page">Toolbox page</a></li>
-<li class="toctree-l2"><a class="reference internal" href="toolbox_user_flow.html#navigating-a-tool">Navigating a tool</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="toolbox_portal.html">Creating the toolbox portal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="toolbox_admin.html">Toolbox Content Type</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tool_admin.html">Toolbox “Tools” Content Type</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tool_steps_admin.html">Tool Step Content Type</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tool_steps_admin.html#step-types">Step Types</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tool_steps_admin.html#tool-step-components">Tool Step Components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tool_steps_admin.html#tickler-settings">Tickler Settings</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="toolboxes_user_interactions.html">Toolboxes &amp; User Engagement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="toolbox_reporting.html">Toolbox Reporting</a></li>
-</ul>
+<div class="section" id="toolbox-selector-form">
+<h2>Toolbox selector form<a class="headerlink" href="#toolbox-selector-form" title="Permalink to this headline">¶</a></h2>
+<p>The toolbox selector form is a type of portal main page content. It is generated automatically from the selector form label field provided by each toolbox associated with a particular portal.</p>
+<p>In addition, there is in the portal main page toolform selector block, a space to add an optional “Other” to direct users who land on the toolbox page but have an issue not covered by our toolboxes.</p>
+<div class="figure">
+<img alt="_images/portal-selector.png" src="_images/portal-selector.png" />
 </div>
+<p>When the user completes this form, a record is created on the back end with the toolboxes the user receives.  If the user is logged in, the toolboxes are associated with their user ID automatically.  If they start a toolbox, the toolbox is set to a status of “Started;” otherwise, it is just “Saved.”</p>
+<img alt="_images/portal-toolbox-results.png" src="_images/portal-toolbox-results.png" />
+<p>If the user is not logged in, they see a modal when they click “Start” asking them to log in or register</p>
+<img alt="_images/login-modal.png" src="_images/login-modal.png" />
+<p>If the user says “No thanks,” they are given a return code to use to access their work in the future.</p>
+<img alt="_images/portal-login-return-code.png" src="_images/portal-login-return-code.png" />
+</div>
+<div class="section" id="toolbox-page">
+<h2>Toolbox page<a class="headerlink" href="#toolbox-page" title="Permalink to this headline">¶</a></h2>
+<p>The main toolbox page has no real content.  It is just a form to pick which tool(s) in a toolbox you need to complete and is created automatically based on the tools associated with the toolbox.</p>
+<p>There is also:</p>
+<ul class="simple">
+<li>a blue block that represents the primary legal category the toolbox falls into</li>
+<li>A “Using this toolbox” standard block</li>
+<li>Optionally, a fast fact block that appears on the left</li>
+<li>Optionally, some portal-style content that can display additional information above or below the toolbox selector form</li>
+</ul>
+<div class="figure" id="id2">
+<img alt="_images/toolbox-form.png" src="_images/toolbox-form.png" />
+<p class="caption"><span class="caption-text">Toolbox landing page example</span></p>
+</div>
+<p>Once tools are selected, the user will see the same “My issues” form that was displayed when they selected toolboxes.</p>
+</div>
+<div class="section" id="navigating-a-tool">
+<h2>Navigating a tool<a class="headerlink" href="#navigating-a-tool" title="Permalink to this headline">¶</a></h2>
+<p>Each tool is made up of a number of different steps that need to be completed to complete a legal process.</p>
+<p>Those steps appear in the “My progress” block on each tool step page.</p>
+<p>The first step is always the main “tool” content type.  It includes:</p>
+<ul class="simple">
+<li>an overview</li>
+<li>a Pick up where I left off block</li>
+<li>optionally, a before you get started block</li>
+<li>optionally, a Learn more carousel component</li>
+<li>the My progress block</li>
+</ul>
+<div class="figure">
+<img alt="_images/toolbox-landing-page.png" src="_images/toolbox-landing-page.png" />
+</div>
+<p>Users can check off their progress by checking the boxes next to the steps in the My progress block.  They can also jump ahead by clicking on the links, giving them the ability to see what’s coming up.</p>
 </div>
 </div>
 
@@ -253,10 +275,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="toolbox_user_flow.html" class="btn btn-neutral float-right" title="Toolbox User Flow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="toolbox_portal.html" class="btn btn-neutral float-right" title="Creating the toolbox portal" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="adrm_content_admin.html" class="btn btn-neutral" title="Attorney Manual Content" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="toolboxes_admin.html" class="btn btn-neutral" title="Toolboxes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

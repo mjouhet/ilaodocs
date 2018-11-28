@@ -28,6 +28,7 @@ Toolbox components
 .. toctree::
    :maxdepth: 2
 
+   toolbox_user_flow.rst
    toolbox_portal.rst
    toolbox_admin.rst
    tool_admin.rst
