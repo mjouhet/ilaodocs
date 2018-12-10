@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Technical Overview" href="rec_overview_civis.html" />
+    <link rel="next" title="Website Styles" href="tech_styles.html" />
     <link rel="prev" title="ILAO Segments" href="acquia_ilao_segments.html" /> 
 
   
@@ -107,10 +107,15 @@
 <li class="toctree-l2"><a class="reference internal" href="google_analytics.html">Google Analytics Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="acquia_lift.html">Acquia Lift Integration</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Recommendation Algorithm</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="rec_overview_civis.html">Technical Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="rec_getting_datasources.html">Datasources for Recommender</a></li>
-<li class="toctree-l3"><a class="reference internal" href="rec_processing_sql.html">Updating the Google Analytics Data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="rec_processing_python.html">Updating recommendations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#google-analytics-data-files">Google Analytics Data Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#landing-events">landing_events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pagepath-duration">pagepath_duration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pagepath-eventlabel">pagepath_eventlabel</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#category-csv">Category CSV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-python-script">Running the Python Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#import-the-recommendations">Import the recommendations</a></li>
 </ul>
 </li>
 </ul>
@@ -184,21 +189,97 @@
             
   <div class="section" id="recommendation-algorithm">
 <h1>Recommendation Algorithm<a class="headerlink" href="#recommendation-algorithm" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="rec_overview_civis.html">Technical Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rec_getting_datasources.html">Datasources for Recommender</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rec_getting_datasources.html#website-scrappers">Website “Scrappers”</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rec_getting_datasources.html#google-analytics-data">Google analytics data</a></li>
+<p>The recommendation algorithm creates a CSV file of recommendations that can then be imported into the website.  On pieces of legal content that have recommendations, the “Related” block is replaced with the “Recommended for you” block.</p>
+<p>To generate updated recommendations, one must:</p>
+<ul class="simple">
+<li>Create csv files for data pulled from Google Analytics</li>
+<li>Generate a new category file from the website</li>
+<li>Run the python script to generate a new CSV file of recommendations</li>
+<li>Import the file into the website</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="rec_processing_sql.html">Updating the Google Analytics Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="rec_processing_sql.html#create-database-to-work-with">Create database to work with</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rec_processing_sql.html#execute-sql-script">Execute SQL script</a></li>
+<div class="section" id="google-analytics-data-files">
+<h2>Google Analytics Data Files<a class="headerlink" href="#google-analytics-data-files" title="Permalink to this headline">¶</a></h2>
+<p>There are 3 Google analytics files that need to be created and then copied into the recommender/data/data_for_python folder.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You will need to set the start date, end date, and Google property data for these reports.  You will also need to fix the heading labels and add the start and end date columns.</p>
+</div>
+<div class="section" id="landing-events">
+<h3>landing_events<a class="headerlink" href="#landing-events" title="Permalink to this headline">¶</a></h3>
+<p>The landing_events.csv file has the following column headings:</p>
+<ul class="simple">
+<li>landingpagepath</li>
+<li>eventcategory</li>
+<li>eventlabel</li>
+<li>totalevents</li>
+<li>uniqueevents</li>
+<li>sessionswithevent</li>
+<li>start_date</li>
+<li>end_date</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="rec_processing_python.html">Updating recommendations</a></li>
+<p>Link to Google analytics query: <a class="reference external" href="https://ga-dev-tools.appspot.com/query-explorer/?start-date=2017-01-01&amp;end-date=2018-10-31&amp;metrics=ga%3AtotalEvents%2Cga%3AuniqueEvents%2Cga%3AsessionsWithEvent&amp;dimensions=ga%3AlandingPagePath%2Cga%3AeventCategory%2Cga%3AeventLabel&amp;filters=ga%3AeventCategory!%40404&amp;include-empty-rows=false&amp;start-index=1&amp;max-results=15000">https://ga-dev-tools.appspot.com/query-explorer/?start-date=2017-01-01&amp;end-date=2018-10-31&amp;metrics=ga%3AtotalEvents%2Cga%3AuniqueEvents%2Cga%3AsessionsWithEvent&amp;dimensions=ga%3AlandingPagePath%2Cga%3AeventCategory%2Cga%3AeventLabel&amp;filters=ga%3AeventCategory!%40404&amp;include-empty-rows=false&amp;start-index=1&amp;max-results=15000</a></p>
+<p>This is likely to generate more than 10000 records.  Each set can be downloaded as a tsv file, opened in Excel and the results concatenated into a single CSV sheet.</p>
+</div>
+<div class="section" id="pagepath-duration">
+<h3>pagepath_duration<a class="headerlink" href="#pagepath-duration" title="Permalink to this headline">¶</a></h3>
+<p>The pagepath_duration.csv file has the following column headings:</p>
+<ul class="simple">
+<li>pagepath</li>
+<li>sessions</li>
+<li>avgsessionduration</li>
+<li>start_date</li>
+<li>end_date</li>
 </ul>
+<p>Link to Google analytics query: <a class="reference external" href="https://ga-dev-tools.appspot.com/query-explorer/?start-date=2017-01-01&amp;end-date=2018-10-31&amp;metrics=ga%3Asessions%2Cga%3AavgSessionDuration&amp;dimensions=ga%3ApagePath&amp;sort=-ga%3AavgSessionDuration&amp;filters=ga%3Asessions%3E0%3Bga%3AlandingPagePath%3D%40%2Flegal-information%2F&amp;include-empty-rows=false&amp;start-index=1&amp;max-results=15000">https://ga-dev-tools.appspot.com/query-explorer/?start-date=2017-01-01&amp;end-date=2018-10-31&amp;metrics=ga%3Asessions%2Cga%3AavgSessionDuration&amp;dimensions=ga%3ApagePath&amp;sort=-ga%3AavgSessionDuration&amp;filters=ga%3Asessions%3E0%3Bga%3AlandingPagePath%3D%40%2Flegal-information%2F&amp;include-empty-rows=false&amp;start-index=1&amp;max-results=15000</a></p>
+</div>
+<div class="section" id="pagepath-eventlabel">
+<h3>pagepath_eventlabel<a class="headerlink" href="#pagepath-eventlabel" title="Permalink to this headline">¶</a></h3>
+<p>The pagepath_eventlabel.csv file has the following column headings:
+* pagepath
+* eventcategory
+* eventlabel
+* uniqueevent
+* sessionswithevent
+* totalevents
+* start_date
+* end_date</p>
+<p>Link to Google analytics query: <a class="reference external" href="https://ga-dev-tools.appspot.com/query-explorer/?start-date=2017-01-01&amp;end-date=2018-10-31&amp;metrics=ga%3AtotalEvents%2Cga%3AuniqueEvents%2Cga%3AsessionsWithEvent&amp;dimensions=ga%3ApagePath%2Cga%3AeventCategory%2Cga%3AeventLabel&amp;filters=ga%3AeventCategory!%40404&amp;include-empty-rows=false&amp;start-index=1&amp;max-results=15000">https://ga-dev-tools.appspot.com/query-explorer/?start-date=2017-01-01&amp;end-date=2018-10-31&amp;metrics=ga%3AtotalEvents%2Cga%3AuniqueEvents%2Cga%3AsessionsWithEvent&amp;dimensions=ga%3ApagePath%2Cga%3AeventCategory%2Cga%3AeventLabel&amp;filters=ga%3AeventCategory!%40404&amp;include-empty-rows=false&amp;start-index=1&amp;max-results=15000</a></p>
+</div>
+</div>
+<div class="section" id="category-csv">
+<h2>Category CSV<a class="headerlink" href="#category-csv" title="Permalink to this headline">¶</a></h2>
+<p>The just_cats_filt.csv file contains all of our legal content urls and the primary legal category they are tied to.  It has 3 columns:
+* url
+* url_subpath (url without the domain part)
+* subgroup (primary legal category)</p>
+<p>The report can be exported <a class="reference external" href="https://www.illinoislegalaid.org/admin/content-categories/csv">from the website.</a></p>
+<p>This file should also be saved to the recommender/data/data_for_python folder.</p>
+</div>
+<div class="section" id="running-the-python-script">
+<h2>Running the Python Script<a class="headerlink" href="#running-the-python-script" title="Permalink to this headline">¶</a></h2>
+<p>To run the python script, the <a class="reference external" href="https://www.anaconda.com/download">Anaconda python package</a> should be installed on the machine you are running the script from.</p>
+<p>Once installed:</p>
+<ul class="simple">
+<li>Open the Anaconda navigator</li>
+<li>Launch the Jupyter notebook</li>
+<li>Navigate to the recommender folder and in the python folder, there is a file named ILAO_events_by_landpage.ipynb</li>
+<li>Open the ILAO_events_by_landpage.ipynb file</li>
+<li>Click on Cell, Run all</li>
+<li>It will take a few minutes but the new recommendations file will be generated and saved to the recommender/rec_csvs folder.</li>
+</ul>
+<img alt="_images/jupyter-run.png" src="_images/jupyter-run.png" />
+</div>
+<div class="section" id="import-the-recommendations">
+<h2>Import the recommendations<a class="headerlink" href="#import-the-recommendations" title="Permalink to this headline">¶</a></h2>
+<p>To import the recommendations:
+* Take the site offline (put it in maintenance mode)
+* Back up the database
+* Go to <a class="reference external" href="https://www.illinoislegalaid.org/import">https://www.illinoislegalaid.org/import</a>
+* Open the recommend import
+* Set the file encoding to “auto”
+* Select the file to import</p>
+<p>If it stalls, restore the database and try again.  Sometimes removing landing pages that are not nodes helps.</p>
+<img alt="_images/recommend-importer.png" src="_images/recommend-importer.png" />
 </div>
 </div>
 
@@ -210,7 +291,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="rec_overview_civis.html" class="btn btn-neutral float-right" title="Technical Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="tech_styles.html" class="btn btn-neutral float-right" title="Website Styles" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="acquia_ilao_segments.html" class="btn btn-neutral" title="ILAO Segments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -104,9 +104,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="translation_management.html">Translation Management</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="tmgmt_entity_translation_configuration.html">Entity Translation Configuration</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Translating interface components</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#through-the-ui">Through the UI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#custom-modules-ilao-themes">Custom modules &amp; ILAO themes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#working-with-po-files-poedit">Working with PO files &amp; POEdit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-interface-translation">What is Interface Translation?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-is-it-translated">How is it Translated?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#through-the-ui">Through the UI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-modules-ilao-themes">Custom modules &amp; ILAO themes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-po-files-poedit">Working with PO files &amp; POEdit</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tmgmt_lingotek_configuration.html">Lingotek Configuration</a></li>
@@ -183,14 +187,40 @@
             
   <div class="section" id="translating-interface-components">
 <h1>Translating interface components<a class="headerlink" href="#translating-interface-components" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-interface-translation">
+<h2>What is Interface Translation?<a class="headerlink" href="#what-is-interface-translation" title="Permalink to this headline">¶</a></h2>
+<p>Interface includes pretty much everything that is not content (of any type) and includes:</p>
+<ul class="simple">
+<li>Blocks</li>
+<li>Menus</li>
+<li>Taxonomy terms</li>
+<li>System interface (including translatable strings contained in code)</li>
+<li>Views</li>
+<li>Custom code (including strings in custom modules and our theme</li>
+</ul>
+</div>
+<div class="section" id="how-is-it-translated">
+<h2>How is it Translated?<a class="headerlink" href="#how-is-it-translated" title="Permalink to this headline">¶</a></h2>
+<p>Interface text can be translated in a few different ways:</p>
+<ul class="simple">
+<li>By translating directly in the translate page under Configuration/ Translate Interface/ Translate (<a class="reference external" href="https://www.illinoislegalaid.org/admin/config/regional/translate/translate">https://www.illinoislegalaid.org/admin/config/regional/translate/translate</a>)</li>
+<li>For blocks, menus, and taxonomy terms, by translating in-line</li>
+<li>By exporting or extracting strings to a PO file, translating offline and re-importing</li>
+</ul>
 <div class="section" id="through-the-ui">
-<h2>Through the UI<a class="headerlink" href="#through-the-ui" title="Permalink to this headline">¶</a></h2>
+<h3>Through the UI<a class="headerlink" href="#through-the-ui" title="Permalink to this headline">¶</a></h3>
+<p>Go to Configuration and then <a href="#id1"><span class="problematic" id="id2">`Translate interface&lt;https://www.illinoislegalaid.org/admin/config/regional/translate/extract&gt;`_</span></a>.</p>
+<p>Then click on the translate tab:</p>
+<img alt="_images/tmgmt-translate.png" src="_images/tmgmt-translate.png" />
+<p>You can filter on language, whether the string has already been translated, and text groups.</p>
+<p>Filtering on the string is <em>case sensitive.</em>  Please, please, PLEASE are all considered different words.</p>
 </div>
 <div class="section" id="custom-modules-ilao-themes">
-<h2>Custom modules &amp; ILAO themes<a class="headerlink" href="#custom-modules-ilao-themes" title="Permalink to this headline">¶</a></h2>
+<h3>Custom modules &amp; ILAO themes<a class="headerlink" href="#custom-modules-ilao-themes" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="working-with-po-files-poedit">
-<h2>Working with PO files &amp; POEdit<a class="headerlink" href="#working-with-po-files-poedit" title="Permalink to this headline">¶</a></h2>
+<h3>Working with PO files &amp; POEdit<a class="headerlink" href="#working-with-po-files-poedit" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 </div>
 
