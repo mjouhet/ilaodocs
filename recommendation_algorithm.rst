@@ -109,6 +109,17 @@ If it stalls, restore the database and try again.  Sometimes removing landing pa
 
 .. image:: assets/recommend-importer.png
 
+Older technical information
+============================
+
+..  toctree::
+    :maxdepth: 1
+    
+    rec_overview_civis
+    rec_getting_datasources
+    rec_processing_sql
+    rec_processing_python
+
 
 
       
