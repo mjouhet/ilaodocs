@@ -85,6 +85,7 @@ Index Configuration
 
 Content types included in search:
 
+* Attorney manuals
 * Basic pages
 * Blog posts
 * Events
@@ -108,35 +109,65 @@ Legal content is weighted slightly heavier with a .2 boost
 
 We use field biases to boost the weight of certain fields as exposed by the Apache Solr module: 
 
+.. note::  Each setting is per language.
+
 +-------------------------+-----------+
 | Field                   | Boost     |
 +=========================+===========+
-| Title                   |   5       |
+| Full rendered content   |   10      |
 +-------------------------+-----------+
-| H1 tag                  |   3       |
+| Title                   |   12      |
 +-------------------------+-----------+
-| H2, H3 tag              |   3       |
+| H1 tag                  |   9       |
 +-------------------------+-----------+
-| H4 - H6 tag             |   2       |
+| H2, H3 tag              |   8       |
 +-------------------------+-----------+
-| EM or strong tags       |   1       |
+| H4 - H6 tag             |   6       |
++-------------------------+-----------+
+| EM or strong tags       |   3       |
++-------------------------+-----------+
+| Taxonomy term names     |   1       |
++-------------------------+-----------+
+| Extra rendered content  |  .5       |
++-------------------------+-----------+
+| Rendered comments       |  .4       |
++-------------------------+-----------+
+| Unstemmed path alias    |   .3      |
++-------------------------+-----------+
+| Unstemmed title         |   5       |
++-------------------------+-----------+
+| Unstemmed teaser        |   2       |
 +-------------------------+-----------+
 
 
 The following field biases are available but are not currently implemented:
 
-* Full rendered body (to be considered given paragraphs)
 * Text in A tags
-* Taxonomy term names
-* In total or by vocabulary
 * Author names
-* Extra rendered content or keywords 
-* Comments
-* Path alias
 
 
+Special content types
+^^^^^^^^^^^^^^^^^^^^^^
+
+Views
+========
+
+By default, searches only search "content," or nodes.  Views are generally treated as "reports or lists of content" rather than searchable entities.
+
+To that end, we have created a way to index the following pages for Solr to include in its index:
+
+* /form-library
+* /get-legal-help/lshc-directory
 
 
+Files
+=========
+
+Files are not indexed separately from nodes in our search configuration.  The full-text of files are included in the search index for the node to which it is attached.
+
+For example, the application PDF for a job posting will never show as a file in the search results, but the full text of that application PDF would be included in the "body" of the job posting node.
+
+ 
 
 
 

@@ -7,7 +7,10 @@ Site Search
 
    search_configuration
    search_facet_configuration
-   search_using
+   search_more_like_this
+   search_best_bets   
    
 Known issues
-=================
+================
+
+* Stemming of words like "guardianship" down to "guardian" does not work=

@@ -105,6 +105,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#apache-solr-configuration">Apache Solr Configuration</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#views">Views</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#files">Files</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="search_facet_configuration.html">Faceted Search</a></li>
@@ -266,6 +268,7 @@ Translitateration enabled (allows searching of accented and unaccented character
 <h4>Index Configuration<a class="headerlink" href="#index-configuration" title="Permalink to this headline">¶</a></h4>
 <p>Content types included in search:</p>
 <ul class="simple">
+<li>Attorney manuals</li>
 <li>Basic pages</li>
 <li>Blog posts</li>
 <li>Events</li>
@@ -284,6 +287,10 @@ More recently created content gets weighted slightly higher</p>
 Legal content is weighted slightly heavier with a .2 boost</p>
 <p><strong>Field Biases</strong></p>
 <p>We use field biases to boost the weight of certain fields as exposed by the Apache Solr module:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Each setting is per language.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
 <col width="69%" />
@@ -295,36 +302,68 @@ Legal content is weighted slightly heavier with a .2 boost</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>Title</td>
+<tr class="row-even"><td>Full rendered content</td>
+<td>10</td>
+</tr>
+<tr class="row-odd"><td>Title</td>
+<td>12</td>
+</tr>
+<tr class="row-even"><td>H1 tag</td>
+<td>9</td>
+</tr>
+<tr class="row-odd"><td>H2, H3 tag</td>
+<td>8</td>
+</tr>
+<tr class="row-even"><td>H4 - H6 tag</td>
+<td>6</td>
+</tr>
+<tr class="row-odd"><td>EM or strong tags</td>
+<td>3</td>
+</tr>
+<tr class="row-even"><td>Taxonomy term names</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>Extra rendered content</td>
+<td>.5</td>
+</tr>
+<tr class="row-even"><td>Rendered comments</td>
+<td>.4</td>
+</tr>
+<tr class="row-odd"><td>Unstemmed path alias</td>
+<td>.3</td>
+</tr>
+<tr class="row-even"><td>Unstemmed title</td>
 <td>5</td>
 </tr>
-<tr class="row-odd"><td>H1 tag</td>
-<td>3</td>
-</tr>
-<tr class="row-even"><td>H2, H3 tag</td>
-<td>3</td>
-</tr>
-<tr class="row-odd"><td>H4 - H6 tag</td>
+<tr class="row-odd"><td>Unstemmed teaser</td>
 <td>2</td>
-</tr>
-<tr class="row-even"><td>EM or strong tags</td>
-<td>1</td>
 </tr>
 </tbody>
 </table>
 <p>The following field biases are available but are not currently implemented:</p>
 <ul class="simple">
-<li>Full rendered body (to be considered given paragraphs)</li>
 <li>Text in A tags</li>
-<li>Taxonomy term names</li>
-<li>In total or by vocabulary</li>
 <li>Author names</li>
-<li>Extra rendered content or keywords</li>
-<li>Comments</li>
-<li>Path alias</li>
 </ul>
 </div>
+<div class="section" id="special-content-types">
+<h4>Special content types<a class="headerlink" href="#special-content-types" title="Permalink to this headline">¶</a></h4>
 </div>
+</div>
+</div>
+<div class="section" id="views">
+<h2>Views<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h2>
+<p>By default, searches only search “content,” or nodes.  Views are generally treated as “reports or lists of content” rather than searchable entities.</p>
+<p>To that end, we have created a way to index the following pages for Solr to include in its index:</p>
+<ul class="simple">
+<li>/form-library</li>
+<li>/get-legal-help/lshc-directory</li>
+</ul>
+</div>
+<div class="section" id="files">
+<h2>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h2>
+<p>Files are not indexed separately from nodes in our search configuration.  The full-text of files are included in the search index for the node to which it is attached.</p>
+<p>For example, the application PDF for a job posting will never show as a file in the search results, but the full text of that application PDF would be included in the “body” of the job posting node.</p>
 </div>
 </div>
 
