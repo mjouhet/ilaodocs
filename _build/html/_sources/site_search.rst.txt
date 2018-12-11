@@ -13,4 +13,4 @@ Site Search
 Known issues
 ================
 
-* Stemming of words like "guardianship" down to "guardian" does not work=
+* Stemming of words like "guardianship" down to "guardian" does not work
