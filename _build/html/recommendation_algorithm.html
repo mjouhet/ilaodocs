@@ -107,6 +107,8 @@
 <li class="toctree-l2"><a class="reference internal" href="google_analytics.html">Google Analytics Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="acquia_lift.html">Acquia Lift Integration</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Recommendation Algorithm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#generating-the-recommendations">Generating the recommendations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#google-analytics-data-files">Google Analytics Data Files</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#landing-events">landing_events</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pagepath-duration">pagepath_duration</a></li>
@@ -196,7 +198,14 @@
             
   <div class="section" id="recommendation-algorithm">
 <h1>Recommendation Algorithm<a class="headerlink" href="#recommendation-algorithm" title="Permalink to this headline">¶</a></h1>
-<p>The recommendation algorithm creates a CSV file of recommendations that can then be imported into the website.  On pieces of legal content that have recommendations, the “Related” block is replaced with the “Recommended for you” block.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The recommendation algorithm was created by Civis Analytics as part of our 2016 TIG grant with Land of Lincoln.  The recommendation engine looks at Google analytics data, specifically current page, next page, and events, to generate a set of recommendations for each page of legal information (content type of “legal content”).  It does not generate recommendations for other types of content, like blog posts, toolboxes, or basic pages.</p>
+<p>The algorithm will generate between 0 and 3 recommendations. If a piece of legal information has at least 1 recommendation, the “Recommended for you” block displays.  If the legal information has no recommendations, then the standard related block dipslays.</p>
+</div>
+<div class="section" id="generating-the-recommendations">
+<h2>Generating the recommendations<a class="headerlink" href="#generating-the-recommendations" title="Permalink to this headline">¶</a></h2>
+<p>The recommendation algorithm creates a CSV file of recommendations that can then be imported into the website.</p>
 <p>To generate updated recommendations, one must:</p>
 <ul class="simple">
 <li>Create csv files for data pulled from Google Analytics</li>
@@ -204,6 +213,7 @@
 <li>Run the python script to generate a new CSV file of recommendations</li>
 <li>Import the file into the website</li>
 </ul>
+</div>
 <div class="section" id="google-analytics-data-files">
 <h2>Google Analytics Data Files<a class="headerlink" href="#google-analytics-data-files" title="Permalink to this headline">¶</a></h2>
 <p>There are 3 Google analytics files that need to be created and then copied into the recommender/data/data_for_python folder.</p>

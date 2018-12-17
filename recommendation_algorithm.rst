@@ -2,7 +2,15 @@
 Recommendation Algorithm
 ==========================
 
-The recommendation algorithm creates a CSV file of recommendations that can then be imported into the website.  On pieces of legal content that have recommendations, the "Related" block is replaced with the "Recommended for you" block.
+Overview
+=========
+The recommendation algorithm was created by Civis Analytics as part of our 2016 TIG grant with Land of Lincoln.  The recommendation engine looks at Google analytics data, specifically current page, next page, and events, to generate a set of recommendations for each page of legal information (content type of "legal content").  It does not generate recommendations for other types of content, like blog posts, toolboxes, or basic pages.
+
+The algorithm will generate between 0 and 3 recommendations. If a piece of legal information has at least 1 recommendation, the "Recommended for you" block displays.  If the legal information has no recommendations, then the standard related block dipslays.
+
+Generating the recommendations
+===============================
+The recommendation algorithm creates a CSV file of recommendations that can then be imported into the website. 
 
 To generate updated recommendations, one must:
 
