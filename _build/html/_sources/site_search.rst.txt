@@ -6,6 +6,7 @@ Site Search
    :maxdepth: 2
 
    search_configuration
+   search_synonyms
    search_facet_configuration
    search_more_like_this
    search_best_bets   
