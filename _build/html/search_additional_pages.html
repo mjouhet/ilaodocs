@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Site Search &mdash; ILAO 2.19.0 documentation</title>
+  <title>Adding non-node pages &mdash; ILAO 2.19.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Search Configuration" href="search_configuration.html" />
-    <link rel="prev" title="Using Practice Resources" href="flp_practice_resources.html" /> 
+    <link rel="next" title="Faceted Search" href="search_facet_configuration.html" />
+    <link rel="prev" title="Search synonym taxonomy" href="search_synonyms.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -87,14 +87,14 @@
 <li class="toctree-l1"><a class="reference internal" href="get_legal_help.html">Get Legal Help</a></li>
 <li class="toctree-l1"><a class="reference internal" href="legal_information.html">Legal Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="for_legal_professionals.html">For Legal Professionals</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Site Search</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="site_search.html">Site Search</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="search_configuration.html">Search Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="search_synonyms.html">Search synonym taxonomy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="search_additional_pages.html">Adding non-node pages</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Adding non-node pages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="search_facet_configuration.html">Faceted Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="search_more_like_this.html">More like this blocks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="search_best_bets.html">Best bets (best matches)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#known-issues">Known issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="site_search.html#known-issues">Known issues</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="site_faqs.html">Site FAQs</a></li>
@@ -159,13 +159,15 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Site Search</li>
+          <li><a href="site_search.html">Site Search</a> &raquo;</li>
+        
+      <li>Adding non-node pages</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/site_search.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/search_additional_pages.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -178,34 +180,21 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="site-search">
-<h1>Site Search<a class="headerlink" href="#site-search" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="search_configuration.html">Search Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="search_configuration.html#drupal-modules">Drupal Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="search_configuration.html#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="search_configuration.html#views">Views</a></li>
-<li class="toctree-l2"><a class="reference internal" href="search_configuration.html#files">Files</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="search_synonyms.html">Search synonym taxonomy</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="search_synonyms.html#adding-terms">Adding terms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="search_synonyms.html#how-it-works">How it works</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="search_additional_pages.html">Adding non-node pages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="search_facet_configuration.html">Faceted Search</a></li>
-<li class="toctree-l1"><a class="reference internal" href="search_more_like_this.html">More like this blocks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="search_best_bets.html">Best bets (best matches)</a></li>
-</ul>
-</div>
-<div class="section" id="known-issues">
-<h2>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="adding-non-node-pages">
+<h1>Adding non-node pages<a class="headerlink" href="#adding-non-node-pages" title="Permalink to this headline">¶</a></h1>
+<p>To add non-node pages go to <a class="reference external" href="https://www.illinoislegalaid.org/admin/config/search/apachesolr-nan">the Apache not-a-node configuration</a>.</p>
+<p>On this page, you’ll want to add another item:</p>
+<img alt="_images/search-apache-nan.png" src="_images/search-apache-nan.png" />
+<p>Fill in:</p>
 <ul class="simple">
-<li>Stemming of words like “guardianship” down to “guardian” does not work</li>
+<li>The path to index.  The path should be the url without the <a class="reference external" href="https://www.illinoislegalaid.org">https://www.illinoislegalaid.org</a> and should not include the leading /.  Examples include get-legal-help, form-library.</li>
+<li>Set the language to English</li>
+<li>Enter the page title as the Indexed Title</li>
+<li>Enter a page description.  This is what will be shown to users as the snippet in search results</li>
+<li>Enter the time between indexes.  For content-based views, leave this as daily.  For pages that are mostly static (like the Get Legal Help page), weekly or even monthly is okay to use.</li>
 </ul>
-</div>
+<p>Submit the form</p>
+<p>It will take a cron run for the pages to start to show up, which is scheduled to run at the top of each hour.</p>
 </div>
 
 
@@ -216,10 +205,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="search_configuration.html" class="btn btn-neutral float-right" title="Search Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="search_facet_configuration.html" class="btn btn-neutral float-right" title="Faceted Search" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="flp_practice_resources.html" class="btn btn-neutral" title="Using Practice Resources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="search_synonyms.html" class="btn btn-neutral" title="Search synonym taxonomy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

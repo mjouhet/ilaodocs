@@ -7,6 +7,7 @@ Site Search
 
    search_configuration
    search_synonyms
+   search_additional_pages
    search_facet_configuration
    search_more_like_this
    search_best_bets   
