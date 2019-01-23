@@ -9,8 +9,9 @@ The core configuration is stored in the settings.php file in sites/default.  Thi
 Our production instance has a name of ILAO Production and a site ID of ilao_prod.  Our staging instance has a name of ILAO Stage and a site ID of ilao_stage.
 
 .. toctree::
-   :maxdepth: 2
-
+   :maxdepth: 1
+ 
+   acquia_data_overview
    acquia_default_data
    acquia_ilao_person_data
    acquia_ilao_touch_data

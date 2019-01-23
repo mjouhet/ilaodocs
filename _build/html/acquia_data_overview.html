@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Acquia Lift Integration &mdash; ILAO 2.19.0 documentation</title>
+  <title>Profile Data Overview &mdash; ILAO 2.19.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Profile Data Overview" href="acquia_data_overview.html" />
-    <link rel="prev" title="404 Event management" href="ga_404.html" /> 
+    <link rel="next" title="General data collected by Acquia Lift" href="acquia_default_data.html" />
+    <link rel="prev" title="Acquia Lift Integration" href="acquia_lift.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -105,9 +105,9 @@
 <li class="toctree-l1"><a class="reference internal" href="sms_integrations.html">SMS Integrations</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="data_integrations.html">Data Integrations</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="google_analytics.html">Google Analytics Integration</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Acquia Lift Integration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#core-configuration">Core Configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="acquia_data_overview.html">Profile Data Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="acquia_lift.html">Acquia Lift Integration</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="acquia_lift.html#core-configuration">Core Configuration</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Profile Data Overview</a></li>
 <li class="toctree-l4"><a class="reference internal" href="acquia_default_data.html">General data collected by Acquia Lift</a></li>
 <li class="toctree-l4"><a class="reference internal" href="acquia_ilao_person_data.html">ILAO person custom data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="acquia_ilao_touch_data.html">ILAO touch (page view) custom data</a></li>
@@ -115,10 +115,7 @@
 <li class="toctree-l4"><a class="reference internal" href="acquia_ilao_segments.html">ILAO Segments</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#tracking">Tracking</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#looking-up-your-user-cookie-id">Looking up your user cookie ID</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="acquia_lift.html#tracking">Tracking</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="recommendation_algorithm.html">Recommendation Algorithm</a></li>
@@ -172,13 +169,15 @@
         
           <li><a href="data_integrations.html">Data Integrations</a> &raquo;</li>
         
-      <li>Acquia Lift Integration</li>
+          <li><a href="acquia_lift.html">Acquia Lift Integration</a> &raquo;</li>
+        
+      <li>Profile Data Overview</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/acquia_lift.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/acquia_data_overview.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -191,41 +190,80 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="acquia-lift-integration">
-<h1>Acquia Lift Integration<a class="headerlink" href="#acquia-lift-integration" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="core-configuration">
-<h2>Core Configuration<a class="headerlink" href="#core-configuration" title="Permalink to this headline">¶</a></h2>
-<p>The core configuration is stored in the settings.php file in sites/default.  This is to ensure that unique site IDs are used for dev (including all various local development environments), staging, and production.</p>
-<p>Our production instance has a name of ILAO Production and a site ID of ilao_prod.  Our staging instance has a name of ILAO Stage and a site ID of ilao_stage.</p>
-<div class="toctree-wrapper compound">
+  <div class="section" id="profile-data-overview">
+<h1>Profile Data Overview<a class="headerlink" href="#profile-data-overview" title="Permalink to this headline">¶</a></h1>
+<p>At its core, Acquia Lift stores profiles using a persistent tracking cookie.  We unify these cookies using an email address.  Email addresses are captured from:</p>
+<ul class="simple">
+<li>when the user registers and/or logs in.</li>
+<li>when the user completes an OTIS application and we capture their email</li>
+<li>when the user signs up for a newsletter or blog notification on our About ILAO pages</li>
+</ul>
+<p>At the “person” level, we collect and store the following:</p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="acquia_data_overview.html">Profile Data Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acquia_default_data.html">General data collected by Acquia Lift</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acquia_ilao_person_data.html">ILAO person custom data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acquia_ilao_touch_data.html">ILAO touch (page view) custom data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acquia_ilao_event_data.html">ILAO Specific Event data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="acquia_ilao_segments.html">ILAO Segments</a></li>
+<li><p class="first">the user’s email, if known</p>
+</li>
+<li><p class="first">if the user is logged in, their primary role on the website.  Because our website allows users to have multiple roles, the primary role is selected based on the highest of intern, staff, legal aid, navigator, law student, pro bono, public.  Using this hierarchy:</p>
+<blockquote>
+<div><ul class="simple">
+<li>a user with both intern and staff roles will be treated as “intern”</li>
+<li>a user with the staff and legal aid role will be treated as “staff”</li>
+<li>a user with the legal aid and pro bono roles will be treated as “legal aid”</li>
 </ul>
-</div>
-</div>
-<div class="section" id="tracking">
-<h2>Tracking<a class="headerlink" href="#tracking" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="looking-up-your-user-cookie-id">
-<h3>Looking up your user cookie ID<a class="headerlink" href="#looking-up-your-user-cookie-id" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>To find your cookie ID:</dt>
-<dd><ul class="first last simple">
-<li>Open Chome</li>
-<li>Go to our website</li>
-<li>In Chrome, go to View/Developer tools and Application</li>
-<li>Under cookies, look under www.illinoislegalaid.org</li>
-<li>It is the tc_ptid cookie</li>
+</div></blockquote>
+</li>
+<li><p class="first">whether the user is a content editor or not.  This is true or false</p>
+</li>
+<li><p class="first">gender, if provided in the user registration form or via OTIS (if collected)</p>
+</li>
+<li><p class="first">year born, if provided in the user registration form or via OTIS</p>
+</li>
+<li><p class="first">notification preferences, if provided in the user registration form.  Captures whether the user likes email, SMS, or no notifications</p>
+</li>
+<li><p class="first">whether the user is signed up to be a user tester in the user registration form</p>
+</li>
+<li><p class="first">Favorite content section (this is from the <a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/taxonomy_manager/voc/content_section">Content section</a> taxonomy.</p>
+</li>
+<li><p class="first">Favorite content type (this is the machine name from Drupal of the content type the user has viewed.  Content types include legal_content, toolbox, toolbox_tool, toolbox_tool_step, article (for blog posts), page (for basic page) etc.</p>
+</li>
+<li><p class="first">Favorite keyword (this is from the <a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/taxonomy_manager/voc/content_keywords">Content keyword</a> taxonomy.</p>
+</li>
+<li><p class="first">Engagement score (currently each content view increases the engagement score by 1)</p>
+</li>
+<li><p class="first">Whether they are a new or returning user</p>
+</li>
+<li><p class="first">Whether they are logged in or not</p>
+</li>
 </ul>
-</dd>
-</dl>
-<img alt="_images/cookie_image.png" src="_images/cookie_image.png" />
-</div>
-</div>
+<p>At a session (“touch”) level:</p>
+<ul class="simple">
+<li>their postal code</li>
+<li>referring url</li>
+<li>referrer domain</li>
+<li>country</li>
+<li>state (region)</li>
+<li>city</li>
+<li>geolocation (latitude and longitude)</li>
+<li>IP address</li>
+<li>Operating system</li>
+<li>Platform (desktop, mobile)</li>
+<li>Browser</li>
+<li>Session duration (touch duration in seconds)</li>
+</ul>
+<p>At an event level:</p>
+<p>For content views (pages):</p>
+<ul class="simple">
+<li>If they matched an existing segment</li>
+<li>Referrer</li>
+<li>Page url accessed</li>
+<li>Language of the page</li>
+<li>Legal position for legal content (plaintiff, defendant, neutral)</li>
+<li>Content title</li>
+<li>Content section (if mapped)</li>
+<li>Page type (node page)</li>
+<li>Content type (legal_content, article, etc)</li>
+<li>Content keyword (if mapped)</li>
+<li>Content audience (if mapped); events, IICLE and restricted content will have audience values.</li>
+</ul>
 </div>
 
 
@@ -236,10 +274,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="acquia_data_overview.html" class="btn btn-neutral float-right" title="Profile Data Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="acquia_default_data.html" class="btn btn-neutral float-right" title="General data collected by Acquia Lift" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="ga_404.html" class="btn btn-neutral" title="404 Event management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="acquia_lift.html" class="btn btn-neutral" title="Acquia Lift Integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
