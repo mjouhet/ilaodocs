@@ -4,6 +4,8 @@ Search synonym taxonomy
 
 The synonyms module relies on the search synonyms taxonomy.
 
+To add or edit terms in the taxonomy, please edit the `taxonomy <https://www.illinoislegalaid.org/admin/structure/taxonomy/search_synonyms>`_ through the website.
+
 Adding terms
 ===============
 Add a term by entering the search term as the name and the replacement/expansion in the description.  Then select the synonym type:
@@ -11,16 +13,23 @@ Add a term by entering the search term as the name and the replacement/expansion
 * Replace - replaces the search term with the new term. 
 * Expand - expands the search term to add an "OR [new term]"
 
+.. figure:: assets/search-add-form.png
+
+   Add form
 .. note::  
    A replacement will remove the original search term and replace it with a new term.  This is helpful to:
    * fix common typos, for example dvorce => divorce
    * rewrite queries that result in 0 results to something that might get the user what they need; for example "can you take my kids" => dcfs
 
-..note:: 
+.. note:: 
   An expansion will add new terms to the original search term. This is helpful to:
   * handle advanced stemming; for example guardian => guardian OR guardianship (-ship terms are not easily stemmed like -ed and -ing words)
   * expanding a search term to include both legal jargon and plain language; for example, dissolution => dissolution OR divorce
 
+.. figure:: assets/search-add-complete.png
+
+   Completed form to search for both guardian and guardianship when the user searches for guardian
+   
 How it works
 ==============
 
@@ -46,7 +55,7 @@ If there is no exact match, the system strips out stopwords and then loops throu
    | I am in jail            |                             |
    +-------------------------+-----------------------------+
    | can you get divorced    | no changes made             |
-   |  from jail              |                             |
+   | from jail               |                             |
    +-------------------------+-----------------------------+
    | can you get a dvorce    | can you get a divorce       |
    +-------------------------+-----------------------------+

@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Faceted Search" href="search_facet_configuration.html" />
+    <link rel="next" title="Adding non-node pages" href="search_additional_pages.html" />
     <link rel="prev" title="Search Configuration" href="search_configuration.html" /> 
 
   
@@ -94,6 +94,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#how-it-works">How it works</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="search_additional_pages.html">Adding non-node pages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="search_facet_configuration.html">Faceted Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="search_more_like_this.html">More like this blocks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="search_best_bets.html">Best bets (best matches)</a></li>
@@ -186,6 +187,7 @@
   <div class="section" id="search-synonym-taxonomy">
 <h1>Search synonym taxonomy<a class="headerlink" href="#search-synonym-taxonomy" title="Permalink to this headline">¶</a></h1>
 <p>The synonyms module relies on the search synonyms taxonomy.</p>
+<p>To add or edit terms in the taxonomy, please edit the <a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/taxonomy/search_synonyms">taxonomy</a> through the website.</p>
 <div class="section" id="adding-terms">
 <h2>Adding terms<a class="headerlink" href="#adding-terms" title="Permalink to this headline">¶</a></h2>
 <p>Add a term by entering the search term as the name and the replacement/expansion in the description.  Then select the synonym type:</p>
@@ -193,18 +195,26 @@
 <li>Replace - replaces the search term with the new term.</li>
 <li>Expand - expands the search term to add an “OR [new term]”</li>
 </ul>
+<div class="figure" id="id1">
+<img alt="_images/search-add-form.png" src="_images/search-add-form.png" />
+<p class="caption"><span class="caption-text">Add form</span></p>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">A replacement will remove the original search term and replace it with a new term.  This is helpful to:
 * fix common typos, for example dvorce =&gt; divorce
 * rewrite queries that result in 0 results to something that might get the user what they need; for example “can you take my kids” =&gt; dcfs</p>
 </div>
-<dl class="docutils">
-<dt>..note::</dt>
-<dd>An expansion will add new terms to the original search term. This is helpful to:
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">An expansion will add new terms to the original search term. This is helpful to:
 * handle advanced stemming; for example guardian =&gt; guardian OR guardianship (-ship terms are not easily stemmed like -ed and -ing words)
-* expanding a search term to include both legal jargon and plain language; for example, dissolution =&gt; dissolution OR divorce</dd>
-</dl>
+* expanding a search term to include both legal jargon and plain language; for example, dissolution =&gt; dissolution OR divorce</p>
+</div>
+<div class="figure" id="id2">
+<img alt="_images/search-add-complete.png" src="_images/search-add-complete.png" />
+<p class="caption"><span class="caption-text">Completed form to search for both guardian and guardianship when the user searches for guardian</span></p>
+</div>
 </div>
 <div class="section" id="how-it-works">
 <h2>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
@@ -236,11 +246,8 @@
 I am in jail</td>
 <td>divorce AND jail</td>
 </tr>
-<tr class="row-even"><td><dl class="first last docutils">
-<dt>can you get divorced</dt>
-<dd>from jail</dd>
-</dl>
-</td>
+<tr class="row-even"><td>can you get divorced
+from jail</td>
 <td>no changes made</td>
 </tr>
 <tr class="row-odd"><td>can you get a dvorce</td>
@@ -275,7 +282,7 @@ with difficult spouse</td>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="search_facet_configuration.html" class="btn btn-neutral float-right" title="Faceted Search" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="search_additional_pages.html" class="btn btn-neutral float-right" title="Adding non-node pages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="search_configuration.html" class="btn btn-neutral" title="Search Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

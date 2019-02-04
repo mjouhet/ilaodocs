@@ -2,11 +2,19 @@
 Best bets (best matches)
 ==========================
 
-Content managers can promote certain pieces of content as a "best bet" or "best match" in the CMS for one or more specific keywords.  For example, I can promote the victims of crime portal as a best bet for "crime victim," which would cause it to float to the top of search results.
+Content managers can promote certain pieces of content as a "best bet" or "best match" in the CMS for one or more specific keywords.  
+
+For example, if I add e-filing as a best bet term for the E-filing Basics article, that article will float to the top for searches for e-filing (but not for e-filing example or e-file my forms or other queries)
+
+.. image:: assets/search-best-bet.png
+
+To add a query as a best bet for an article, edit the article and at the bottom is a field to add the best bet:
+
+.. image:: assets/search-best-bet-form.png
 
 If content managers attempt to tag more than one item to a search term, a validation error is thrown.  
 
-Best bets can be set for the following content types:
+The following content types can be used as "Best bets":
 
 * Legal content
 * Toolboxes
