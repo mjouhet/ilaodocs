@@ -106,7 +106,9 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Translating interface components</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#what-is-interface-translation">What is Interface Translation?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-is-it-translated">How is it Translated?</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#through-the-ui">Through the UI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#single-strings-through-the-ui">Single Strings Through the UI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#menus">Menus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#blocks">Blocks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#custom-modules-ilao-themes">Custom modules &amp; ILAO themes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#working-with-po-files-poedit">Working with PO files &amp; POEdit</a></li>
 </ul>
@@ -207,19 +209,65 @@
 <li>For blocks, menus, and taxonomy terms, by translating in-line</li>
 <li>By exporting or extracting strings to a PO file, translating offline and re-importing</li>
 </ul>
-<div class="section" id="through-the-ui">
-<h3>Through the UI<a class="headerlink" href="#through-the-ui" title="Permalink to this headline">¶</a></h3>
-<p>Go to Configuration and then <a href="#id1"><span class="problematic" id="id2">`Translate interface&lt;https://www.illinoislegalaid.org/admin/config/regional/translate/extract&gt;`_</span></a>.</p>
+<div class="section" id="single-strings-through-the-ui">
+<h3>Single Strings Through the UI<a class="headerlink" href="#single-strings-through-the-ui" title="Permalink to this headline">¶</a></h3>
+<p>Go to Configuration and then <a class="reference external" href="https://www.illinoislegalaid.org/admin/config/regional/translate">Translate interface</a>.</p>
 <p>Then click on the translate tab:</p>
 <img alt="_images/tmgmt-translate.png" src="_images/tmgmt-translate.png" />
 <p>You can filter on language, whether the string has already been translated, and text groups.</p>
 <p>Filtering on the string is <em>case sensitive.</em>  Please, please, PLEASE are all considered different words.</p>
 </div>
+<div class="section" id="menus">
+<h3>Menus<a class="headerlink" href="#menus" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="blocks">
+<h3>Blocks<a class="headerlink" href="#blocks" title="Permalink to this headline">¶</a></h3>
+<p>This applies to blocks that are created in the UI.  Some blocks are views and some are custom and must be managed via the custom modules and PO edit sections.</p>
+<p>Start by accessing the <a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/block">list of blocks</a> (or mouse over the block you want to edit and click on the little gear and select “Translate”</p>
+<img alt="_images/blocks-list.png" src="_images/blocks-list.png" />
+<p>Select “Configure” next to the block.  <em>If you don’t see a block title and body block, you can not manage the translation this way.</em></p>
+<p>Click on the translate tab</p>
+<img alt="_images/block-translate1.png" src="_images/block-translate1.png" />
+<p>Next to the language select “Add translation” or “Edit” (if a translation exists):</p>
+<img alt="_images/block-translation-form.png" src="_images/block-translation-form.png" />
+<p>Enter or update the translation and save.</p>
+</div>
 <div class="section" id="custom-modules-ilao-themes">
 <h3>Custom modules &amp; ILAO themes<a class="headerlink" href="#custom-modules-ilao-themes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="extract-files">
+<h4>Extract files<a class="headerlink" href="#extract-files" title="Permalink to this headline">¶</a></h4>
+<p>These need to be extracted and edited in POEdit and then imported.</p>
+<p>Go to the <a class="reference external" href="https://www.illinoislegalaid.org/admin/config/regional/translate">Translate interface</a> section and click on the “Extract” tab</p>
+<p>Extract what you want to translate:</p>
+<ul class="simple">
+<li>Custom modules are in sites/all/modules/custom</li>
+<li>Theme (templates) are in sites/all/themes/ilao_foundation</li>
+</ul>
+<img alt="_images/export-modules.png" src="_images/export-modules.png" />
+<p>You want to</p>
+<ul class="simple">
+<li>Select template file for [x] translations</li>
+<li>Include existing translations</li>
+</ul>
+</div>
+<div class="section" id="import-files">
+<h4>Import files<a class="headerlink" href="#import-files" title="Permalink to this headline">¶</a></h4>
+<p>Theme and module importa are part of the “Built-in interface” text group.  To import:
+Go to the <a class="reference external" href="https://www.illinoislegalaid.org/admin/config/regional/translate">Translate interface</a> section and click on the “Import” tab</p>
+<ul class="simple">
+<li>Add the language file</li>
+<li>Pick the language to import into</li>
+<li>Leave the built-in interface checked</li>
+<li>Set the mode to “Strings in the uploaded file replace existing strings, new ones are added.  The plural format is updated.</li>
+</ul>
+<img alt="_images/import-modules.png" src="_images/import-modules.png" />
+</div>
 </div>
 <div class="section" id="working-with-po-files-poedit">
 <h3>Working with PO files &amp; POEdit<a class="headerlink" href="#working-with-po-files-poedit" title="Permalink to this headline">¶</a></h3>
+<p>When you extract or export a file, it will generate a .po file.  Open that in PoEdit and add or update the existing translations.</p>
+<p>Once you are done, import the file (see Import files under custom modules &amp; ILAO themes</p>
+<img alt="_images/po-edit.png" src="_images/po-edit.png" />
 </div>
 </div>
 </div>
