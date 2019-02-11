@@ -107,8 +107,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#what-is-interface-translation">What is Interface Translation?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-is-it-translated">How is it Translated?</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#single-strings-through-the-ui">Single Strings Through the UI</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#menus">Menus</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#blocks">Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#menus">Menus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#views-taxonomy-breadcrumbs-etc">Views, Taxonomy, Breadcrumbs, etc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#custom-modules-ilao-themes">Custom modules &amp; ILAO themes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#working-with-po-files-poedit">Working with PO files &amp; POEdit</a></li>
 </ul>
@@ -217,12 +218,18 @@
 <p>You can filter on language, whether the string has already been translated, and text groups.</p>
 <p>Filtering on the string is <em>case sensitive.</em>  Please, please, PLEASE are all considered different words.</p>
 </div>
-<div class="section" id="menus">
-<h3>Menus<a class="headerlink" href="#menus" title="Permalink to this headline">¶</a></h3>
-</div>
 <div class="section" id="blocks">
 <h3>Blocks<a class="headerlink" href="#blocks" title="Permalink to this headline">¶</a></h3>
 <p>This applies to blocks that are created in the UI.  Some blocks are views and some are custom and must be managed via the custom modules and PO edit sections.</p>
+<div class="section" id="configuring-translation">
+<h4>Configuring Translation<a class="headerlink" href="#configuring-translation" title="Permalink to this headline">¶</a></h4>
+<p>Blocks need to be affirmatively made translatable in order to translate them.</p>
+<p>On the block’s edit form, click on Languages and check the “Make this block translatable” box:</p>
+<img alt="_images/block-translatable.png" src="_images/block-translatable.png" />
+<p>Some blocks may only be relevant in one specific language.  In that case, also check which language(s) it should appear for.</p>
+</div>
+<div class="section" id="translating">
+<h4>Translating<a class="headerlink" href="#translating" title="Permalink to this headline">¶</a></h4>
 <p>Start by accessing the <a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/block">list of blocks</a> (or mouse over the block you want to edit and click on the little gear and select “Translate”</p>
 <img alt="_images/blocks-list.png" src="_images/blocks-list.png" />
 <p>Select “Configure” next to the block.  <em>If you don’t see a block title and body block, you can not manage the translation this way.</em></p>
@@ -231,6 +238,58 @@
 <p>Next to the language select “Add translation” or “Edit” (if a translation exists):</p>
 <img alt="_images/block-translation-form.png" src="_images/block-translation-form.png" />
 <p>Enter or update the translation and save.</p>
+</div>
+</div>
+<div class="section" id="menus">
+<h3>Menus<a class="headerlink" href="#menus" title="Permalink to this headline">¶</a></h3>
+<p>Ask Gwen to set up translation for menus as they require some additional configuration.</p>
+<div class="section" id="for-translatable-links">
+<h4>For translatable links<a class="headerlink" href="#for-translatable-links" title="Permalink to this headline">¶</a></h4>
+<p>Translatable links are set up as “language neutral” and then have translations associated with them.
+But once set up, menus follow the same methodology as blocks but are accessed via the <a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/menu">Menu section</a> .</p>
+<p>From the menu list, pick the menu you want to edit</p>
+<p>Then list links and next to each link, translate.</p>
+</div>
+<div class="section" id="language-specific-links">
+<h4>Language-specific links<a class="headerlink" href="#language-specific-links" title="Permalink to this headline">¶</a></h4>
+<p>For menu links that need to link to language-specific resources (for example, Facebook on the footer), menus support links that are language-specific.</p>
+<p>See Gwen for configuring those</p>
+</div>
+</div>
+<div class="section" id="views-taxonomy-breadcrumbs-etc">
+<h3>Views, Taxonomy, Breadcrumbs, etc<a class="headerlink" href="#views-taxonomy-breadcrumbs-etc" title="Permalink to this headline">¶</a></h3>
+<p>The easiest way to translate views, such as the legal information pages, taxonomy terms, and breadcrumbs is to do this in PoEdit.</p>
+<div class="section" id="step-1-make-sure-your-strings-are-up-to-date">
+<h4>Step 1:  Make sure your strings are up to date.<a class="headerlink" href="#step-1-make-sure-your-strings-are-up-to-date" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Go to the <a class="reference external" href="https://www.illinoislegalaid.org/admin/config/regional/translate">Translate interface</a> section and click on the “Strings” tab</li>
+<li>Check all the checkboxes</li>
+<li>Click Refresh strings</li>
+</ul>
+<img alt="assets/translate-strings.png" src="assets/translate-strings.png" />
+</div>
+<div class="section" id="step-2-export-what-you-need">
+<h4>Step 2: Export what you need<a class="headerlink" href="#step-2-export-what-you-need" title="Permalink to this headline">¶</a></h4>
+<p>For each type, you’ll need to export a separate PO file.  Go to the <a class="reference external" href="https://www.illinoislegalaid.org/admin/config/regional/translate">Translate interface</a> section and click on the “Export” tab.</p>
+<p>In the top section, pick the language you need and then select a text group and press the first Export button.  Ignore the bottom of the page.</p>
+</div>
+<div class="section" id="step-3-edit-in-poedit">
+<h4>Step 3: Edit in POEdit<a class="headerlink" href="#step-3-edit-in-poedit" title="Permalink to this headline">¶</a></h4>
+<p>See the POEdit information on this page.  Make your edits and then save the .po file.</p>
+</div>
+<div class="section" id="step-4-import-the-file">
+<h4>Step 4:  Import the file<a class="headerlink" href="#step-4-import-the-file" title="Permalink to this headline">¶</a></h4>
+<p>Go to the <a class="reference external" href="https://www.illinoislegalaid.org/admin/config/regional/translate">Translate interface</a> section and click on the “Import” tab.</p>
+<p>Be sure to pick the text group that matches what you exported.</p>
+<ul class="simple">
+<li>Add the language file</li>
+<li>Pick the language to import into</li>
+<li>Pick the text group</li>
+<li>Set the mode to “Strings in the uploaded file replace existing strings, new ones are added.  The plural format is updated.” if you made changes to existing translations.  Otherwise, use the Existing strings and the plural format are kept, only new strings are added.</li>
+<li>Click Import</li>
+</ul>
+<img alt="_images/import-modules.png" src="_images/import-modules.png" />
+</div>
 </div>
 <div class="section" id="custom-modules-ilao-themes">
 <h3>Custom modules &amp; ILAO themes<a class="headerlink" href="#custom-modules-ilao-themes" title="Permalink to this headline">¶</a></h3>
@@ -259,6 +318,7 @@ Go to the <a class="reference external" href="https://www.illinoislegalaid.org/a
 <li>Pick the language to import into</li>
 <li>Leave the built-in interface checked</li>
 <li>Set the mode to “Strings in the uploaded file replace existing strings, new ones are added.  The plural format is updated.</li>
+<li>Click import</li>
 </ul>
 <img alt="_images/import-modules.png" src="_images/import-modules.png" />
 </div>
