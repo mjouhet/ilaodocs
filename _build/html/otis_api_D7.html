@@ -1,0 +1,394 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Get Legal Help APIs for Drupal 7 &mdash; ILAO 2.19.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Get Legal Help APIs for Drupal 8" href="otis_api_D8.html" />
+    <link rel="prev" title="Get Legal Help APIs" href="otis_api.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ILAO
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.19.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="get_legal_help.html">Get Legal Help</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="referrals.html">Referrals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="legal_self_help_centers.html">Legal Self-Help Center Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otis_integration.html">Online Triage and Intake System (OTIS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otis_queries.html">OTIS-related queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otis_technical.html">OTIS Database Tables &amp; Relationships</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="otis_api.html">Get Legal Help APIs</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Get Legal Help APIs for Drupal 7</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get-legal-help-form">Get Legal Help form</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#initial-results-evaluation">Initial Results Evaluation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="otis_api_D8.html">Get Legal Help APIs for Drupal 8</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="legal_information.html">Legal Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="for_legal_professionals.html">For Legal Professionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="site_search.html">Site Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="site_faqs.html">Site FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about_us.html">ILAO Organization Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ilao_blog.html">ILAO Blog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comments_ratings.html">Comments &amp; Ratings System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_engagement.html">Share Bar &amp; Favorites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contact_us.html">Contacting ILAO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managing_content.html">Content Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managing_people.html">User Accounts &amp; Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="managing_organizations.html">Managing Organizations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tech_mailchimp.html">Mailchimp Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tech_google_groups.html">Discussion Boards &amp; Google Groups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technical_information.html">Other Site Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seo.html">SEO Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translation_management.html">Translation Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sms_integrations.html">SMS Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_integrations.html">Data Integrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tech_styles.html">Website Styles</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ILAO</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="get_legal_help.html">Get Legal Help</a> &raquo;</li>
+        
+          <li><a href="otis_api.html">Get Legal Help APIs</a> &raquo;</li>
+        
+      <li>Get Legal Help APIs for Drupal 7</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/otis_api_D7.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="get-legal-help-apis-for-drupal-7">
+<h1>Get Legal Help APIs for Drupal 7<a class="headerlink" href="#get-legal-help-apis-for-drupal-7" title="Permalink to this headline">¶</a></h1>
+<p>Technically, we do not have true APIs in Drupal 7 and the functionality and interface are entwined.</p>
+<div class="section" id="get-legal-help-form">
+<h2>Get Legal Help form<a class="headerlink" href="#get-legal-help-form" title="Permalink to this headline">¶</a></h2>
+<p>The Get Legal Help form is a piece of the OAS triage user entity.
+That entity is based in the oas_triage_user module and extended via features for ILAO.</p>
+<p>Our <a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/triage/manage/oas_triage_user/fields">custom configuration</a> includes:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="16%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Purpose</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>oas_triage_help_type</td>
+<td>List</td>
+<td>Captures whether the user wants
+a lawyer, forms, or content</td>
+</tr>
+<tr class="row-odd"><td>field_triage_search</td>
+<td>Text</td>
+<td>Captures search input from the user
+describing their problem.  Supports
+auto-suggest of legal issue terms</td>
+</tr>
+<tr class="row-even"><td>field_triage_problem
+(legal issues taxonomy</td>
+<td>Term
+reference</td>
+<td>Lowest level term related to the
+user’s search</td>
+</tr>
+<tr class="row-odd"><td>field_limited_populations
+(intake population
+taxonomy)</td>
+<td>Term
+reference</td>
+<td>Determines if the user falls into a
+population served by a specific
+service</td>
+</tr>
+<tr class="row-even"><td>field_triage_problem_history
+(legal issues taxonomy)</td>
+<td>Term
+reference</td>
+<td>Captures the drill down of user’s
+legal problem</td>
+</tr>
+<tr class="row-odd"><td>field_opt_in_sms</td>
+<td>Boolean</td>
+<td>Has the user opted in for SMS?</td>
+</tr>
+<tr class="row-even"><td>field_mobile_phone</td>
+<td>Text</td>
+<td>User’s mobile number</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="data-collection">
+<h3>Data collection<a class="headerlink" href="#data-collection" title="Permalink to this headline">¶</a></h3>
+<p>The get legal help form (oas_triage_user_edit_form, altered via ilao_intake_settings.module) collects initial input data:</p>
+<ul class="simple">
+<li>Displays a description of Get Legal Help</li>
+<li>User’s zip code (prepopulated if user is logged in)</li>
+<li>Household size</li>
+<li>Whether the user is likely over-income.  This looks up a value based on the provided household size:<ul>
+<li>The function can be found at oas_triage_user_get_maximum_income r</li>
+<li>Relies on the ilao_oas_income_standard module to get the <a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/ilao_oas_income_standards">current federal poverty levels</a>.</li>
+<li>Calculates the monthly poverty level, multiplies by 3.5 (350%) and adds 500</li>
+<li>Rounds to the nearest lowest $1000.  For example, if the maximum monthly income is $5,300, the system will return $5000.</li>
+</ul>
+</li>
+<li>Whether the user is a member of a special population.  This data comes from the limited population taxonomy</li>
+</ul>
+</div>
+<div class="section" id="form-submission">
+<h3>Form submission<a class="headerlink" href="#form-submission" title="Permalink to this headline">¶</a></h3>
+<p>When the form is submitted, the system:</p>
+<ul>
+<li><p class="first">Creates a session variable that stores the household size (in $_SESSION[‘oas’])</p>
+</li>
+<li><p class="first">Creates an oas_triage_user entity which stores:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Current time stamp</li>
+<li>User’s ID if known</li>
+<li>Last screen viewed of “get-legal-help”</li>
+<li>The user’s zip code</li>
+<li>The county associated with the zip code</li>
+<li>The state associated with the state</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Routes the user to initial results</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="initial-results-evaluation">
+<h2>Initial Results Evaluation<a class="headerlink" href="#initial-results-evaluation" title="Permalink to this headline">¶</a></h2>
+<p>The logic for the initial results is in the oas_triage_user.evaluate_triage.inc file.</p>
+<div class="section" id="initial-step">
+<h3>Initial step<a class="headerlink" href="#initial-step" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>set the legal issue (as field_triage_problem) if the user picked a legal term using autosuggest</li>
+<li>routes the user to the top of the <a class="reference external" href="https://www.illinoislegalaid.org/get-legal-help/triage-start">get legal help tree</a> to pick from the top 8 topics if their search can’t be matched.</li>
+<li>routes the user into the legal issues triage tree if the user didn’t pick a low enough category.</li>
+<li>routes the user to a list of legal issues that match their search term if they didn’t pick from the taxonomy and there are matches.</li>
+<li>routes the user to results if the user picked a bottom level category</li>
+</ul>
+</div>
+<div class="section" id="results">
+<h3>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
+<p>Once the user ends up at the lowest level category for their problem, the system determines the appropriate results.
+This is in the oas_triage_user_determine_resources function.</p>
+<ul class="simple">
+<li>If the user is only seeking content and forms, they are directed to the referrals page.</li>
+<li>If the user is seeking a lawyer in any combination, the system evaluates to see if online intake is available.</li>
+</ul>
+<p>This code is primarily found in the oas_triage_user.intake_available.inc file:</p>
+<ul class="simple">
+<li>If the user is overincome, it looks for intake settings where the user is in population where income is waived or where there is no income limit</li>
+<li>If the user is not overincome, it looks for intake settings first where the user matches on a population and if there is no match, looks for intake settings with no population restrictions</li>
+</ul>
+<p>If there are any intake settings that match, the system then checks for matching triage rules (see oas_triage_user_get_triage_rules function)</p>
+<p>Special case:  we need to make sure we have the right problem code to check for.  In the current site, there are instances where the legal issue is stored in different ways.  The oas_triage_user_get_child_problem function returns the best child function.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="otis_api_D8.html" class="btn btn-neutral float-right" title="Get Legal Help APIs for Drupal 8" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="otis_api.html" class="btn btn-neutral" title="Get Legal Help APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Illinois Legal Aid Online.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.19.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

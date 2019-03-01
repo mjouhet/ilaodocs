@@ -9,7 +9,7 @@ Get Legal Help
    otis_integration
    otis_queries
    otis_technical
-   
+   otis_api   
 Get Legal Help encompasses the following things: referrals, legal self-help center directory, and the Online Triage and Intake System (OTIS)
 
 
