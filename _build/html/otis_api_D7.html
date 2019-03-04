@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Get Legal Help APIs for Drupal 8" href="otis_api_D8.html" />
+    <link rel="next" title="Initial Evaluation APIs" href="otis_api_D7_glh_form.html" />
     <link rel="prev" title="Get Legal Help APIs" href="otis_api.html" /> 
 
   
@@ -92,10 +92,15 @@
 <li class="toctree-l2"><a class="reference internal" href="otis_technical.html">OTIS Database Tables &amp; Relationships</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="otis_api.html">Get Legal Help APIs</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Get Legal Help APIs for Drupal 7</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#get-legal-help-form">Get Legal Help form</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#initial-results-evaluation">Initial Results Evaluation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#browser-interfaces">Browser Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#triage-rules">Triage Rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exit-screens">Exit Screens</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="otis_api_D7_glh_form.html">Initial Evaluation APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="otis_api_D7_intake_available.html">Intake available “API”</a></li>
+<li class="toctree-l3"><a class="reference internal" href="otis_api_D7_intake_application.html">Intake Application APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="otis_api_D7_etransfer.html">Intake eTransfer API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="otis_api_D8.html">Get Legal Help APIs for Drupal 8</a></li>
 </ul>
 </li>
@@ -192,137 +197,30 @@
   <div class="section" id="get-legal-help-apis-for-drupal-7">
 <h1>Get Legal Help APIs for Drupal 7<a class="headerlink" href="#get-legal-help-apis-for-drupal-7" title="Permalink to this headline">¶</a></h1>
 <p>Technically, we do not have true APIs in Drupal 7 and the functionality and interface are entwined.</p>
-<div class="section" id="get-legal-help-form">
-<h2>Get Legal Help form<a class="headerlink" href="#get-legal-help-form" title="Permalink to this headline">¶</a></h2>
-<p>The Get Legal Help form is a piece of the OAS triage user entity.
-That entity is based in the oas_triage_user module and extended via features for ILAO.</p>
-<p>Our <a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/triage/manage/oas_triage_user/fields">custom configuration</a> includes:</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="38%" />
-<col width="16%" />
-<col width="46%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Type</th>
-<th class="head">Purpose</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>oas_triage_help_type</td>
-<td>List</td>
-<td>Captures whether the user wants
-a lawyer, forms, or content</td>
-</tr>
-<tr class="row-odd"><td>field_triage_search</td>
-<td>Text</td>
-<td>Captures search input from the user
-describing their problem.  Supports
-auto-suggest of legal issue terms</td>
-</tr>
-<tr class="row-even"><td>field_triage_problem
-(legal issues taxonomy</td>
-<td>Term
-reference</td>
-<td>Lowest level term related to the
-user’s search</td>
-</tr>
-<tr class="row-odd"><td>field_limited_populations
-(intake population
-taxonomy)</td>
-<td>Term
-reference</td>
-<td>Determines if the user falls into a
-population served by a specific
-service</td>
-</tr>
-<tr class="row-even"><td>field_triage_problem_history
-(legal issues taxonomy)</td>
-<td>Term
-reference</td>
-<td>Captures the drill down of user’s
-legal problem</td>
-</tr>
-<tr class="row-odd"><td>field_opt_in_sms</td>
-<td>Boolean</td>
-<td>Has the user opted in for SMS?</td>
-</tr>
-<tr class="row-even"><td>field_mobile_phone</td>
-<td>Text</td>
-<td>User’s mobile number</td>
-</tr>
-</tbody>
-</table>
-<div class="section" id="data-collection">
-<h3>Data collection<a class="headerlink" href="#data-collection" title="Permalink to this headline">¶</a></h3>
-<p>The get legal help form (oas_triage_user_edit_form, altered via ilao_intake_settings.module) collects initial input data:</p>
+<div class="section" id="browser-interfaces">
+<h2>Browser Interfaces<a class="headerlink" href="#browser-interfaces" title="Permalink to this headline">¶</a></h2>
+<p>The interfaces that power the front-end of Get Legal Help:</p>
 <ul class="simple">
-<li>Displays a description of Get Legal Help</li>
-<li>User’s zip code (prepopulated if user is logged in)</li>
-<li>Household size</li>
-<li>Whether the user is likely over-income.  This looks up a value based on the provided household size:<ul>
-<li>The function can be found at oas_triage_user_get_maximum_income r</li>
-<li>Relies on the ilao_oas_income_standard module to get the <a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/ilao_oas_income_standards">current federal poverty levels</a>.</li>
-<li>Calculates the monthly poverty level, multiplies by 3.5 (350%) and adds 500</li>
-<li>Rounds to the nearest lowest $1000.  For example, if the maximum monthly income is $5,300, the system will return $5000.</li>
-</ul>
-</li>
-<li>Whether the user is a member of a special population.  This data comes from the limited population taxonomy</li>
+<li>Get Legal Help form</li>
+<li>Triage issues forms</li>
+<li>Triage rules (webform nodes)</li>
+<li>Intake application form (multi-page form)</li>
+<li>Exit screens</li>
 </ul>
 </div>
-<div class="section" id="form-submission">
-<h3>Form submission<a class="headerlink" href="#form-submission" title="Permalink to this headline">¶</a></h3>
-<p>When the form is submitted, the system:</p>
-<ul>
-<li><p class="first">Creates a session variable that stores the household size (in $_SESSION[‘oas’])</p>
-</li>
-<li><p class="first">Creates an oas_triage_user entity which stores:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Current time stamp</li>
-<li>User’s ID if known</li>
-<li>Last screen viewed of “get-legal-help”</li>
-<li>The user’s zip code</li>
-<li>The county associated with the zip code</li>
-<li>The state associated with the state</li>
-</ul>
-</div></blockquote>
-</li>
-<li><p class="first">Routes the user to initial results</p>
-</li>
-</ul>
+<div class="section" id="triage-rules">
+<h2>Triage Rules<a class="headerlink" href="#triage-rules" title="Permalink to this headline">¶</a></h2>
+<p>Triage rules are webforms wrapped in a content type.</p>
 </div>
-</div>
-<div class="section" id="initial-results-evaluation">
-<h2>Initial Results Evaluation<a class="headerlink" href="#initial-results-evaluation" title="Permalink to this headline">¶</a></h2>
-<p>The logic for the initial results is in the oas_triage_user.evaluate_triage.inc file.</p>
-<div class="section" id="initial-step">
-<h3>Initial step<a class="headerlink" href="#initial-step" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="exit-screens">
+<h2>Exit Screens<a class="headerlink" href="#exit-screens" title="Permalink to this headline">¶</a></h2>
+<p>There are 4 template files that get populated when the user reaches an exit:</p>
 <ul class="simple">
-<li>set the legal issue (as field_triage_problem) if the user picked a legal term using autosuggest</li>
-<li>routes the user to the top of the <a class="reference external" href="https://www.illinoislegalaid.org/get-legal-help/triage-start">get legal help tree</a> to pick from the top 8 topics if their search can’t be matched.</li>
-<li>routes the user into the legal issues triage tree if the user didn’t pick a low enough category.</li>
-<li>routes the user to a list of legal issues that match their search term if they didn’t pick from the taxonomy and there are matches.</li>
-<li>routes the user to results if the user picked a bottom level category</li>
+<li>oas–bypass.tpl.php is our bypass template file for users who start OTIS and then get told to call instead of applying online.</li>
+<li>oas–please-call.tpl.php is our “Please call” template file for users who complete intake and are directed to call</li>
+<li>oas–we-call-you.tpl.php is our “We call you” template file for users who complete intake and have scheduled a callback.</li>
+<li>oas–referrals.tpl.php is our template file for users who are given referrals to content, forms, and/or organizations.</li>
 </ul>
-</div>
-<div class="section" id="results">
-<h3>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h3>
-<p>Once the user ends up at the lowest level category for their problem, the system determines the appropriate results.
-This is in the oas_triage_user_determine_resources function.</p>
-<ul class="simple">
-<li>If the user is only seeking content and forms, they are directed to the referrals page.</li>
-<li>If the user is seeking a lawyer in any combination, the system evaluates to see if online intake is available.</li>
-</ul>
-<p>This code is primarily found in the oas_triage_user.intake_available.inc file:</p>
-<ul class="simple">
-<li>If the user is overincome, it looks for intake settings where the user is in population where income is waived or where there is no income limit</li>
-<li>If the user is not overincome, it looks for intake settings first where the user matches on a population and if there is no match, looks for intake settings with no population restrictions</li>
-</ul>
-<p>If there are any intake settings that match, the system then checks for matching triage rules (see oas_triage_user_get_triage_rules function)</p>
-<p>Special case:  we need to make sure we have the right problem code to check for.  In the current site, there are instances where the legal issue is stored in different ways.  The oas_triage_user_get_child_problem function returns the best child function.</p>
-</div>
 </div>
 </div>
 
@@ -334,7 +232,7 @@ This is in the oas_triage_user_determine_resources function.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="otis_api_D8.html" class="btn btn-neutral float-right" title="Get Legal Help APIs for Drupal 8" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="otis_api_D7_glh_form.html" class="btn btn-neutral float-right" title="Initial Evaluation APIs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="otis_api.html" class="btn btn-neutral" title="Get Legal Help APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
