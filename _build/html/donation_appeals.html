@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Intake Application APIs &mdash; ILAO 2.19.0 documentation</title>
+  <title>Managing Donor Appeals &mdash; ILAO 2.19.0 documentation</title>
   
 
   
@@ -27,9 +27,7 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Intake eTransfer API" href="otis_api_D7_etransfer.html" />
-    <link rel="prev" title="Intake available “API”" href="otis_api_D7_intake_available.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -83,24 +81,8 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="get_legal_help.html">Get Legal Help</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="referrals.html">Referrals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="legal_self_help_centers.html">Legal Self-Help Center Directory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="otis_integration.html">Online Triage and Intake System (OTIS)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="otis_queries.html">OTIS-related queries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="otis_technical.html">OTIS Database Tables &amp; Relationships</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="otis_api.html">Get Legal Help APIs</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="otis_api_D7.html">Get Legal Help APIs for Drupal 7</a></li>
-<li class="toctree-l3"><a class="reference internal" href="otis_api_D7_glh_form.html">Initial Evaluation APIs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="otis_api_D7_intake_available.html">Intake available “API”</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Intake Application APIs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="otis_api_D7_etransfer.html">Intake eTransfer API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="otis_api_D8.html">Get Legal Help APIs for Drupal 8</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="get_legal_help.html">Get Legal Help</a></li>
 <li class="toctree-l1"><a class="reference internal" href="legal_information.html">Legal Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="for_legal_professionals.html">For Legal Professionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="site_search.html">Site Search</a></li>
@@ -166,17 +148,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="get_legal_help.html">Get Legal Help</a> &raquo;</li>
-        
-          <li><a href="otis_api.html">Get Legal Help APIs</a> &raquo;</li>
-        
-      <li>Intake Application APIs</li>
+      <li>Managing Donor Appeals</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/otis_api_D7_intake_application.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/donation_appeals.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -189,8 +167,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="intake-application-apis">
-<h1>Intake Application APIs<a class="headerlink" href="#intake-application-apis" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="managing-donor-appeals">
+<h1>Managing Donor Appeals<a class="headerlink" href="#managing-donor-appeals" title="Permalink to this headline">¶</a></h1>
+<p>Code exists to set a cookie for people who visit our donate page.  It is cleared out every 30 days.  If this cookie exists on a user’s browser, they will not see the appeal banner.</p>
+<div class="section" id="setting-up-the-appeals-blocks">
+<h2>Setting up the appeals blocks<a class="headerlink" href="#setting-up-the-appeals-blocks" title="Permalink to this headline">¶</a></h2>
+<p>We have 3 appeals blocks created, each of which is audience-based:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/block/manage/block/371/configure">Advocate block</a></li>
+<li><a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/block/manage/block/406/configure">Pro bono block</a></li>
+<li><a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/block/manage/block/401/configure">Public block</a></li>
+</ul>
+<p>Edit each block and set the donation message.  In the Block body editor, edit the message.</p>
+<ol class="arabic simple">
+<li>On the button, right click and set “edit link”</li>
+</ol>
+<img alt="_images/donate-edit-link.png" src="_images/donate-edit-link.png" />
+<ol class="arabic simple" start="2">
+<li>In the url, edit the utm-campaign at the end of the url</li>
+</ol>
+<img alt="_images/donate-edit-utm.png" src="_images/donate-edit-utm.png" />
+<p>Each appeal campaign should have a single campaign name that is different appeal to appeal.  Combined with the defined source and medium, we can track the banner in Google Analytics.</p>
+<ol class="arabic simple" start="3">
+<li>Assign the block to the “featured” region in the ILAO theme:</li>
+</ol>
+<p>..image:: assets/donate-edit-region.png</p>
+<ol class="arabic simple" start="4">
+<li>Save the block.</li>
+</ol>
+<p>Repeat for each block.</p>
+</div>
+<div class="section" id="taking-the-appeals-blocks-down">
+<h2>Taking the appeals blocks down<a class="headerlink" href="#taking-the-appeals-blocks-down" title="Permalink to this headline">¶</a></h2>
+<p>To remove the appeal blocks from the website, for each of the blocks listed above,</p>
+<ol class="arabic simple">
+<li>Assign the block to the “none” region in the ILAO theme:</li>
+</ol>
+<img alt="_images/donate-edit-region-2.png" src="_images/donate-edit-region-2.png" />
+<ol class="arabic simple" start="2">
+<li>Save the block.</li>
+</ol>
+</div>
 </div>
 
 
@@ -198,15 +215,6 @@
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="otis_api_D7_etransfer.html" class="btn btn-neutral float-right" title="Intake eTransfer API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="otis_api_D7_intake_available.html" class="btn btn-neutral" title="Intake available “API”" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
