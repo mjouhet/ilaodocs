@@ -7,11 +7,14 @@ Code exists to set a cookie for people who visit our donate page.  It is cleared
 Setting up the appeals blocks
 ==============================
 
+.. note:: 
+
+   You must be logged in to the website to publish or unpublish the blocks.  
 We have 3 appeals blocks created, each of which is audience-based:
 
-* `Advocate block <https://www.illinoislegalaid.org/admin/structure/block/manage/block/371/configure>`_
-* `Pro bono block <https://www.illinoislegalaid.org/admin/structure/block/manage/block/406/configure>`_
-* `Public block <https://www.illinoislegalaid.org/admin/structure/block/manage/block/401/configure>`_
+* `Advocate block <https://www.illinoislegalaid.org/admin/structure/block/manage/block/371/configure>`_ appears only for logged in advocate users.
+* `Pro bono block <https://www.illinoislegalaid.org/admin/structure/block/manage/block/406/configure>`_  appears only for logged in pro bono users.  A user who has both pro bono and advocate roles will only see this block.
+* `General block <https://www.illinoislegalaid.org/admin/structure/block/manage/block/401/configure>`_  appears only for logged in public users, navigators, law students, as well as anonymous users.
 
 Edit each block and set the donation message.  In the Block body editor, edit the message.  
 

@@ -172,11 +172,15 @@
 <p>Code exists to set a cookie for people who visit our donate page.  It is cleared out every 30 days.  If this cookie exists on a user’s browser, they will not see the appeal banner.</p>
 <div class="section" id="setting-up-the-appeals-blocks">
 <h2>Setting up the appeals blocks<a class="headerlink" href="#setting-up-the-appeals-blocks" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You must be logged in to the website to publish or unpublish the blocks.</p>
+</div>
 <p>We have 3 appeals blocks created, each of which is audience-based:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/block/manage/block/371/configure">Advocate block</a></li>
-<li><a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/block/manage/block/406/configure">Pro bono block</a></li>
-<li><a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/block/manage/block/401/configure">Public block</a></li>
+<li><a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/block/manage/block/371/configure">Advocate block</a> appears only for logged in advocate users.</li>
+<li><a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/block/manage/block/406/configure">Pro bono block</a>  appears only for logged in pro bono users.  A user who has both pro bono and advocate roles will only see this block.</li>
+<li><a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/block/manage/block/401/configure">General block</a>  appears only for logged in public users, navigators, law students, as well as anonymous users.</li>
 </ul>
 <p>Edit each block and set the donation message.  In the Block body editor, edit the message.</p>
 <ol class="arabic simple">
